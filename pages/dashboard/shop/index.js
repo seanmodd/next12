@@ -269,3 +269,15 @@ export default function EcommerceShop() {
     // </AuthGuard>
   );
 }
+
+
+
+export const getStaticProps = async (ctx) => {
+  const { data } = await 
+
+  return {
+    props: {
+      
+    }
+  }
+}
