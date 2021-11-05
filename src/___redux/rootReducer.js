@@ -33,8 +33,8 @@ const rootReducer = combineReducers({
   user: userReducer,
   calendar: calendarReducer,
   kanban: kanbanReducer,
-  product: persistReducer(productPersistConfig, productReducer),
-  // product: productReducer,
+  // product: persistReducer(productPersistConfig, productReducer),
+  product: productReducer,
 });
 
 export { rootPersistConfig, rootReducer };

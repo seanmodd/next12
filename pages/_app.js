@@ -57,7 +57,7 @@ import ThemePrimaryColor from 'src/components/ThemePrimaryColor';
 
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider as ReduxProvider } from 'react-redux';
-import { PersistGate } from 'redux-persist/lib/integration/react';
+// import { PersistGate } from 'redux-persist/lib/integration/react';
 // material
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -92,13 +92,14 @@ import { ApolloWrapper } from 'src/__graphql/ApolloWrapper';
 //! below is from root-wrapper.js within gatsby version...
 import { ThemeProvider } from '@material-ui/core/styles';
 import MainLayout from 'src/layouts/main';
+import { wrapperStore } from 'src/___redux/store.js';
 import theme from '../theme';
 
 require('dotenv').config();
 
 const clientSideEmotionCache = createEmotionCache();
 
-export default function MyApp(props) {
+const MyApp = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   console.log(
     'This is from _app.js, here is the props of the root function of the entire application: ',
@@ -107,56 +108,58 @@ export default function MyApp(props) {
 
   return (
     <HelmetProvider>
-      <ReduxProvider store={store}>
-        <PersistGate loading={<LoadingScreen />} persistor={persistor}>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <SettingsProvider>
-              <CollapseDrawerProvider>
-                <CacheProvider value={emotionCache}>
-                  <Head>
-                    <meta
-                      name="viewport"
-                      content="initial-scale=1, width=device-width"
-                    />
-                  </Head>
+      {/* <ReduxProvider store={store}> */}
+      {/* <PersistGate loading={<LoadingScreen />} persistor={persistor}> */}
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <SettingsProvider>
+          <CollapseDrawerProvider>
+            <CacheProvider value={emotionCache}>
+              <Head>
+                <meta
+                  name="viewport"
+                  content="initial-scale=1, width=device-width"
+                />
+              </Head>
 
-                  <ThemeConfig>
-                    <ThemePrimaryColor>
-                      <RtlLayout>
-                        <NoSsr>
-                          <Settings />
-                        </NoSsr>
-                        <ThemeProvider theme={theme}>
-                          <ApolloWrapper>
-                            <NotistackProvider>
-                              <GlobalStyles />
-                              <ProgressBar />
-                              {/* <LoadingScreen /> */}
-                              <BaseOptionChartStyle />
-                              <GoogleAnalytics />
-                              <UserWrapper>
-                                <FeedbackWrapper>
-                                  <CartWrapper>
-                                    <AuthProvider>
-                                      <MainLayout>
-                                        <Component {...pageProps} />
-                                      </MainLayout>
-                                    </AuthProvider>
-                                  </CartWrapper>
-                                </FeedbackWrapper>
-                              </UserWrapper>
-                            </NotistackProvider>
-                          </ApolloWrapper>
-                        </ThemeProvider>
-                      </RtlLayout>
-                    </ThemePrimaryColor>
-                  </ThemeConfig>
-                </CacheProvider>
-              </CollapseDrawerProvider>
-            </SettingsProvider>
-          </LocalizationProvider>
-        </PersistGate>
-      </ReduxProvider>
+              <ThemeConfig>
+                <ThemePrimaryColor>
+                  <RtlLayout>
+                    <NoSsr>
+                      <Settings />
+                    </NoSsr>
+                    <ThemeProvider theme={theme}>
+                      <ApolloWrapper>
+                        <NotistackProvider>
+                          <GlobalStyles />
+                          <ProgressBar />
+                          {/* <LoadingScreen /> */}
+                          <BaseOptionChartStyle />
+                          <GoogleAnalytics />
+                          <UserWrapper>
+                            <FeedbackWrapper>
+                              <CartWrapper>
+                                <AuthProvider>
+                                  <MainLayout>
+                                    <Component {...pageProps} />
+                                  </MainLayout>
+                                </AuthProvider>
+                              </CartWrapper>
+                            </FeedbackWrapper>
+                          </UserWrapper>
+                        </NotistackProvider>
+                      </ApolloWrapper>
+                    </ThemeProvider>
+                  </RtlLayout>
+                </ThemePrimaryColor>
+              </ThemeConfig>
+            </CacheProvider>
+          </CollapseDrawerProvider>
+        </SettingsProvider>
+      </LocalizationProvider>
+      {/* </PersistGate> */}
+      {/* </ReduxProvider> */}
     </HelmetProvider>
   );
-}
+};
+
+export default wrapperStore.withRedux(MyApp);

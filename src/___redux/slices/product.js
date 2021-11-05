@@ -7,7 +7,7 @@ import { sum, map, filter, uniqBy, reject } from 'lodash';
 import { createSlice } from '@reduxjs/toolkit';
 import { ApolloClient, InMemoryCache, useQuery, gql } from '@apollo/client';
 import { useRouter } from 'next/router';
-
+import { HYDRATE } from 'next-redux-wrapper';
 // utils
 // import axios from '../../utils/axios';
 import axios from 'axios';
@@ -41,6 +41,7 @@ const initialState = {
 const slice = createSlice({
   name: 'product',
   initialState,
+
   reducers: {
     // START LOADING
     startLoading(state) {
@@ -200,6 +201,15 @@ const slice = createSlice({
       state.checkout.shipping = shipping;
       state.checkout.total =
         state.checkout.subtotal - state.checkout.discount + shipping;
+    },
+  },
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      console.log('HYDRATE', state, action.payload);
+      return {
+        ...state,
+        ...action.payload.subject,
+      };
     },
   },
 });

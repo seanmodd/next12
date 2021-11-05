@@ -13,7 +13,12 @@ import {
   Grid,
 } from '@mui/material';
 // redux
-import { useDispatch, useSelector } from 'src/___redux/store';
+import {
+  useDispatch,
+  useSelector,
+  useStore,
+  useState as useStateRedux,
+} from 'react-redux';
 import { PATH_DASHBOARD } from 'src/routes/paths';
 import {
   getProducts,
@@ -40,6 +45,7 @@ import DashboardLayout from 'src/layouts/dashboard';
 import AuthLayout from 'src/layouts/AuthLayout';
 import GuestGuard from 'src/guards/GuestGuard';
 import AuthGuard from 'src/guards/AuthGuard';
+import { wrapperStore } from 'src/___redux/store.js';
 
 //* All data here comes from src/___redux/slices/product.js lines 220+ where the getProducts function is being exported!
 //* This then calls an api with Axios which is referencing to localhost:3222/api/products which itself gets data from the graphql server on https://admin.shopcarx.com/graphql which comes back and retrieves data via a graphql setup
@@ -120,12 +126,18 @@ const SkeletonLoad = (
   </Grid>
 );
 
-export default function EcommerceShop() {
+const EcommerceShop = () => {
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
   const myselector = useSelector((state) => state.product);
+
+  const stat = useSelector((state) => state);
+  console.log(stat);
+  console.log('State on render', useStore().getState());
+  return <></>;
   const { products, sortBy, filters } = useSelector((state) => state.product);
+
   console.log(
     '🚀 ~ file: index.js ~ line 101 ~ EcommerceShop ~ selector',
     myselector
@@ -163,7 +175,7 @@ export default function EcommerceShop() {
 
   useEffect(() => {
     // dispatch(getProducts());
-    dispatch(getProducts());
+    // dispatch(getProducts());
   }, [dispatch]);
 
   useEffect(() => {
@@ -185,99 +197,109 @@ export default function EcommerceShop() {
 
   return (
     // <AuthGuard>
-      <DashboardLayout>
-        <Stack
-          direction="row"
-          flexWrap="wrap-reverse"
-          alignItems="center"
-          justifyContent="flex-end"
-          sx={{ mb: 0, mt: 0, px: 15 }}
-        >
-          <CartWidget />
-        </Stack>
-        {/* {!filteredProducts && SkeletonLoad} */}
-        <GuestGuard>
-          <Page title="Shop: All Vehicles | CarX">
-            {values && (
-              <Backdrop open={isSubmitting} sx={{ zIndex: 9999 }}>
-                <CircularProgress />
-              </Backdrop>
+    <DashboardLayout>
+      <Stack
+        direction="row"
+        flexWrap="wrap-reverse"
+        alignItems="center"
+        justifyContent="flex-end"
+        sx={{ mb: 0, mt: 0, px: 15 }}
+      >
+        <CartWidget />
+      </Stack>
+      {/* {!filteredProducts && SkeletonLoad} */}
+      <GuestGuard>
+        <Page title="Shop: All Vehicles | CarX">
+          {values && (
+            <Backdrop open={isSubmitting} sx={{ zIndex: 9999 }}>
+              <CircularProgress />
+            </Backdrop>
+          )}
+
+          <Container maxWidth={themeStretch ? false : 'lg'}>
+            <HeaderBreadcrumbs
+              heading="Shop: All Vehicles"
+              links={[
+                { name: 'Dashboard', href: PATH_DASHBOARD.root },
+                // {
+                //   name: 'E-Commerce',
+                //   href: PATH_DASHBOARD.shop.root,
+                // },
+                { name: 'All Vehciles' },
+              ]}
+            />
+
+            {!isDefault && (
+              <Typography gutterBottom>
+                <Typography component="span" variant="subtitle1">
+                  {filteredProducts.length}
+                </Typography>
+                &nbsp;Products found
+              </Typography>
             )}
 
-            <Container maxWidth={themeStretch ? false : 'lg'}>
-              <HeaderBreadcrumbs
-                heading="Shop: All Vehicles"
-                links={[
-                  { name: 'Dashboard', href: PATH_DASHBOARD.root },
-                  // {
-                  //   name: 'E-Commerce',
-                  //   href: PATH_DASHBOARD.shop.root,
-                  // },
-                  { name: 'All Vehciles' },
-                ]}
+            <Stack
+              direction="row"
+              flexWrap="wrap-reverse"
+              alignItems="center"
+              justifyContent="flex-end"
+              sx={{ mb: 5 }}
+            >
+              <ShopTagFiltered
+                filters={filters}
+                formik={formik}
+                isShowReset={openFilter}
+                onResetFilter={handleResetFilter}
+                isDefault={isDefault}
               />
 
-              {!isDefault && (
-                <Typography gutterBottom>
-                  <Typography component="span" variant="subtitle1">
-                    {filteredProducts.length}
-                  </Typography>
-                  &nbsp;Products found
-                </Typography>
-              )}
-
-              <Stack
-                direction="row"
-                flexWrap="wrap-reverse"
-                alignItems="center"
-                justifyContent="flex-end"
-                sx={{ mb: 5 }}
-              >
-                <ShopTagFiltered
-                  filters={filters}
+              <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
+                <ShopFilterSidebar
                   formik={formik}
-                  isShowReset={openFilter}
+                  isOpenFilter={openFilter}
                   onResetFilter={handleResetFilter}
-                  isDefault={isDefault}
+                  onOpenFilter={handleOpenFilter}
+                  onCloseFilter={handleCloseFilter}
                 />
-
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  flexShrink={0}
-                  sx={{ my: 1 }}
-                >
-                  <ShopFilterSidebar
-                    formik={formik}
-                    isOpenFilter={openFilter}
-                    onResetFilter={handleResetFilter}
-                    onOpenFilter={handleOpenFilter}
-                    onCloseFilter={handleCloseFilter}
-                  />
-                  <ShopProductSort />
-                </Stack>
+                <ShopProductSort />
               </Stack>
+            </Stack>
 
-              <ShopProductList
-                products={filteredProducts}
-                isLoad={!filteredProducts && !initialValues}
-              />
-            </Container>
-          </Page>
-        </GuestGuard>
-      </DashboardLayout>
+            <ShopProductList
+              products={filteredProducts}
+              isLoad={!filteredProducts && !initialValues}
+            />
+          </Container>
+        </Page>
+      </GuestGuard>
+    </DashboardLayout>
     // </AuthGuard>
   );
-}
+};
 
+// export const getStaticProps = async (ctx) =>
+//   // const { products, sortBy, filters } = useSelector((state) => state.product);
+//   // const { data } = await
 
+//   ({
+//     props: {
+//       products,
+//     },
+//   });
 
-export const getStaticProps = async (ctx) => {
-  const { data } = await 
+export const getServerSideProps = wrapperStore.getServerSideProps(
+  (store) =>
+    async ({ params }) => {
+      // const { id } = params;
 
-  return {
-    props: {
-      
+      await store.dispatch(getProducts());
+
+      console.log('State on server', store.getState());
+
+      return {
+        props: {},
+      };
     }
-  }
-}
+);
+
+export default EcommerceShop;

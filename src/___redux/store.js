@@ -1,23 +1,67 @@
-import { useDispatch as useReduxDispatch, useSelector as useReduxSelector } from 'react-redux';
+import {
+  useDispatch as useReduxDispatch,
+  useSelector as useReduxSelector,
+} from 'react-redux';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
+import { createWrapper } from 'next-redux-wrapper';
 //
+import { createStore } from 'redux';
 import { rootPersistConfig, rootReducer } from './rootReducer';
+
+import mailSlice from './slices/mail';
+import chatSlice from './slices/chat';
+import blogSlice from './slices/blog';
+import userSlice from './slices/user';
+import productSlice from './slices/product';
+import calendarSlice from './slices/calendar';
+import kanbanSlice from './slices/kanban';
 
 // ----------------------------------------------------------------------
 
-const store = configureStore({
-  reducer: persistReducer(rootPersistConfig, rootReducer),
-  middleware: getDefaultMiddleware({
-    serializableCheck: false,
-    immutableCheck: false
-  })
-});
+// const store = configureStore({
+//   reducer: rootReducer,
+//   middleware: getDefaultMiddleware({
+//     serializableCheck: false,
+//     immutableCheck: false,
+//   }),
+// });
 
-const persistor = persistStore(store);
+// const persistor = persistStore(store);
 
-const useSelector = useReduxSelector;
+// const useSelector = useReduxSelector;
 
-const useDispatch = () => useReduxDispatch();
+// const useDispatch = () => useReduxDispatch();
 
-export { store, persistor, useSelector, useDispatch };
+// export { store, persistor, useSelector, useDispatch };
+
+// const makeStore = (context) => createStore(rootReducer, context);
+
+// export const wrapper = createWrapper(makeStore);
+
+const makeStore = () =>
+  configureStore({
+    reducer: {
+      [userSlice.name]: userSlice.reducer,
+      [productSlice.name]: productSlice.reducer,
+    },
+    devTools: true,
+  });
+
+export const fetchSubject = (id) => async (dispatch) => {
+  const timeoutPromise = (timeout) =>
+    new Promise((resolve) => setTimeout(resolve, timeout));
+
+  await timeoutPromise(200);
+
+  dispatch(
+    subjectSlice.actions.setEnt({
+      [id]: {
+        id,
+        name: `Subject ${id}`,
+      },
+    })
+  );
+};
+
+export const wrapperStore = createWrapper(makeStore);
