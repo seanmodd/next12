@@ -22,7 +22,7 @@ import {
 import { PATH_DASHBOARD } from 'src/routes/paths';
 import {
   getProducts,
-  // getAllProductGraphQl,
+  getAllProductGraphQl,
   filterProducts,
 } from 'src/___redux/slices/product';
 // routes
@@ -296,6 +296,11 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
       );
 
       await store.dispatch(getProducts());
+      console.log(
+        'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is store.dispatch(getProducts()) from getServerSideProps: ',
+        store.dispatch(getProducts())
+      );
+      // await store.dispatch(getAllProductGraphQl());
 
       console.log('State on server', store.getState());
 
