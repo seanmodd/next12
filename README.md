@@ -1,3 +1,9 @@
+# Branch: main
+### WITH ssr... not working yet though...
+# next12
+
+![screenshot](https://github.com/seanmodd/next12/blob/main/public/screenshot.png)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
