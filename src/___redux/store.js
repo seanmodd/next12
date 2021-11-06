@@ -17,28 +17,6 @@ import productSlice from './slices/product';
 import calendarSlice from './slices/calendar';
 import kanbanSlice from './slices/kanban';
 
-// ----------------------------------------------------------------------
-
-// const store = configureStore({
-//   reducer: rootReducer,
-//   middleware: getDefaultMiddleware({
-//     serializableCheck: false,
-//     immutableCheck: false,
-//   }),
-// });
-
-// const persistor = persistStore(store);
-
-// const useSelector = useReduxSelector;
-
-// const useDispatch = () => useReduxDispatch();
-
-// export { store, persistor, useSelector, useDispatch };
-
-// const makeStore = (context) => createStore(rootReducer, context);
-
-// export const wrapper = createWrapper(makeStore);
-
 const makeStore = () =>
   configureStore({
     reducer: {

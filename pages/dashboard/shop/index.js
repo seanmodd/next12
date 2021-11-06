@@ -290,14 +290,27 @@ const EcommerceShop = () => {
 export const getServerSideProps = wrapperStore.getServerSideProps(
   (store) =>
     async ({ params }) => {
-      // const { id } = params;
+      console.log(
+        'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is params from getServerSideProps: ',
+        params
+      );
 
       await store.dispatch(getProducts());
 
       console.log('State on server', store.getState());
 
+      // const { products, sortBy, filters } = store.getState().product;
+      const theproducts = store.getState().product;
+
       return {
-        props: {},
+        props: {
+          products: null,
+          // products: id,
+          // products: store.getState().product,
+          // products: store.getState().product.products,
+          // sortBy: store.getState().product.sortBy,
+          // filters: store.getState().product.filters,
+        },
       };
     }
 );
