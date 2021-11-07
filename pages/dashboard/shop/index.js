@@ -24,6 +24,7 @@ import {
   getProducts,
   getAllProductGraphQl,
   filterProducts,
+  getProductsJson,
 } from 'src/___redux/slices/product';
 // routes
 // utils
@@ -126,7 +127,9 @@ const SkeletonLoad = (
   </Grid>
 );
 
-const EcommerceShop = () => {
+const EcommerceShop = (props) => {
+
+  console.log("log products from props", props)
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
@@ -290,26 +293,24 @@ const EcommerceShop = () => {
 export const getServerSideProps = wrapperStore.getServerSideProps(
   (store) =>
     async ({ params }) => {
-      console.log(
-        'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is params from getServerSideProps: ',
-        params
-      );
+      // console.log(
+      //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is params from getServerSideProps: ',
+      //   params
+      // );
 
-      await store.dispatch(getProducts());
-      console.log(
-        'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is store.dispatch(getProducts()) from getServerSideProps: ',
-        store.dispatch(getProducts())
-      );
-      // await store.dispatch(getAllProductGraphQl());
-
-      console.log('State on server', store.getState());
-
+      // await store.dispatch(getProducts());
+      // console.log(
+      //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is store.dispatch(getProducts()) from getServerSideProps: ',
+      //   store.dispatch(getProducts())
+      // );
+      // // await store.dispatch(getAllProductGraphQl());
+      // console.log('State on server', store.getState());
       // const { products, sortBy, filters } = store.getState().product;
-      const theproducts = store.getState().product;
 
+      // const theproducts = store.getState().product;
       return {
         props: {
-          products: null,
+          products: await getProductsJson(),
           // products: id,
           // products: store.getState().product,
           // products: store.getState().product.products,

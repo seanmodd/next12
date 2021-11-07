@@ -238,10 +238,24 @@ export const {
 
 // ----------------------------------------------------------------------
 
+
+export async function getProductsJson() {
+  try {
+    const response = await client.query({
+      query: ALLCARSQUERY,
+    });
+    return response.data.variants
+  } catch (error) {
+  }
+}
+
 export function getProducts() {
+  console.log("amr", "starrt")
+
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
+      console.log("amr", "start get products")
       // const response = await axios.get(
       //   '/api/strapi-graphql/query-allProducts/'
       // );
@@ -252,8 +266,11 @@ export function getProducts() {
         '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ file:query-allProducts.js and ___redux/slices/product.js~ from getProducts() function! On line 233 ~ return ~ response',
         response
       );
+      console.log("amr", response)
       dispatch(slice.actions.getProductsSuccess(response.data.variants));
+      return response.data.variants
     } catch (error) {
+      console.log("amr", error)
       dispatch(slice.actions.hasError(error));
     }
   };
