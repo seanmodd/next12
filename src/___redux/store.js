@@ -20,26 +20,27 @@ import kanbanSlice from './slices/kanban';
 const makeStore = () =>
   configureStore({
     reducer: {
-      [userSlice.name]: userSlice.reducer,
-      [productSlice.name]: productSlice.reducer,
+      // [userSlice.name]: userSlice.reducer,
+      // [productSlice.name]: productSlice.reducer,
+      productSlice,
     },
     devTools: true,
   });
 
-export const fetchSubject = (id) => async (dispatch) => {
-  const timeoutPromise = (timeout) =>
-    new Promise((resolve) => setTimeout(resolve, timeout));
+// export const fetchSubject = (id) => async (dispatch) => {
+//   const timeoutPromise = (timeout) =>
+//     new Promise((resolve) => setTimeout(resolve, timeout));
 
-  await timeoutPromise(200);
+//   await timeoutPromise(200);
 
-  dispatch(
-    subjectSlice.actions.setEnt({
-      [id]: {
-        id,
-        name: `Subject ${id}`,
-      },
-    })
-  );
-};
+//   dispatch(
+//     subjectSlice.actions.setEnt({
+//       [id]: {
+//         id,
+//         name: `Subject ${id}`,
+//       },
+//     })
+//   );
+// };
 
 export const wrapperStore = createWrapper(makeStore);

@@ -248,15 +248,20 @@ export async function getProductsJson() {
     const response = await client.query({
       query: ALLCARSQUERY,
     });
-    console.log(' 😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸  ', response);
     console.log(
-      ' 😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸  ',
-      response.data.allCars
+      ' 😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸  HERE IS THE response.data FROM GRAPHQL QUERY getProductsJson(): ',
+      response.data
+    );
+    console.log(
+      ' 😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸😸  HERE IS THE response.data.variants FROM GRAPHQL QUERY getProductsJson(): ',
+      response.data.variants
     );
 
+    // dispatch(slice.actions.getProductsSuccessvSean(response.data.variants));
     return response.data.variants;
-    dispatch(slice.actions.getProductsSuccessvSean(response.data.variants));
-  } catch (error) {}
+  } catch (error) {
+    console.log('the error has been caught via src/___redux/slices/product.js');
+  }
 }
 
 export function getProducts() {

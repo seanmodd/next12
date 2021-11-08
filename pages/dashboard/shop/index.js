@@ -128,15 +128,21 @@ const SkeletonLoad = (
 );
 
 const EcommerceShop = (props) => {
-  console.log('log products from props', props);
+  console.log('This is props from pages/dashboard/shop/index.js: ', props);
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
   const myselector = useSelector((state) => state.product);
 
   const stat = useSelector((state) => state);
-  console.log(stat);
-  console.log('State on render', useStore().getState());
+  console.log(
+    ' This is useSelector((state) => state) from pages/dashboard/shop/index.js: ',
+    stat
+  );
+  console.log(
+    'This is useStore().getState() from pages/dashboard/shop/index.js: ',
+    useStore().getState()
+  );
   return <></>;
   const { products, sortBy, filters } = useSelector((state) => state.product);
 
@@ -279,31 +285,35 @@ const EcommerceShop = (props) => {
   );
 };
 
-// export const getStaticProps = async (ctx) =>
-//   // const { products, sortBy, filters } = useSelector((state) => state.product);
-//   // const { data } = await
-
-//   ({
-//     props: {
-//       products,
-//     },
-//   });
-
 export const getServerSideProps = wrapperStore.getServerSideProps(
   (store) =>
-    async (
-      { params } // console.log( //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is params from getServerSideProps: ', //   params // ); // await store.dispatch(getProducts()); // console.log( //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is store.dispatch(getProducts()) from getServerSideProps: ', //   store.dispatch(getProducts()) // ); // // await store.dispatch(getAllProductGraphQl()); // console.log('State on server', store.getState()); // const { products, sortBy, filters } = store.getState().product; // const theproducts = store.getState().product;
-    ) => ({
+    async ({ params }) => ({
       props: {
-        // products: await getAllProductGraphQl(),
         products: await getProductsJson(),
-        // products: id,
-        // products: store.getState().product,
-        // products: store.getState().product.products,
-        // sortBy: store.getState().product.sortBy,
-        // filters: store.getState().product.filters,
       },
     })
 );
 
 export default EcommerceShop;
+
+// export const getServerSideProps = wrapperStore.getServerSideProps(
+//   (store) =>
+//     async (
+//       { params } // console.log( //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is params from getServerSideProps: ', //   params // ); // await store.dispatch(getProducts()); // console.log( //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is store.dispatch(getProducts()) from getServerSideProps: ', //   store.dispatch(getProducts()) // );
+//     ) => // // await store.dispatch(getAllProductGraphQl());
+//     // console.log('State on server', store.getState());
+//     // const { products, sortBy, filters } = store.getState().product;
+
+//     // const theproducts = store.getState().product;
+//     ({
+//       props: {
+//         // products: await getAllProductGraphQl(),
+//         products: await getProductsJson(),
+//         // products: id,
+//         // products: store.getState().product,
+//         // products: store.getState().product.products,
+//         // sortBy: store.getState().product.sortBy,
+//         // filters: store.getState().product.filters,
+//       },
+//     })
+// );
