@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CallToAction() {
   const classes = useStyles();
-  const matchesMD = useMediaQuery((theme) => theme.breakpoints.down('md'));1
+  const matchesMD = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   return (
     <Grid
