@@ -9,7 +9,10 @@ import ShopProductCard from './ShopProductCard';
 // };
 
 export default function ProductList({ products, isLoad, ...other }) {
-  console.log('THIS IS PROP OF PRODUCTS', products);
+  console.log(
+    'THIS IS PROP OF PRODUCTS from minimalComponents/_dashboard/e-commerce/shop'
+  );
+  // console.log('THIS IS PROP OF PRODUCTS', products);
   return (
     <Grid container spacing={3} {...other}>
       {products.map((product) => (

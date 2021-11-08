@@ -100,7 +100,7 @@ const MyApp = (props) => {
                               </CartWrapper>
                             </FeedbackWrapper>
                           </UserWrapper>
-                        </NotistackProvider>
+                        </NotistackProvider> 
                       </ApolloWrapper>
                     </ThemeProvider>
                   </RtlLayout>

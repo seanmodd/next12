@@ -14,11 +14,14 @@ GuestGuard.propTypes = {
 export default function GuestGuard({ children }) {
   const { isAuthenticated } = useAuth();
 
-  console.log('🥸🥸🥸', useAuth());
+  console.log(
+    '🥸🥸🥸 This is from src/guards/GuestGuard.js, this is useAuth which we destructure to extract isAuthenticated from it : ',
+    useAuth()
+  );
 
   if (isAuthenticated) {
     console.log(
-      '🚀 ~ file: GuestGuard.js ~ line 18 ~ GuestGuard ~ isAuthenticated is true: ',
+      'From src/guards/GuestGuard.js, isAuthenticated : ',
       isAuthenticated
     );
     // return <Navigate href={PATH_DASHBOARD.root} />;
@@ -33,7 +36,7 @@ export default function GuestGuard({ children }) {
   }
 
   console.log(
-    '🚀 ~ file: GuestGuard.js ~ line 18 ~ GuestGuard ~ isAuthenticated is false: ',
+    'From src/guards/GuestGuard.js, when isAuthenticated is equal to false : ',
     isAuthenticated
   );
 
