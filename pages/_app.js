@@ -48,7 +48,7 @@ import MainLayout from 'src/layouts/main';
 // by daniel
 import App, { AppInitialProps, AppContext } from 'next/app';
 
-// import theme from '../theme';
+import theme from '../theme';
 
 require('dotenv').config();
 
