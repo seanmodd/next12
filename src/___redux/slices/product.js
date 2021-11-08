@@ -217,7 +217,8 @@ const slice = createSlice({
       );
       return {
         ...state,
-        ...action.payload.subject,
+        // ...action.payload.subject,
+        ...action.payload,
       };
     },
   },
@@ -262,6 +263,7 @@ export async function getProductsJson() {
     );
 
     // dispatch(slice.actions.getProductsSuccessvSean(response.data.variants));
+    // dispatch(slice.actions.getProductsSuccess(response.data.variants));
     return response.data.variants;
   } catch (error) {
     console.log('the error has been caught via src/___redux/slices/product.js');
