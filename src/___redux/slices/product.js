@@ -217,6 +217,11 @@ const slice = createSlice({
   },
 });
 
+console.log(
+  'This is the slice which contains all the reducer actions within it from ___redux/slices/product.js : ',
+  slice
+);
+
 // Reducer
 export default slice;
 
@@ -261,11 +266,10 @@ export function getProducts() {
         query: ALLCARSQUERY,
       });
 
-      // console.log(
-      //   '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ file:query-allProducts.js and ___redux/slices/product.js~ from getProducts() function! On line 233 ~ return ~ response',
-      //   response
-      // );
-      // console.log("", response)
+      console.log(
+        'response from getProducts() within ___redux/slices/products.js : ',
+        response
+      );
       dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
     } catch (error) {
       dispatch(slice.actions.hasError(error));

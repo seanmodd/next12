@@ -197,7 +197,11 @@ const slice = createSlice({
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
-      console.log('HYDRATE', state, action.payload);
+      console.log(
+        'HYDRATE from what Omid created located at src/redux/product.js, view at https://bit.ly/next12_13 : ',
+        state,
+        action.payload
+      );
       return {
         ...state,
         ...action.payload.subject,
@@ -205,6 +209,11 @@ const slice = createSlice({
     },
   },
 });
+
+console.log(
+  'This is what omid created! it is slice.reducer from src/redux/product.js, view at https://bit.ly/next12_13 : ',
+  slice.reducer
+);
 
 // Reducer
 export default slice.reducer;
@@ -240,11 +249,11 @@ export async function getProductsJson() {
 }
 
 export function getProducts() {
-  console.log('amr', 'starrt');
+  console.log('from what Omid made', 'starrt');
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      console.log('amr', 'start get products');
+      console.log('from what Omid made', 'start get products');
       // const response = await axios.get(
       //   '/api/strapi-graphql/query-allProducts/'
       // );
@@ -252,14 +261,17 @@ export function getProducts() {
         query: ALLCARSQUERY,
       });
       console.log(
-        '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ file:query-allProducts.js and ___redux/slices/product.js~ from getProducts() function! On line 233 ~ return ~ response',
+        'From what Omid made, here is the response from getProducts(), view at https://bit.ly/next12_14 : ',
         response
       );
-      console.log('amr', response);
+      console.log(
+        'from what Omid made here is the response from getProducts() SECOND TIME, view at https://bit.ly/next12_14 : ',
+        response
+      );
       dispatch(slice.actions.getProductsSuccess(response.data.variants));
       return response.data.variants;
     } catch (error) {
-      console.log('amr', error);
+      console.log('from what Omid made, here is the error : ', error);
       dispatch(slice.actions.hasError(error));
     }
   };
@@ -280,11 +292,11 @@ export function getProduct(id) {
       );
       //! Below are two console logs!
       console.log(
-        '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ ~ file: ___redux/slices/product.js ~ from getProduct(id) function! On line 254 ~ return ~ id',
+        'From what Omid made, this is the getProduct(id) query: ',
         id
       );
       console.log(
-        '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ ~ file: ___redux/slices/product.js ~ from getProduct(id) function! On line 254 ~ return ~ response',
+        'From what Omid made, this is the getProduct(id) query and here is the response: ',
         response
       );
       dispatch(slice.actions.getProductSuccess(response.data.product));
