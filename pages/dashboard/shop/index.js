@@ -286,7 +286,10 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
 
       await store.dispatch(getProducts());
 
-      console.log('State on server', store.getState());
+      console.log(
+        'This is the state as store.getState() from wrapper.getServerSideProps from pages/dashboard/shop/index.js, view it here: https://bit.ly/next12_7 : ',
+        store.getState()
+      );
 
       return {
         props: {},
