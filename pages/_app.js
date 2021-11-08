@@ -113,21 +113,21 @@ const MyApp = (props) => {
   );
 };
 
-MyApp.getInitialProps = async (appContext) => {
-  console.log(
-    'This is from _app.js where I have MyApp.getInitialProps = async (appContext) => { ... }, here is the appContext, view https://bit.ly/next12_9 : ',
-    appContext
-  );
-  const appProps = await App.getInitialProps(appContext);
-  console.log(
-    'This is from _app.js where I have MyApp.getInitialProps, appProps = await App.getInitialProps(appContext), here is appProps, view https://bit.ly/next12_9 : ',
-    appContext
-  );
-  appProps.pageProps = {
-    ...appProps.pageProps,
-  };
+// MyApp.getInitialProps = async (appContext) => {
+//   console.log(
+//     'This is from _app.js where I have MyApp.getInitialProps = async (appContext) => { ... }, here is the appContext, view https://bit.ly/next12_9 : ',
+//     appContext
+//   );
+//   const appProps = await App.getInitialProps(appContext);
+//   console.log(
+//     'This is from _app.js where I have MyApp.getInitialProps, appProps = await App.getInitialProps(appContext), here is appProps, view https://bit.ly/next12_9 : ',
+//     appContext
+//   );
+//   appProps.pageProps = {
+//     ...appProps.pageProps,
+//   };
 
-  return appProps;
-};
+//   return appProps;
+// };
 
 export default wrapperStore.withRedux(MyApp);
