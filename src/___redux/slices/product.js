@@ -210,7 +210,11 @@ const slice = createSlice({
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
-      console.log('HYDRATE', state, action.payload);
+      console.log(
+        'HYDRATE/// this is the state AND the action.payload from src/___redux/slices/product.js, view on https://bit.ly/next12_6 : ',
+        state,
+        action.payload
+      );
       return {
         ...state,
         ...action.payload.subject,
