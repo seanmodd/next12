@@ -284,7 +284,7 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
     async ({ params }) => {
       // const { id } = params;
 
-      await store.dispatch(getProducts());
+      const products = await store.dispatch(getProducts());
 
       console.log(
         'This is the state as store.getState() from wrapper.getServerSideProps from pages/dashboard/shop/index.js, view it here: https://bit.ly/next12_7 : ',
@@ -292,7 +292,7 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
       );
 
       return {
-        props: {},
+        props: { products },
       };
     }
 );
