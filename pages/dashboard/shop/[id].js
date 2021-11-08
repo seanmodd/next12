@@ -160,8 +160,7 @@ function EcommerceProductDetails(props) {
               },
             ]}
           />
-          {carmake}
-
+          {carmake}'s not details lol
           <>
             <Card>
               <Grid container>
@@ -232,7 +231,6 @@ function EcommerceProductDetails(props) {
             </Card>
           </>
           {/* )} */}
-
           {/* {error && <Typography variant="h6">404 Product not found</Typography>} */}
         </Container>
       </Page>
