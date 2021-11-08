@@ -137,8 +137,9 @@ const EcommerceShop = (props) => {
     myselector
   );
   return <> </>;
-  // const { products, sortBy, filters } = useSelector((state) => state.product);
-  const { products, sortBy, filters } = selectorState.productSlice;
+  const { sortBy, filters } = useSelector((state) => state.product);
+  const { products } = props;
+  // const { products, sortBy, filters } = selectorState.productSlice;
 
   const filteredProducts = applyFilter(products, sortBy, filters);
 
@@ -290,6 +291,10 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
       // const { id } = params;
 
       const products = await store.dispatch(getProducts());
+      console.log(
+        'This is products from page/dashboard/shop/index.js which is await store.dispatch(getProducts()) within getServerSideProps: ',
+        products
+      );
 
       console.log(
         'This is the state as store.getState() from wrapper.getServerSideProps from pages/dashboard/shop/index.js, view it here: https://bit.ly/next12_7 : ',
