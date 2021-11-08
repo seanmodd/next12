@@ -6,7 +6,8 @@ import { useState, useRef, useEffect } from 'react';
 import { alpha, styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 // redux
-import { useSelector } from '../../../../___redux/store';
+// import { useSelector } from '../../../../___redux/store';
+import { useSelector } from 'react-redux';
 //
 import LightboxModal from '../../../LightboxModal';
 import { CarouselControlsArrowsIndex } from '../../../carousel';

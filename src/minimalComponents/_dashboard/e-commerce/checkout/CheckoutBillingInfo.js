@@ -2,14 +2,21 @@ import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
 import editFill from '@iconify/icons-eva/edit-fill';
 // material
-import { Card, Button, Typography, CardHeader, CardContent } from '@mui/material';
+import {
+  Card,
+  Button,
+  Typography,
+  CardHeader,
+  CardContent,
+} from '@mui/material';
 // redux
-import { useSelector } from '../../../../___redux/store';
+// import { useSelector } from '../../../../___redux/store';
+import { useSelector } from 'react-redux';
 
 // ----------------------------------------------------------------------
 
 CheckoutBillingInfo.propTypes = {
-  onBackStep: PropTypes.func
+  onBackStep: PropTypes.func,
 };
 
 export default function CheckoutBillingInfo({ onBackStep }) {
@@ -22,7 +29,12 @@ export default function CheckoutBillingInfo({ onBackStep }) {
       <CardHeader
         title="Billing Address"
         action={
-          <Button size="small" type="button" startIcon={<Icon icon={editFill} />} onClick={onBackStep}>
+          <Button
+            size="small"
+            type="button"
+            startIcon={<Icon icon={editFill} />}
+            onClick={onBackStep}
+          >
             Edit
           </Button>
         }
@@ -30,7 +42,11 @@ export default function CheckoutBillingInfo({ onBackStep }) {
       <CardContent>
         <Typography variant="subtitle2" gutterBottom>
           {billing?.receiver}&nbsp;
-          <Typography component="span" variant="body2" sx={{ color: 'text.secondary' }}>
+          <Typography
+            component="span"
+            variant="body2"
+            sx={{ color: 'text.secondary' }}
+          >
             ({billing?.addressType})
           </Typography>
         </Typography>

@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Box, Divider, Typography } from '@mui/material';
 // redux
-import { useDispatch, useSelector } from '../../../___redux/store';
+// import { useDispatch, useSelector } from '../../../___redux/store';
+import { useDispatch, useSelector } from 'react-redux';
 import { getMail } from '../../../___redux/slices/mail';
 //
 import Markdown from '../../Markdown';
@@ -18,14 +19,14 @@ import MailDetailsAttachments from './MailDetailsAttachments';
 const RootStyle = styled('div')({
   flexGrow: 1,
   display: 'flex',
-  flexDirection: 'column'
+  flexDirection: 'column',
 });
 
 const MarkdownWrapperStyle = styled('div')(({ theme }) => ({
   '& > p': {
     ...theme.typography.body1,
-    marginBottom: theme.spacing(2)
-  }
+    marginBottom: theme.spacing(2),
+  },
 }));
 
 // ----------------------------------------------------------------------

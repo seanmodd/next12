@@ -15,12 +15,17 @@ import {
   TextField,
   IconButton,
   DialogActions,
-  FormControlLabel
+  FormControlLabel,
 } from '@mui/material';
 import { LoadingButton, MobileDateTimePicker } from '@mui/lab';
 // redux
-import { useDispatch } from '../../../___redux/store';
-import { createEvent, updateEvent, deleteEvent } from '../../../___redux/slices/calendar';
+// import { useDispatch } from '../../../___redux/store';
+import { useDispatch } from 'react-redux';
+import {
+  createEvent,
+  updateEvent,
+  deleteEvent,
+} from '../../../___redux/slices/calendar';
 //
 import ColorSinglePicker from '../../ColorSinglePicker';
 
@@ -33,7 +38,7 @@ const COLOR_OPTIONS = [
   '#FFC107', // theme.palette.warning.main,
   '#FF4842', // theme.palette.error.main
   '#04297A', // theme.palette.info.darker
-  '#7A0C2E' // theme.palette.error.darker
+  '#7A0C2E', // theme.palette.error.darker
 ];
 
 const getInitialValues = (event, range) => {
@@ -43,7 +48,7 @@ const getInitialValues = (event, range) => {
     textColor: '#1890FF',
     allDay: false,
     start: range ? new Date(range.start) : new Date(),
-    end: range ? new Date(range.end) : new Date()
+    end: range ? new Date(range.end) : new Date(),
   };
 
   if (event || range) {
@@ -58,7 +63,7 @@ const getInitialValues = (event, range) => {
 CalendarForm.propTypes = {
   event: PropTypes.object,
   range: PropTypes.object,
-  onCancel: PropTypes.func
+  onCancel: PropTypes.func,
 };
 
 export default function CalendarForm({ event, range, onCancel }) {
@@ -71,9 +76,10 @@ export default function CalendarForm({ event, range, onCancel }) {
     description: Yup.string().max(5000),
     end: Yup.date().when(
       'start',
-      (start, schema) => start && schema.min(start, 'End date must be later than start date')
+      (start, schema) =>
+        start && schema.min(start, 'End date must be later than start date')
     ),
-    start: Yup.date()
+    start: Yup.date(),
   });
 
   const formik = useFormik({
@@ -87,7 +93,7 @@ export default function CalendarForm({ event, range, onCancel }) {
           textColor: values.textColor,
           allDay: values.allDay,
           start: values.start,
-          end: values.end
+          end: values.end,
         };
         if (event) {
           dispatch(updateEvent(event.id, newEvent));
@@ -102,10 +108,18 @@ export default function CalendarForm({ event, range, onCancel }) {
       } catch (error) {
         console.error(error);
       }
-    }
+    },
   });
 
-  const { values, errors, touched, handleSubmit, isSubmitting, getFieldProps, setFieldValue } = formik;
+  const {
+    values,
+    errors,
+    touched,
+    handleSubmit,
+    isSubmitting,
+    getFieldProps,
+    setFieldValue,
+  } = formik;
 
   const handleDelete = async () => {
     try {
@@ -139,7 +153,12 @@ export default function CalendarForm({ event, range, onCancel }) {
             helperText={touched.description && errors.description}
           />
 
-          <FormControlLabel control={<Switch checked={values.allDay} {...getFieldProps('allDay')} />} label="All day" />
+          <FormControlLabel
+            control={
+              <Switch checked={values.allDay} {...getFieldProps('allDay')} />
+            }
+            label="All day"
+          />
 
           <MobileDateTimePicker
             label="Start date"
@@ -165,7 +184,10 @@ export default function CalendarForm({ event, range, onCancel }) {
             )}
           />
 
-          <ColorSinglePicker {...getFieldProps('textColor')} colors={COLOR_OPTIONS} />
+          <ColorSinglePicker
+            {...getFieldProps('textColor')}
+            colors={COLOR_OPTIONS}
+          />
         </Stack>
 
         <DialogActions>
@@ -177,10 +199,20 @@ export default function CalendarForm({ event, range, onCancel }) {
             </Tooltip>
           )}
           <Box sx={{ flexGrow: 1 }} />
-          <Button type="button" variant="outlined" color="inherit" onClick={onCancel}>
+          <Button
+            type="button"
+            variant="outlined"
+            color="inherit"
+            onClick={onCancel}
+          >
             Cancel
           </Button>
-          <LoadingButton type="submit" variant="contained" loading={isSubmitting} loadingIndicator="Loading...">
+          <LoadingButton
+            type="submit"
+            variant="contained"
+            loading={isSubmitting}
+            loadingIndicator="Loading..."
+          >
             Add
           </LoadingButton>
         </DialogActions>

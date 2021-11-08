@@ -171,12 +171,12 @@ function EcommerceProductDetails(props) {
                   )} */}
                 </Grid>
                 <Grid item xs={12} md={6} lg={5}>
-                  {/* {product && product.variant && (
+                  {product && product.variant && (
                     <ProductDetailsSumary
                       product={product.variant}
                       checkout={checkout}
                     />
-                  )} */}
+                  )}
                 </Grid>
               </Grid>
             </Card>

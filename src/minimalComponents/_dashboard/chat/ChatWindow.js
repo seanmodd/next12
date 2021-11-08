@@ -6,7 +6,8 @@ import { useParams } from 'react-router-dom';
 import { Box, Divider, Stack } from '@mui/material';
 import { useRouter } from 'next/router';
 // redux
-import { useDispatch, useSelector } from '../../../___redux/store';
+// import { useDispatch, useSelector } from '../../../___redux/store';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addRecipients,
   onSendMessage,

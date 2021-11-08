@@ -6,7 +6,8 @@ import plusFill from '@iconify/icons-eva/plus-fill';
 // material
 import { Box, List, Drawer, Button, Divider } from '@mui/material';
 // redux
-import { useSelector } from '../../../___redux/store';
+// import { useSelector } from '../../../___redux/store';
+import { useSelector } from 'react-redux';
 //
 import Scrollbar from '../../Scrollbar';
 import { MHidden } from '../../@material-extend';

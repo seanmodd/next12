@@ -8,8 +8,14 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 // material
 import { Paper, Stack, Button } from '@mui/material';
 // redux
-import { useDispatch } from '../../../___redux/store';
-import { deleteColumn, updateColumn, addTask, deleteTask } from '../../../___redux/slices/kanban';
+// import { useDispatch } from '../../../___redux/store';
+import { useDispatch } from 'react-redux';
+import {
+  deleteColumn,
+  updateColumn,
+  addTask,
+  deleteTask,
+} from '../../../___redux/slices/kanban';
 //
 import KanbanTaskCard from './KanbanTaskCard';
 import KanbanColumnToolBar from './KanbanColumnToolBar';
@@ -19,7 +25,7 @@ import KanbanAddTask from './KanbanTaskAdd';
 
 KanbanColumn.propTypes = {
   column: PropTypes.object,
-  index: PropTypes.number
+  index: PropTypes.number,
 };
 
 export default function KanbanColumn({ column, index }) {
@@ -88,10 +94,22 @@ export default function KanbanColumn({ column, index }) {
 
             <Droppable droppableId={id} type="task">
               {(provided) => (
-                <Stack ref={provided.innerRef} {...provided.droppableProps} spacing={2} width={280}>
+                <Stack
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  spacing={2}
+                  width={280}
+                >
                   {cardIds.map((cardId, index) => {
                     const card = board?.cards[cardId];
-                    return <KanbanTaskCard key={cardId} onDeleteTask={handleDeleteTask} card={card} index={index} />;
+                    return (
+                      <KanbanTaskCard
+                        key={cardId}
+                        onDeleteTask={handleDeleteTask}
+                        card={card}
+                        index={index}
+                      />
+                    );
                   })}
                   {provided.placeholder}
                 </Stack>
@@ -99,7 +117,12 @@ export default function KanbanColumn({ column, index }) {
             </Droppable>
 
             <Stack spacing={2} sx={{ pb: 3 }}>
-              {open && <KanbanAddTask onAddTask={handleAddTask} onCloseAddTask={handleCloseAddTask} />}
+              {open && (
+                <KanbanAddTask
+                  onAddTask={handleAddTask}
+                  onCloseAddTask={handleCloseAddTask}
+                />
+              )}
 
               <Button
                 fullWidth

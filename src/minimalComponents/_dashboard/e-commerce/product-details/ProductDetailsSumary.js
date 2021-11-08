@@ -9,7 +9,7 @@ import linkedinFill from '@iconify/icons-eva/linkedin-fill';
 import facebookFill from '@iconify/icons-eva/facebook-fill';
 import instagramFilled from '@iconify/icons-ant-design/instagram-filled';
 import roundAddShoppingCart from '@iconify/icons-ic/round-add-shopping-cart';
-import Link from 'next/link'
+import Link from 'next/link';
 import { useFormik, Form, FormikProvider, useField } from 'formik';
 // material
 import { useTheme, styled } from '@mui/material/styles';
@@ -27,7 +27,7 @@ import {
 } from '@mui/material';
 // redux
 // import { useDispatch, useSelector } from '../../../../___redux/store';
-import { useDispatch, useSelector } from '../../../../___redux/store';
+import { useDispatch, useSelector } from 'react-redux';
 import { addCart, onGotoStep } from '../../../../___redux/slices/product';
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
@@ -148,9 +148,9 @@ export default function ProductDetailsSumary() {
     // totalReview,
     // inventoryType,
   } = product;
-  const colors = product.variant.car_colorLabel
+  const colors = product.variant.car_colorLabel;
 
-const inventoryType = product.variant.car_qty
+  const inventoryType = product.variant.car_qty;
   const alreadyProduct = checkout.cart.map((item) => item.id).includes(id);
   const isMaxQuantity =
     checkout.cart
@@ -209,35 +209,35 @@ const inventoryType = product.variant.car_qty
     <RootStyle>
       <FormikProvider value={formik}>
         <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-          
-          <Link style={{cursor: 'pointer'}} href={`category/${product.variant.product.name}`}>
-          <Typography
-            variant="overline"
-            style={{cursor: 'pointer', fontSize: '36px'}}
-            sx={{
-              mt: 2,
-              cusor: 'pointer',
-              mb: 1,
-              display: 'block',
-              color: status === 'sale' ? 'error.main' : 'info.main',
-            }}
+          <Link
+            style={{ cursor: 'pointer' }}
+            href={`category/${product.variant.product.name}`}
           >
-            {product.variant.product.name}
-          </Typography>
-</Link>
+            <Typography
+              variant="overline"
+              style={{ cursor: 'pointer', fontSize: '36px' }}
+              sx={{
+                mt: 2,
+                cusor: 'pointer',
+                mb: 1,
+                display: 'block',
+                color: status === 'sale' ? 'error.main' : 'info.main',
+              }}
+            >
+              {product.variant.product.name}
+            </Typography>
+          </Link>
           <Typography variant="h5" paragraph>
             {product.variant.car_vehicleStatus} {product.variant.car_name}
           </Typography>
 
-          
-
-<Label
+          <Label
             variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
             color={inventoryType >= 1 ? 'success' : 'error'}
             sx={{ textTransform: 'uppercase' }}
           >
-          {console.log("THIS IS INVENTORY TYPE: ", inventoryType)}
-            {inventoryType >= 1 ? "Available Today" : "Not Available"}
+            {console.log('THIS IS INVENTORY TYPE: ', inventoryType)}
+            {inventoryType >= 1 ? 'Available Today' : 'Not Available'}
           </Label>
           <Typography variant="h4" sx={{ mb: 3 }}>
             <Box
@@ -258,7 +258,7 @@ const inventoryType = product.variant.car_qty
               justifyContent="space-between"
             >
               <Typography variant="subtitle1" sx={{ mt: 0.5 }}>
-               Exterior Color
+                Exterior Color
               </Typography>
               {/* <ColorSinglePicker
                 {...getFieldProps('color')}
@@ -272,16 +272,14 @@ const inventoryType = product.variant.car_qty
               /> */}
 
               {product.variant.car_exteriorColor}
-
-
             </Stack>
-                      <Stack
+            <Stack
               direction="row"
               alignItems="center"
               justifyContent="space-between"
             >
               <Typography variant="subtitle1" sx={{ mt: 0.5 }}>
-               Interior Color
+                Interior Color
               </Typography>
               {product.variant.car_interiorColor}
             </Stack>

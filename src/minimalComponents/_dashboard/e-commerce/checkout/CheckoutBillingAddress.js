@@ -6,8 +6,13 @@ import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
 // material
 import { Box, Grid, Card, Button, Typography } from '@mui/material';
 // redux
-import { useDispatch, useSelector } from '../../../../___redux/store';
-import { onBackStep, onNextStep, createBilling } from '../../../../___redux/slices/product';
+// import { useDispatch, useSelector } from '../../../../___redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  onBackStep,
+  onNextStep,
+  createBilling,
+} from '../../../../___redux/slices/product';
 // utils
 import mockData from '../../../../utils/mock-data';
 //
@@ -23,7 +28,7 @@ const MOCK_ADDRESS_BOOKS = [...Array(5)].map((_, index) => ({
   fullAddress: mockData.address.fullAddress(index),
   phone: mockData.phoneNumber(index),
   addressType: index === 0 ? 'Home' : 'Office',
-  isDefault: index === 0
+  isDefault: index === 0,
 }));
 
 // ----------------------------------------------------------------------
@@ -31,7 +36,7 @@ const MOCK_ADDRESS_BOOKS = [...Array(5)].map((_, index) => ({
 AddressItem.propTypes = {
   address: PropTypes.object,
   onNextStep: PropTypes.func,
-  onCreateBilling: PropTypes.func
+  onCreateBilling: PropTypes.func,
 };
 
 function AddressItem({ address, onNextStep, onCreateBilling }) {
@@ -68,7 +73,7 @@ function AddressItem({ address, onNextStep, onCreateBilling }) {
           display: 'flex',
           position: { sm: 'absolute' },
           right: { sm: 24 },
-          bottom: { sm: 24 }
+          bottom: { sm: 24 },
         }}
       >
         {!isDefault && (
@@ -124,17 +129,30 @@ export default function CheckoutBillingAddress() {
             />
           ))}
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Button size="small" color="inherit" onClick={handleBackStep} startIcon={<Icon icon={arrowIosBackFill} />}>
+            <Button
+              size="small"
+              color="inherit"
+              onClick={handleBackStep}
+              startIcon={<Icon icon={arrowIosBackFill} />}
+            >
               Back
             </Button>
-            <Button size="small" onClick={handleClickOpen} startIcon={<Icon icon={plusFill} />}>
+            <Button
+              size="small"
+              onClick={handleClickOpen}
+              startIcon={<Icon icon={plusFill} />}
+            >
               Add new address
             </Button>
           </Box>
         </Grid>
 
         <Grid item xs={12} md={4}>
-          <CheckoutSummary subtotal={subtotal} total={total} discount={discount} />
+          <CheckoutSummary
+            subtotal={subtotal}
+            total={total}
+            discount={discount}
+          />
         </Grid>
       </Grid>
 

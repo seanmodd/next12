@@ -5,7 +5,8 @@ import plusFill from '@iconify/icons-eva/plus-fill';
 // material
 import { OutlinedInput, Paper, Button, ClickAwayListener } from '@mui/material';
 // redux
-import { useDispatch } from '../../../___redux/store';
+// import { useDispatch } from '../../../___redux/store';
+import { useDispatch } from 'react-redux';
 import { createColumn } from '../../../___redux/slices/kanban';
 
 // ----------------------------------------------------------------------

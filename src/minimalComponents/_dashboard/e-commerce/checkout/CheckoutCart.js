@@ -6,7 +6,8 @@ import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
 // material
 import { Grid, Card, Button, CardHeader, Typography } from '@mui/material';
 // redux
-import { useDispatch, useSelector } from '../../../../___redux/store';
+// import { useDispatch, useSelector } from '../../../../___redux/store';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteCart,
   onNextStep,

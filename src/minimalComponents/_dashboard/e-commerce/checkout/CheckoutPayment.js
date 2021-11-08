@@ -6,8 +6,14 @@ import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
 import { Grid, Button } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // redux
-import { useDispatch, useSelector } from '../../../../___redux/store';
-import { onGotoStep, onBackStep, onNextStep, applyShipping } from '../../../../___redux/slices/product';
+// import { useDispatch, useSelector } from '../../../../___redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  onGotoStep,
+  onBackStep,
+  onNextStep,
+  applyShipping,
+} from '../../../../___redux/slices/product';
 //
 import CheckoutSummary from './CheckoutSummary';
 import CheckoutDelivery from './CheckoutDelivery';
@@ -20,40 +26,41 @@ const DELIVERY_OPTIONS = [
   {
     value: 0,
     title: 'Standard delivery (Free)',
-    description: 'Delivered on Monday, August 12'
+    description: 'Delivered on Monday, August 12',
   },
   {
     value: 2,
     title: 'Fast delivery ($2,00)',
-    description: 'Delivered on Monday, August 5'
-  }
+    description: 'Delivered on Monday, August 5',
+  },
 ];
 
 const PAYMENT_OPTIONS = [
   {
     value: 'paypal',
     title: 'Pay with Paypal',
-    description: 'You will be redirected to PayPal website to complete your purchase securely.',
-    icons: ['/static/icons/ic_paypal.svg']
+    description:
+      'You will be redirected to PayPal website to complete your purchase securely.',
+    icons: ['/static/icons/ic_paypal.svg'],
   },
   {
     value: 'credit_card',
     title: 'Credit / Debit Card',
     description: 'We support Mastercard, Visa, Discover and Stripe.',
-    icons: ['/static/icons/ic_mastercard.svg', '/static/icons/ic_visa.svg']
+    icons: ['/static/icons/ic_mastercard.svg', '/static/icons/ic_visa.svg'],
   },
   {
     value: 'cash',
     title: 'Cash on CheckoutDelivery',
     description: 'Pay with cash when your order is delivered.',
-    icons: []
-  }
+    icons: [],
+  },
 ];
 
 const CARDS_OPTIONS = [
   { value: 'ViSa1', label: '**** **** **** 1212 - Jimmy Holland' },
   { value: 'ViSa2', label: '**** **** **** 2424 - Shawn Stokes' },
-  { value: 'MasterCard', label: '**** **** **** 4545 - Cole Armstrong' }
+  { value: 'MasterCard', label: '**** **** **** 4545 - Cole Armstrong' },
 ];
 
 // ----------------------------------------------------------------------
@@ -80,13 +87,13 @@ export default function CheckoutPayment() {
   };
 
   const PaymentSchema = Yup.object().shape({
-    payment: Yup.mixed().required('Payment is required')
+    payment: Yup.mixed().required('Payment is required'),
   });
 
   const formik = useFormik({
     initialValues: {
       delivery: shipping,
-      payment: ''
+      payment: '',
     },
     validationSchema: PaymentSchema,
     onSubmit: async (values, { setErrors, setSubmitting }) => {
@@ -97,7 +104,7 @@ export default function CheckoutPayment() {
         setSubmitting(false);
         setErrors(error.message);
       }
-    }
+    },
   });
 
   const { isSubmitting, handleSubmit } = formik;
@@ -112,7 +119,11 @@ export default function CheckoutPayment() {
               onApplyShipping={handleApplyShipping}
               deliveryOptions={DELIVERY_OPTIONS}
             />
-            <CheckoutPaymentMethods formik={formik} cardOptions={CARDS_OPTIONS} paymentOptions={PAYMENT_OPTIONS} />
+            <CheckoutPaymentMethods
+              formik={formik}
+              cardOptions={CARDS_OPTIONS}
+              paymentOptions={PAYMENT_OPTIONS}
+            />
             <Button
               type="button"
               size="small"
@@ -134,7 +145,13 @@ export default function CheckoutPayment() {
               shipping={shipping}
               onEdit={() => handleGotoStep(0)}
             />
-            <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
+            <LoadingButton
+              fullWidth
+              size="large"
+              type="submit"
+              variant="contained"
+              loading={isSubmitting}
+            >
               Complete Order
             </LoadingButton>
           </Grid>

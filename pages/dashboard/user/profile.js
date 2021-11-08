@@ -10,7 +10,8 @@ import { styled } from '@mui/material/styles';
 import { Tab, Box, Card, Tabs, Container } from '@mui/material';
 
 // redux
-import { useDispatch, useSelector } from 'src/___redux/store';
+// import { useDispatch, useSelector } from 'src/___redux/store';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getPosts,
   getGallery,
