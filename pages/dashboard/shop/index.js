@@ -109,10 +109,18 @@ function applyFilter(products, sortBy, filters) {
   return products;
 }
 
-const EcommerceShop = (props) => {
+const EcommerceShop = ({ products }) => {
+  const productsList = products.map((product) => <>{product.car_name}</>);
+  const mappedProductsList = productsList.map((myproduct) => {
+    myproduct;
+  });
   console.log(
-    'This is props from pages/dashboard/shop/index.js, view here https://bit.ly/next12_1 : ',
-    props
+    'This is productsList destructured from props from pages/dashboard/shop/index.js, view here https://bit.ly/next12_1 : ',
+    productsList
+  );
+  console.log(
+    'This is mappedProductsList destructured from props from pages/dashboard/shop/index.js, view here https://bit.ly/next12_1 : ',
+    mappedProductsList
   );
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
@@ -138,7 +146,7 @@ const EcommerceShop = (props) => {
   );
   return <> </>;
   const { sortBy, filters } = useSelector((state) => state.product);
-  const { products } = props;
+
   // const { products, sortBy, filters } = selectorState.productSlice;
 
   const filteredProducts = applyFilter(products, sortBy, filters);
@@ -263,6 +271,11 @@ const EcommerceShop = (props) => {
                 <ShopProductSort />
               </Stack>
             </Stack>
+            {products.map((product) => (
+              <>
+                <h1>{product.car_name}</h1>
+              </>
+            ))}
 
             <ShopProductList
               products={filteredProducts}
