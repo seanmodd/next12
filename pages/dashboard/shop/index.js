@@ -8,9 +8,6 @@ import {
   Typography,
   CircularProgress,
   Stack,
-  Skeleton,
-  Divider,
-  Grid,
 } from '@mui/material';
 // redux
 import {
@@ -208,10 +205,6 @@ const EcommerceShop = (props) => {
               heading="Shop: All Vehicles"
               links={[
                 { name: 'Dashboard', href: PATH_DASHBOARD.root },
-                // {
-                //   name: 'E-Commerce',
-                //   href: PATH_DASHBOARD.shop.root,
-                // },
                 { name: 'All Vehciles' },
               ]}
             />
