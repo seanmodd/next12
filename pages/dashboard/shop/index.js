@@ -119,21 +119,26 @@ const EcommerceShop = (props) => {
   const [openFilter, setOpenFilter] = useState(false);
   const myselector = useSelector((state) => state.product);
 
-  const stat = useSelector((state) => state);
+  const selectorState = useSelector((state) => state);
   console.log(
-    ' This is useSelector((state) => state) from pages/dashboard/shop/index.js, view at https://bit.ly/next12_2 : ',
-    stat
+    ' This is the selectorState which is selectorState = useSelector((state) => state) from pages/dashboard/shop/index.js, view at https://bit.ly/next12_2 : ',
+    selectorState
+  );
+  console.log(
+    ' This is the selectorState.productSlice from pages/dashboard/shop/index.js, view at https://bit.ly/next12_2 : ',
+    selectorState.productSlice
   );
   console.log(
     'This is useStore().getState() from pages/dashboard/shop/index.js, view at https://bit.ly/next12_3 : ',
     useStore().getState()
   );
-  return <> </>;
-  const { products, sortBy, filters } = useSelector((state) => state.product);
   console.log(
     'This is useSelector((state) => state.product) from pages/dashboard/shop/index.js, view at https://bit.ly/next12_5 : ',
     myselector
   );
+  return <> </>;
+  // const { products, sortBy, filters } = useSelector((state) => state.product);
+  const { products, sortBy, filters } = selectorState.productSlice;
 
   const filteredProducts = applyFilter(products, sortBy, filters);
 
