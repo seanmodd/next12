@@ -211,7 +211,7 @@ const slice = createSlice({
 });
 
 console.log(
-  'This is what omid created! it is slice.reducer from src/redux/product.js, view at https://bit.ly/next12_13 : ',
+  'This is what omid created! it is called the productReducer which is imported into the entities.js file, in actuality it is the slice.reducer from src/redux/product.js, view at https://bit.ly/next12_13 : ',
   slice.reducer
 );
 

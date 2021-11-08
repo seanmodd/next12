@@ -108,39 +108,13 @@ function applyFilter(products, sortBy, filters) {
   return products;
 }
 
-const SkeletonLoad = (
-  <Grid container spacing={3}>
-    <Grid item xs={12} md={6} lg={7}>
-      <Skeleton
-        variant="rectangular"
-        width="100%"
-        sx={{ paddingTop: '100%', borderRadius: 2 }}
-      />
-    </Grid>
-    <Grid item xs={12} md={6} lg={5}>
-      <Skeleton variant="circular" width={80} height={80} />
-      <Skeleton variant="text" height={240} />
-      <Skeleton variant="text" height={40} />
-      <Skeleton variant="text" height={40} />
-      <Skeleton variant="text" height={40} />
-    </Grid>
-  </Grid>
-);
-
 const EcommerceShop = (props) => {
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
-  // const myselector = useSelector((state) => state.product);
 
   const state = useSelector((state) => state);
   const reduxStore = useStore();
-
-  // console.log("amr", props);
-  // useEffect(()=>{
-  //   dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
-  // } , [])
-  // return <></>;
 
   const state_products = useSelector((state) => state.product);
   console.log(
@@ -151,11 +125,6 @@ const EcommerceShop = (props) => {
   const { products, sortBy, filters } = state_products.products.length
     ? state_products
     : props.initialReduxState.product;
-  // console.log(products)
-  // console.log(
-  //   '🚀 ~ file: index.js ~ line 101 ~ EcommerceShop ~ selector',
-  //   myselector
-  // );
   const filteredProducts = applyFilter(products, sortBy, filters);
 
   console.log(
@@ -213,8 +182,6 @@ const EcommerceShop = (props) => {
     resetForm();
   };
 
-  // return <></>
-
   return (
     // <AuthGuard>
     <DashboardLayout>
@@ -227,7 +194,7 @@ const EcommerceShop = (props) => {
       >
         <CartWidget />
       </Stack>
-      {/* {!filteredProducts && SkeletonLoad} */}
+
       <GuestGuard>
         <Page title="Shop: All Vehicles | CarX">
           {values && (
@@ -297,47 +264,19 @@ const EcommerceShop = (props) => {
   );
 };
 
-// export const getStaticProps = async (ctx) =>
-//   // const { products, sortBy, filters } = useSelector((state) => state.product);
-//   // const { data } = await
-
-//   ({
-//     props: {
-//       products,
-//     },
-//   });
-
 export const getServerSideProps = wrapperStore.getServerSideProps(
   (store) =>
     async ({ params }) => {
-      // console.log(
-      //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is params from getServerSideProps: ',
-      //   params
-      // );
-
       await store.dispatch(getProducts());
-      // console.log(
-      //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is store.dispatch(getProducts()) from getServerSideProps: ',
-      //   store.dispatch(getProducts())
-      // );
-      // await store.dispatch(getAllProductGraphQl());
       const redux_store = store.getState();
       console.log(
         'This 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️ is from the wrapper.getServerSideProps() within the redux_store = store.getState() from dashboard/shop/index.js, view https://bit.ly/next12_12 : ',
         redux_store
       );
-      // const theproducts = store.getState().product;
+
       return {
         props: {
           initialReduxState: redux_store,
-          // reduc
-          // products: await getProductsJson(),
-          // products: product.products
-          // products: id,
-          // products: store.getState().product,
-          // products: store.getState().product.products,
-          // sortBy: store.getState().product.sortBy,
-          // filters: store.getState().product.filters,
         },
       };
     }
