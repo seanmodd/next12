@@ -1,13 +1,5 @@
-import {
-  useDispatch as useReduxDispatch,
-  useSelector as useReduxSelector,
-} from 'react-redux';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
 import { createWrapper } from 'next-redux-wrapper';
-//
-import { createStore } from 'redux';
-import { rootPersistConfig, rootReducer } from './rootReducer';
 
 import mailSlice from './slices/mail';
 import chatSlice from './slices/chat';
