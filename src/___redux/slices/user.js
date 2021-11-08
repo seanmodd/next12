@@ -128,7 +128,7 @@ const slice = createSlice({
 });
 
 // Reducer
-export default slice.reducer;
+export default slice;
 
 // Actions
 export const { onToggleFollow, deleteUser } = slice.actions;

@@ -62,7 +62,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 // redux
-import { store, persistor } from 'src/___redux/store';
+import { persistor, makeStore } from 'src/___redux/store';
 // contexts
 //* already imported above
 // import { SettingsProvider } from 'src/contexts/SettingsContext';
@@ -105,6 +105,14 @@ require('dotenv').config();
 const clientSideEmotionCache = createEmotionCache();
 
 
+
+// const WrappedApp: FC<AppProps> = ({Component, pageProps}) => (
+//   <Component {...pageProps} />
+// );
+
+// export default wrapper.withRedux(WrappedApp);
+
+
 // class WrappedApp extends App {
 //   public static getInitialProps = async ({ Component, ctx }: AppContext) => {
 //     // Keep in mind that this will be called twice on server, one for page and second for error page
@@ -122,6 +130,9 @@ const clientSideEmotionCache = createEmotionCache();
 //     };
 //   };
 // }
+
+
+
 
 const MyApp = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
@@ -185,5 +196,23 @@ const MyApp = (props) => {
     </HelmetProvider>
   );
 };
+
+MyApp.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext);
+  //initialise redux store on server side
+  // const reduxStore = makeStore({});
+  // const { dispatch } = reduxStore;
+  // const res = await   fetch('https://api.github.com/repos/vercel/next.js')
+  // const json = await res.json()  
+  // dispatch(setStars({ stars: json.stars }));
+  appProps.pageProps = {
+    ...appProps.pageProps,
+    // initialReduxState: reduxStore.getState(),
+  };
+
+  return appProps;
+};
+
+
 
 export default wrapperStore.withRedux(MyApp);

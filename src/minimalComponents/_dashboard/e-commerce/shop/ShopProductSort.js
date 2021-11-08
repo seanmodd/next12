@@ -5,8 +5,9 @@ import chevronDownFill from '@iconify/icons-eva/chevron-down-fill';
 // material
 import { Menu, Button, MenuItem, Typography } from '@mui/material';
 // redux
-import { useDispatch, useSelector } from '../../../../___redux/store';
+// import { useDispatch } from '../../../../___redux/store';
 import { sortByProducts } from '../../../../___redux/slices/product';
+import { useSelector, useDispatch } from 'react-redux';
 
 // ----------------------------------------------------------------------
 

@@ -26,7 +26,7 @@ import {
   filterProducts,
   getProductsJson,
 } from 'src/___redux/slices/product';
-// routes
+// routesuseStore().getState()
 // utils
 import fakeRequest from 'src/utils/fakeRequest';
 // hooks
@@ -128,23 +128,28 @@ const SkeletonLoad = (
 );
 
 const EcommerceShop = (props) => {
-
-  console.log("log products from props", props)
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
-  const myselector = useSelector((state) => state.product);
+  // const myselector = useSelector((state) => state.product);
 
-  const stat = useSelector((state) => state);
-  console.log(stat);
-  console.log('State on render', useStore().getState());
-  return <></>;
-  const { products, sortBy, filters } = useSelector((state) => state.product);
+  const state = useSelector((state) => state);
+  const reduxStore = useStore();
 
-  console.log(
-    '🚀 ~ file: index.js ~ line 101 ~ EcommerceShop ~ selector',
-    myselector
-  );
+  // console.log("amr", props);
+  // useEffect(()=>{
+  //   dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
+  // } , [])
+  // return <></>;
+
+  const state_products = useSelector((state) => state.product);
+
+  const { products, sortBy, filters } = state_products.products.length ? state_products : props.initialReduxState.product
+  // console.log(products)
+  // console.log(
+  //   '🚀 ~ file: index.js ~ line 101 ~ EcommerceShop ~ selector',
+  //   myselector
+  // );
   const filteredProducts = applyFilter(products, sortBy, filters);
 
   const formik = useFormik({
@@ -166,6 +171,10 @@ const EcommerceShop = (props) => {
     },
   });
 
+
+
+
+
   const { values, resetForm, handleSubmit, isSubmitting, initialValues } =
     formik;
 
@@ -177,9 +186,11 @@ const EcommerceShop = (props) => {
     values.category === 'All';
 
   useEffect(() => {
-    // dispatch(getProducts());
+    dispatch(getProducts());
     // dispatch(getProducts());
   }, [dispatch]);
+
+
 
   useEffect(() => {
     dispatch(filterProducts(values));
@@ -197,6 +208,11 @@ const EcommerceShop = (props) => {
     handleSubmit();
     resetForm();
   };
+
+  // return <></>
+
+
+
 
   return (
     // <AuthGuard>
@@ -298,19 +314,20 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
       //   params
       // );
 
-      // await store.dispatch(getProducts());
+      await store.dispatch(getProducts());
       // console.log(
       //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is store.dispatch(getProducts()) from getServerSideProps: ',
       //   store.dispatch(getProducts())
       // );
-      // // await store.dispatch(getAllProductGraphQl());
-      // console.log('State on server', store.getState());
-      // const { products, sortBy, filters } = store.getState().product;
-
+      // await store.dispatch(getAllProductGraphQl());
+      const redux_store = store.getState();
       // const theproducts = store.getState().product;
       return {
         props: {
-          products: await getProductsJson(),
+          initialReduxState: redux_store
+          // reduc
+          // products: await getProductsJson(),
+          // products: product.products
           // products: id,
           // products: store.getState().product,
           // products: store.getState().product.products,

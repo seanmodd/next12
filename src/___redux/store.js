@@ -17,7 +17,7 @@ import productSlice from './slices/product';
 import calendarSlice from './slices/calendar';
 import kanbanSlice from './slices/kanban';
 
-const makeStore = () =>
+export const makeStore = () =>
   configureStore({
     reducer: {
       [userSlice.name]: userSlice.reducer,
@@ -41,5 +41,22 @@ export const fetchSubject = (id) => async (dispatch) => {
     })
   );
 };
+
+// let store;
+// export const initialiseStore = (preloadedState) => {
+//   let _store = store ?? createStore(preloadedState);
+
+//   if (preloadedState && store) {
+//     _store = createStore({ ...store.getState(), ...preloadedState });
+//     store = undefined;
+//   }
+
+//   // For SSG and SSR always create a new store
+//   if (typeof window === 'undefined') return _store;
+//   // Create the store once in the client
+//   if (!store) store = _store;
+
+//   return _store;
+// };
 
 export const wrapperStore = createWrapper(makeStore);

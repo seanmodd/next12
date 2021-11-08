@@ -1,15 +1,8 @@
-//* Redux
-//* This gets fed into _MODERN/redux/rootReducer.js
-//! ALSO
-//* Redux
-//* This gets fed directly into ProductDetailsSumary.js via onGotoStep and addToCart !!!
 import { sum, map, filter, uniqBy, reject } from 'lodash';
 import { createSlice } from '@reduxjs/toolkit';
 import { ApolloClient, InMemoryCache, useQuery, gql } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { HYDRATE } from 'next-redux-wrapper';
-// utils
-// import axios from '../../utils/axios';
 import axios from 'axios';
 
 // ----------------------------------------------------------------------
@@ -39,7 +32,7 @@ const initialState = {
 };
 
 const slice = createSlice({
-  name: 'product',
+  name: 'products',
   initialState,
   reducers: {
     // START LOADING
@@ -64,12 +57,7 @@ const slice = createSlice({
       state.isLoading = false;
       state.product = action.payload;
     },
-    // GET PRODUCT
-    getAllProductGraphQlSuccess: (state, action) => {
-      // state.isLoading = false;
-      // state.product = action.payload;
 
-    },
     // DELETE PRODUCT
     deleteProduct: (state, action) => {
       state.products = reject(state.products, { id: action.payload });
@@ -219,7 +207,7 @@ const slice = createSlice({
 });
 
 // Reducer
-export default slice;
+export default slice.reducer;
 
 // Actions
 export const {
@@ -254,23 +242,26 @@ export async function getProductsJson() {
 }
 
 export function getProducts() {
+  console.log("amr", "starrt")
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
+      console.log("amr", "start get products")
       // const response = await axios.get(
       //   '/api/strapi-graphql/query-allProducts/'
       // );
       const response = await client.query({
         query: ALLCARSQUERY,
       });
-
-      // console.log(
-      //   '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ file:query-allProducts.js and ___redux/slices/product.js~ from getProducts() function! On line 233 ~ return ~ response',
-      //   response
-      // );
-      // console.log("", response)
-      dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
+      console.log(
+        '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ file:query-allProducts.js and ___redux/slices/product.js~ from getProducts() function! On line 233 ~ return ~ response',
+        response
+      );
+      console.log("amr", response)
+      dispatch(slice.actions.getProductsSuccess(response.data.variants));
+      return response.data.variants
     } catch (error) {
+      console.log("amr", error)
       dispatch(slice.actions.hasError(error));
     }
   };
@@ -463,4 +454,3 @@ export function getProductGraphQlTRIAL(id) {
     }
   };
 }
-
