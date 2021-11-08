@@ -57,26 +57,14 @@ import ThemePrimaryColor from 'src/components/ThemePrimaryColor';
 
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider as ReduxProvider } from 'react-redux';
-// import { PersistGate } from 'redux-persist/lib/integration/react';
-// material
+
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 // redux
 import { persistor, makeStore } from 'src/___redux/store';
-// contexts
-//* already imported above
-// import { SettingsProvider } from 'src/contexts/SettingsContext';
-//* already imported above
-// import { CollapseDrawerProvider } from 'src/contexts/CollapseDrawerContext';
-// components
-//* already imported above
-// import LoadingScreen from 'src/minimalComponents/LoadingScreen';
 
-// import { AuthProvider } from 'src/contexts/Auth0Context';
-
-// import { AuthProvider } from 'src/contexts/JWTContext';
 import { AuthProvider } from 'src/contexts/FirebaseContext';
-// import { AuthProvider } from 'src/contexts/AwsCognitoContext';
+
 //! below is from App.js within javascript version...
 import GoogleAnalytics from 'src/minimalComponents/GoogleAnalytics';
 import NotistackProvider from 'src/minimalComponents/NotistackProvider';
@@ -96,36 +84,12 @@ import { wrapperStore } from 'src/___redux/store.js';
 
 // by daniel
 import App, { AppInitialProps, AppContext } from 'next/app';
-import { wrapper } from 'src/___redux/customStore';
+
 import theme from '../theme';
 
 require('dotenv').config();
 
 const clientSideEmotionCache = createEmotionCache();
-
-// const WrappedApp: FC<AppProps> = ({Component, pageProps}) => (
-//   <Component {...pageProps} />
-// );
-
-// export default wrapper.withRedux(WrappedApp);
-
-// class WrappedApp extends App {
-//   public static getInitialProps = async ({ Component, ctx }: AppContext) => {
-//     // Keep in mind that this will be called twice on server, one for page and second for error page
-//     ctx.store.dispatch({ type: "APP", payload: "was set in _app" });
-
-//     return {
-//       pageProps: {
-//         // Call page-level getInitialProps
-//         ...(Component.getInitialProps
-//           ? await Component.getInitialProps(ctx)
-//           : {}),
-//         // Some custom thing for all pages
-//         appProp: ctx.pathname
-//       }
-//     };
-//   };
-// }
 
 const MyApp = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
@@ -136,8 +100,6 @@ const MyApp = (props) => {
 
   return (
     <HelmetProvider>
-      {/* <ReduxProvider store={store}> */}
-      {/* <PersistGate loading={<LoadingScreen />} persistor={persistor}> */}
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <SettingsProvider>
           <CollapseDrawerProvider>
@@ -184,8 +146,6 @@ const MyApp = (props) => {
           </CollapseDrawerProvider>
         </SettingsProvider>
       </LocalizationProvider>
-      {/* </PersistGate> */}
-      {/* </ReduxProvider> */}
     </HelmetProvider>
   );
 };
@@ -200,15 +160,8 @@ MyApp.getInitialProps = async (appContext) => {
     'This is from _app.js where I have MyApp.getInitialProps, appProps = await App.getInitialProps(appContext), here is appProps, view https://bit.ly/next12_9 : ',
     appContext
   );
-  // initialise redux store on server side
-  // const reduxStore = makeStore({});
-  // const { dispatch } = reduxStore;
-  // const res = await   fetch('https://api.github.com/repos/vercel/next.js')
-  // const json = await res.json()
-  // dispatch(setStars({ stars: json.stars }));
   appProps.pageProps = {
     ...appProps.pageProps,
-    // initialReduxState: reduxStore.getState(),
   };
 
   return appProps;
