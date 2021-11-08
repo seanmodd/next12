@@ -128,8 +128,7 @@ const SkeletonLoad = (
 );
 
 const EcommerceShop = (props) => {
-
-  console.log("log products from props", props)
+  console.log('log products from props', props);
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
@@ -292,33 +291,19 @@ const EcommerceShop = (props) => {
 
 export const getServerSideProps = wrapperStore.getServerSideProps(
   (store) =>
-    async ({ params }) => {
-      // console.log(
-      //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is params from getServerSideProps: ',
-      //   params
-      // );
-
-      // await store.dispatch(getProducts());
-      // console.log(
-      //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is store.dispatch(getProducts()) from getServerSideProps: ',
-      //   store.dispatch(getProducts())
-      // );
-      // // await store.dispatch(getAllProductGraphQl());
-      // console.log('State on server', store.getState());
-      // const { products, sortBy, filters } = store.getState().product;
-
-      // const theproducts = store.getState().product;
-      return {
-        props: {
-          products: await getProductsJson(),
-          // products: id,
-          // products: store.getState().product,
-          // products: store.getState().product.products,
-          // sortBy: store.getState().product.sortBy,
-          // filters: store.getState().product.filters,
-        },
-      };
-    }
+    async (
+      { params } // console.log( //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is params from getServerSideProps: ', //   params // ); // await store.dispatch(getProducts()); // console.log( //   'This 🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️🧚‍♂️  is store.dispatch(getProducts()) from getServerSideProps: ', //   store.dispatch(getProducts()) // ); // // await store.dispatch(getAllProductGraphQl()); // console.log('State on server', store.getState()); // const { products, sortBy, filters } = store.getState().product; // const theproducts = store.getState().product;
+    ) => ({
+      props: {
+        // products: await getAllProductGraphQl(),
+        products: await getProductsJson(),
+        // products: id,
+        // products: store.getState().product,
+        // products: store.getState().product.products,
+        // sortBy: store.getState().product.sortBy,
+        // filters: store.getState().product.filters,
+      },
+    })
 );
 
 export default EcommerceShop;
