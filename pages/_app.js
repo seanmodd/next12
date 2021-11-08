@@ -12,7 +12,7 @@ import 'lazysizes/plugins/attrchange/ls.attrchange';
 import 'lazysizes/plugins/object-fit/ls.object-fit';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import Head from 'next/head';
-import { CacheProvider } from '@emotion/react';
+// import { CacheProvider } from '@emotion/react';
 import { NoSsr } from '@mui/material';
 import { SettingsProvider } from 'src/contexts/SettingsContext';
 import { CollapseDrawerProvider } from 'src/contexts/CollapseDrawerContext';
@@ -66,7 +66,7 @@ const MyApp = (props) => {
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <SettingsProvider>
           <CollapseDrawerProvider>
-            <CacheProvider value={emotionCache}>
+            {/* <CacheProvider value={emotionCache}> */}
               <Head>
                 <meta
                   name="viewport"
@@ -105,7 +105,7 @@ const MyApp = (props) => {
                   </RtlLayout>
                 </ThemePrimaryColor>
               </ThemeConfig>
-            </CacheProvider>
+            {/* </CacheProvider> */}
           </CollapseDrawerProvider>
         </SettingsProvider>
       </LocalizationProvider>
