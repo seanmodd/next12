@@ -24,7 +24,8 @@ import {
 } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 
-import { useDispatch, useSelector } from 'src/___redux/store';
+// import { useDispatch, useSelector } from 'src/___redux/store';
+import { useDispatch, useSelector } from 'react-redux';
 import DashboardLayout from 'src/layouts/dashboard';
 import { getProduct, getProductGraphQl } from 'src/___redux/slices/product';
 // routes
@@ -40,6 +41,7 @@ import {
   ProductDetailsReview,
   ProductDetailsCarousel,
 } from 'src/minimalComponents/_dashboard/e-commerce/product-details';
+import { wrapperStore } from 'src/___redux/store.js';
 import CartWidget from 'src/minimalComponents/_dashboard/e-commerce/CartWidget';
 
 const PRODUCT_DESCRIPTION = [
@@ -94,7 +96,7 @@ const SkeletonLoad = (
   </Grid>
 );
 
-export default function EcommerceProductDetails() {
+function EcommerceProductDetails(props) {
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
 
@@ -165,17 +167,17 @@ export default function EcommerceProductDetails() {
               <Grid container>
                 <Grid item xs={12} md={6} lg={7}>
                   {!product && SkeletonLoad}
-                  {product && product.variant && (
+                  {/* {product && product.variant && (
                     <ProductDetailsCarousel product={product.variant} />
-                  )}
+                  )} */}
                 </Grid>
                 <Grid item xs={12} md={6} lg={5}>
-                  {product && product.variant && (
+                  {/* {product && product.variant && (
                     <ProductDetailsSumary
                       product={product.variant}
                       checkout={checkout}
                     />
-                  )}
+                  )} */}
                 </Grid>
               </Grid>
             </Card>
@@ -237,3 +239,24 @@ export default function EcommerceProductDetails() {
     </DashboardLayout>
   );
 }
+
+export const getServerSideProps = wrapperStore.getServerSideProps(
+  (store) =>
+    async ({ params }) => {
+      const { id } = params;
+      await store.dispatch(getProductGraphQl(id));
+      const redux_store = store.getState();
+      console.log(
+        'This 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️ is from the wrapper.getServerSideProps() within the redux_store = store.getState() from dashboard/shop/index.js, view https://bit.ly/next12_12 : ',
+        redux_store
+      );
+
+      return {
+        props: {
+          initialReduxState: redux_store,
+        },
+      };
+    }
+);
+
+export default EcommerceProductDetails;
