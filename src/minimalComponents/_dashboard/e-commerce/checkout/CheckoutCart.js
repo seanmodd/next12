@@ -29,6 +29,10 @@ export default function CheckoutCart() {
   const dispatch = useDispatch();
   const { checkout } = useSelector((state) => state.product);
   const { cart, total, discount, subtotal } = checkout;
+  console.log(
+    '🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️ This is checkout from useSelector!! From file _dashboard/e-commerce/checkout, view at https://bit.ly/next12_17 : ',
+    checkout
+  );
   const isEmptyCart = cart.length === 0;
 
   const handleDeleteCart = (productId) => {
@@ -66,6 +70,18 @@ export default function CheckoutCart() {
   });
 
   const { values, handleSubmit } = formik;
+  console.log(
+    '🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️ This is formik, view at https://bit.ly/next12_16 : ',
+    formik
+  );
+  console.log(
+    '🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️  These are values, view at https://bit.ly/next12_16 : ',
+    values
+  );
+  console.log(
+    '🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️🤼‍♂️ These are handleSubmit, view at https://bit.ly/next12_16 : ',
+    handleSubmit
+  );
   const totalItems = sum(values.products.map((item) => item.quantity));
 
   return (
