@@ -144,7 +144,7 @@ const EcommerceShop = (props) => {
 
   const state_products = useSelector((state) => state.product);
   console.log(
-    'This is state_products = useSelecotr ((state) => state.product) from pages/dashboard/shop/index.js, view https://bit.ly/next12_10 : ',
+    'This 🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️ is state_products = useSelecotr ((state) => state.product) from pages/dashboard/shop/index.js, view https://bit.ly/next12_10 : ',
     state_products
   );
 
@@ -159,7 +159,7 @@ const EcommerceShop = (props) => {
   const filteredProducts = applyFilter(products, sortBy, filters);
 
   console.log(
-    'This is filteredProducts = applyFilter(products, sortBy, filters); from pages/dashboard/shop/index.js, view https://bit.ly/next12_11 : ',
+    'This 🧖‍♂️🧖‍♂️🧖‍♂️🧖‍♂️🧖‍♂️ is filteredProducts = applyFilter(products, sortBy, filters); from pages/dashboard/shop/index.js, view https://bit.ly/next12_11 : ',
     filteredProducts
   );
   const formik = useFormik({
@@ -322,6 +322,10 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
       // );
       // await store.dispatch(getAllProductGraphQl());
       const redux_store = store.getState();
+      console.log(
+        'This 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️ is from the wrapper.getServerSideProps() within the redux_store = store.getState() from dashboard/shop/index.js, view https://bit.ly/next12_12 : ',
+        redux_store
+      );
       // const theproducts = store.getState().product;
       return {
         props: {
