@@ -68,7 +68,6 @@ const slice = createSlice({
     getAllProductGraphQlSuccess: (state, action) => {
       // state.isLoading = false;
       // state.product = action.payload;
-
     },
     // DELETE PRODUCT
     deleteProduct: (state, action) => {
@@ -242,15 +241,13 @@ export const {
 
 // ----------------------------------------------------------------------
 
-
 export async function getProductsJson() {
   try {
     const response = await client.query({
       query: ALLCARSQUERY,
     });
-    return response.data.variants
-  } catch (error) {
-  }
+    return response.data.variants;
+  } catch (error) {}
 }
 
 export function getProducts() {
@@ -463,4 +460,3 @@ export function getProductGraphQlTRIAL(id) {
     }
   };
 }
-

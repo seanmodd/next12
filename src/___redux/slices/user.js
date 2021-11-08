@@ -18,7 +18,7 @@ const initialState = {
   cards: null,
   addressBook: [],
   invoices: [],
-  notifications: null
+  notifications: null,
 };
 
 const slice = createSlice({
@@ -56,7 +56,10 @@ const slice = createSlice({
 
     // DELETE USERS
     deleteUser(state, action) {
-      const deleteUser = filter(state.userList, (user) => user.id !== action.payload);
+      const deleteUser = filter(
+        state.userList,
+        (user) => user.id !== action.payload
+      );
       state.userList = deleteUser;
     },
 
@@ -74,7 +77,7 @@ const slice = createSlice({
         if (follower.id === followerId) {
           return {
             ...follower,
-            isFollowed: !follower.isFollowed
+            isFollowed: !follower.isFollowed,
           };
         }
         return follower;
@@ -123,8 +126,8 @@ const slice = createSlice({
     getNotificationsSuccess(state, action) {
       state.isLoading = false;
       state.notifications = action.payload;
-    }
-  }
+    },
+  },
 });
 
 // Reducer
@@ -136,7 +139,6 @@ export const { onToggleFollow, deleteUser } = slice.actions;
 // ----------------------------------------------------------------------
 
 //* Account slice is exported here, the axios one with '/api/user/profile'
-
 
 export function getProfile() {
   return async (dispatch) => {
@@ -268,8 +270,12 @@ export function getNotifications() {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get('/api/user/account/notifications-settings');
-      dispatch(slice.actions.getNotificationsSuccess(response.data.notifications));
+      const response = await axios.get(
+        '/api/user/account/notifications-settings'
+      );
+      dispatch(
+        slice.actions.getNotificationsSuccess(response.data.notifications)
+      );
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }
