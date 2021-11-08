@@ -1,5 +1,6 @@
 # Branch: main
-### WITH ssr... not working yet though...
+### WITH ssr
+#### Fixed it! Credit to branch: omid-develop
 # next12
 
 ![screenshot](https://github.com/seanmodd/next12/blob/main/public/screenshot.png)
