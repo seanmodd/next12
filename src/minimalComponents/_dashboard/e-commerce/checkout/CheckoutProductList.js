@@ -15,7 +15,7 @@ import {
   TableCell,
   TableHead,
   Typography,
-  TableContainer
+  TableContainer,
 } from '@mui/material';
 // utils
 import getColorName from '../../../../utils/getColorName';
@@ -32,7 +32,7 @@ const IncrementerStyle = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(0.5),
   padding: theme.spacing(0.5, 0.75),
   borderRadius: theme.shape.borderRadius,
-  border: `solid 1px ${theme.palette.grey[500_32]}`
+  border: `solid 1px ${theme.palette.grey[500_32]}`,
 }));
 
 const ThumbImgStyle = styled('img')(({ theme }) => ({
@@ -40,7 +40,7 @@ const ThumbImgStyle = styled('img')(({ theme }) => ({
   height: 64,
   objectFit: 'cover',
   marginRight: theme.spacing(2),
-  borderRadius: theme.shape.borderRadiusSm
+  borderRadius: theme.shape.borderRadiusSm,
 }));
 
 // ----------------------------------------------------------------------
@@ -49,18 +49,28 @@ Incrementer.propTypes = {
   available: PropTypes.number,
   quantity: PropTypes.number,
   onIncrease: PropTypes.func,
-  onDecrease: PropTypes.func
+  onDecrease: PropTypes.func,
 };
 
 function Incrementer({ available, quantity, onIncrease, onDecrease }) {
   return (
     <Box sx={{ width: 96, textAlign: 'right' }}>
       <IncrementerStyle>
-        <MIconButton size="small" color="inherit" onClick={onDecrease} disabled={quantity <= 1}>
+        <MIconButton
+          size="small"
+          color="inherit"
+          onClick={onDecrease}
+          disabled={quantity <= 1}
+        >
           <Icon icon={minusFill} width={16} height={16} />
         </MIconButton>
         {quantity}
-        <MIconButton size="small" color="inherit" onClick={onIncrease} disabled={quantity >= available}>
+        <MIconButton
+          size="small"
+          color="inherit"
+          onClick={onIncrease}
+          disabled={quantity >= available}
+        >
           <Icon icon={plusFill} width={16} height={16} />
         </MIconButton>
       </IncrementerStyle>
@@ -75,11 +85,20 @@ ProductList.propTypes = {
   formik: PropTypes.object.isRequired,
   onDelete: PropTypes.func,
   onDecreaseQuantity: PropTypes.func,
-  onIncreaseQuantity: PropTypes.func
+  onIncreaseQuantity: PropTypes.func,
 };
 
-export default function ProductList({ formik, onDelete, onIncreaseQuantity, onDecreaseQuantity }) {
+export default function ProductList({
+  formik,
+  onDelete,
+  onIncreaseQuantity,
+  onDecreaseQuantity,
+}) {
   const { products } = formik.values;
+  console.log(
+    ' 🕵️‍♂️🕵️‍♂️🕵️‍♂️🕵️‍♂️🕵️‍♂️🕵️‍♂️🕵️‍♂️🕵️‍♂️ products from src/minimalComponents/_dashboard/e-commerce/checkout/CheckoutProductList.js, view at https://bit.ly/next12_15 ',
+    products
+  );
 
   return (
     <TableContainer sx={{ minWidth: 720 }}>
@@ -96,14 +115,19 @@ export default function ProductList({ formik, onDelete, onIncreaseQuantity, onDe
 
         <TableBody>
           {products.map((product) => {
-            const { id, name, size, price, color, cover, quantity, available } = product;
+            const { id, name, size, price, color, cover, quantity, available } =
+              product;
             return (
               <TableRow key={id}>
                 <TableCell>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <ThumbImgStyle alt="product image" src={cover} />
                     <Box>
-                      <Typography noWrap variant="subtitle2" sx={{ maxWidth: 240, mb: 0.5 }}>
+                      <Typography
+                        noWrap
+                        variant="subtitle2"
+                        sx={{ maxWidth: 240, mb: 0.5 }}
+                      >
                         {name}
                       </Typography>
 
@@ -111,17 +135,30 @@ export default function ProductList({ formik, onDelete, onIncreaseQuantity, onDe
                         direction="row"
                         spacing={1}
                         alignItems="center"
-                        divider={<Divider orientation="vertical" sx={{ height: 14, alignSelf: 'center' }} />}
+                        divider={
+                          <Divider
+                            orientation="vertical"
+                            sx={{ height: 14, alignSelf: 'center' }}
+                          />
+                        }
                       >
                         <Typography variant="body2">
-                          <Typography component="span" variant="body2" sx={{ color: 'text.secondary' }}>
+                          <Typography
+                            component="span"
+                            variant="body2"
+                            sx={{ color: 'text.secondary' }}
+                          >
                             size:&nbsp;
                           </Typography>
                           {size}
                         </Typography>
 
                         <Typography variant="body2">
-                          <Typography component="span" variant="body2" sx={{ color: 'text.secondary' }}>
+                          <Typography
+                            component="span"
+                            variant="body2"
+                            sx={{ color: 'text.secondary' }}
+                          >
                             color:&nbsp;
                           </Typography>
                           {getColorName(color)}
@@ -142,7 +179,9 @@ export default function ProductList({ formik, onDelete, onIncreaseQuantity, onDe
                   />
                 </TableCell>
 
-                <TableCell align="right">{fCurrency(price * quantity)}</TableCell>
+                <TableCell align="right">
+                  {fCurrency(price * quantity)}
+                </TableCell>
 
                 <TableCell align="right">
                   <MIconButton onClick={() => onDelete(id)}>
