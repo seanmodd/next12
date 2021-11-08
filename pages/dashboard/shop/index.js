@@ -143,8 +143,14 @@ const EcommerceShop = (props) => {
   // return <></>;
 
   const state_products = useSelector((state) => state.product);
+  console.log(
+    'This is state_products = useSelecotr ((state) => state.product) from pages/dashboard/shop/index.js, view https://bit.ly/next12_10 : ',
+    state_products
+  );
 
-  const { products, sortBy, filters } = state_products.products.length ? state_products : props.initialReduxState.product
+  const { products, sortBy, filters } = state_products.products.length
+    ? state_products
+    : props.initialReduxState.product;
   // console.log(products)
   // console.log(
   //   '🚀 ~ file: index.js ~ line 101 ~ EcommerceShop ~ selector',
@@ -152,6 +158,10 @@ const EcommerceShop = (props) => {
   // );
   const filteredProducts = applyFilter(products, sortBy, filters);
 
+  console.log(
+    'This is filteredProducts = applyFilter(products, sortBy, filters); from pages/dashboard/shop/index.js, view https://bit.ly/next12_11 : ',
+    filteredProducts
+  );
   const formik = useFormik({
     initialValues: {
       gender: filters.gender,
@@ -171,10 +181,6 @@ const EcommerceShop = (props) => {
     },
   });
 
-
-
-
-
   const { values, resetForm, handleSubmit, isSubmitting, initialValues } =
     formik;
 
@@ -189,8 +195,6 @@ const EcommerceShop = (props) => {
     dispatch(getProducts());
     // dispatch(getProducts());
   }, [dispatch]);
-
-
 
   useEffect(() => {
     dispatch(filterProducts(values));
@@ -210,9 +214,6 @@ const EcommerceShop = (props) => {
   };
 
   // return <></>
-
-
-
 
   return (
     // <AuthGuard>
@@ -324,7 +325,7 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
       // const theproducts = store.getState().product;
       return {
         props: {
-          initialReduxState: redux_store
+          initialReduxState: redux_store,
           // reduc
           // products: await getProductsJson(),
           // products: product.products
