@@ -14,11 +14,13 @@ import {
 } from '@mui/material';
 // redux
 import {
-  useDispatch,
-  useSelector,
+  // useDispatch,
+  // useSelector,
   useStore,
   useState as useStateRedux,
 } from 'react-redux';
+import { useDispatch, useSelector } from 'src/___redux/seanStore';
+import { wrapperStore } from 'src/___redux/store';
 import { PATH_DASHBOARD } from 'src/routes/paths';
 import {
   getProducts,
@@ -46,7 +48,6 @@ import DashboardLayout from 'src/layouts/dashboard';
 import AuthLayout from 'src/layouts/AuthLayout';
 import GuestGuard from 'src/guards/GuestGuard';
 import AuthGuard from 'src/guards/AuthGuard';
-import { wrapperStore } from 'src/___redux/store.js';
 
 //* All data here comes from src/___redux/slices/product.js lines 220+ where the getProducts function is being exported!
 //* This then calls an api with Axios which is referencing to localhost:3222/api/products which itself gets data from the graphql server on https://admin.shopcarx.com/graphql which comes back and retrieves data via a graphql setup
@@ -129,11 +130,11 @@ const EcommerceShop = (props) => {
   );
   return <> </>;
   const { products, sortBy, filters } = useSelector((state) => state.product);
-
   console.log(
     'This is useSelector((state) => state.product) from pages/dashboard/shop/index.js, view at https://bit.ly/next12_5 : ',
     myselector
   );
+
   const filteredProducts = applyFilter(products, sortBy, filters);
 
   const formik = useFormik({
