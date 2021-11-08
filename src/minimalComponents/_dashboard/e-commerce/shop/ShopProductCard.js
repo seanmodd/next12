@@ -31,20 +31,20 @@ ShopProductCard.propTypes = {
 
 export default function ShopProductCard({ product }) {
   const { id, name, cover, price, colors, status, priceSale, images } = product;
-  console.log(
-    '🚀 ~ file: ShopProductCard.js ~ line 34 ~ ShopProductCard ~ images[0]',
-    images[0]
-  );
-  console.log(
-    '🚀 🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠   ~ file: ShopProductCard.js ~ line 34 ~ ShopProductCard ~ product',
-    product
-  );
+  // console.log(
+  //   '🚀 ~ file: ShopProductCard.js ~ line 34 ~ ShopProductCard ~ images[0]',
+  //   images[0]
+  // );
+  // console.log(
+  //   '🚀 🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠   ~ file: ShopProductCard.js ~ line 34 ~ ShopProductCard ~ product',
+  //   product
+  // );
   // const linkTo = `${PATH_DASHBOARD.shop.root}/product/${paramCase(name)}`;
   const linkTo = `/dashboard/shop/${id}`;
-  console.log(
-    '🚀 🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠   ~ file: ShopProductCard.js ~ line 34 ~ ShopProductCard ~ product.product.name',
-    product.product.name
-  );
+  // console.log(
+  //   '🚀 🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠🎠   ~ file: ShopProductCard.js ~ line 34 ~ ShopProductCard ~ product.product.name',
+  //   product.product.name
+  // );
   return (
     <Card>
       <Box sx={{ pt: '100%', position: 'relative' }}>
@@ -67,13 +67,12 @@ export default function ShopProductCard({ product }) {
         <ProductImgStyle alt={name} src={images[0].url} />
       </Box>
 
-        <Stack spacing={2} sx={{ p: 1.5 }}>
-            <Stack
+      <Stack spacing={2} sx={{ p: 1.5 }}>
+        <Stack
           direction="row"
           alignItems="center"
           justifyContent="space-between"
         >
-
           <Typography variant="subtitle1">
             <Typography
               component="span"
@@ -82,11 +81,9 @@ export default function ShopProductCard({ product }) {
                 color: 'text.disabled',
                 textDecoration: 'line-through',
               }}
-            >
+            />
 
-            </Typography>
-
-{product.product.name}
+            {product.product.name}
           </Typography>
         </Stack>
         <Link href={linkTo} color="inherit" component={RouterLink}>
@@ -95,7 +92,6 @@ export default function ShopProductCard({ product }) {
           </Typography>
         </Link>
 
-  
         <Stack
           direction="row"
           alignItems="center"

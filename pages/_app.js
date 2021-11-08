@@ -93,25 +93,21 @@ import { ApolloWrapper } from 'src/__graphql/ApolloWrapper';
 import { ThemeProvider } from '@material-ui/core/styles';
 import MainLayout from 'src/layouts/main';
 import { wrapperStore } from 'src/___redux/store.js';
-import theme from '../theme';
 
 // by daniel
-import App, { AppInitialProps, AppContext } from "next/app";
+import App, { AppInitialProps, AppContext } from 'next/app';
 import { wrapper } from 'src/___redux/customStore';
-
+import theme from '../theme';
 
 require('dotenv').config();
 
 const clientSideEmotionCache = createEmotionCache();
-
-
 
 // const WrappedApp: FC<AppProps> = ({Component, pageProps}) => (
 //   <Component {...pageProps} />
 // );
 
 // export default wrapper.withRedux(WrappedApp);
-
 
 // class WrappedApp extends App {
 //   public static getInitialProps = async ({ Component, ctx }: AppContext) => {
@@ -130,9 +126,6 @@ const clientSideEmotionCache = createEmotionCache();
 //     };
 //   };
 // }
-
-
-
 
 const MyApp = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
@@ -198,12 +191,20 @@ const MyApp = (props) => {
 };
 
 MyApp.getInitialProps = async (appContext) => {
+  console.log(
+    'This is from _app.js where I have MyApp.getInitialProps = async (appContext) => { ... }, here is the appContext, view https://bit.ly/next12_9 : ',
+    appContext
+  );
   const appProps = await App.getInitialProps(appContext);
-  //initialise redux store on server side
+  console.log(
+    'This is from _app.js where I have MyApp.getInitialProps, appProps = await App.getInitialProps(appContext), here is appProps, view https://bit.ly/next12_9 : ',
+    appContext
+  );
+  // initialise redux store on server side
   // const reduxStore = makeStore({});
   // const { dispatch } = reduxStore;
   // const res = await   fetch('https://api.github.com/repos/vercel/next.js')
-  // const json = await res.json()  
+  // const json = await res.json()
   // dispatch(setStars({ stars: json.stars }));
   appProps.pageProps = {
     ...appProps.pageProps,
@@ -212,7 +213,5 @@ MyApp.getInitialProps = async (appContext) => {
 
   return appProps;
 };
-
-
 
 export default wrapperStore.withRedux(MyApp);
