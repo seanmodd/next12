@@ -18,20 +18,20 @@ export const makeStore = () =>
     devTools: true,
   });
 
-export const fetchSubject = (id) => async (dispatch) => {
-  const timeoutPromise = (timeout) =>
-    new Promise((resolve) => setTimeout(resolve, timeout));
+// export const fetchSubject = (id) => async (dispatch) => {
+//   const timeoutPromise = (timeout) =>
+//     new Promise((resolve) => setTimeout(resolve, timeout));
 
-  await timeoutPromise(200);
+//   await timeoutPromise(200);
 
-  dispatch(
-    subjectSlice.actions.setEnt({
-      [id]: {
-        id,
-        name: `Subject ${id}`,
-      },
-    })
-  );
-};
+//   dispatch(
+//     subjectSlice.actions.setEnt({
+//       [id]: {
+//         id,
+//         name: `Subject ${id}`,
+//       },
+//     })
+//   );
+// };
 
 export const wrapperStore = createWrapper(makeStore);

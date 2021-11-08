@@ -44,7 +44,7 @@ import { ApolloWrapper } from 'src/__graphql/ApolloWrapper';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import MainLayout from 'src/layouts/main';
-import { wrapperStore } from 'src/___redux/store.js';
+import { wrapperStore } from 'src/___redux/.js';
 
 // by daniel
 import App, { AppInitialProps, AppContext } from 'next/app';
@@ -100,7 +100,7 @@ const MyApp = (props) => {
                               </CartWrapper>
                             </FeedbackWrapper>
                           </UserWrapper>
-                        </NotistackProvider> 
+                        </NotistackProvider>
                       </ApolloWrapper>
                     </ThemeProvider>
                   </RtlLayout>
