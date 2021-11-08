@@ -127,7 +127,7 @@ const EcommerceShop = (props) => {
     'This is useStore().getState() from pages/dashboard/shop/index.js, view at https://bit.ly/next12_3 : ',
     useStore().getState()
   );
-
+  return <> </>;
   const { products, sortBy, filters } = useSelector((state) => state.product);
 
   console.log(
