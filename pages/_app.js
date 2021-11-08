@@ -29,7 +29,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Provider as ReduxProvider } from 'react-redux';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { persistor, makeStore } from 'src/___redux/store';
+import { persistor, makeStore, wrapperStore } from 'src/___redux/store';
 import { AuthProvider } from 'src/contexts/FirebaseContext';
 
 import GoogleAnalytics from 'src/minimalComponents/GoogleAnalytics';
@@ -44,7 +44,6 @@ import { ApolloWrapper } from 'src/__graphql/ApolloWrapper';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import MainLayout from 'src/layouts/main';
-import { wrapperStore } from 'src/___redux/.js';
 
 // by daniel
 import App, { AppInitialProps, AppContext } from 'next/app';
