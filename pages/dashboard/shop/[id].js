@@ -1,9 +1,8 @@
 //* Redux
-//* This feeds in the redux store useDispatch and useSelector
+//* This feeds in the redux store useDispatch and useSelector (old way, no longer the case)
 import React from 'react';
 import { Icon } from '@iconify/react';
 import { sentenceCase } from 'change-case';
-// import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import clockFill from '@iconify/icons-eva/clock-fill';
 import client from 'src/__graphql/apolloClient_and_queries';
@@ -23,8 +22,6 @@ import {
   Typography,
 } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
-
-// import { useDispatch, useSelector } from 'src/___redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import DashboardLayout from 'src/layouts/dashboard';
 import { getProduct, getProductGraphQl } from 'src/___redux/slices/product';
@@ -126,15 +123,7 @@ function EcommerceProductDetails(props) {
     ' 🍼🍼🍼🍼🍼🍼🍼🍼🍼🍼🍼🍼  ~ file: [id].js ~ line 108 ~ EcommerceProductDetails ~ product',
     product
   );
-  // console.log(
-  //   ' 🍼🍼🍼🍼🍼🍼🍼🍼🍼🍼🍼🍼  ~ file: [id].js ~ line 108 ~ EcommerceProductDetails ~ product.variant',
-  //   product.variant
-  // );
-  // console.log(
-  //   ' 🍼🍼🍼🍼🍼🍼🍼🍼🍼🍼🍼🍼  ~ file: [id].js ~ line 108 ~ EcommerceProductDetails ~ product.variant.id',
-  //   product.variant.id
-  // );
-  // const thecarname = product.variant.car_name;
+
   const carmake = product && product.variant && product.variant.product.name;
   console.log('From CarDetail.js page, this is checkout: ', checkout);
   return (
@@ -160,15 +149,18 @@ function EcommerceProductDetails(props) {
               },
             ]}
           />
-          {carmake}'s not details lol
+          <Container style={{ direction: 'rtl' }}>
+            <CartWidget />
+          </Container>
+          <br />
           <>
             <Card>
               <Grid container>
                 <Grid item xs={12} md={6} lg={7}>
                   {!product && SkeletonLoad}
-                  {/* {product && product.variant && (
+                  {product && product.variant && (
                     <ProductDetailsCarousel product={product.variant} />
-                  )} */}
+                  )}
                 </Grid>
                 <Grid item xs={12} md={6} lg={5}>
                   {product && product.variant && (
