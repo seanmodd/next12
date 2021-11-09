@@ -244,68 +244,6 @@ export const {
   decreaseQuantity,
 } = slice.actions;
 
-// ----------------------------------------------------------------------
-
-export async function getProductsJson() {
-  try {
-    const response = await client.query({
-      query: ALLCARSQUERY,
-    });
-    return response.data.variants;
-  } catch (error) {}
-}
-
-export function getProducts() {
-  return async (dispatch) => {
-    dispatch(slice.actions.startLoading());
-    try {
-      // const response = await axios.get(
-      //   '/api/strapi-graphql/query-allProducts/'
-      // );
-      const response = await client.query({
-        query: ALLCARSQUERY,
-      });
-
-      console.log(
-        'response from getProducts() within ___redux/slices/products.js : ',
-        response
-      );
-      dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
-    } catch (error) {
-      dispatch(slice.actions.hasError(error));
-    }
-  };
-}
-
-// ----------------------------------------------------------------------
-
-export function getProduct(id) {
-  return async (dispatch) => {
-    dispatch(slice.actions.startLoading());
-    try {
-      // const response = await axios.get('/api/products/product', {
-      const response = await axios.get(
-        '/api/strapi-graphql/query-singleProduct',
-        {
-          params: { id },
-        }
-      );
-      //! Below are two console logs!
-      console.log(
-        '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ ~ file: ___redux/slices/product.js ~ from getProduct(id) function! On line 254 ~ return ~ id',
-        id
-      );
-      console.log(
-        '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ ~ file: ___redux/slices/product.js ~ from getProduct(id) function! On line 254 ~ return ~ response',
-        response
-      );
-      dispatch(slice.actions.getProductSuccess(response.data.product));
-    } catch (error) {
-      console.error(error);
-      dispatch(slice.actions.hasError(error));
-    }
-  };
-}
 
 //! MOVING GRAPHQL HERE
 const ALLCARSQUERY = gql`
@@ -400,6 +338,72 @@ const client = new ApolloClient({
   // cache: 'no-cache',
 });
 
+
+// ----------------------------------------------------------------------
+
+export async function getProductsJson() {
+  try {
+    const response = await client.query({
+      query: ALLCARSQUERY,
+    });
+    return response.data.variants;
+  } catch (error) {}
+}
+
+export function getProducts() {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      // const response = await axios.get(
+      //   '/api/strapi-graphql/query-allProducts/'
+      // );
+      const response = await client.query({
+        query: ALLCARSQUERY,
+      });
+
+      console.log(
+        'response from getProducts() within ___redux/slices/products.js : ',
+        response
+      );
+      dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
+    } catch (error) {
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+
+// ----------------------------------------------------------------------
+
+export function getProduct(id) {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      // const response = await axios.get('/api/products/product', {
+      const response = await axios.get(
+        '/api/strapi-graphql/query-singleProduct',
+        {
+          params: { id },
+        }
+      );
+      //! Below are two console logs!
+      console.log(
+        '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ ~ file: ___redux/slices/product.js ~ from getProduct(id) function! On line 254 ~ return ~ id',
+        id
+      );
+      console.log(
+        '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ ~ file: ___redux/slices/product.js ~ from getProduct(id) function! On line 254 ~ return ~ response',
+        response
+      );
+      dispatch(slice.actions.getProductSuccess(response.data.product));
+    } catch (error) {
+      console.error(error);
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+
+
+
 export function getAllProductGraphQl() {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
@@ -443,21 +447,6 @@ export function getProductGraphQl(id) {
         '👖👖👖👖👖👖👖👖👖👖👖👖👖 ~ file: product.js ~ line 325 ~ return ~ response.data',
         response.data
       );
-    } catch (error) {
-      console.error(error);
-      dispatch(slice.actions.hasError(error));
-    }
-  };
-}
-
-//! Next Attempt to fix...
-
-export function getProductGraphQlTRIAL(id) {
-  return async (dispatch) => {
-    try {
-      const { data } = useQuery({ query: CARQUERY, variables: { id } });
-
-      dispatch(slice.actions.getProductSuccess(data));
     } catch (error) {
       console.error(error);
       dispatch(slice.actions.hasError(error));

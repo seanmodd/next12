@@ -44,7 +44,7 @@ export default class MyDocument extends Document {
           />
           <meta
             name="description"
-            content="The starting point for your next project with Minimal UI Kit, built on the newest version of Material-UI ©, ready to be customized to your style"
+            content="At CarX, we're making car shopping easier than ever before"
           />
           <meta
             name="keywords"

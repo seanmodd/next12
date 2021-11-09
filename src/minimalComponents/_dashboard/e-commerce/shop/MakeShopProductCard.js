@@ -33,17 +33,16 @@ export default function ShopProductCard({ product }) {
   const { id, name, cover, price, colors, status, priceSale, images } = product;
 
   console.log(
-    '🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄 This is from ShopProductCard.js, it is the product which is passed in from props and destructured, view at https://bit.ly/next12_18',
+    '🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄 This is from makeShopProductCard.js, it is the product which is passed in from props and destructured, view at https://bit.ly/next12_18',
     product
   );
   console.log(
-    '🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄 ShopProductCard.js this is the make name: ',
+    '🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄 makeShopProductCard.js this is the make name: ',
     product.product.name
   );
   const makeName = product.product.name;
-  const makeNameParamCase = paramCase(makeName);
   // const linkTo = `/dashboard/shop/${id}`;
-  const linkTo = `/dashboard/shop/${makeNameParamCase}/${id}`;
+  const linkTo = `/dashboard/shop/${makeName}/${id}`;
 
   return (
     <Card>
@@ -64,7 +63,7 @@ export default function ShopProductCard({ product }) {
           </Label>
         )}
 
-        <ProductImgStyle alt={name} src={images[0].url} />
+        {/* <ProductImgStyle alt={name} src={images[0].url} /> */}
       </Box>
 
       <Stack spacing={2} sx={{ p: 1.5 }}>

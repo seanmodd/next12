@@ -2,7 +2,7 @@
 //* This feeds in the redux store useDispatch and useSelector (old way, no longer the case)
 import React from 'react';
 import { Icon } from '@iconify/react';
-import { sentenceCase } from 'change-case';
+import { paramCase, sentenceCase } from 'change-case';
 import { useEffect, useState } from 'react';
 import clockFill from '@iconify/icons-eva/clock-fill';
 import client from 'src/__graphql/apolloClient_and_queries';
@@ -125,6 +125,7 @@ function EcommerceProductDetails(props) {
   );
 
   const carmake = product && product.variant && product.variant.product.name;
+  const carMakeParamCase = product && paramCase(carmake);
   console.log('From CarDetail.js page, this is checkout: ', checkout);
   return (
     <DashboardLayout>
@@ -140,7 +141,7 @@ function EcommerceProductDetails(props) {
               },
               {
                 name: carmake,
-                href: `/dashboard/shop/category/${carmake}`,
+                href: `/dashboard/shop/${carMakeParamCase}`,
               },
               {
                 name: `${
