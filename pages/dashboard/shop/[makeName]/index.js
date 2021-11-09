@@ -116,6 +116,7 @@ function applyFilter(products, sortBy, filters) {
 const MakeNameDynamicPage = (props) => {
   const router = useRouter();
   const { makeName } = router.query;
+  const id = makeName;
   const makeNameSentenceCase = sentenceCase(makeName);
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
@@ -127,10 +128,12 @@ const MakeNameDynamicPage = (props) => {
     state_products
   );
 
-  const { products, sortBy, filters } = state_products.products.length
+  
+
+  const { product, sortBy, filters } = state_products.product?.length
     ? state_products
     : props.initialReduxState.product;
-  const filteredProducts = applyFilter(products, sortBy, filters);
+  const filteredProducts = applyFilter(product, sortBy, filters);
 
   console.log(
     'FROM [makeName]/index.js  IS THE FOLLOWING: filteredProducts = applyFilter(products, sortBy, filters); : ',
@@ -166,9 +169,10 @@ const MakeNameDynamicPage = (props) => {
     values.category === 'All';
 
   useEffect(() => {
-    dispatch(getProducts());
+    if (id === undefined) return;
+    dispatch(getProductMakeGraphQl(id));
     // dispatch(getProducts());
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   useEffect(() => {
     dispatch(filterProducts(values));
@@ -255,7 +259,7 @@ const MakeNameDynamicPage = (props) => {
               </Stack>
             </Stack>
             <h1>MakeNameDynamicPage</h1> <br />
-            <h2>makeName = {makeName}</h2>
+            <h2>makeName idk = {makeName}</h2>
             <CarMakeShopProductList
               products={filteredProducts}
               isLoad={!filteredProducts && !initialValues}

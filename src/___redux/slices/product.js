@@ -61,6 +61,7 @@ const slice = createSlice({
 
     // GET PRODUCT
     getProductSuccess: (state, action) => {
+      console.log('getProductSuccess 🌜🌜🌜🌜🌜🌜🌜', action);
       state.isLoading = false;
       state.product = action.payload;
     },
@@ -368,7 +369,6 @@ const CARQUERY = gql`
 const client = new ApolloClient({
   uri: `https://admin.shopcarx.com/graphql`,
   cache: new InMemoryCache(),
-  // cache: 'no-cache',
 });
 
 // ----------------------------------------------------------------------
@@ -393,10 +393,6 @@ export function getProducts() {
         query: ALLCARSQUERY,
       });
 
-      console.log(
-        'response from getProducts() within ___redux/slices/products.js : ',
-        response
-      );
       dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
@@ -410,22 +406,13 @@ export function getProduct(id) {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      // const response = await axios.get('/api/products/product', {
       const response = await axios.get(
         '/api/strapi-graphql/query-singleProduct',
         {
           params: { id },
         }
       );
-      //! Below are two console logs!
-      console.log(
-        '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ ~ file: ___redux/slices/product.js ~ from getProduct(id) function! On line 254 ~ return ~ id',
-        id
-      );
-      console.log(
-        '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ ~ file: ___redux/slices/product.js ~ from getProduct(id) function! On line 254 ~ return ~ response',
-        response
-      );
+
       dispatch(slice.actions.getProductSuccess(response.data.product));
     } catch (error) {
       console.error(error);
@@ -441,10 +428,6 @@ export function getAllProductGraphQl() {
       const response = await client.query({
         query: ALLCARSQUERY,
       });
-      console.log(
-        '👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 🚀 👰  ⛹️‍♂️ 👰  ⛹️‍♂️ 👰  ⛹️‍♂️  🚀 ~ ~ file: ___redux/slices/product.js ~ from getAllProductGraphQl() function! On line 254 ~ return ~ response',
-        response
-      );
       dispatch(
         slice.actions.getAllProductGraphQlSuccess(response.data.products)
       );
@@ -463,20 +446,7 @@ export function getProductGraphQl(id) {
         query: CARQUERY,
         variables: { id },
       });
-      console.log(
-        '👖👖👖👖👖👖👖👖👖👖👖👖👖 ~ ~ file: ___redux/slices/product.js ~ from getProductGraphQl(id) function! On line 254 ~ return ~ id',
-        id
-      );
-      console.log(
-        '👖👖👖👖👖👖👖👖👖👖👖👖👖~ ~ file: ___redux/slices/product.js ~ from getProductGraphQl(id) function! On line 254 ~ return ~ response',
-        response
-      );
-
       dispatch(slice.actions.getProductSuccess(response.data));
-      console.log(
-        '👖👖👖👖👖👖👖👖👖👖👖👖👖 ~ file: product.js ~ line 325 ~ return ~ response.data',
-        response.data
-      );
     } catch (error) {
       console.error(error);
       dispatch(slice.actions.hasError(error));
@@ -494,7 +464,7 @@ export function getProductMakeGraphQl(id) {
           name_contains: id,
         },
       };
-
+      console.log(' 🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀 where', where);
       const response = await client.query({
         query: CARSMAKEQUERY,
         // query: ALLCARSQUERY,
@@ -509,17 +479,11 @@ export function getProductMakeGraphQl(id) {
         // });
         variables: { where },
       });
-      console.log('getProductMakeGraphQl(id) is the following id: ', id);
       console.log(
-        'getProductMakeGraphQl(id) is the following response: ',
-        response
+        ' 🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀  response data',
+        response.data
       );
-
-      dispatch(slice.actions.getProductSuccess(response.data));
-      // console.log(
-      //   'getProductMakeGraphQl(id) gives used the following dispatch(slice.actions.getProductSuccess(response.data)) : ',
-      //   response.data
-      // );
+      dispatch(slice.actions.getProductSuccess(response.data.variants));
     } catch (error) {
       console.error(error);
       dispatch(slice.actions.hasError(error));
