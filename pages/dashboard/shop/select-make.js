@@ -24,17 +24,13 @@ import { Link as RouterLink } from 'next';
 
 import {
   getProducts,
-  getAllProductGraphQl,
   filterProducts,
-  getProductsJson,
 } from 'src/___redux/slices/product';
-// routesuseStore().getState()
 // utils
 import fakeRequest from 'src/utils/fakeRequest';
 // hooks
 import useSettings from 'src/hooks/useSettings';
 // components
-// import Page from 'src/minimalComponents/Page';
 import Page from 'src/minimalComponents/Page';
 import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
 import {

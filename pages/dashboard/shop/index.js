@@ -17,19 +17,12 @@ import {
   useState as useStateRedux,
 } from 'react-redux';
 import { PATH_DASHBOARD } from 'src/routes/paths';
-import {
-  getProducts,
-  getAllProductGraphQl,
-  filterProducts,
-  getProductsJson,
-} from 'src/___redux/slices/product';
-// routesuseStore().getState()
+import { getProducts, filterProducts } from 'src/___redux/slices/product';
 // utils
 import fakeRequest from 'src/utils/fakeRequest';
 // hooks
 import useSettings from 'src/hooks/useSettings';
 // components
-// import Page from 'src/minimalComponents/Page';
 import Page from 'src/minimalComponents/Page';
 import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
 import {

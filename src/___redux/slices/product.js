@@ -65,11 +65,6 @@ const slice = createSlice({
       state.isLoading = false;
       state.product = action.payload;
     },
-    // GET PRODUCT
-    getAllProductGraphQlSuccess: (state, action) => {
-      // state.isLoading = false;
-      // state.product = action.payload;
-    },
     // DELETE PRODUCT
     deleteProduct: (state, action) => {
       state.products = reject(state.products, { id: action.payload });
@@ -421,23 +416,6 @@ export function getProduct(id) {
   };
 }
 
-export function getAllProductGraphQl() {
-  return async (dispatch) => {
-    dispatch(slice.actions.startLoading());
-    try {
-      const response = await client.query({
-        query: ALLCARSQUERY,
-      });
-      dispatch(
-        slice.actions.getAllProductGraphQlSuccess(response.data.products)
-      );
-    } catch (error) {
-      console.error(error);
-      dispatch(slice.actions.hasError(error));
-    }
-  };
-}
-
 export function getProductGraphQl(id) {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
@@ -457,192 +435,19 @@ export function getProductMakeGraphQl(id) {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      // const where = { product: { name_contains: { id } } };
       const where = {
         product: {
-          // name_contains: 'chrysler',
           name_contains: id,
         },
       };
-      console.log(' 🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀 where', where);
       const response = await client.query({
         query: CARSMAKEQUERY,
-        // query: ALLCARSQUERY,
-        // variables: { id },
-        //   variables: {
-        //     where: {
-        //       product: {
-        //         name_contains: 'chrysler',
-        //       },
-        //     },
-        //   },
-        // });
         variables: { where },
       });
-      console.log(
-        ' 🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀  response data',
-        response.data
-      );
+
       dispatch(slice.actions.getProductSuccess(response.data.variants));
     } catch (error) {
       console.error(error);
-      dispatch(slice.actions.hasError(error));
-    }
-  };
-}
-
-//! Below is specific car makes query, this is not dynamic and not the efficient way of doing it, I'm just testing and playing with it...
-
-const CHRYSLERQUERY = gql`
-  query Variants {
-    variants(where: { product: { name_contains: "Chrysler" } }) {
-      # variants {
-      id
-      qty
-      # color
-      size
-      style
-      price
-      car_name
-      product {
-        id
-        name
-        category {
-          id
-          name
-          description
-        }
-        promo
-        featured
-        description
-      }
-      images {
-        id
-        url
-        height
-        width
-        name
-      }
-    }
-  }
-`;
-const CHEVROLETQUERY = gql`
-  query Variants {
-    variants(where: { product: { name_contains: "Chevrolet" } }) {
-      # variants {
-      id
-      qty
-      # color
-      size
-      style
-      price
-      car_name
-      product {
-        id
-        name
-        category {
-          id
-          name
-          description
-        }
-        promo
-        featured
-        description
-      }
-      images {
-        id
-        url
-        height
-        width
-        name
-      }
-    }
-  }
-`;
-const JEEPQUERY = gql`
-  query Variants {
-    variants(where: { product: { name_contains: "Jeep" } }) {
-      # variants {
-      id
-      qty
-      # color
-      size
-      style
-      price
-      car_name
-      product {
-        id
-        name
-        category {
-          id
-          name
-          description
-        }
-        promo
-        featured
-        description
-      }
-      images {
-        id
-        url
-        height
-        width
-        name
-      }
-    }
-  }
-`;
-
-export function getChryslerVariants() {
-  return async (dispatch) => {
-    dispatch(slice.actions.startLoading());
-    try {
-      const response = await client.query({
-        query: CHRYSLERQUERY,
-      });
-
-      console.log(
-        'response from getProducts() within ___redux/slices/products.js : ',
-        response
-      );
-      dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
-    } catch (error) {
-      dispatch(slice.actions.hasError(error));
-    }
-  };
-}
-export function getChevroletVariants() {
-  return async (dispatch) => {
-    dispatch(slice.actions.startLoading());
-    try {
-      const response = await client.query({
-        query: CHEVROLETVARIANTS,
-      });
-
-      console.log(
-        'response from getProducts() within ___redux/slices/products.js : ',
-        response
-      );
-      dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
-    } catch (error) {
-      dispatch(slice.actions.hasError(error));
-    }
-  };
-}
-export function getJeepVariants() {
-  return async (dispatch) => {
-    dispatch(slice.actions.startLoading());
-    try {
-      const response = await client.query({
-        query: JEEPVARIANTS,
-      });
-
-      console.log(
-        'response from getProducts() within ___redux/slices/products.js : ',
-        response
-      );
-      dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
-    } catch (error) {
       dispatch(slice.actions.hasError(error));
     }
   };

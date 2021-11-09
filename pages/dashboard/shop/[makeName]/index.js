@@ -19,15 +19,8 @@ import {
 } from 'react-redux';
 import { PATH_DASHBOARD } from 'src/routes/paths';
 import {
-  getProducts,
-  getAllProductGraphQl,
-  getProductGraphQl,
   getProductMakeGraphQl,
   filterProducts,
-  getProductsJson,
-  getChryslerVariants,
-  getJeepVariants,
-  getChevroletVariants,
 } from 'src/___redux/slices/product';
 import { useRouter } from 'next/router';
 // routesuseStore().getState()
@@ -127,8 +120,6 @@ const MakeNameDynamicPage = (props) => {
     'FROM [makeName]/index.js  IS THE FOLLOWING:  state_products = useSelecotr ((state) => state.product)  : ',
     state_products
   );
-
-  
 
   const { product, sortBy, filters } = state_products.product?.length
     ? state_products
@@ -258,8 +249,6 @@ const MakeNameDynamicPage = (props) => {
                 <ShopProductSort />
               </Stack>
             </Stack>
-            <h1>MakeNameDynamicPage</h1> <br />
-            <h2>makeName idk = {makeName}</h2>
             <CarMakeShopProductList
               products={filteredProducts}
               isLoad={!filteredProducts && !initialValues}
@@ -272,31 +261,6 @@ const MakeNameDynamicPage = (props) => {
   );
 };
 
-// export const getServerSideProps = wrapperStore.getServerSideProps(
-//   (store) =>
-//     async ({ params }) => {
-//       const { makeName } = params;
-//       const lowerCaseMakeName = makeName;
-//       const regularCaseMakeName = sentenceCase(makeName);
-//       console.log(
-//         'This is the makeName we have from the params of getServerSideProps within [makeName]/index.js : ',
-//         regularCaseMakeName
-//       );
-//       await store.dispatch(getProducts());
-//       const redux_store = store.getState();
-//       console.log(
-//         'FROM [makeName]/index.js  IS THE FOLLOWING:  the wrapper.getServerSideProps() within the redux_store = store.getState() : ',
-//         redux_store
-//       );
-
-//       return {
-//         props: {
-//           initialReduxState: redux_store,
-//         },
-//       };
-//     }
-// );
-
 export const getServerSideProps = wrapperStore.getServerSideProps(
   (store) =>
     async ({ params }) => {
@@ -308,14 +272,6 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
         'This is the makeName we have from the params of getServerSideProps within [makeName]/index.js : ',
         regularCaseMakeName
       );
-      // if (makeName == 'chrysler') {
-      //   await store.dispatch(getChryslerVariants());
-      // } else if (makeName == 'jeep') {
-      //   await store.dispatch(getJeepVariants());
-      // } else if (makeName == 'chevrolet') {
-      //   await store.dispatch(getChevroletVariants());
-      // } else {
-      // await store.dispatch(getProductMakeGraphQl(lowerCaseMakeName));
       await store.dispatch(getProductMakeGraphQl(id));
       // }
 
