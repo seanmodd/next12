@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import { filter, includes, orderBy } from 'lodash';
+import { sentenceCase } from 'change-case';
 // material
 import {
   Backdrop,
@@ -23,6 +24,7 @@ import {
   filterProducts,
   getProductsJson,
 } from 'src/___redux/slices/product';
+import { useRouter } from 'next/router';
 // routesuseStore().getState()
 // utils
 import fakeRequest from 'src/utils/fakeRequest';
@@ -105,17 +107,17 @@ function applyFilter(products, sortBy, filters) {
   return products;
 }
 
-const EcommerceShop = (props) => {
+const MakeNameDynamicPage = (props) => {
+  const router = useRouter();
+  const { makeName } = router.query;
+  const makeNameSentenceCase = sentenceCase(makeName);
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
 
-  const state = useSelector((state) => state);
-  const reduxStore = useStore();
-
   const state_products = useSelector((state) => state.product);
   console.log(
-    'This 🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️ is state_products = useSelecotr ((state) => state.product) from pages/dashboard/shop/index.js, view https://bit.ly/next12_10 : ',
+    'FROM [makeName]/index.js  IS THE FOLLOWING:  state_products = useSelecotr ((state) => state.product)  : ',
     state_products
   );
 
@@ -125,7 +127,7 @@ const EcommerceShop = (props) => {
   const filteredProducts = applyFilter(products, sortBy, filters);
 
   console.log(
-    'This 🧖‍♂️🧖‍♂️🧖‍♂️🧖‍♂️🧖‍♂️ is filteredProducts = applyFilter(products, sortBy, filters); from pages/dashboard/shop/index.js, view https://bit.ly/next12_11 : ',
+    'FROM [makeName]/index.js  IS THE FOLLOWING: filteredProducts = applyFilter(products, sortBy, filters); : ',
     filteredProducts
   );
   const formik = useFormik({
@@ -202,13 +204,16 @@ const EcommerceShop = (props) => {
 
           <Container maxWidth={themeStretch ? false : 'lg'}>
             <HeaderBreadcrumbs
-              heading="Shop: All Vehicles"
+              heading={`Shop: ${makeNameSentenceCase}`}
               links={[
                 { name: 'Dashboard', href: PATH_DASHBOARD.root },
-                { name: 'All Vehciles' },
+                {
+                  name: 'All Vehicles',
+                  href: '/dashboard/shop',
+                },
+                { name: makeNameSentenceCase },
               ]}
             />
-
             {!isDefault && (
               <Typography gutterBottom>
                 <Typography component="span" variant="subtitle1">
@@ -217,7 +222,6 @@ const EcommerceShop = (props) => {
                 &nbsp;Products found
               </Typography>
             )}
-
             <Stack
               direction="row"
               flexWrap="wrap-reverse"
@@ -244,11 +248,12 @@ const EcommerceShop = (props) => {
                 <ShopProductSort />
               </Stack>
             </Stack>
-
-            <ShopProductList
+            <h1>MakeNameDynamicPage</h1> <br />
+            <h2>makeName = {makeName}</h2>
+            {/* <ShopProductList
               products={filteredProducts}
               isLoad={!filteredProducts && !initialValues}
-            />
+            /> */}
           </Container>
         </Page>
       </GuestGuard>
@@ -263,7 +268,7 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
       await store.dispatch(getProducts());
       const redux_store = store.getState();
       console.log(
-        'This 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️ is from the wrapper.getServerSideProps() within the redux_store = store.getState() from dashboard/shop/index.js, view https://bit.ly/next12_12 : ',
+        'FROM [makeName]/index.js  IS THE FOLLOWING:  the wrapper.getServerSideProps() within the redux_store = store.getState() : ',
         redux_store
       );
 
@@ -275,4 +280,4 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
     }
 );
 
-export default EcommerceShop;
+export default MakeNameDynamicPage;
