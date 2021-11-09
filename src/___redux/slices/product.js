@@ -245,105 +245,7 @@ export const {
 } = slice.actions;
 
 //! MOVING GRAPHQL HERE
-const CHRYSLERQUERY = gql`
-  query Variants {
-    variants(where: { product: { name_contains: "Chrysler" } }) {
-      # variants {
-      id
-      qty
-      # color
-      size
-      style
-      price
-      car_name
-      product {
-        id
-        name
-        category {
-          id
-          name
-          description
-        }
-        promo
-        featured
-        description
-      }
-      images {
-        id
-        url
-        height
-        width
-        name
-      }
-    }
-  }
-`;
-const CHEVROLETQUERY = gql`
-  query Variants {
-    variants(where: { product: { name_contains: "Chevrolet" } }) {
-      # variants {
-      id
-      qty
-      # color
-      size
-      style
-      price
-      car_name
-      product {
-        id
-        name
-        category {
-          id
-          name
-          description
-        }
-        promo
-        featured
-        description
-      }
-      images {
-        id
-        url
-        height
-        width
-        name
-      }
-    }
-  }
-`;
-const JEEPQUERY = gql`
-  query Variants {
-    variants(where: { product: { name_contains: "Jeep" } }) {
-      # variants {
-      id
-      qty
-      # color
-      size
-      style
-      price
-      car_name
-      product {
-        id
-        name
-        category {
-          id
-          name
-          description
-        }
-        promo
-        featured
-        description
-      }
-      images {
-        id
-        url
-        height
-        width
-        name
-      }
-    }
-  }
-`;
+
 const ALLCARSQUERY = gql`
   query Variants {
     #    variants(where: { product: { name_contains: "Chrysler" } }) {
@@ -624,6 +526,108 @@ export function getProductMakeGraphQl(id) {
     }
   };
 }
+
+//! Below is specific car makes query, this is not dynamic and not the efficient way of doing it, I'm just testing and playing with it...
+
+const CHRYSLERQUERY = gql`
+  query Variants {
+    variants(where: { product: { name_contains: "Chrysler" } }) {
+      # variants {
+      id
+      qty
+      # color
+      size
+      style
+      price
+      car_name
+      product {
+        id
+        name
+        category {
+          id
+          name
+          description
+        }
+        promo
+        featured
+        description
+      }
+      images {
+        id
+        url
+        height
+        width
+        name
+      }
+    }
+  }
+`;
+const CHEVROLETQUERY = gql`
+  query Variants {
+    variants(where: { product: { name_contains: "Chevrolet" } }) {
+      # variants {
+      id
+      qty
+      # color
+      size
+      style
+      price
+      car_name
+      product {
+        id
+        name
+        category {
+          id
+          name
+          description
+        }
+        promo
+        featured
+        description
+      }
+      images {
+        id
+        url
+        height
+        width
+        name
+      }
+    }
+  }
+`;
+const JEEPQUERY = gql`
+  query Variants {
+    variants(where: { product: { name_contains: "Jeep" } }) {
+      # variants {
+      id
+      qty
+      # color
+      size
+      style
+      price
+      car_name
+      product {
+        id
+        name
+        category {
+          id
+          name
+          description
+        }
+        promo
+        featured
+        description
+      }
+      images {
+        id
+        url
+        height
+        width
+        name
+      }
+    }
+  }
+`;
 
 export function getChryslerVariants() {
   return async (dispatch) => {
