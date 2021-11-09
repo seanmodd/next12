@@ -250,10 +250,10 @@ const MakeNameDynamicPage = (props) => {
             </Stack>
             <h1>MakeNameDynamicPage</h1> <br />
             <h2>makeName = {makeName}</h2>
-            {/* <ShopProductList
+            <ShopProductList
               products={filteredProducts}
               isLoad={!filteredProducts && !initialValues}
-            /> */}
+            />
           </Container>
         </Page>
       </GuestGuard>

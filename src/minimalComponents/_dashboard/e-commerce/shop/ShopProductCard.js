@@ -44,6 +44,7 @@ export default function ShopProductCard({ product }) {
   const makeNameParamCase = paramCase(makeName);
   // const linkTo = `/dashboard/shop/${id}`;
   const linkTo = `/dashboard/shop/${makeNameParamCase}/${id}`;
+  const linkToMakeName = `/dashboard/shop/${makeNameParamCase}`;
 
   return (
     <Card>
@@ -63,8 +64,9 @@ export default function ShopProductCard({ product }) {
             {product.product.category.name}
           </Label>
         )}
-
-        <ProductImgStyle alt={name} src={images[0].url} />
+        <Link href={linkTo} color="inherit" component={RouterLink}>
+          <ProductImgStyle alt={name} src={images[0].url} />
+        </Link>
       </Box>
 
       <Stack spacing={2} sx={{ p: 1.5 }}>
@@ -73,18 +75,20 @@ export default function ShopProductCard({ product }) {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography variant="subtitle1">
-            <Typography
-              component="span"
-              variant="body1"
-              sx={{
-                color: 'text.disabled',
-                textDecoration: 'line-through',
-              }}
-            />
+          <Link href={linkToMakeName} color="inherit" component={RouterLink}>
+            <Typography variant="subtitle1">
+              <Typography
+                component="span"
+                variant="body1"
+                sx={{
+                  color: 'text.disabled',
+                  textDecoration: 'line-through',
+                }}
+              />
 
-            {product.product.name}
-          </Typography>
+              {product.product.name}
+            </Typography>
+          </Link>
         </Stack>
         <Link href={linkTo} color="inherit" component={RouterLink}>
           <Typography variant="subtitle2" noWrap>
