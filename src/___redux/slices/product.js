@@ -244,12 +244,143 @@ export const {
   decreaseQuantity,
 } = slice.actions;
 
-
 //! MOVING GRAPHQL HERE
+const CHRYSLERQUERY = gql`
+  query Variants {
+    variants(where: { product: { name_contains: "Chrysler" } }) {
+      # variants {
+      id
+      qty
+      # color
+      size
+      style
+      price
+      car_name
+      product {
+        id
+        name
+        category {
+          id
+          name
+          description
+        }
+        promo
+        featured
+        description
+      }
+      images {
+        id
+        url
+        height
+        width
+        name
+      }
+    }
+  }
+`;
+const CHEVROLETQUERY = gql`
+  query Variants {
+    variants(where: { product: { name_contains: "Chevrolet" } }) {
+      # variants {
+      id
+      qty
+      # color
+      size
+      style
+      price
+      car_name
+      product {
+        id
+        name
+        category {
+          id
+          name
+          description
+        }
+        promo
+        featured
+        description
+      }
+      images {
+        id
+        url
+        height
+        width
+        name
+      }
+    }
+  }
+`;
+const JEEPQUERY = gql`
+  query Variants {
+    variants(where: { product: { name_contains: "Jeep" } }) {
+      # variants {
+      id
+      qty
+      # color
+      size
+      style
+      price
+      car_name
+      product {
+        id
+        name
+        category {
+          id
+          name
+          description
+        }
+        promo
+        featured
+        description
+      }
+      images {
+        id
+        url
+        height
+        width
+        name
+      }
+    }
+  }
+`;
 const ALLCARSQUERY = gql`
   query Variants {
-    # variants(where: {product: {name_contains: "Jeep"}}) {
+    #    variants(where: { product: { name_contains: "Chrysler" } }) {
     variants {
+      id
+      qty
+      # color
+      size
+      style
+      price
+      car_name
+      product {
+        id
+        name
+        category {
+          id
+          name
+          description
+        }
+        promo
+        featured
+        description
+      }
+      images {
+        id
+        url
+        height
+        width
+        name
+      }
+    }
+  }
+`;
+const CARSMAKEQUERY = gql`
+  query VariantsMake($where: JSON) {
+    variants(where: $where) {
+      # variants {
       id
       qty
       # color
@@ -338,7 +469,6 @@ const client = new ApolloClient({
   // cache: 'no-cache',
 });
 
-
 // ----------------------------------------------------------------------
 
 export async function getProductsJson() {
@@ -402,8 +532,6 @@ export function getProduct(id) {
   };
 }
 
-
-
 export function getAllProductGraphQl() {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
@@ -449,6 +577,104 @@ export function getProductGraphQl(id) {
       );
     } catch (error) {
       console.error(error);
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+export function getProductMakeGraphQl(id) {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      // const where = { product: { name_contains: { id } } };
+      const where = {
+        product: {
+          // name_contains: 'chrysler',
+          name_contains: id,
+        },
+      };
+
+      const response = await client.query({
+        query: CARSMAKEQUERY,
+        // query: ALLCARSQUERY,
+        // variables: { id },
+        //   variables: {
+        //     where: {
+        //       product: {
+        //         name_contains: 'chrysler',
+        //       },
+        //     },
+        //   },
+        // });
+        variables: { where },
+      });
+      console.log('getProductMakeGraphQl(id) is the following id: ', id);
+      console.log(
+        'getProductMakeGraphQl(id) is the following response: ',
+        response
+      );
+
+      dispatch(slice.actions.getProductSuccess(response.data));
+      // console.log(
+      //   'getProductMakeGraphQl(id) gives used the following dispatch(slice.actions.getProductSuccess(response.data)) : ',
+      //   response.data
+      // );
+    } catch (error) {
+      console.error(error);
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+
+export function getChryslerVariants() {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await client.query({
+        query: CHRYSLERQUERY,
+      });
+
+      console.log(
+        'response from getProducts() within ___redux/slices/products.js : ',
+        response
+      );
+      dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
+    } catch (error) {
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+export function getChevroletVariants() {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await client.query({
+        query: CHEVROLETVARIANTS,
+      });
+
+      console.log(
+        'response from getProducts() within ___redux/slices/products.js : ',
+        response
+      );
+      dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
+    } catch (error) {
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+export function getJeepVariants() {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await client.query({
+        query: JEEPVARIANTS,
+      });
+
+      console.log(
+        'response from getProducts() within ___redux/slices/products.js : ',
+        response
+      );
+      dispatch(slice.actions.getProductsSuccess([...response.data.variants]));
+    } catch (error) {
       dispatch(slice.actions.hasError(error));
     }
   };

@@ -21,8 +21,13 @@ import { PATH_DASHBOARD } from 'src/routes/paths';
 import {
   getProducts,
   getAllProductGraphQl,
+  getProductGraphQl,
+  getProductMakeGraphQl,
   filterProducts,
   getProductsJson,
+  getChryslerVariants,
+  getJeepVariants,
+  getChevroletVariants,
 } from 'src/___redux/slices/product';
 import { useRouter } from 'next/router';
 // routesuseStore().getState()
@@ -40,6 +45,7 @@ import {
   ShopProductList,
   ShopFilterSidebar,
 } from 'src/minimalComponents/_dashboard/e-commerce/shop';
+import CarMakeShopProductList from 'src/minimalComponents/_dashboard/e-commerce/shop/_carMake_ShopProductList';
 import CartWidget from 'src/minimalComponents/_dashboard/e-commerce/CartWidget';
 import DashboardLayout from 'src/layouts/dashboard';
 import AuthLayout from 'src/layouts/AuthLayout';
@@ -250,7 +256,7 @@ const MakeNameDynamicPage = (props) => {
             </Stack>
             <h1>MakeNameDynamicPage</h1> <br />
             <h2>makeName = {makeName}</h2>
-            <ShopProductList
+            <CarMakeShopProductList
               products={filteredProducts}
               isLoad={!filteredProducts && !initialValues}
             />
@@ -262,15 +268,55 @@ const MakeNameDynamicPage = (props) => {
   );
 };
 
+// export const getServerSideProps = wrapperStore.getServerSideProps(
+//   (store) =>
+//     async ({ params }) => {
+//       const { makeName } = params;
+//       const lowerCaseMakeName = makeName;
+//       const regularCaseMakeName = sentenceCase(makeName);
+//       console.log(
+//         'This is the makeName we have from the params of getServerSideProps within [makeName]/index.js : ',
+//         regularCaseMakeName
+//       );
+//       await store.dispatch(getProducts());
+//       const redux_store = store.getState();
+//       console.log(
+//         'FROM [makeName]/index.js  IS THE FOLLOWING:  the wrapper.getServerSideProps() within the redux_store = store.getState() : ',
+//         redux_store
+//       );
+
+//       return {
+//         props: {
+//           initialReduxState: redux_store,
+//         },
+//       };
+//     }
+// );
+
 export const getServerSideProps = wrapperStore.getServerSideProps(
   (store) =>
     async ({ params }) => {
-      await store.dispatch(getProducts());
-      const redux_store = store.getState();
+      const { makeName } = params;
+      const lowerCaseMakeName = makeName;
+      const id = lowerCaseMakeName;
+      const regularCaseMakeName = sentenceCase(makeName);
       console.log(
-        'FROM [makeName]/index.js  IS THE FOLLOWING:  the wrapper.getServerSideProps() within the redux_store = store.getState() : ',
-        redux_store
+        'This is the makeName we have from the params of getServerSideProps within [makeName]/index.js : ',
+        regularCaseMakeName
       );
+      // if (makeName == 'chrysler') {
+      //   await store.dispatch(getChryslerVariants());
+      // } else if (makeName == 'jeep') {
+      //   await store.dispatch(getJeepVariants());
+      // } else if (makeName == 'chevrolet') {
+      //   await store.dispatch(getChevroletVariants());
+      // } else {
+      // await store.dispatch(getProductMakeGraphQl(lowerCaseMakeName));
+      await store.dispatch(getProductMakeGraphQl(id));
+      // }
+
+      const redux_store = store.getState();
+      console.log('This redux_store from [makeName]/index.js : ', redux_store);
 
       return {
         props: {
