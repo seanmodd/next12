@@ -64,17 +64,17 @@ export default function PageOne(props) {
             </Container>
             <Container maxWidth="xs" sx={{ m: 5 }}>
               <Card>
-                  <Link
-                    href="/dashboard/three"
-                    color="inherit"
-                    component={RouterLink}
-                  >
-                <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
+                <Link
+                  href="/dashboard/three"
+                  color="inherit"
+                  component={RouterLink}
+                >
+                  <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
                     <Typography variant="header" noWrap>
                       Visit Page Three
                     </Typography>
-                </Stack>
-                  </Link>
+                  </Stack>
+                </Link>
               </Card>
             </Container>
           </Container>
