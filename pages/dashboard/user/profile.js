@@ -12,14 +12,15 @@ import { Tab, Box, Card, Tabs, Container } from '@mui/material';
 // redux
 // import { useDispatch, useSelector } from 'src/___redux/store';
 import { useDispatch, useSelector } from 'react-redux';
-import {
+import onToggleFollow, {
   getPosts,
   getGallery,
   getFriends,
   getProfile,
   getFollowers,
-  onToggleFollow,
+  // onToggleFollow,
 } from 'src/___redux/slices/user';
+
 // routes
 import { PATH_DASHBOARD } from 'src/routes/paths';
 // hooks

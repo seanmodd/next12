@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { paramCase } from 'change-case';
 // ? replaced already
-import { Link as RouterLink } from 'next/link';
+import { Link as RouterLink } from 'next';
 // material
 import { Box, Card, Link, Typography, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';

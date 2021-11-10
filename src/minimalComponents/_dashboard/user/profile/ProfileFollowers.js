@@ -9,7 +9,7 @@ import { Box, Grid, Card, Button, Avatar, Typography } from '@mui/material';
 
 FollowerCard.propTypes = {
   follower: PropTypes.object,
-  onToggle: PropTypes.func
+  onToggle: PropTypes.func,
 };
 
 function FollowerCard({ follower, onToggle }) {
@@ -23,7 +23,11 @@ function FollowerCard({ follower, onToggle }) {
           {name}
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Box component={Icon} icon={pinFill} sx={{ width: 16, height: 16, mr: 0.5, flexShrink: 0 }} />
+          <Box
+            component={Icon}
+            icon={pinFill}
+            sx={{ width: 16, height: 16, mr: 0.5, flexShrink: 0 }}
+          />
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
             {country}
           </Typography>
@@ -44,7 +48,7 @@ function FollowerCard({ follower, onToggle }) {
 
 ProfileFollowers.propTypes = {
   followers: PropTypes.array.isRequired,
-  onToggleFollow: PropTypes.func
+  onToggleFollow: PropTypes.func,
 };
 
 export default function ProfileFollowers({ followers, onToggleFollow }) {
@@ -57,7 +61,10 @@ export default function ProfileFollowers({ followers, onToggleFollow }) {
       <Grid container spacing={3}>
         {followers.map((follower) => (
           <Grid key={follower.id} item xs={12} md={4}>
-            <FollowerCard follower={follower} onToggle={() => onToggleFollow(follower.id)} />
+            <FollowerCard
+              follower={follower}
+              onToggle={() => onToggleFollow(follower.id)}
+            />
           </Grid>
         ))}
       </Grid>

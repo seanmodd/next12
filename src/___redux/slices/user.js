@@ -134,7 +134,10 @@ const slice = createSlice({
 export default slice;
 
 // Actions
-export const { onToggleFollow, deleteUser } = slice.actions;
+export const {
+  // onToggleFollow,
+  deleteUser,
+} = slice.actions;
 
 // ----------------------------------------------------------------------
 
