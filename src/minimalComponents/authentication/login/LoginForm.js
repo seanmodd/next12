@@ -87,7 +87,7 @@ export default function LoginForm() {
         }
       } catch (error) {
         console.error(
-          'this is error from minimalComponents/authentication/login/LoginForm.js : ',
+          'error from minimalComponents/authentication/login/LoginForm.js, view at https://bit.ly/next12_19 : ',
           error
         ),
           resetForm();
