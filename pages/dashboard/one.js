@@ -8,14 +8,15 @@ import Page from 'src/components/Page';
 
 // ----------------------------------------------------------------------
 
-export default function PageOne() {
+export default function PageOne(props) {
+  console.log('This is props from pages/dashboard/one.js : ', props);
   const { themeStretch } = useSettings();
 
   return (
     <DashboardLayout>
-      <Page title='Page One | Minimal-UI'>
+      <Page title="Page One | Minimal-UI">
         <Container maxWidth={themeStretch ? false : 'xl'}>
-          <Typography variant='h3' component='h1' paragraph>
+          <Typography variant="h3" component="h1" paragraph>
             Page One
           </Typography>
           <Typography gutterBottom>

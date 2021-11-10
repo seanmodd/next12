@@ -214,7 +214,7 @@ const slice = createSlice({
 });
 
 console.log(
-  'This is the slice which contains all the reducer actions within it from ___redux/slices/product.js : ',
+  'The slice containing all reducer actions from ___redux/slices/product.js, view at https://bit.ly/next12_20 : ',
   slice
 );
 
