@@ -1,7 +1,12 @@
+import { Link as RouterLink } from 'next';
+
 import { useState } from 'react';
 import draftToHtml from 'draftjs-to-html';
 import { EditorState, convertToRaw } from 'draft-js';
 import {
+  Backdrop,
+  Link,
+  CircularProgress,
   Box,
   Grid,
   Card,
@@ -30,19 +35,67 @@ export default function PageThree() {
 
   return (
     <DashboardLayout>
-      <Page title='Page Three | Minimal-UI'>
+      <Page title="Page Three | Minimal-UI">
         <Container maxWidth={themeStretch ? false : 'xl'}>
-          <Typography variant='h3' component='h1' sx={{ mb: 5 }}>
+          <Typography variant="h3" component="h1" sx={{ mb: 5 }}>
             Demo editor for next js
           </Typography>
-
+          //& Below are the links to navigate to other pages
+          <Container>
+            <Container maxWidth="xs" sx={{ m: 5 }}>
+              <Card>
+                <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
+                  <Link
+                    href="/dashboard/one"
+                    color="inherit"
+                    component={RouterLink}
+                  >
+                    <Typography variant="header" noWrap>
+                      Visit Page One
+                    </Typography>
+                  </Link>
+                </Stack>
+              </Card>
+            </Container>
+            <Container maxWidth="xs" sx={{ m: 5 }}>
+              <Card>
+                <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
+                  <Link
+                    href="/dashboard/two"
+                    color="inherit"
+                    component={RouterLink}
+                  >
+                    <Typography variant="header" noWrap>
+                      Visit Page Two
+                    </Typography>
+                  </Link>
+                </Stack>
+              </Card>
+            </Container>
+            <Container maxWidth="xs" sx={{ m: 5 }}>
+              <Card>
+                <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
+                  <Link
+                    href="/dashboard/three"
+                    color="inherit"
+                    component={RouterLink}
+                  >
+                    <Typography variant="header" noWrap>
+                      Visit Page Three
+                    </Typography>
+                  </Link>
+                </Stack>
+              </Card>
+            </Container>
+          </Container>
+          //& Above are the links to navigate to other pages
           <Grid container spacing={3} sx={{ mb: 5 }}>
             <Grid item xs={12} md={8}>
               <Card>
-                <CardHeader title='Quill Editor' />
+                <CardHeader title="Quill Editor" />
                 <CardContent>
                   <QuillEditor
-                    id='simple-editor'
+                    id="simple-editor"
                     value={quillContent}
                     onChange={(value) => setQuillContent(value)}
                   />
@@ -59,7 +112,7 @@ export default function PageThree() {
                     bgcolor: 'background.neutral',
                   }}
                 >
-                  <CardHeader title='Preview Plain Text' />
+                  <CardHeader title="Preview Plain Text" />
                   <Box
                     sx={{ p: 3 }}
                     dangerouslySetInnerHTML={{ __html: quillContent }}
@@ -72,17 +125,16 @@ export default function PageThree() {
                     bgcolor: 'background.neutral',
                   }}
                 >
-                  <CardHeader title='Preview Html' />
+                  <CardHeader title="Preview Html" />
                   <Typography sx={{ p: 3 }}>{quillContent}</Typography>
                 </Card>
               </Stack>
             </Grid>
           </Grid>
-
           <Grid container spacing={3}>
             <Grid item xs={12} md={8}>
               <Card>
-                <CardHeader title='Draft Editor' />
+                <CardHeader title="Draft Editor" />
                 <CardContent>
                   <DraftEditor
                     editorState={draftContent}
@@ -100,7 +152,7 @@ export default function PageThree() {
                     bgcolor: 'background.neutral',
                   }}
                 >
-                  <CardHeader title='Preview Plain Text' />
+                  <CardHeader title="Preview Plain Text" />
                   <Typography sx={{ p: 3 }}>
                     {draftContent.getCurrentContent().getPlainText('\u0001')}
                   </Typography>
@@ -113,7 +165,7 @@ export default function PageThree() {
                     bgcolor: 'background.neutral',
                   }}
                 >
-                  <CardHeader title='Preview Html' />
+                  <CardHeader title="Preview Html" />
                   <Typography sx={{ p: 3 }}>
                     {draftToHtml(
                       convertToRaw(draftContent.getCurrentContent())

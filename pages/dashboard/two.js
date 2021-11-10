@@ -1,5 +1,15 @@
-import { Container, Typography } from '@mui/material';
-// layouts
+import { Link as RouterLink } from 'next';
+
+import {
+  Backdrop,
+  Container,
+  Typography,
+  Link,
+  CircularProgress,
+  Stack,
+  Box,
+  Card,
+} from '@mui/material'; // layouts
 import DashboardLayout from 'src/layouts/dashboard';
 // hooks
 import useSettings from 'src/hooks/useSettings';
@@ -13,11 +23,60 @@ export default function PageTwo() {
 
   return (
     <DashboardLayout>
-      <Page title='Page Two | Minimal-UI'>
+      <Page title="Page Two | Minimal-UI">
         <Container maxWidth={themeStretch ? false : 'xl'}>
-          <Typography variant='h3' component='h1' paragraph>
+          <Typography variant="h3" component="h1" paragraph>
             Page Two
           </Typography>
+          //& Below are the links to navigate to other pages
+          <Container>
+            <Container maxWidth="xs" sx={{ m: 5 }}>
+              <Card>
+                <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
+                  <Link
+                    href="/dashboard/one"
+                    color="inherit"
+                    component={RouterLink}
+                  >
+                    <Typography variant="header" noWrap>
+                      Visit Page One
+                    </Typography>
+                  </Link>
+                </Stack>
+              </Card>
+            </Container>
+            <Container maxWidth="xs" sx={{ m: 5 }}>
+              <Card>
+                <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
+                  <Link
+                    href="/dashboard/two"
+                    color="inherit"
+                    component={RouterLink}
+                  >
+                    <Typography variant="header" noWrap>
+                      Visit Page Two
+                    </Typography>
+                  </Link>
+                </Stack>
+              </Card>
+            </Container>
+            <Container maxWidth="xs" sx={{ m: 5 }}>
+              <Card>
+                <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
+                  <Link
+                    href="/dashboard/three"
+                    color="inherit"
+                    component={RouterLink}
+                  >
+                    <Typography variant="header" noWrap>
+                      Visit Page Three
+                    </Typography>
+                  </Link>
+                </Stack>
+              </Card>
+            </Container>
+          </Container>
+          //& Above are the links to navigate to other pages
           <Typography gutterBottom>
             Curabitur turpis. Vestibulum facilisis, purus nec pulvinar iaculis,
             ligula mi congue nunc, vitae euismod ligula urna in dolor. Nam quam

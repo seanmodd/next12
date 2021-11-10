@@ -22,10 +22,7 @@ import {
 import { PATH_DASHBOARD } from 'src/routes/paths';
 import { Link as RouterLink } from 'next';
 
-import {
-  getProducts,
-  filterProducts,
-} from 'src/___redux/slices/product';
+import { getProducts, filterProducts } from 'src/___redux/slices/product';
 // utils
 import fakeRequest from 'src/utils/fakeRequest';
 // hooks
@@ -47,10 +44,6 @@ import AuthLayout from 'src/layouts/AuthLayout';
 import GuestGuard from 'src/guards/GuestGuard';
 import AuthGuard from 'src/guards/AuthGuard';
 import { wrapperStore } from 'src/___redux/store.js';
-
-//* All data here comes from src/___redux/slices/product.js lines 220+ where the getProducts function is being exported!
-//* This then calls an api with Axios which is referencing to localhost:3222/api/products which itself gets data from the graphql server on https://admin.shopcarx.com/graphql which comes back and retrieves data via a graphql setup
-// ----------------------------------------------------------------------
 
 function applyFilter(products, sortBy, filters) {
   // SORT BY
@@ -108,13 +101,10 @@ function applyFilter(products, sortBy, filters) {
   return products;
 }
 
-const EcommerceShop = (props) => {
+const SelectMakePage = (props) => {
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
-
-  const state = useSelector((state) => state);
-  const reduxStore = useStore();
 
   const state_products = useSelector((state) => state.product);
   console.log(
@@ -162,7 +152,6 @@ const EcommerceShop = (props) => {
 
   useEffect(() => {
     dispatch(getProducts());
-    // dispatch(getProducts());
   }, [dispatch]);
 
   useEffect(() => {
@@ -326,4 +315,4 @@ export const getServerSideProps = wrapperStore.getServerSideProps(
     }
 );
 
-export default EcommerceShop;
+export default SelectMakePage;
