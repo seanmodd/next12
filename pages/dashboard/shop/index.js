@@ -157,6 +157,10 @@ const EcommerceShop = (props) => {
 
   useEffect(() => {
     dispatch(filterProducts(values));
+    console.log(
+      'This is the dispatch of filterProducts action slice within pages/dashboard/shop/index.js : ',
+      dispatch(filterProducts(values))
+    );
   }, [dispatch, values]);
 
   const handleOpenFilter = () => {
