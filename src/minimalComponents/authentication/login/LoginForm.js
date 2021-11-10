@@ -42,6 +42,27 @@ export default function LoginForm() {
     password: Yup.string().required('Password is required'),
   });
 
+  const successSnackbar = () => {
+    enqueueSnackbar('Login success', {
+      variant: 'success',
+      action: (key) => (
+        <MIconButton size="small" onClick={() => closeSnackbar(key)}>
+          <Icon icon={closeFill} />
+        </MIconButton>
+      ),
+    });
+  };
+  const failSnackbar = () => {
+    enqueueSnackbar('Login failure', {
+      variant: 'error',
+      action: (key) => (
+        <MIconButton size="small" onClick={() => closeSnackbar(key)}>
+          <Icon icon={closeFill} />
+        </MIconButton>
+      ),
+    });
+  };
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -51,23 +72,28 @@ export default function LoginForm() {
     validationSchema: LoginSchema,
     onSubmit: async (values, { setErrors, setSubmitting, resetForm }) => {
       try {
+        if (isMountedRef.current) {
+          await login(values);
+          resetForm();
+        }
         await login(values.email, values.password);
-        enqueueSnackbar('Login success', {
-          variant: 'success',
-          action: (key) => (
-            <MIconButton size="small" onClick={() => closeSnackbar(key)}>
-              <Icon icon={closeFill} />
-            </MIconButton>
-          ),
-        });
+        console.log(
+          'login status from minimalComponents/authentication/login/LoginForm.js : ',
+          login
+        );
+        successSnackbar;
         if (isMountedRef.current) {
           setSubmitting(false);
         }
       } catch (error) {
-        console.error(error);
-        resetForm();
+        console.error(
+          'this is error from minimalComponents/authentication/login/LoginForm.js : ',
+          error
+        ),
+          resetForm();
         if (isMountedRef.current) {
           setSubmitting(false);
+          failSnackbar;
           setErrors({ afterSubmit: error.message });
         }
       }

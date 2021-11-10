@@ -23,10 +23,11 @@ const users = [
     state: 'California',
     city: 'San Francisco',
     zipCode: '94116',
-    about: 'Praesent turpis. Phasellus viverra nulla ut metus varius laoreet. Phasellus tempus.',
+    about:
+      'Praesent turpis. Phasellus viverra nulla ut metus varius laoreet. Phasellus tempus.',
     role: 'admin',
-    isPublic: true
-  }
+    isPublic: true,
+  },
 ];
 
 // ----------------------------------------------------------------------
@@ -39,7 +40,13 @@ mock.onPost('/api/account/login').reply(async (config) => {
     const user = users.find((_user) => _user.email === email);
 
     if (!user) {
-      return [400, { message: 'There is no user corresponding to the email address.' }];
+      return [
+        400,
+        {
+          message:
+            'There is no user corresponding to the email address. THIS COMES FROM src/_apis_/account.js',
+        },
+      ];
     }
 
     if (user.password !== password) {
@@ -47,7 +54,7 @@ mock.onPost('/api/account/login').reply(async (config) => {
     }
 
     const accessToken = sign({ userId: user.id }, JWT_SECRET, {
-      expiresIn: JWT_EXPIRES_IN
+      expiresIn: JWT_EXPIRES_IN,
     });
 
     return [200, { accessToken, user }];
@@ -67,7 +74,13 @@ mock.onPost('/api/account/register').reply(async (config) => {
     let user = users.find((_user) => _user.email === email);
 
     if (user) {
-      return [400, { message: 'There already exists an account with the given email address.' }];
+      return [
+        400,
+        {
+          message:
+            'There already exists an account with the given email address.',
+        },
+      ];
     }
 
     user = {
@@ -84,11 +97,11 @@ mock.onPost('/api/account/register').reply(async (config) => {
       zipCode: null,
       about: null,
       role: 'user',
-      isPublic: true
+      isPublic: true,
     };
 
     const accessToken = sign({ userId: user.id }, JWT_SECRET, {
-      expiresIn: JWT_EXPIRES_IN
+      expiresIn: JWT_EXPIRES_IN,
     });
 
     return [200, { accessToken, user }];

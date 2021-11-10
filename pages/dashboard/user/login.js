@@ -20,7 +20,7 @@ import AuthLayout from 'src/layouts/AuthLayout';
 import { MHidden } from 'src/minimalComponents/@material-extend';
 import { LoginForm } from 'src/minimalComponents/authentication/login';
 import AuthFirebaseSocials from 'src/minimalComponents/authentication/AuthFirebaseSocial';
-// import jwtIcon from '../../../public/static/auth/ic_jwt.png';
+import jwtIcon from '../../../public/static/auth/ic_jwt.png';
 // import loginIcon from '../../../public/static/illustrations/illustration_login.png';
 
 const RootStyle = styled(Page)(({ theme }) => ({
@@ -105,7 +105,7 @@ export default function Login() {
                   Get started
                 </MuiLink>
                 <Typography variant="h4" gutterBottom>
-                  Sign in to Car X
+                  Sign in to CarX
                 </Typography>
                 <Typography sx={{ color: 'text.secondary' }}>
                   Enter your details below.
@@ -115,14 +115,15 @@ export default function Login() {
               {/* <Tooltip title={capitalCase(method)}>
                 <Image src={jwtIcon.src} width={32} height={32} />
               </Tooltip> */}
+              <Image src={jwtIcon} width={32} height={32} />
             </Stack>
 
-            {method === 'firebase' && <AuthFirebaseSocials />}
+            {/* {method === 'firebase' && <AuthFirebaseSocials />} */}
 
-            <Alert severity="info" sx={{ mb: 3 }}>
+            {/* <Alert severity="info" sx={{ mb: 3 }}>
               Use email : <strong>demo@shopcarx.com</strong> / password :
               <strong>&nbsp;carx1234</strong>
-            </Alert>
+            </Alert> */}
 
             {method !== 'auth0' ? (
               <LoginForm />
