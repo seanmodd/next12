@@ -23,7 +23,7 @@ export default function PageTwo() {
 
   return (
     <DashboardLayout>
-      <Page title="Page Two | Minimal-UI">
+      <Page title="Page Two | CarX">
         <Container maxWidth={themeStretch ? false : 'xl'}>
           <Typography variant="h3" component="h1" paragraph>
             Page Two
@@ -32,47 +32,47 @@ export default function PageTwo() {
           <Container>
             <Container maxWidth="xs" sx={{ m: 5 }}>
               <Card>
-                <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
-                  <Link
-                    href="/dashboard/one"
-                    color="inherit"
-                    component={RouterLink}
-                  >
+                <Link
+                  href="/dashboard/one"
+                  color="inherit"
+                  component={RouterLink}
+                >
+                  <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
                     <Typography variant="header" noWrap>
                       Visit Page One
                     </Typography>
-                  </Link>
-                </Stack>
+                  </Stack>
+                </Link>
               </Card>
             </Container>
             <Container maxWidth="xs" sx={{ m: 5 }}>
               <Card>
-                <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
-                  <Link
-                    href="/dashboard/two"
-                    color="inherit"
-                    component={RouterLink}
-                  >
+                <Link
+                  href="/dashboard/two"
+                  color="inherit"
+                  component={RouterLink}
+                >
+                  <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
                     <Typography variant="header" noWrap>
                       Visit Page Two
                     </Typography>
-                  </Link>
-                </Stack>
+                  </Stack>
+                </Link>
               </Card>
             </Container>
             <Container maxWidth="xs" sx={{ m: 5 }}>
               <Card>
-                <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
-                  <Link
-                    href="/dashboard/three"
-                    color="inherit"
-                    component={RouterLink}
-                  >
+                <Link
+                  href="/dashboard/three"
+                  color="inherit"
+                  component={RouterLink}
+                >
+                  <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
                     <Typography variant="header" noWrap>
                       Visit Page Three
                     </Typography>
-                  </Link>
-                </Stack>
+                  </Stack>
+                </Link>
               </Card>
             </Container>
           </Container>
