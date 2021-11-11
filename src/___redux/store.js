@@ -14,6 +14,11 @@ export const makeStore = () =>
     reducer: {
       [userSlice.name]: userSlice.reducer,
       [productSlice.name]: productSlice.reducer,
+      [mailSlice.name]: mailSlice.reducer,
+      // [kanbanSlice.name]: kanbanSlice.reducer,
+      // [calendarSlice.name]: calendarSlice.reducer,
+      // [blogSlice.name]: blogSlice.reducer,
+      // [chatSlice.name]: chatSlice.reducer,
     },
     devTools: true,
   });

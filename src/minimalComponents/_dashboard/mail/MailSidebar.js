@@ -9,8 +9,8 @@ import { Box, List, Drawer, Button, Divider } from '@mui/material';
 // import { useSelector } from '../../../___redux/store';
 import { useSelector } from 'react-redux';
 //
-import Scrollbar from '../../Scrollbar';
-import { MHidden } from '../../@material-extend';
+import Scrollbar from 'src/minimalComponents/Scrollbar';
+import { MHidden } from 'src/minimalComponents/@material-extend';
 import MailSidebarItem from './MailSidebarItem';
 
 // ----------------------------------------------------------------------
@@ -28,7 +28,7 @@ export default function MailSidebar({
 }) {
   const { pathname } = useRouter();
   console.log('🚀 ~ file: MailSidebar.js ~ line 29 ~ pathname', pathname);
-  // const { labels } = useSelector((state) => state.mail);
+  const { labels } = useSelector((state) => state.mail);
 
   useEffect(() => {
     if (isOpenSidebar) {
@@ -58,9 +58,9 @@ export default function MailSidebar({
       <Divider />
 
       <List disablePadding>
-        {/* {labels.map((label) => (
+        {labels.map((label) => (
           <MailSidebarItem key={label.id} label={label} />
-        ))} */}
+        ))}
       </List>
     </Scrollbar>
   );

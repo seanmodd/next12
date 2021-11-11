@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import starFill from '@iconify/icons-eva/star-fill';
 import linkFill from '@iconify/icons-eva/link-fill';
@@ -28,6 +29,8 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import { MAvatar, MHidden } from '../../@material-extend';
 import Label from '../../Label';
 import MailItemAction from './MailItemAction';
+
+d;
 
 // ----------------------------------------------------------------------
 
@@ -59,16 +62,16 @@ const WrapStyle = styled(MuiLink)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 const linkTo = (params, mailId) => {
-  const { systemLabel, customLabel } = params;
+  // const { systemLabel, customLabel } = params;
   const baseUrl = PATH_DASHBOARD.mail.root;
 
-  if (systemLabel) {
-    return `${baseUrl}/${systemLabel}/${mailId}`;
-  }
-  if (customLabel) {
-    return `${baseUrl}/label/${customLabel}/${mailId}`;
-  }
-  return baseUrl;
+  //   if (systemLabel) {
+  //     return `${baseUrl}/${systemLabel}/${mailId}`;
+  //   }
+  //   if (customLabel) {
+  //     return `${baseUrl}/label/${customLabel}/${mailId}`;
+  //   }
+  //   return baseUrl;
 };
 
 MailItem.propTypes = {
@@ -79,7 +82,7 @@ MailItem.propTypes = {
   onSelect: PropTypes.func,
 };
 
-export default function MailItem({
+function MailItem({
   mail,
   isDense,
   isSelected,
@@ -131,7 +134,8 @@ export default function MailItem({
         color="inherit"
         underline="none"
         component={Link}
-        href={linkTo(params, mail.id)}
+        // href={linkTo(params, mail.id)}
+        href="/dashboard/one"
         sx={{ display: 'flex', ...(isDense && { py: 1 }) }}
       >
         <MAvatar
@@ -241,3 +245,5 @@ export default function MailItem({
     </RootStyle>
   );
 }
+
+export default MailItem;
