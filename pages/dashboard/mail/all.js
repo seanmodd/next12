@@ -67,20 +67,22 @@ export default function MailAll(props) {
             ]}
           />
           <Card sx={{ height: { md: '72vh' }, display: { md: 'flex' } }}>
-            <MailSidebar
-              isOpenSidebar={openSidebar}
-              onCloseSidebar={() => setOpenSidebar(false)}
-              onOpenCompose={() => setOpenCompose(true)}
-            />
-            {mailId ? (
-              <MailDetails />
-            ) : (
-              <MailList onOpenSidebar={() => setOpenSidebar(true)} />
+            {!mailId && (
+              <MailSidebar
+                isOpenSidebar={openSidebar}
+                onCloseSidebar={() => setOpenSidebar(false)}
+                onOpenCompose={() => setOpenCompose(true)}
+              />
             )}
-            <MailCompose
-              isOpenCompose={openCompose}
-              onCloseCompose={() => setOpenCompose(false)}
-            />
+            {mailId && <MailDetails />}
+
+            {mailId && <MailList onOpenSidebar={() => setOpenSidebar(true)} />}
+            {mailId && (
+              <MailCompose
+                isOpenCompose={openCompose}
+                onCloseCompose={() => setOpenCompose(false)}
+              />
+            )}
           </Card>
         </Container>
       </Page>

@@ -30,8 +30,6 @@ import { MAvatar, MHidden } from '../../@material-extend';
 import Label from '../../Label';
 import MailItemAction from './MailItemAction';
 
-d;
-
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
