@@ -1,5 +1,5 @@
-import {useRecoilState} from "recoil"
-import {Counter} from "./atom"
+// import {useRecoilState} from "recoil"
+import {Counter} from "../../../../pages/dashboard/one"
 
 function Count (props){
     const [counter, setCounter] = useRecoilState(Counter)

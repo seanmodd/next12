@@ -29,6 +29,7 @@ import {
   LoginNotification,
 } from '/src/___global/components';
 import GlobalStateProvider from 'src/___global/store/GlobalStateProvider';
+import GuestGuard from 'src/guards/GuestGuard';
 
 // ----------------------------------------------------------------------
 
@@ -50,6 +51,7 @@ export default function PageThree() {
           <Container>
             <GlobalStateProvider>
               <Container maxWidth="xs" sx={{ m: 5 }}>
+                <GuestGuard />
                 <Card>
                   <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
                     <Nav />

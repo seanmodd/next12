@@ -14,6 +14,7 @@ import {
 import DashboardLayout from 'src/layouts/dashboard';
 // hooks
 import useSettings from 'src/hooks/useSettings';
+import GuestGuard from 'src/guards/GuestGuard';
 // components
 import Page from 'src/components/Page';
 import {
@@ -22,13 +23,33 @@ import {
   LoginNotification,
 } from '/src/___global/components';
 import GlobalStateProvider from 'src/___global/store/GlobalStateProvider';
+import { useRecoilState, atom } from 'recoil';
+
+export const Counter = atom({
+  key: 'counter',
+  default: 0,
+});
+
+export function MyCount(props) {
+  const [counter, setCounter] = useRecoilState(Counter);
+
+  return (
+    <button
+      onClick={() => {
+        setCounter(counter + 1);
+      }}
+    >
+      Count
+    </button>
+  );
+}
 
 // ----------------------------------------------------------------------
 
 export default function PageOne(props) {
   console.log('This is props from pages/dashboard/one.js : ', props);
   const { themeStretch } = useSettings();
-
+  const [counter, setCounter] = useRecoilState(Counter);
   return (
     <DashboardLayout>
       <Page title="Page One | CarX">
@@ -39,16 +60,20 @@ export default function PageOne(props) {
           //& Below are the links to navigate to other pages
           <Container>
             <GlobalStateProvider>
-              <Container maxWidth="xs" sx={{ m: 5 }}>
-                <Card>
-                  <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
-                    <Nav />
-                    <h1>Download Image</h1>
-                    <DownloadImage />
-                    <LoginNotification />
-                  </Stack>
-                </Card>
-              </Container>
+              {counter}
+              <MyCount />
+              <GuestGuard>
+                <Container maxWidth="xs" sx={{ m: 5 }}>
+                  <Card>
+                    <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
+                      <Nav />
+                      <h1>Download Image</h1>
+                      <DownloadImage />
+                      <LoginNotification />
+                    </Stack>
+                  </Card>
+                </Container>
+              </GuestGuard>
             </GlobalStateProvider>
             <Container maxWidth="xs" sx={{ m: 5 }}>
               <Card>

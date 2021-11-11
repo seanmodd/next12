@@ -74,7 +74,7 @@ export default function LoginForm() {
       try {
         if (isMountedRef.current) {
           await login(values);
-          resetForm();
+          // resetForm();
         }
         await login(values.email, values.password);
         console.log(
@@ -89,11 +89,11 @@ export default function LoginForm() {
         console.error(
           'error from minimalComponents/authentication/login/LoginForm.js, view at https://bit.ly/next12_19 : ',
           error
-        ),
-          resetForm();
+        );
+          // resetForm();
         if (isMountedRef.current) {
           setSubmitting(false);
-          failSnackbar;
+          // failSnackbar;
           setErrors({ afterSubmit: error.message });
         }
       }
@@ -111,9 +111,9 @@ export default function LoginForm() {
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
-          {errors.afterSubmit && (
+          {/* {errors.afterSubmit && (
             <Alert severity="error">{errors.afterSubmit}</Alert>
-          )}
+          )} */}
 
           <TextField
             fullWidth

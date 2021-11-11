@@ -21,10 +21,14 @@ import {
   LoginNotification,
 } from '/src/___global/components';
 import GlobalStateProvider from 'src/___global/store/GlobalStateProvider';
+import { useRecoilState } from 'recoil';
+import { Counter, MyCount } from './one';
+import GuestGuard from 'src/guards/GuestGuard';
 // ----------------------------------------------------------------------
 
 export default function PageTwo() {
   const { themeStretch } = useSettings();
+  const [counter, setCounter] = useRecoilState(Counter);
 
   return (
     <DashboardLayout>
@@ -36,6 +40,9 @@ export default function PageTwo() {
           //& Below are the links to navigate to other pages
           <Container>
             <GlobalStateProvider>
+              {counter}
+              <MyCount />
+              <GuestGuard>
               <Container maxWidth="xs" sx={{ m: 5 }}>
                 <Card>
                   <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
@@ -46,6 +53,7 @@ export default function PageTwo() {
                   </Stack>
                 </Card>
               </Container>
+              </GuestGuard>
             </GlobalStateProvider>
             <Container maxWidth="xs" sx={{ m: 5 }}>
               <Card>

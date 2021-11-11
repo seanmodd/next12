@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // import { Navigate } from 'react-router-dom';
 // hooks
+import { useRouter } from 'next/router';
 import useAuth from '../hooks/useAuth';
 // routes
 import { PATH_DASHBOARD } from '../routes/paths';
@@ -12,6 +13,11 @@ GuestGuard.propTypes = {
 };
 
 export default function GuestGuard({ children }) {
+  const router = useRouter();
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push('/dashboard/user/login');
+  };
   const { isAuthenticated } = useAuth();
 
   console.log(
@@ -43,7 +49,7 @@ export default function GuestGuard({ children }) {
   return (
     <>
       {/* <Navigate href={PATH_DASHBOARD.root} /> */}
-      <button style={{ backgroundColor: '#ff0000' }}>
+      <button style={{ backgroundColor: '#ff0000' }} onClick={handleClick}>
         Login! Still Guest currently.
       </button>
       {children}
