@@ -1,14 +1,18 @@
-import { Button } from '@mui/material';
+import { Button, Stack as MuiStack, Container } from '@mui/material';
 import PropTypes from 'prop-types';
 // import { Navigate } from 'react-router-dom';
 // hooks
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
+
 import useAuth from 'src/hooks/useAuth';
 import useIsMountedRef from 'src/hooks/useIsMountedRef';
 
 // routes
 import { PATH_DASHBOARD } from 'src/routes/paths';
+import LoginFormDialog from 'src/minimalComponents/authentication/popup/LoginFormDialog';
+import RegisterFormDialog from 'src/minimalComponents/authentication/popup/RegisterFormDialog';
+import { Stack } from 'immutable';
 
 // ----------------------------------------------------------------------
 
@@ -70,13 +74,18 @@ export default function GuestGuard({ children }) {
   return (
     <>
       {/* <Navigate href={PATH_DASHBOARD.root} /> */}
-      <Button
+      {/* <Button
         variant="contained"
         // style={{ backgroundColor: '#ff0000' }}
         onClick={handleClick}
       >
         Login! Still Guest currently.
-      </Button>
+      </Button> */}
+      <MuiStack alignItems="center">
+        <RegisterFormDialog />
+        <br />
+        <LoginFormDialog />
+      </MuiStack>
       {children}
     </>
   );

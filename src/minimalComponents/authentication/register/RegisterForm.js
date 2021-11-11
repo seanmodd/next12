@@ -1,6 +1,6 @@
 //* Account register form...
-import * as Yup from 'yup';
 import { useState } from 'react';
+import * as Yup from 'yup';
 import { Icon } from '@iconify/react';
 import { useSnackbar } from 'notistack';
 import { useFormik, Form, FormikProvider } from 'formik';
@@ -17,11 +17,11 @@ import {
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // hooks
-import useAuth from '../../../hooks/useAuth';
-import useIsMountedRef from '../../../hooks/useIsMountedRef';
+import { MIconButton } from 'src/minimalComponents/@material-extend';
+import useAuth from 'src/hooks/useAuth';
+import useIsMountedRef from 'src/hooks/useIsMountedRef';
 //
-import GuestGuard from '../../../guards/GuestGuard';
-import { MIconButton } from '../../@material-extend';
+import GuestGuard from 'src/guards/GuestGuard';
 
 // ----------------------------------------------------------------------
 
@@ -88,49 +88,44 @@ export default function RegisterForm() {
 
   return (
     <>
-      <GuestGuard>
-        <form>
-          <Stack spacing={3} sx={{ marginBottom: 10, marginTop: 10 }}>
-            <input placeholder="First name" {...getFieldProps('firstName')} />
-            {errors.firstName && touched.firstName && (
-              <Alert severity="error">{errors.firstName}</Alert>
-            )}
-            <input placeholder="Last name" {...getFieldProps('lastName')} />
-            {errors.lastName && touched.lastName && (
-              <Alert severity="error">{errors.lastName}</Alert>
-            )}
-            <input
-              placeholder="email"
-              type="email"
-              {...getFieldProps('email')}
-            />
-            {errors.email && touched.email && (
-              <Alert severity="error">{errors.email}</Alert>
-            )}
-            <input
-              placeholder="password"
-              type="password"
-              {...getFieldProps('password')}
-            />
-            {errors.password && touched.password && (
-              <Alert severity="error">{errors.password}</Alert>
-            )}
+      {/* <form>
+        <Stack spacing={3} sx={{ marginBottom: 10, marginTop: 10 }}>
+          <input placeholder="First name" {...getFieldProps('firstName')} />
+          {errors.firstName && touched.firstName && (
+            <Alert severity="error">{errors.firstName}</Alert>
+          )}
+          <input placeholder="Last name" {...getFieldProps('lastName')} />
+          {errors.lastName && touched.lastName && (
+            <Alert severity="error">{errors.lastName}</Alert>
+          )}
+          <input placeholder="email" type="email" {...getFieldProps('email')} />
+          {errors.email && touched.email && (
+            <Alert severity="error">{errors.email}</Alert>
+          )}
+          <input
+            placeholder="password"
+            type="password"
+            {...getFieldProps('password')}
+          />
+          {errors.password && touched.password && (
+            <Alert severity="error">{errors.password}</Alert>
+          )}
 
-            {errors.afterSubmit && (
-              <Alert severity="error">{errors.afterSubmit}</Alert>
-            )}
-            <button
-              type="submit"
-              variant="contained"
-              color="primary"
-              disabled={isSubmitting}
-              onClick={handleSubmit}
-            >
-              Register
-            </button>
-          </Stack>
-        </form>
-      </GuestGuard>
+          {errors.afterSubmit && (
+            <Alert severity="error">{errors.afterSubmit}</Alert>
+          )}
+          <button
+            type="submit"
+            variant="contained"
+            color="primary"
+            disabled={isSubmitting}
+            onClick={handleSubmit}
+          >
+            Register
+          </button>
+        </Stack>
+      </form> */}
+
       <FormikProvider value={formik}>
         <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
           <Stack spacing={3}>

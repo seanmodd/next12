@@ -22,12 +22,12 @@ import {
 import { LoadingButton } from '@mui/lab';
 import { Button, Container } from '@mui/material';
 // routes
-import { PATH_AUTH } from '../../../routes/paths';
+import { PATH_AUTH } from 'src/routes/paths';
 // hooks
-import useAuth from '../../../hooks/useAuth';
-import useIsMountedRef from '../../../hooks/useIsMountedRef';
+import useAuth from 'src/hooks/useAuth';
+import useIsMountedRef from 'src/hooks/useIsMountedRef';
 //
-import { MIconButton } from '../../@material-extend';
+import { MIconButton } from 'src/minimalComponents/@material-extend';
 
 // ----------------------------------------------------------------------
 

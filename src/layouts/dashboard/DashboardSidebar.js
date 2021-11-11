@@ -11,14 +11,17 @@ import { alpha, styled } from '@mui/material/styles';
 import {
   Box,
   Stack,
+  Divider,
   Avatar,
   Drawer,
+  Container,
   Tooltip,
   Typography,
   CardActionArea,
 } from '@mui/material';
 // hooks
 import MyAvatar from 'src/minimalComponents/MyAvatar';
+import GuestGuard from 'src/guards/GuestGuard';
 import useCollapseDrawer from '../../hooks/useCollapseDrawer';
 // components
 import Logo from '../../components/Logo';
@@ -30,7 +33,7 @@ import sidebarConfig from './SidebarConfig';
 
 // ----------------------------------------------------------------------
 
-const DRAWER_WIDTH = 280;
+const DRAWER_WIDTH = 260;
 const COLLAPSE_WIDTH = 102;
 
 const RootStyle = styled('div')(({ theme }) => ({
@@ -45,7 +48,7 @@ const RootStyle = styled('div')(({ theme }) => ({
 const AccountStyle = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  padding: theme.spacing(2, 2.5),
+  padding: theme.spacing(0, 0),
   borderRadius: theme.shape.borderRadiusSm,
   backgroundColor: theme.palette.grey[500_12],
 }));
@@ -181,25 +184,39 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         {isCollapse ? (
           <MyAvatar />
         ) : (
-          <NextLink href={endlink}>
-            {/* <NextLink href="#"> */}
+          <>
+            {/* <NextLink href={endlink}> */}
             <AccountStyle>
-              {/* <Avatar
-                alt='My Avatar'
-                src='/static/mock-images/avatars/avatar_default.jpg'
-              /> */}
-              <MyAvatar />
-              <Box sx={{ ml: 2 }}>
-                <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                  {(isAuthenticated && user.displayName) || user.email}
-                  {!isAuthenticated && 'Guest User'}
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  {!isAuthenticated && 'Not signed in yet'}
-                </Typography>
-              </Box>
+              <Container>
+                <Stack
+                  direction="horizontal"
+                  alignItems="center"
+                  sx={{ paddingTop: 2 }}
+                  justifyContent="center"
+                  // divider={<Divider orientation="vertical" flexItem />}
+                >
+                  <MyAvatar />
+                  <Typography
+                    variant="subtitle2"
+                    sx={{ color: 'text.primary', padding: 2 }}
+                  >
+                    {(isAuthenticated && user.displayName) || user.email}
+                    {!isAuthenticated && 'Guest User'}
+                  </Typography>
+                </Stack>
+                <br />
+                <Box sx={{ ml: 0 }}>
+                  {/* <Typography variant="body2" sx={{ color: 'text.secondary' }}> */}
+                  {/* {!isAuthenticated && 'Not signed in yet'} */}
+                  {/* </Typography> */}
+                  <GuestGuard />
+                </Box>
+                <br />
+              </Container>
             </AccountStyle>
-          </NextLink>
+
+            {/* </NextLink> */}
+          </>
         )}
       </Stack>
 
