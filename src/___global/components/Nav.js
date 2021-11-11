@@ -4,7 +4,14 @@ import Context from '../store/context';
 
 export const Nav = () => {
   const { globalState, globalDispatch } = useContext(Context);
-  console.log('global state is as follows: ', globalState);
+  console.log(
+    'This is globalState destructured from useContext(Context) within src/___global/components/Nav.js',
+    globalState
+  );
+  console.log(
+    'This is globalDispatch destructured from useContext(Context) within src/___global/components/Nav.js',
+    globalDispatch
+  );
   return (
     <nav>
       {globalState.isLoggedIn ? (

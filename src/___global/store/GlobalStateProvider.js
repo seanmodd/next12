@@ -7,3 +7,4 @@ const GlobalStateProvider = ({ children }) => (
 );
 
 export default GlobalStateProvider;
+

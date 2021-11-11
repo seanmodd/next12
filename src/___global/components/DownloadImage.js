@@ -5,7 +5,8 @@ import Context from '../store/context';
 export const DownloadImage = () => {
   const { globalState } = useContext(Context);
   console.log(
-    'This is globalState destructured from useContext(Context) within src/___global/components/DownloadImage.js'
+    'This is globalState destructured from useContext(Context) within src/___global/components/DownloadImage.js',
+    globalState
   );
 
   return (

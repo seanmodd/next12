@@ -4,12 +4,12 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {
-        ...state,
+        // ...state,
         isLoggedIn: true,
       };
     case 'LOGOUT':
       return {
-        ...state,
+        // ...state,
         isLoggedIn: false,
       };
     default: {

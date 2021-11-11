@@ -15,7 +15,12 @@ import DashboardLayout from 'src/layouts/dashboard';
 import useSettings from 'src/hooks/useSettings';
 // components
 import Page from 'src/components/Page';
-
+import {
+  Nav,
+  DownloadImage,
+  LoginNotification,
+} from '/src/___global/components';
+import GlobalStateProvider from 'src/___global/store/GlobalStateProvider';
 // ----------------------------------------------------------------------
 
 export default function PageTwo() {
@@ -30,6 +35,18 @@ export default function PageTwo() {
           </Typography>
           //& Below are the links to navigate to other pages
           <Container>
+            <GlobalStateProvider>
+              <Container maxWidth="xs" sx={{ m: 5 }}>
+                <Card>
+                  <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
+                    <Nav />
+                    <h1>Download Image</h1>
+                    <DownloadImage />
+                    <LoginNotification />
+                  </Stack>
+                </Card>
+              </Container>
+            </GlobalStateProvider>
             <Container maxWidth="xs" sx={{ m: 5 }}>
               <Card>
                 <Link
