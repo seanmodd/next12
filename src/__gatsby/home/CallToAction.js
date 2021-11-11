@@ -1,15 +1,20 @@
 //! This is the opening page
 //! must check there is a link here
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 import Typography from '@material-ui/core/Typography';
+// import Typography from '@mui/material/Typography';
+//
 // import Button from '@material-ui/core/Button'
 import { Button } from '@mui/material';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { makeStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+// import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
-
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 // import cta from '../../images/cta.svg';
+
+const theme = createTheme();
 
 const useStyles = makeStyles((theme) => ({
   account: {
@@ -32,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '3rem',
   },
   headingContainer: {
-    marginTop: '10rem',
     [theme.breakpoints.down('md')]: {
       padding: '0 1rem',
     },
@@ -57,7 +61,6 @@ export default function CallToAction() {
       container
       justifyContent="space-around"
       alignItems="center"
-      sx={{ marginTop: '10rem' }}
       classes={{ root: classes.container }}
       direction={matchesMD ? 'column' : 'row'}
     >
