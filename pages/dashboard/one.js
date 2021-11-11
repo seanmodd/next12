@@ -16,6 +16,11 @@ import DashboardLayout from 'src/layouts/dashboard';
 import useSettings from 'src/hooks/useSettings';
 // components
 import Page from 'src/components/Page';
+import {
+  Nav,
+  DownloadImage,
+  LoginNotification,
+} from '/src/___global/components';
 
 // ----------------------------------------------------------------------
 
