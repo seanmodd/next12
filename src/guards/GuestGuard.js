@@ -1,10 +1,14 @@
+import { Button } from '@mui/material';
 import PropTypes from 'prop-types';
 // import { Navigate } from 'react-router-dom';
 // hooks
 import { useRouter } from 'next/router';
-import useAuth from '../hooks/useAuth';
+import { useSnackbar } from 'notistack';
+import useAuth from 'src/hooks/useAuth';
+import useIsMountedRef from 'src/hooks/useIsMountedRef';
+
 // routes
-import { PATH_DASHBOARD } from '../routes/paths';
+import { PATH_DASHBOARD } from 'src/routes/paths';
 
 // ----------------------------------------------------------------------
 
@@ -13,12 +17,27 @@ GuestGuard.propTypes = {
 };
 
 export default function GuestGuard({ children }) {
+  const { enqueueSnackbar } = useSnackbar();
+  const isMountedRef = useIsMountedRef();
   const router = useRouter();
   const handleClick = (e) => {
     e.preventDefault();
     router.push('/dashboard/user/login');
   };
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      enqueueSnackbar('Successful logout!', { variant: 'success' });
+      // router.push('/');
+      if (isMountedRef.current) {
+      }
+    } catch (error) {
+      console.error(error);
+      enqueueSnackbar('Unable to logout', { variant: 'error' });
+    }
+  };
 
   console.log(
     '🥸🥸🥸 This is from src/guards/GuestGuard.js, this is useAuth which we destructure to extract isAuthenticated from it : ',
@@ -35,7 +54,9 @@ export default function GuestGuard({ children }) {
     return (
       <>
         {/* <Navigate href={PATH_DASHBOARD.root} /> */}
-        <button style={{ backgroundColor: '#ff0000' }}>Logout?</button>
+        <Button variant="outlined" onClick={handleLogout}>
+          Logout?
+        </Button>
         {children}
       </>
     );
@@ -49,9 +70,13 @@ export default function GuestGuard({ children }) {
   return (
     <>
       {/* <Navigate href={PATH_DASHBOARD.root} /> */}
-      <button style={{ backgroundColor: '#ff0000' }} onClick={handleClick}>
+      <Button
+        variant="contained"
+        // style={{ backgroundColor: '#ff0000' }}
+        onClick={handleClick}
+      >
         Login! Still Guest currently.
-      </button>
+      </Button>
       {children}
     </>
   );

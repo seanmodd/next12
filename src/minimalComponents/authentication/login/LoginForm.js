@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { Link as RouterLink } from 'next';
+import { useRouter } from 'next/router';
 import { useFormik, Form, FormikProvider } from 'formik';
 import { Icon } from '@iconify/react';
 import eyeFill from '@iconify/icons-eva/eye-fill';
@@ -19,6 +20,7 @@ import {
   FormControlLabel,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import { Button, Container } from '@mui/material';
 // routes
 import { PATH_AUTH } from '../../../routes/paths';
 // hooks
@@ -29,39 +31,22 @@ import { MIconButton } from '../../@material-extend';
 
 // ----------------------------------------------------------------------
 
-export default function LoginForm() {
-  const { login } = useAuth();
+export default function LoginForm({ children }) {
+  const router = useRouter();
+  const { login, isAuthenticated } = useAuth();
   const isMountedRef = useIsMountedRef();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [showPassword, setShowPassword] = useState(false);
-
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push('/dashboard/shop');
+  };
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
       .email('Email must be a valid email address')
       .required('Email is required'),
     password: Yup.string().required('Password is required'),
   });
-
-  const successSnackbar = () => {
-    enqueueSnackbar('Login success', {
-      variant: 'success',
-      action: (key) => (
-        <MIconButton size="small" onClick={() => closeSnackbar(key)}>
-          <Icon icon={closeFill} />
-        </MIconButton>
-      ),
-    });
-  };
-  const failSnackbar = () => {
-    enqueueSnackbar('Login failure', {
-      variant: 'error',
-      action: (key) => (
-        <MIconButton size="small" onClick={() => closeSnackbar(key)}>
-          <Icon icon={closeFill} />
-        </MIconButton>
-      ),
-    });
-  };
 
   const formik = useFormik({
     initialValues: {
@@ -72,28 +57,23 @@ export default function LoginForm() {
     validationSchema: LoginSchema,
     onSubmit: async (values, { setErrors, setSubmitting, resetForm }) => {
       try {
-        if (isMountedRef.current) {
-          await login(values);
-          // resetForm();
-        }
         await login(values.email, values.password);
-        console.log(
-          'login status from minimalComponents/authentication/login/LoginForm.js : ',
-          login
-        );
-        successSnackbar;
+        enqueueSnackbar('Login success', {
+          variant: 'success',
+          action: (key) => (
+            <MIconButton size="small" onClick={() => closeSnackbar(key)}>
+              <Icon icon={closeFill} />
+            </MIconButton>
+          ),
+        });
         if (isMountedRef.current) {
           setSubmitting(false);
         }
       } catch (error) {
-        console.error(
-          'error from minimalComponents/authentication/login/LoginForm.js, view at https://bit.ly/next12_19 : ',
-          error
-        );
-          // resetForm();
+        console.error(error);
+        resetForm();
         if (isMountedRef.current) {
           setSubmitting(false);
-          // failSnackbar;
           setErrors({ afterSubmit: error.message });
         }
       }
@@ -106,6 +86,35 @@ export default function LoginForm() {
   const handleShowPassword = () => {
     setShowPassword((show) => !show);
   };
+
+  console.log('isAuthenticated : ', isAuthenticated);
+
+  if (isAuthenticated) {
+    return (
+      <>
+        <Container
+          style={{
+            // backgroundColor: '#ff0000',
+            minWidth: '400px',
+            paddingLeft: '0.5px',
+            paddingRight: '0px',
+            paddingBottom: '2px',
+            margin: '0px',
+          }}
+          // minWidth="xl"
+        >
+          <h1>You're successfully logged in!</h1>
+          <Button
+            variant="contained"
+            // style={{ backgroundColor: '#ff0000' }}
+            onClick={handleClick}
+          >
+            View Cars!
+          </Button>
+        </Container>
+      </>
+    );
+  }
 
   return (
     <FormikProvider value={formik}>
