@@ -1,6 +1,7 @@
 // mock api
 import '../src/_apis_';
 import 'simplebar/src/simplebar.css';
+import 'src/utils/highlight';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'react-image-lightbox/style.css';
 import 'react-quill/dist/quill.snow.css';
