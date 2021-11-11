@@ -48,6 +48,7 @@ import MainLayout from 'src/layouts/main';
 // by daniel
 import App, { AppInitialProps, AppContext } from 'next/app';
 
+import GlobalStateProvider from 'src/___global/store/GlobalStateProvider';
 import theme from '../theme';
 
 require('dotenv').config();
@@ -63,10 +64,11 @@ const MyApp = (props) => {
 
   return (
     <HelmetProvider>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <SettingsProvider>
-          <CollapseDrawerProvider>
-            {/* <CacheProvider value={emotionCache}> */}
+      <GlobalStateProvider>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <SettingsProvider>
+            <CollapseDrawerProvider>
+              {/* <CacheProvider value={emotionCache}> */}
               <Head>
                 <meta
                   name="viewport"
@@ -105,10 +107,11 @@ const MyApp = (props) => {
                   </RtlLayout>
                 </ThemePrimaryColor>
               </ThemeConfig>
-            {/* </CacheProvider> */}
-          </CollapseDrawerProvider>
-        </SettingsProvider>
-      </LocalizationProvider>
+              {/* </CacheProvider> */}
+            </CollapseDrawerProvider>
+          </SettingsProvider>
+        </LocalizationProvider>
+      </GlobalStateProvider>
     </HelmetProvider>
   );
 };
