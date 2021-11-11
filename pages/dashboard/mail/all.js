@@ -67,7 +67,7 @@ export default function MailAll(props) {
             ]}
           />
           <Card sx={{ height: { md: '72vh' }, display: { md: 'flex' } }}>
-            {!mailId && (
+            {mailId && (
               <MailSidebar
                 isOpenSidebar={openSidebar}
                 onCloseSidebar={() => setOpenSidebar(false)}
