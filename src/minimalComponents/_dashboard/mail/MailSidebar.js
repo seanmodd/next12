@@ -28,6 +28,10 @@ export default function MailSidebar({
 }) {
   const { pathname } = useRouter();
   console.log('🚀 ~ file: MailSidebar.js ~ line 29 ~ pathname', pathname);
+
+  const mylabels = useSelector((state) => state.mail);
+  console.log('🚀 ~ file: MailSidebar.js ~ line 34 ~ mylabels', mylabels);
+
   const { labels } = useSelector((state) => state.mail);
 
   useEffect(() => {
