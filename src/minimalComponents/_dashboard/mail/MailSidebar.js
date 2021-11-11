@@ -28,7 +28,7 @@ export default function MailSidebar({
 }) {
   const { pathname } = useRouter();
   console.log('🚀 ~ file: MailSidebar.js ~ line 29 ~ pathname', pathname);
-  const { labels } = useSelector((state) => state.mail);
+  // const { labels } = useSelector((state) => state.mail);
 
   useEffect(() => {
     if (isOpenSidebar) {
@@ -58,9 +58,9 @@ export default function MailSidebar({
       <Divider />
 
       <List disablePadding>
-        {labels.map((label) => (
+        {/* {labels.map((label) => (
           <MailSidebarItem key={label.id} label={label} />
-        ))}
+        ))} */}
       </List>
     </Scrollbar>
   );

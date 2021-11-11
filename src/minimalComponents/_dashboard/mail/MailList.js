@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 // material
 import { styled } from '@mui/material/styles';
@@ -30,12 +31,16 @@ MailList.propTypes = {
 };
 
 export default function MailList({ onOpenSidebar }) {
-  const params = useParams();
+  // const params = useParams();
+  const router = useRouter();
+  const { pathname } = router;
+  const params = pathname;
   const dispatch = useDispatch();
-  const { mails } = useSelector((state) => state.mail);
+  // const { mails } = useSelector((state) => state.mail);
   const [selectedMails, setSelectedMails] = useState([]);
   const [dense, setDense] = useState(false);
-  const isEmpty = mails.allIds.length < 1;
+  const isEmpty = {};
+  // const isEmpty = mails.allIds.length < 1;
 
   useEffect(() => {
     dispatch(getMails(params));
@@ -70,21 +75,21 @@ export default function MailList({ onOpenSidebar }) {
 
   return (
     <RootStyle>
-      <MailToolbar
+      {/* <MailToolbar
         mails={mails.allIds.length}
         selectedMails={selectedMails.length}
         onSelectAll={handleSelectAllMails}
         onOpenSidebar={onOpenSidebar}
         onDeselectAll={handleDeselectAllMails}
         onToggleDense={handleToggleDense}
-      />
+      /> */}
 
       <Divider />
 
       {!isEmpty ? (
         <Scrollbar>
           <Box sx={{ minWidth: { md: 800 } }}>
-            {mails.allIds.map((mailId) => (
+            {/* {mails.allIds.map((mailId) => (
               <MailItem
                 key={mailId}
                 isDense={dense}
@@ -93,7 +98,7 @@ export default function MailList({ onOpenSidebar }) {
                 onSelect={() => handleSelectOneMail(mailId)}
                 onDeselect={() => handleDeselectOneMail(mailId)}
               />
-            ))}
+            ))} */}
           </Box>
         </Scrollbar>
       ) : (
