@@ -3,7 +3,7 @@
 #### Fixed it! Credit to branch: omid-develop
 # next12
 
-trying to deploy
+GREAT RESET POINT.
 
 ![screenshot](https://github.com/seanmodd/next12/blob/main/public/screenshot.png)
 
