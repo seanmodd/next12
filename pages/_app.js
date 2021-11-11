@@ -64,54 +64,54 @@ const MyApp = (props) => {
 
   return (
     <HelmetProvider>
-      {/* <GlobalStateProvider> */}
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <SettingsProvider>
-          <CollapseDrawerProvider>
-            {/* <CacheProvider value={emotionCache}> */}
-            <Head>
-              <meta
-                name="viewport"
-                content="initial-scale=1, width=device-width"
-              />
-            </Head>
+      <GlobalStateProvider>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <SettingsProvider>
+            <CollapseDrawerProvider>
+              {/* <CacheProvider value={emotionCache}> */}
+              <Head>
+                <meta
+                  name="viewport"
+                  content="initial-scale=1, width=device-width"
+                />
+              </Head>
 
-            <ThemeConfig>
-              <ThemePrimaryColor>
-                <RtlLayout>
-                  <NoSsr>
-                    <Settings />
-                  </NoSsr>
-                  <ThemeProvider theme={theme}>
-                    <ApolloWrapper>
-                      <NotistackProvider>
-                        <GlobalStyles />
-                        <ProgressBar />
-                        {/* <LoadingScreen /> */}
-                        <BaseOptionChartStyle />
-                        <GoogleAnalytics />
-                        <UserWrapper>
-                          <FeedbackWrapper>
-                            <CartWrapper>
-                              <AuthProvider>
-                                <MainLayout>
-                                  <Component {...pageProps} />
-                                </MainLayout>
-                              </AuthProvider>
-                            </CartWrapper>
-                          </FeedbackWrapper>
-                        </UserWrapper>
-                      </NotistackProvider>
-                    </ApolloWrapper>
-                  </ThemeProvider>
-                </RtlLayout>
-              </ThemePrimaryColor>
-            </ThemeConfig>
-            {/* </CacheProvider> */}
-          </CollapseDrawerProvider>
-        </SettingsProvider>
-      </LocalizationProvider>
-      {/* </GlobalStateProvider> */}
+              <ThemeConfig>
+                <ThemePrimaryColor>
+                  <RtlLayout>
+                    <NoSsr>
+                      <Settings />
+                    </NoSsr>
+                    <ThemeProvider theme={theme}>
+                      <ApolloWrapper>
+                        <NotistackProvider>
+                          <GlobalStyles />
+                          <ProgressBar />
+                          {/* <LoadingScreen /> */}
+                          <BaseOptionChartStyle />
+                          <GoogleAnalytics />
+                          <UserWrapper>
+                            <FeedbackWrapper>
+                              <CartWrapper>
+                                <AuthProvider>
+                                  <MainLayout>
+                                    <Component {...pageProps} />
+                                  </MainLayout>
+                                </AuthProvider>
+                              </CartWrapper>
+                            </FeedbackWrapper>
+                          </UserWrapper>
+                        </NotistackProvider>
+                      </ApolloWrapper>
+                    </ThemeProvider>
+                  </RtlLayout>
+                </ThemePrimaryColor>
+              </ThemeConfig>
+              {/* </CacheProvider> */}
+            </CollapseDrawerProvider>
+          </SettingsProvider>
+        </LocalizationProvider>
+      </GlobalStateProvider>
     </HelmetProvider>
   );
 };

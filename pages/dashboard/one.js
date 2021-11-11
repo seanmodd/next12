@@ -4,6 +4,7 @@ import {
   Backdrop,
   Container,
   Typography,
+  Button,
   Link,
   CircularProgress,
   Stack,
@@ -37,6 +38,16 @@ export default function PageOne(props) {
           </Typography>
           //& Below are the links to navigate to other pages
           <Container>
+            <Container maxWidth="xs" sx={{ m: 5 }}>
+              <Card>
+                <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
+                  <Nav />
+                  <h1>Download Image</h1>
+                  <DownloadImage />
+                  <LoginNotification />
+                </Stack>
+              </Card>
+            </Container>
             <Container maxWidth="xs" sx={{ m: 5 }}>
               <Card>
                 <Link
