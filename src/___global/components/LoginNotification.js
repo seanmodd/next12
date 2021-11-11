@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-// import { LoginNotificationWrapper } from '../elements';
+import { LoginNotificationWrapper } from '../elements';
 import Context from '../store/context';
 
 export const LoginNotification = () => {
@@ -7,7 +7,9 @@ export const LoginNotification = () => {
 
   return (
     <>
-      <p>Please login to download image</p>
+      <LoginNotificationWrapper loggedIn={globalState.isLoggedIn}>
+        <p>Please login to download image</p>
+      </LoginNotificationWrapper>
     </>
   );
 };
