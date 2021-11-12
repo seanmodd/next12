@@ -211,7 +211,7 @@ export default function ProductDetailsSumary() {
         <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
           <Link
             style={{ cursor: 'pointer' }}
-            href={`category/${product.variant.product.name}`}
+            href={`category/${product.variant.car_make_name}`}
           >
             <Typography
               variant="overline"
@@ -224,7 +224,7 @@ export default function ProductDetailsSumary() {
                 color: status === 'sale' ? 'error.main' : 'info.main',
               }}
             >
-              {product.variant.product.name}
+              {product.variant.car_make_name}
             </Typography>
           </Link>
           <Typography variant="h5" paragraph>

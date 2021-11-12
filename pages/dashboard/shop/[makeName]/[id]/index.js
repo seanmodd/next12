@@ -124,7 +124,7 @@ function EcommerceProductDetails(props) {
     product
   );
 
-  const carmake = product && product.variant && product.variant.product.name;
+  const carmake = product && product.variant && product.variant.car_make_name;
   const carMakeParamCase = product && paramCase(carmake);
   console.log('From CarDetail.js page, this is checkout: ', checkout);
   return (
