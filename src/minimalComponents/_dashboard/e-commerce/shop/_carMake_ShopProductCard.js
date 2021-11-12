@@ -31,26 +31,43 @@ ShopProductCard.propTypes = {
 };
 
 export default function ShopProductCard({ product }) {
-  const { id, name, cover, price, colors, status, priceSale, images } = product;
+  const {
+    id,
+    name,
+    cover,
+    price,
+    colors,
+    status,
+    priceSale,
+    images,
+    car_make_name,
+  } = product;
 
   // console.log(
   //   '🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄 destructured product from props from _carMake_ShopProductCard.js : ',
   //   product
   // );
-  console.log(
-    '_carMake_ShopProductCard.js here is the make name: ',
-    product.product.name
-  );
-  const makeName = product.product.name;
+  // console.log(
+  //   '_carMake_ShopProductCard.js here is the make name: ',
+  //   product.product.name
+  // );
+  const makeName = car_make_name;
   const makeNameParamCase = paramCase(makeName);
   // const linkTo = `/dashboard/shop/${id}`;
   const linkTo = `/dashboard/shop/${makeNameParamCase}/${id}`;
   const linkToMakeName = `/dashboard/shop/${makeNameParamCase}`;
 
+  const stringPrice = product.car_price;
+  console.log('This is the stringPrice: ', stringPrice);
+  const intPrice = parseInt(stringPrice);
+  console.log('This is the intPrice: ', intPrice);
+  console.log('This is the price: ', price);
+  console.log('This is the product.image_url : ', product.image_url);
+
   return (
     <Card>
       <Box sx={{ pt: '100%', position: 'relative' }}>
-        {product.product.category.name && (
+        {product.car_make_name && (
           <Label
             variant="filled"
             color={(status === 'sale' && 'error') || 'info'}
@@ -62,11 +79,11 @@ export default function ShopProductCard({ product }) {
               textTransform: 'uppercase',
             }}
           >
-            {product.product.category.name}
+            {product.vehicle_status}
           </Label>
         )}
         <Link href={linkTo} color="inherit" component={RouterLink}>
-          <ProductImgStyle alt={name} src={images[0].url} />
+          <ProductImgStyle alt={name} src={product.image_url} />
         </Link>
       </Box>
 
@@ -87,7 +104,7 @@ export default function ShopProductCard({ product }) {
                 }}
               />
 
-              {product.product.name}
+              {product.car_make_name}
             </Typography>
           </Link>
         </Stack>
@@ -115,7 +132,7 @@ export default function ShopProductCard({ product }) {
               {priceSale && fCurrency(priceSale)}
             </Typography>
             &nbsp;
-            {fCurrency(price)}
+            {fCurrency(intPrice)}
           </Typography>
         </Stack>
       </Stack>
