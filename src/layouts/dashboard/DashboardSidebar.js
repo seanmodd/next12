@@ -189,7 +189,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
             <AccountStyle>
               <Container>
                 <Stack
-                  direction="horizontal"
+                  direction="row"
                   alignItems="center"
                   sx={{ paddingTop: 2 }}
                   justifyContent="center"
