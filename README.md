@@ -4,6 +4,7 @@
 # next12
 
 GREAT RESET POINT.
+THIS IS vSean!
 
 ![screenshot](https://github.com/seanmodd/next12/blob/main/public/screenshot.png)
 
