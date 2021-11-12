@@ -1,44 +1,177 @@
-import { useContext } from 'react';
-import { Container, Typography } from '@mui/material';
-// layouts
-import DashboardLayout from 'src/layouts/dashboard';
+import { Icon } from '@iconify/react';
+import { capitalCase } from 'change-case';
+import { useEffect, useState } from 'react';
+import heartFill from '@iconify/icons-eva/heart-fill';
+import peopleFill from '@iconify/icons-eva/people-fill';
+import roundPermMedia from '@iconify/icons-ic/round-perm-media';
+import roundAccountBox from '@iconify/icons-ic/round-account-box';
+// material
+import { styled } from '@mui/material/styles';
+import { Tab, Box, Card, Tabs, Container } from '@mui/material';
+
+// redux
+// import { useDispatch, useSelector } from 'src/___redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import onToggleFollow, {
+  getPosts,
+  getGallery,
+  getFriends,
+  getProfile,
+  getFollowers,
+  // onToggleFollow,
+} from 'src/___redux/slices/user';
+
+// routes
+import { PATH_DASHBOARD } from 'src/routes/paths';
 // hooks
+import useAuth from 'src/hooks/useAuth';
 import useSettings from 'src/hooks/useSettings';
 // components
-import Page from 'src/components/Page';
-import SettingsPortal from 'src/__gatsby/settings/SettingsPortal';
-import AuthPortal from 'src/__gatsby/auth/AuthPortal';
-import Layout from 'src/__gatsby/ui/layout';
-import Link from 'next/link';
-import { UserContext } from 'src/__gatsby/contexts';
-import { setUser } from 'src/__gatsby/contexts/actions';
-import { useIsClient } from 'src/__gatsby/hooks';
+import Page from 'src/minimalComponents/Page';
+import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
+import {
+  Profile,
+  ProfileCover,
+  ProfileFriends,
+  ProfileGallery,
+  ProfileFollowers,
+} from 'src/minimalComponents/_dashboard/user/profile';
+import DashboardLayout from '../../../src/layouts/dashboard';
 
 // ----------------------------------------------------------------------
 
-export default function AccountPage() {
-  const { themeStretch } = useSettings();
-  const { user } = useContext(UserContext);
-  const { isClient, key } = useIsClient();
+const TabsWrapperStyle = styled('div')(({ theme }) => ({
+  zIndex: 9,
+  bottom: 0,
+  width: '100%',
+  display: 'flex',
+  position: 'absolute',
+  backgroundColor: theme.palette.background.paper,
+  [theme.breakpoints.up('sm')]: {
+    justifyContent: 'center',
+  },
+  [theme.breakpoints.up('md')]: {
+    justifyContent: 'flex-end',
+    paddingRight: theme.spacing(3),
+  },
+}));
 
-  if (!isClient) return null;
+// ----------------------------------------------------------------------
+
+export default function UserProfile() {
+  const { themeStretch } = useSettings();
+  const dispatch = useDispatch();
+  const { myProfile, posts, followers, friends, gallery } = useSelector(
+    (state) => state.user
+  );
+  const { user } = useAuth();
+  const [currentTab, setCurrentTab] = useState('profile');
+  const [findFriends, setFindFriends] = useState('');
+
+  useEffect(() => {
+    dispatch(getProfile());
+    dispatch(getPosts());
+    dispatch(getFollowers());
+    dispatch(getFriends());
+    dispatch(getGallery());
+  }, [dispatch]);
+
+  const handleChangeTab = (event, newValue) => {
+    setCurrentTab(newValue);
+  };
+
+  const handleToggleFollow = (followerId) => {
+    dispatch(onToggleFollow(followerId));
+  };
+
+  const handleFindFriends = (event) => {
+    setFindFriends(event.target.value);
+  };
+
+  if (!myProfile) {
+    return null;
+  }
+
+  const PROFILE_TABS = [
+    {
+      value: 'profile',
+      icon: <Icon icon={roundAccountBox} width={20} height={20} />,
+      component: <Profile myProfile={myProfile} posts={posts} />,
+    },
+    {
+      value: 'followers',
+      icon: <Icon icon={heartFill} width={20} height={20} />,
+      component: (
+        <ProfileFollowers
+          followers={followers}
+          onToggleFollow={handleToggleFollow}
+        />
+      ),
+    },
+    {
+      value: 'friends',
+      icon: <Icon icon={peopleFill} width={20} height={20} />,
+      component: (
+        <ProfileFriends
+          friends={friends}
+          findFriends={findFriends}
+          onFindFriends={handleFindFriends}
+        />
+      ),
+    },
+    {
+      value: 'gallery',
+      icon: <Icon icon={roundPermMedia} width={20} height={20} />,
+      component: <ProfileGallery gallery={gallery} />,
+    },
+  ];
 
   return (
     <DashboardLayout>
-      <Page title="Account Page | CarX">
-        <Container maxWidth={themeStretch ? false : 'xl'}>
-          <Typography variant="h3" component="h1" paragraph>
-            Page Four
-          </Typography>
-          <Layout key={key}>
-            {user.jwt && user.onboarding ? null : (
-              <Link href="/dashboard/app/account">
-                <h1>Account</h1>
-              </Link>
-            )}
+      <Page title="User: Profile | Minimal-UI">
+        <Container maxWidth={themeStretch ? false : 'lg'}>
+          <HeaderBreadcrumbs
+            heading="Profile"
+            links={[
+              { name: 'Dashboard', href: PATH_DASHBOARD.root },
+              { name: 'User', href: PATH_DASHBOARD.user.root },
+              { name: user.displayName },
+            ]}
+          />
+          <Card
+            sx={{
+              mb: 3,
+              height: 280,
+              position: 'relative',
+            }}
+          >
+            <ProfileCover myProfile={myProfile} />
 
-            {user.jwt && user.onboarding ? <SettingsPortal /> : <AuthPortal />}
-          </Layout>
+            <TabsWrapperStyle>
+              <Tabs
+                value={currentTab}
+                scrollButtons="auto"
+                variant="scrollable"
+                allowScrollButtonsMobile
+                onChange={handleChangeTab}
+              >
+                {PROFILE_TABS.map((tab) => (
+                  <Tab
+                    disableRipple
+                    key={tab.value}
+                    value={tab.value}
+                    icon={tab.icon}
+                    label={capitalCase(tab.value)}
+                  />
+                ))}
+              </Tabs>
+            </TabsWrapperStyle>
+          </Card>
+
+          {PROFILE_TABS.map((tab) => {
+            const isMatched = tab.value === currentTab;
+            return isMatched && <Box key={tab.value}>{tab.component}</Box>;
+          })}
         </Container>
       </Page>
     </DashboardLayout>
