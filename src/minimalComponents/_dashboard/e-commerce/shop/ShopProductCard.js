@@ -66,7 +66,12 @@ export default function ShopProductCard({ product }) {
           </Label>
         )}
         <Link href={linkTo} color="inherit" component={RouterLink}>
-          <ProductImgStyle alt={name} src={images[0].url} />
+          {/* {<ProductImgStyle alt={name} src={images[0].url} /> || (
+            <ProductImgStyle
+              alt={name}
+              src="https://media-exp1.licdn.com/dms/image/C560BAQEa0T6_4DuANw/company-logo_200_200/0/1569652667567?e=2159024400&v=beta&t=skgk-thSc1orWk9AWxDUO14bKeu9pVKSHB3heYdYGzI"
+            />
+          )} */}
         </Link>
       </Box>
 
