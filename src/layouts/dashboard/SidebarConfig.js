@@ -79,21 +79,21 @@ const sidebarConfig = [
         path: '/dashboard/shop',
         icon: ICONS.car4,
       },
-      {
-        title: 'Login',
-        path: PATH_DASHBOARD.user.pageLogin,
-        icon: ICONS.smiley8,
-      },
-      {
-        title: 'Register',
-        path: PATH_DASHBOARD.user.pageRegister,
-        icon: ICONS.user8,
-      },
-      {
-        title: 'Verify',
-        path: PATH_DASHBOARD.user.pageVerify,
-        icon: ICONS.noun_newcar,
-      },
+      // {
+      //   title: 'Login',
+      //   path: PATH_DASHBOARD.user.pageLogin,
+      //   icon: ICONS.smiley8,
+      // },
+      // {
+      //   title: 'Register',
+      //   path: PATH_DASHBOARD.user.pageRegister,
+      //   icon: ICONS.user8,
+      // },
+      // {
+      //   title: 'Verify',
+      //   path: PATH_DASHBOARD.user.pageVerify,
+      //   icon: ICONS.noun_newcar,
+      // },
       {
         title: 'Sell',
         path: PATH_DASHBOARD.general.pageSell,
