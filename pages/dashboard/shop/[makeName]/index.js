@@ -195,67 +195,67 @@ const MakeNameDynamicPage = (props) => {
         <CartWidget />
       </Stack>
 
-      <GuestGuard>
-        <Page title="Shop: All Vehicles | CarX">
-          {values && (
-            <Backdrop open={isSubmitting} sx={{ zIndex: 9999 }}>
-              <CircularProgress />
-            </Backdrop>
-          )}
+      {/* <GuestGuard> */}
+      <Page title="Shop: All Vehicles | CarX">
+        {values && (
+          <Backdrop open={isSubmitting} sx={{ zIndex: 9999 }}>
+            <CircularProgress />
+          </Backdrop>
+        )}
 
-          <Container maxWidth={themeStretch ? false : 'lg'}>
-            <HeaderBreadcrumbs
-              heading={`Shop: ${makeNameSentenceCase}`}
-              links={[
-                { name: 'Dashboard', href: PATH_DASHBOARD.root },
-                {
-                  name: 'All Vehicles',
-                  href: '/dashboard/shop',
-                },
-                { name: makeNameSentenceCase },
-              ]}
-            />
-            {!isDefault && (
-              <Typography gutterBottom>
-                <Typography component="span" variant="subtitle1">
-                  {filteredProducts.length}
-                </Typography>
-                &nbsp;Products found
+        <Container maxWidth={themeStretch ? false : 'lg'}>
+          <HeaderBreadcrumbs
+            heading={`Shop: ${makeNameSentenceCase}`}
+            links={[
+              { name: 'Dashboard', href: PATH_DASHBOARD.root },
+              {
+                name: 'All Vehicles',
+                href: '/dashboard/shop',
+              },
+              { name: makeNameSentenceCase },
+            ]}
+          />
+          {!isDefault && (
+            <Typography gutterBottom>
+              <Typography component="span" variant="subtitle1">
+                {filteredProducts.length}
               </Typography>
-            )}
-            <Stack
-              direction="row"
-              flexWrap="wrap-reverse"
-              alignItems="center"
-              justifyContent="flex-end"
-              sx={{ mb: 5 }}
-            >
-              <ShopTagFiltered
-                filters={filters}
-                formik={formik}
-                isShowReset={openFilter}
-                onResetFilter={handleResetFilter}
-                isDefault={isDefault}
-              />
-
-              <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-                <ShopFilterSidebar
-                  formik={formik}
-                  isOpenFilter={openFilter}
-                  onResetFilter={handleResetFilter}
-                  onOpenFilter={handleOpenFilter}
-                  onCloseFilter={handleCloseFilter}
-                />
-                <ShopProductSort />
-              </Stack>
-            </Stack>
-            <CarMakeShopProductList
-              products={filteredProducts}
-              isLoad={!filteredProducts && !initialValues}
+              &nbsp;Products found
+            </Typography>
+          )}
+          <Stack
+            direction="row"
+            flexWrap="wrap-reverse"
+            alignItems="center"
+            justifyContent="flex-end"
+            sx={{ mb: 5 }}
+          >
+            <ShopTagFiltered
+              filters={filters}
+              formik={formik}
+              isShowReset={openFilter}
+              onResetFilter={handleResetFilter}
+              isDefault={isDefault}
             />
-          </Container>
-        </Page>
-      </GuestGuard>
+
+            <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
+              <ShopFilterSidebar
+                formik={formik}
+                isOpenFilter={openFilter}
+                onResetFilter={handleResetFilter}
+                onOpenFilter={handleOpenFilter}
+                onCloseFilter={handleCloseFilter}
+              />
+              <ShopProductSort />
+            </Stack>
+          </Stack>
+          <CarMakeShopProductList
+            products={filteredProducts}
+            isLoad={!filteredProducts && !initialValues}
+          />
+        </Container>
+      </Page>
+      {/* </GuestGuard> */}
     </DashboardLayout>
     // </AuthGuard>
   );
