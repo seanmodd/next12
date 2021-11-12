@@ -471,6 +471,120 @@ const CARSMAKEQUERY = gql`
   }
 `;
 
+const MYCARQUERY = gql`
+  query Variant($id: ID!) {
+    variant(id: $id) {
+      # variants {
+        id
+        qty
+        # color
+        size
+        style
+        price
+        car_name
+        car_info
+        car_info2
+        car_stock
+        car_url
+        car_vin
+        model
+        year
+        description
+        dealership
+        vehicle_status
+        image_url
+        car_price
+        car_year
+        car_special
+        car_fuel_economy
+        car_exterior_color
+        car_interior_color
+        car_transmission
+        car_drivetrain
+        car_engine
+        product {
+          id
+          name
+          category {
+            id
+            name
+            description
+          }
+          promo
+          featured
+          description
+        }
+        images {
+          id
+          name
+          url
+          width
+          height
+        }
+        image_source_1 {
+          id
+          url
+        }
+        image_source_list {
+          id
+          url
+        }
+        car_highlighted_features_1_feature
+        car_highlighted_features_2_feature
+        car_highlighted_features_3_feature
+        car_highlighted_features_4_feature
+        car_highlighted_features_5_feature
+        car_highlighted_features_6_feature
+        car_highlighted_features_7_feature
+        car_highlighted_features_8_feature
+        car_package_options_1_name
+        car_package_options_1_price
+        car_package_options_1_attribute_1
+        car_package_options_1_attribute_2
+        car_package_options_1_attribute_3
+        car_package_options_1_attribute_10
+        car_package_options_1_attribute_11
+        car_package_options_1_attribute_12
+        car_package_options_2_name
+        car_package_options_2_attribute_1
+        car_package_options_2_attribute_2
+        car_package_options_2_attribute_3
+        car_package_options_2_attribute_10
+        car_package_options_2_attribute_11
+        car_package_options_2_attribute_12
+        car_package_options_3_name
+        car_package_options_3_attribute_1
+        car_package_options_3_attribute_2
+        car_package_options_3_attribute_3
+        car_package_options_3_attribute_10
+        car_package_options_3_attribute_11
+        car_package_options_3_attribute_12
+        car_package_options_4_name
+        car_package_options_4_attribute_1
+        car_package_options_4_attribute_2
+        car_package_options_4_attribute_3
+        car_package_options_4_attribute_10
+        car_package_options_4_attribute_11
+        car_package_options_4_attribute_12
+        car_package_options_5_name
+        car_package_options_5_attribute_1
+        car_package_options_5_attribute_2
+        car_package_options_5_attribute_3
+        car_package_options_5_attribute_10
+        car_package_options_5_attribute_11
+        car_package_options_5_attribute_12
+        car_package_options_6_name
+        car_package_options_6_attribute_1
+        car_package_options_6_attribute_2
+        car_package_options_6_attribute_3
+        car_package_options_3_price
+        car_package_options_4_price
+        car_package_options_2_price
+        car_package_options_5_price
+        car_package_options_6_price
+    }
+  }
+`;
 const CARQUERY = gql`
   query Variant($id: ID!) {
     variant(id: $id) {
@@ -583,7 +697,8 @@ export function getProductGraphQl(id) {
     dispatch(slice.actions.startLoading());
     try {
       const response = await client.query({
-        query: CARQUERY,
+        // query: CARQUERY,
+        query: MYCARQUERY,
         variables: { id },
       });
       dispatch(slice.actions.getProductSuccess(response.data));
