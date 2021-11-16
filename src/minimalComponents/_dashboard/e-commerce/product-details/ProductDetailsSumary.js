@@ -195,6 +195,13 @@ export default function ProductDetailsSumary() {
       }
     },
   });
+  const { car_make_name } = product.variant;
+  console.log(
+    'This 🥮🥮🥮🥮🥮🥮🥮🥮 is the product.variant from ProductDetailsSumary.js : ',
+    product.variant
+  );
+  // convert car_make_name to lowercase
+  const car_make_name_lower = car_make_name.toLowerCase();
 
   const { values, touched, errors, getFieldProps, handleSubmit } = formik;
 
@@ -205,13 +212,98 @@ export default function ProductDetailsSumary() {
     });
   };
 
+  // & Below is the adjustments made to the schema of product.variant:
+  const drivetrain = product.variant.car_drivetrain;
+  const engine = product.variant.car_engine;
+  const exterior_color = product.variant.car_exterior_color;
+  const interior_color = product.variant.car_interior_color;
+  const fuel_economy = product.variant.car_fuel_economy;
+  const highlight_features_1 =
+    product.variant.car_highlighted_features_1_feature;
+  const highlight_features_2 =
+    product.variant.car_highlighted_features_2_feature;
+  const highlight_features_3 =
+    product.variant.car_highlighted_features_3_feature;
+  const highlight_features_4 =
+    product.variant.car_highlighted_features_4_feature;
+  const highlight_features_5 =
+    product.variant.car_highlighted_features_5_feature;
+  const highlight_features_6 =
+    product.variant.car_highlighted_features_6_feature;
+  const highlight_features_7 =
+    product.variant.car_highlighted_features_7_feature;
+  const highlight_features_8 =
+    product.variant.car_highlighted_features_8_feature;
+  const name1 = product.variant.car_info;
+  const name2 = product.variant.car_info2;
+  const make_name = product.variant.car_make_name;
+  const model_name = product.variant.car_name;
+  const package1_upgrade1 = product.variant.car_package_options_1_attribute_1;
+  const package1_upgrade2 = product.variant.car_package_options_1_attribute_2;
+  const package1_upgrade3 = product.variant.car_package_options_1_attribute_3;
+  const package1_name = product.variant.car_package_options_1_name;
+  const string_package1_price = product.variant.car_package_options_1_price;
+  const package2_upgrade1 = product.variant.car_package_options_2_attribute_1;
+  const package2_upgrade2 = product.variant.car_package_options_2_attribute_2;
+  const package2_upgrade3 = product.variant.car_package_options_2_attribute_3;
+  const package2_upgrade4 = product.variant.car_package_options_2_attribute_10;
+  const package2_upgrade5 = product.variant.car_package_options_2_attribute_11;
+  const package2_upgrade6 = product.variant.car_package_options_2_attribute_12;
+  const package2_name = product.variant.car_package_options_2_name;
+  const string_package2_price = product.variant.car_package_options_2_price;
+  const package3_upgrade1 = product.variant.car_package_options_3_attribute_1;
+  const package3_upgrade2 = product.variant.car_package_options_3_attribute_2;
+  const package3_upgrade3 = product.variant.car_package_options_3_attribute_3;
+  const package3_upgrade4 = product.variant.car_package_options_3_attribute_10;
+  const package3_upgrade5 = product.variant.car_package_options_3_attribute_11;
+  const package3_upgrade6 = product.variant.car_package_options_3_attribute_12;
+  const package3_name = product.variant.car_package_options_3_name;
+  const string_package3_price = product.variant.car_package_options_3_price;
+  const package4_upgrade1 = product.variant.car_package_options_4_attribute_1;
+  const package4_upgrade2 = product.variant.car_package_options_4_attribute_2;
+  const package4_upgrade3 = product.variant.car_package_options_4_attribute_3;
+  const package4_upgrade4 = product.variant.car_package_options_4_attribute_10;
+  const package4_upgrade5 = product.variant.car_package_options_4_attribute_11;
+  const package4_upgrade6 = product.variant.car_package_options_4_attribute_12;
+  const package4_name = product.variant.car_package_options_4_name;
+  const string_package4_price = product.variant.car_package_options_4_price;
+  const package5_upgrade1 = product.variant.car_package_options_5_attribute_1;
+  const package5_upgrade2 = product.variant.car_package_options_5_attribute_2;
+  const package5_upgrade3 = product.variant.car_package_options_5_attribute_3;
+  const package5_upgrade4 = product.variant.car_package_options_5_attribute_10;
+  const package5_upgrade5 = product.variant.car_package_options_5_attribute_11;
+  const package5_upgrade6 = product.variant.car_package_options_5_attribute_12;
+  const package5_name = product.variant.car_package_options_5_name;
+  const string_package5_price = product.variant.car_package_options_5_price;
+  const package6_upgrade1 = product.variant.car_package_options_6_attribute_1;
+  const package6_upgrade2 = product.variant.car_package_options_6_attribute_2;
+  const package6_upgrade3 = product.variant.car_package_options_6_attribute_3;
+  const package6_upgrade4 = product.variant.car_package_options_6_attribute_10;
+  const package6_upgrade5 = product.variant.car_package_options_6_attribute_11;
+  const package6_upgrade6 = product.variant.car_package_options_6_attribute_12;
+  const package6_name = product.variant.car_package_options_6_name;
+  const string_package6_price = product.variant.car_package_options_6_price;
+
+  const stringPrice = product.variant.car_price;
+  const stringSpecial = product.variant.car_special
+  const stock_number = product.variant.car_stock
+  const transmission = product.variant.car_transmission
+  const car_url = product.variant.car_url
+  const car_vin = product.variant.car_vin
+  const stringYear = product.variant.car_year
+  const dealership = product.variant.dealership
+  const image_url = product.variant.image_url
+  const vehicle_status = product.variant.vehicle_status
+
+  // & Above is the adjustments made to the schema of product.variant:
+
   return (
     <RootStyle>
       <FormikProvider value={formik}>
         <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
           <Link
             style={{ cursor: 'pointer' }}
-            href={`category/${product.variant.car_make_name}`}
+            href={`/dashboard/shop/${car_make_name_lower}`}
           >
             <Typography
               variant="overline"
@@ -233,7 +325,7 @@ export default function ProductDetailsSumary() {
 
           <Label
             variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
-            color={inventoryType >= 1 ? 'success' : 'error'}
+            color={inventoryType >= 1 ? 'success' : 'success'}
             sx={{ textTransform: 'uppercase' }}
           >
             {console.log('THIS IS INVENTORY TYPE: ', inventoryType)}
