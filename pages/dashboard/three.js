@@ -1,202 +1,212 @@
-import { Link as RouterLink } from 'next';
-
-import { useState } from 'react';
-import draftToHtml from 'draftjs-to-html';
-import { EditorState, convertToRaw } from 'draft-js';
+import { useFormik } from 'formik';
+import { useEffect, useState, useRef } from 'react';
+import { filter, includes, orderBy } from 'lodash';
+// material
 import {
   Backdrop,
-  Link,
-  CircularProgress,
-  Box,
-  Grid,
-  Card,
-  Stack,
   Container,
   Typography,
-  CardHeader,
-  CardContent,
+  CircularProgress,
+  Stack,
+  Button,
+  Checkbox,
+  TextField,
+  Switch,
+  FormControl,
+  FormLabel,
+  FormGroup,
+  Box,
+  IconButton,
+  InputAdornment,
+  FormHelperText,
+  FormControlLabel,
 } from '@mui/material';
-// layouts
-import DashboardLayout from 'src/layouts/dashboard';
+
+import { PATH_DASHBOARD } from 'src/routes/paths';
+
 // hooks
 import useSettings from 'src/hooks/useSettings';
 // components
-import Page from 'src/components/Page';
-import { QuillEditor, DraftEditor } from 'src/components/editor';
+import Page from 'src/minimalComponents/Page';
+import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
 import {
-  Nav,
-  DownloadImage,
-  LoginNotification,
-} from '/src/___global/components';
-import GlobalStateProvider from 'src/___global/store/GlobalStateProvider';
-import GuestGuard from 'src/guards/GuestGuard';
+  ShopTagFiltered,
+  ShopProductSort,
+  ShopProductList,
+  ShopFilterSidebar,
+} from 'src/minimalComponents/_dashboard/e-commerce/shop';
 
-// ----------------------------------------------------------------------
+import DashboardLayout from 'src/layouts/dashboard';
 
-export default function PageThree() {
+// import draftToHtml from 'draftjs-to-html';
+// import { convertToRaw } from 'draft-js';
+import { DevTool } from '@hookform/devtools';
+import { useForm, Controller } from 'react-hook-form';
+// import { yupResolver } from '@hookform/resolvers/yup';
+
+import { Icon } from '@iconify/react';
+import eyeFill from '@iconify/icons-eva/eye-fill';
+import eyeOffFill from '@iconify/icons-eva/eye-off-fill';
+import cloudUploadFill from '@iconify/icons-eva/cloud-upload-fill';
+// material
+
+import { LoadingButton } from '@mui/lab';
+import DatePicker from '@mui/lab/DatePicker';
+import { fData } from 'src/utils/formatNumber';
+import { fTimestamp } from 'src/utils/formatTime';
+// import { QuillEditor, DraftEditor } from 'src/minimalComponents/editor';
+import {
+  FormSchema,
+  defaultValues,
+} from 'src/__components-overview/extra/form-validation';
+
+const ReactHookForm = ({ openDevTool }) => {
+
+  const [openDevTool, setOpenDevTool] = useState(false);
+
+  const handleChange = (event) => {
+    setOpenDevTool(event.target.checked);
+  };
+
+
   const { themeStretch } = useSettings();
-  const [quillContent, setQuillContent] = useState('');
-  const [draftContent, setDraftContent] = useState(() =>
-    EditorState.createEmpty()
-  );
+  const fileInputRef = useRef(null);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const {
+    watch,
+    reset,
+    control,
+    register,
+    setValue,
+    handleSubmit,
+    formState: { errors, isSubmitting, isDirty },
+  } = useForm({
+    mode: 'onTouched',
+    // resolver: yupResolver(FormSchema),
+    defaultValues,
+  });
+  const watchAllFields = watch();
+
+  const handleShowPassword = () => {
+    setShowPassword((show) => !show);
+  };
+
+  const handleClickAttachPhoto = () => {
+    fileInputRef.current?.click();
+  };
+
+  const onSubmit = async (data) => {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    alert(
+      JSON.stringify(
+        {
+          ...data,
+        },
+        null,
+        2
+      )
+    );
+    reset();
+  };
 
   return (
     <DashboardLayout>
-      <Page title="Page Three | CarX">
-        <Container maxWidth={themeStretch ? false : 'xl'}>
-          <Typography variant="h3" component="h1" sx={{ mb: 5 }}>
-            Demo editor for next js
-          </Typography>
-          //& Below are the links to navigate to other pages
-          <Container>
-            <GlobalStateProvider>
-              <Container maxWidth="xs" sx={{ m: 5 }}>
-                <GuestGuard />
-                <Card>
-                  <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
-                    <Nav />
-                    <h1>Download Image</h1>
-                    <DownloadImage />
-                    <LoginNotification />
-                  </Stack>
-                </Card>
-              </Container>
-            </GlobalStateProvider>
-            <Container maxWidth="xs" sx={{ m: 5 }}>
-              <Card>
-                <Link
-                  href="/dashboard/one"
-                  color="inherit"
-                  component={RouterLink}
-                >
-                  <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
-                    <Typography variant="header" noWrap>
-                      Visit Page One
-                    </Typography>
-                  </Stack>
-                </Link>
-              </Card>
-            </Container>
-            <Container maxWidth="xs" sx={{ m: 5 }}>
-              <Card>
-                <Link
-                  href="/dashboard/two"
-                  color="inherit"
-                  component={RouterLink}
-                >
-                  <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
-                    <Typography variant="header" noWrap>
-                      Visit Page Two
-                    </Typography>
-                  </Stack>
-                </Link>
-              </Card>
-            </Container>
-            <Container maxWidth="xs" sx={{ m: 5 }}>
-              <Card>
-                <Link
-                  href="/dashboard/three"
-                  color="inherit"
-                  component={RouterLink}
-                >
-                  <Stack spacing={2} sx={{ p: 1.5, alignItems: 'center' }}>
-                    <Typography variant="header" noWrap>
-                      Visit Page Three
-                    </Typography>
-                  </Stack>
-                </Link>
-              </Card>
-            </Container>
-          </Container>
-          //& Above are the links to navigate to other pages
-          <Grid container spacing={3} sx={{ mb: 5 }}>
-            <Grid item xs={12} md={8}>
-              <Card>
-                <CardHeader title="Quill Editor" />
-                <CardContent>
-                  <QuillEditor
-                    id="simple-editor"
-                    value={quillContent}
-                    onChange={(value) => setQuillContent(value)}
-                  />
-                </CardContent>
-              </Card>
-            </Grid>
+      <Stack
+        direction="row"
+        flexWrap="wrap-reverse"
+        alignItems="center"
+        justifyContent="flex-end"
+        sx={{ mb: 0, mt: 0, px: 15 }}
+      />
 
-            <Grid item xs={12} md={4}>
-              <Stack spacing={3} sx={{ height: 1 }}>
-                <Card
-                  sx={{
-                    height: 1,
-                    boxShadow: 0,
-                    bgcolor: 'background.neutral',
-                  }}
-                >
-                  <CardHeader title="Preview Plain Text" />
-                  <Box
-                    sx={{ p: 3 }}
-                    dangerouslySetInnerHTML={{ __html: quillContent }}
-                  />
-                </Card>
-                <Card
-                  sx={{
-                    height: 1,
-                    boxShadow: 0,
-                    bgcolor: 'background.neutral',
-                  }}
-                >
-                  <CardHeader title="Preview Html" />
-                  <Typography sx={{ p: 3 }}>{quillContent}</Typography>
-                </Card>
-              </Stack>
-            </Grid>
-          </Grid>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={8}>
-              <Card>
-                <CardHeader title="Draft Editor" />
-                <CardContent>
-                  <DraftEditor
-                    editorState={draftContent}
-                    onEditorStateChange={(value) => setDraftContent(value)}
-                  />
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Stack spacing={3} sx={{ height: 1 }}>
-                <Card
-                  sx={{
-                    height: 1,
-                    boxShadow: 0,
-                    bgcolor: 'background.neutral',
-                  }}
-                >
-                  <CardHeader title="Preview Plain Text" />
-                  <Typography sx={{ p: 3 }}>
-                    {draftContent.getCurrentContent().getPlainText('\u0001')}
-                  </Typography>
-                </Card>
+      <Page title="CarX Trade-In | CarX">
+        <Container maxWidth={themeStretch ? false : 'lg'}>
+          <HeaderBreadcrumbs
+            heading="Pre-Owned Price Estimator"
+            links={[
+              { name: 'Dashboard', href: PATH_DASHBOARD.root },
+              { name: 'Trade-In Value' },
+            ]}
+          />
 
-                <Card
-                  sx={{
-                    height: 1,
-                    boxShadow: 0,
-                    bgcolor: 'background.neutral',
-                  }}
+          <Stack
+            direction="row"
+            flexWrap="wrap"
+            alignItems="center"
+            // justifyContent="flex"
+            justifyContent="center"
+            sx={{ mb: 5, mt: 15 }}
+          >
+      
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Stack spacing={4}>
+                <Controller
+                  name="fullName"
+                  control={control}
+                  render={({ field, fieldState: { error } }) => (
+                    <TextField
+                      {...field}
+                      label="Full Name"
+                      error={Boolean(error)}
+                      helperText={error?.message}
+                    />
+                  )}
+                />
+
+                <Controller
+                  name="email"
+                  control={control}
+                  render={({ field, fieldState: { error } }) => (
+                    <TextField
+                      {...field}
+                      label="Email address"
+                      error={Boolean(error)}
+                      helperText={error?.message}
+                    />
+                  )}
+                />
+
+                <Controller
+                  name="age"
+                  control={control}
+                  render={({ field, fieldState: { error } }) => (
+                    <TextField
+                      {...field}
+                      label="Age"
+                      error={Boolean(error)}
+                      helperText={error?.message}
+                    />
+                  )}
+                />
+                      <Box sx={{ mb: 5, display: 'flex', justifyContent: 'flex-end' }}>
+              <FormControlLabel
+                control={
+                  <Switch checked={openDevTool} onChange={handleChange} />
+                }
+                label="Open Dev Tool"
+              />
+            </Box>
+
+                <LoadingButton
+                  fullWidth
+                  color="info"
+                  size="large"
+                  type="submit"
+                  variant="contained"
+                  loading={isSubmitting}
+                  disabled={!isDirty}
                 >
-                  <CardHeader title="Preview Html" />
-                  <Typography sx={{ p: 3 }}>
-                    {draftToHtml(
-                      convertToRaw(draftContent.getCurrentContent())
-                    )}
-                  </Typography>
-                </Card>
+                  Submit React Hook Form
+                </LoadingButton>
+                
               </Stack>
-            </Grid>
-          </Grid>
+            </form>
+          </Stack>
+          {openDevTool && <DevTool control={control} placement="top-right" />}
         </Container>
       </Page>
     </DashboardLayout>
   );
-}
+};
+export default ReactHookForm;

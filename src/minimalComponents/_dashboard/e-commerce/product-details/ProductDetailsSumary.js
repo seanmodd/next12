@@ -285,15 +285,15 @@ export default function ProductDetailsSumary() {
   const string_package6_price = product.variant.car_package_options_6_price;
 
   const stringPrice = product.variant.car_price;
-  const stringSpecial = product.variant.car_special
-  const stock_number = product.variant.car_stock
-  const transmission = product.variant.car_transmission
-  const car_url = product.variant.car_url
-  const car_vin = product.variant.car_vin
-  const stringYear = product.variant.car_year
-  const dealership = product.variant.dealership
-  const image_url = product.variant.image_url
-  const vehicle_status = product.variant.vehicle_status
+  const stringSpecial = product.variant.car_special;
+  const stock_number = product.variant.car_stock;
+  const transmission = product.variant.car_transmission;
+  const { car_url } = product.variant;
+  const { car_vin } = product.variant;
+  const stringYear = product.variant.car_year;
+  const { dealership } = product.variant;
+  const { image_url } = product.variant;
+  const { vehicle_status } = product.variant;
 
   // & Above is the adjustments made to the schema of product.variant:
 
