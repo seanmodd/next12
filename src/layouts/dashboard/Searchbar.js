@@ -1,5 +1,5 @@
 //* CHECK BACK HERE!
-  // & BELOW NEEDS TO BE UNCOMMENTED
+// & BELOW NEEDS TO BE UNCOMMENTED
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import searchFill from '@iconify/icons-eva/search-fill';
@@ -21,7 +21,7 @@ import { MIconButton } from '../../components/@material-extend';
 const APPBAR_MOBILE = 64;
 // const APPBAR_DESKTOP = 64;
 const APPBAR_DESKTOP = 0;
-const APPBAR_DESKTOP = 88;
+// const APPBAR_DESKTOP = 88;
 // const APPBAR_DESKTOP = 92;
 
 const SearchbarStyle = styled('div')(({ theme }) => ({

@@ -3,11 +3,11 @@ import { useState } from 'react';
 // material
 import { styled, useTheme } from '@mui/material/styles';
 // hooks
+import CartWidget from 'src/minimalComponents/_dashboard/e-commerce/CartWidget';
 import useCollapseDrawer from '../../hooks/useCollapseDrawer';
 //
 import DashboardNavbar from './DashboardNavbar';
 import DashboardSidebar from './DashboardSidebar';
-import CartWidget from 'src/minimalComponents/_dashboard/e-commerce/CartWidget'
 
 // ----------------------------------------------------------------------
 
@@ -61,9 +61,7 @@ export default function DashboardLayout({ children }) {
           }),
         }}
       >
-
         {children}
-
       </MainStyle>
     </RootStyle>
   );
