@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import * as Yup from 'yup';
 // material
 import {
   Container,
@@ -12,6 +13,7 @@ import {
   Grid,
 } from '@mui/material';
 import { PATH_DASHBOARD } from 'src/routes/paths';
+import { fData } from 'src/utils/formatNumber';
 // hooks
 import useSettings from 'src/hooks/useSettings';
 // components
@@ -66,8 +68,7 @@ const CarValueEstimator = () => {
                       label="Open Dev Tool"
                     />
                   </Box>
-                  <CardHeader title="React Hook Form" />
-
+                  <CardHeader title="Price Estimator Tool" />
                   <CardContent>
                     <ReactHookForm openDevTool={openDevTool} />
                   </CardContent>

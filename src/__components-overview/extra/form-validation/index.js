@@ -39,14 +39,14 @@ export const defaultValues = {
   fullName: '',
   email: '',
   age: '',
-  startDate: null,
-  endDate: null,
-  password: '',
-  confirmPassword: '',
-  quillEditor: '',
-  draftEditor: '',
   photo: null,
-  terms: false,
+  // startDate: null,
+  // endDate: null,
+  // password: '',
+  // confirmPassword: '',
+  // quillEditor: '',
+  // draftEditor: '',
+  // terms: false,
 };
 
 export const FormSchema = Yup.object().shape({
@@ -63,25 +63,6 @@ export const FormSchema = Yup.object().shape({
     .integer()
     .moreThan(18, 'Age must be greater than or equal to 18')
     .lessThan(120, 'Age must be less than or equal to 120'),
-  startDate: Yup.date().nullable().required('Start date is required'),
-  endDate: Yup.date()
-    .required('End date is required')
-    .nullable()
-    .min(Yup.ref('startDate'), 'End date must be later than start date'),
-  password: Yup.string()
-    .required('Password is required')
-    .min(6, 'Password should be of minimum 6 characters length'),
-  confirmPassword: Yup.string()
-    .required('Confirm password is required')
-    .oneOf([Yup.ref('password')], "Password's not match"),
-  quillEditor: Yup.string().required('Quill editor is required').min(200),
-  draftEditor: Yup.mixed().test(
-    'max text',
-    'Draft editor Must Be At Least 200 Characters',
-    (value) =>
-      value && value.getCurrentContent().getPlainText('\u0001').length > 200
-  ),
-  terms: Yup.boolean().oneOf([true], 'Must Accept Terms and Conditions'),
   photo: Yup.mixed()
     .required('Photo is is required')
     .test(
@@ -94,6 +75,25 @@ export const FormSchema = Yup.object().shape({
       `File must be less than or equal to ${fData(MAX_FILE_SIZE)}`,
       (value) => value && value.size <= MAX_FILE_SIZE
     ),
+  // startDate: Yup.date().nullable().required('Start date is required'),
+  // endDate: Yup.date()
+  //   .required('End date is required')
+  //   .nullable()
+  //   .min(Yup.ref('startDate'), 'End date must be later than start date'),
+  // password: Yup.string()
+  //   .required('Password is required')
+  //   .min(6, 'Password should be of minimum 6 characters length'),
+  // confirmPassword: Yup.string()
+  //   .required('Confirm password is required')
+  //   .oneOf([Yup.ref('password')], "Password's not match"),
+  // quillEditor: Yup.string().required('Quill editor is required').min(200),
+  // draftEditor: Yup.mixed().test(
+  //   'max text',
+  //   'Draft editor Must Be At Least 200 Characters',
+  //   (value) =>
+  //     value && value.getCurrentContent().getPlainText('\u0001').length > 200
+  // ),
+  // terms: Yup.boolean().oneOf([true], 'Must Accept Terms and Conditions'),
 });
 
 export default function FormValidation() {
