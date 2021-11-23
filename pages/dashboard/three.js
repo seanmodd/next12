@@ -57,11 +57,7 @@ const CarValueEstimator = () => {
               <Grid item xs={12} sm={6}>
                 <Card sx={{ position: 'relative' }}>
                   <Box
-                    sx={{
-                      mt: 2,
-                      display: 'flex',
-                      justifyContent: 'center',
-                    }}
+                    sx={{ mb: 5, display: 'flex', justifyContent: 'center' }}
                   >
                     <FormControlLabel
                       control={
@@ -70,7 +66,7 @@ const CarValueEstimator = () => {
                       label="Open Dev Tool"
                     />
                   </Box>
-                  <CardHeader title="Car Value Estimator" />
+                  <CardHeader title="React Hook Form" />
 
                   <CardContent>
                     <ReactHookForm openDevTool={openDevTool} />
