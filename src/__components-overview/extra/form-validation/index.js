@@ -26,7 +26,14 @@ import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
 // ----------------------------------------------------------------------
 
 const MAX_FILE_SIZE = 2 * 1000 * 1000; // 2 Mb
-const FILE_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
+const FILE_FORMATS = [
+  'image/jpg',
+  'image/jpeg',
+  'image/gif',
+  'image/png',
+  'image/',
+  '',
+];
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
@@ -40,6 +47,8 @@ export const defaultValues = {
   email: '',
   age: '',
   photo: null,
+  // photo1: null,
+  // photo2: null,
   // startDate: null,
   // endDate: null,
   // password: '',
@@ -63,18 +72,42 @@ export const FormSchema = Yup.object().shape({
     .integer()
     .moreThan(18, 'Age must be greater than or equal to 18')
     .lessThan(120, 'Age must be less than or equal to 120'),
-  photo: Yup.mixed()
-    .required('Photo is is required')
-    .test(
-      'fileFormat',
-      'Unsupported Format',
-      (value) => value && FILE_FORMATS.includes(value.type)
-    )
-    .test(
-      'fileSize',
-      `File must be less than or equal to ${fData(MAX_FILE_SIZE)}`,
-      (value) => value && value.size <= MAX_FILE_SIZE
-    ),
+  photo: Yup.mixed(),
+  // .required('Photo is is required')
+  // .test(
+  //   'fileFormat',
+  //   'Unsupported Format',
+  //   (value) => value && FILE_FORMATS.includes(value.type)
+  // ),
+  // .test(
+  //   'fileSize',
+  //   `File must be less than or equal to ${fData(MAX_FILE_SIZE)}`,
+  //   (value) => value && value.size <= MAX_FILE_SIZE
+  // ),
+  // photo1: Yup.mixed()
+  //   // .required('Photo is is required')
+  //   // .test(
+  //   //   'fileFormat',
+  //   //   'Unsupported Format',
+  //   //   (value) => value && FILE_FORMATS.includes(value.type)
+  //   // )
+  //   .test(
+  //     'fileSize',
+  //     `File must be less than or equal to ${fData(MAX_FILE_SIZE)}`,
+  //     (value) => value && value.size <= MAX_FILE_SIZE
+  //   ),
+  // photo2: Yup.mixed()
+  //   // .required('Photo is is required')
+  //   // .test(
+  //   //   'fileFormat',
+  //   //   'Unsupported Format',
+  //   //   (value) => value && FILE_FORMATS.includes(value.type)
+  //   // )
+  //   .test(
+  //     'fileSize',
+  //     `File must be less than or equal to ${fData(MAX_FILE_SIZE)}`,
+  //     (value) => value && value.size <= MAX_FILE_SIZE
+  //   ),
   // startDate: Yup.date().nullable().required('Start date is required'),
   // endDate: Yup.date()
   //   .required('End date is required')
