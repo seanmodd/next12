@@ -77,7 +77,8 @@ const ReactHookForm = ({ openDevTool }) => {
             render={({ field, fieldState: { error } }) => (
               <TextField
                 {...field}
-                label="Full Name"
+                // label="Full Name"
+                label="Make"
                 error={Boolean(error)}
                 helperText={error?.message}
               />
@@ -90,7 +91,8 @@ const ReactHookForm = ({ openDevTool }) => {
             render={({ field, fieldState: { error } }) => (
               <TextField
                 {...field}
-                label="Email address"
+                // label="Email address"
+                label="Model"
                 error={Boolean(error)}
                 helperText={error?.message}
               />
@@ -103,7 +105,8 @@ const ReactHookForm = ({ openDevTool }) => {
             render={({ field, fieldState: { error } }) => (
               <TextField
                 {...field}
-                label="Age"
+                // label="Age"
+                label="Year"
                 error={Boolean(error)}
                 helperText={error?.message}
               />

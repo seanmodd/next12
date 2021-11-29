@@ -1,0 +1,112 @@
+import React, { useState, useEffect } from 'react';
+import { Select, MenuItem } from '@mui/material';
+import { fetchMakes, fetchModels, fetchYears } from 'src/utils/Api';
+import styles from '../../styles/Home.module.css';
+
+function CarfaxForm() {
+  // state for make
+  const [makeValue, setMakeValue] = useState('');
+  const [makesData, setMakesData] = useState([
+    { make: 'one' },
+    { make: 'two' },
+  ]);
+
+  // state for model
+  const [modelValue, setmodelValue] = useState('');
+  const [modelsData, setmodelsData] = useState([]);
+
+  // state for year
+  const [yearValue, setyearValue] = useState('');
+  const [yearsData, setyearsData] = useState([]);
+
+  // updating field selction
+  const selectMake = (e) => {
+    setMakeValue(e.target.value);
+    setmodelValue('');
+    setyearValue('');
+
+    fetchModelsData(e.target.value);
+  };
+
+  const selectModel = (e) => {
+    setmodelValue(e.target.value);
+
+    fetchYearsData(e.target.value);
+  };
+
+  const selectYear = (e) => {
+    setyearValue(e.target.value);
+  };
+
+  const fetchMakesData = () => {
+    fetchMakes()
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          setMakesData(response.data.data.getMakes);
+        }
+      })
+      .catch((err) => {
+        alert(err?.toString());
+      });
+  };
+
+  const fetchModelsData = (make) => {
+    fetchModels(make)
+      .then((res) => {
+        setmodelsData(res.data.data.getMakeModels);
+      })
+      .catch((err) => {
+        alert(err?.toString());
+      });
+  };
+
+  const fetchYearsData = (model) => {
+    fetchYears(makeValue, model)
+      .then((res) => {
+        setyearsData(res.data.data.getYMMs);
+      })
+      .catch((err) => {
+        alert(err?.toString());
+      });
+  };
+
+  useEffect(() => {
+    fetchMakesData();
+  }, []);
+
+  return (
+    <div className={styles.form}>
+      <span>Select Maker</span>
+      <Select id="demo-simple-select" value={makeValue} onChange={selectMake}>
+        {makesData?.map((item, i) => (
+          <MenuItem key={i?.toString()} value={item.make}>
+            {item.make}
+          </MenuItem>
+        ))}
+      </Select>
+
+      {/* model select */}
+      <span>Select Model</span>
+      <Select id="demo-simple-select" value={modelValue} onChange={selectModel}>
+        {modelsData?.map((item, i) => (
+          <MenuItem key={i?.toString()} value={item.model}>
+            {item.model}
+          </MenuItem>
+        ))}
+      </Select>
+
+      {/* year select */}
+      <span>Select Model</span>
+      <Select id="demo-simple-select" value={yearValue} onChange={selectYear}>
+        {yearsData?.map((item, i) => (
+          <MenuItem key={i?.toString()} value={item.year}>
+            {item.year}
+          </MenuItem>
+        ))}
+      </Select>
+    </div>
+  );
+}
+
+export default CarfaxForm;
