@@ -7,4 +7,7 @@ module.exports = {
     if (!isServer) config.resolve.fallback.fs = false;
     return config;
   },
+  images: {
+    domains: ['media.carfax.com/', 'static.carfax.com/'],
+  },
 };

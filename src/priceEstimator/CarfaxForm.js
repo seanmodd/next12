@@ -1,5 +1,17 @@
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
-import { Select, MenuItem } from '@mui/material';
+import {
+  Container,
+  Button,
+  Typography,
+  CardHeader,
+  CardContent,
+  Card,
+  Grid,
+  Box,
+  Select,
+  MenuItem,
+} from '@mui/material';
 import { fetchMakes, fetchModels, fetchYears } from 'src/utils/Api';
 import styles from '../../styles/Home.module.css';
 
@@ -76,35 +88,91 @@ function CarfaxForm() {
   }, []);
 
   return (
-    <div className={styles.form}>
-      <span>Select Maker</span>
-      <Select id="demo-simple-select" value={makeValue} onChange={selectMake}>
-        {makesData?.map((item, i) => (
-          <MenuItem key={i?.toString()} value={item.make}>
-            {item.make}
-          </MenuItem>
-        ))}
-      </Select>
+    <div>
+      <Container alignItems="center" justifyContent="center" sx={{ mt: 10 }}>
+        <Grid container spacing={5}>
+          <Grid item xs={12} sm={6}>
+            <Card>
+              <Container
+                display="flex"
+                align="center"
+                justify="center"
+                sx={{
+                  marginTop: '25px',
+                }}
+              >
+                <Box
+                  component="img"
+                  src="/static/carfax.jpg"
+                  sx={{
+                    maxWidth: '40%',
+                  }}
+                />
+              </Container>
+              <CardHeader title="Get Your CARFAX Trade-In Value" />
+              <Typography sx={{ ml: 6, mt: 1 }} variant="h6">
+                <h5>Enter your vehicle's information to get started!</h5>
+              </Typography>
+              <CardContent className={styles.form}>
+                <span>Select Maker</span>
+                <Select
+                  id="demo-simple-select"
+                  value={makeValue}
+                  onChange={selectMake}
+                >
+                  {makesData?.map((item, i) => (
+                    <MenuItem key={i?.toString()} value={item.make}>
+                      {item.make}
+                    </MenuItem>
+                  ))}
+                </Select>
 
-      {/* model select */}
-      <span>Select Model</span>
-      <Select id="demo-simple-select" value={modelValue} onChange={selectModel}>
-        {modelsData?.map((item, i) => (
-          <MenuItem key={i?.toString()} value={item.model}>
-            {item.model}
-          </MenuItem>
-        ))}
-      </Select>
+                {/* model select */}
+                <span>Select Model</span>
+                <Select
+                  id="demo-simple-select"
+                  value={modelValue}
+                  onChange={selectModel}
+                >
+                  {modelsData?.map((item, i) => (
+                    <MenuItem key={i?.toString()} value={item.model}>
+                      {item.model}
+                    </MenuItem>
+                  ))}
+                </Select>
 
-      {/* year select */}
-      <span>Select Model</span>
-      <Select id="demo-simple-select" value={yearValue} onChange={selectYear}>
-        {yearsData?.map((item, i) => (
-          <MenuItem key={i?.toString()} value={item.year}>
-            {item.year}
-          </MenuItem>
-        ))}
-      </Select>
+                {/* year select */}
+                <span>Select Model</span>
+                <Select
+                  id="demo-simple-select"
+                  className={styles.demoSimpleSelect}
+                  value={yearValue}
+                  onChange={selectYear}
+                >
+                  {yearsData?.map((item, i) => (
+                    <MenuItem key={i?.toString()} value={item.year}>
+                      {item.year}
+                    </MenuItem>
+                  ))}
+                </Select>
+                <Button
+                  fullWidth
+                  // disabled={isMaxQuantity}
+                  size="large"
+                  type="button"
+                  // color="primary"
+                  variant="contained"
+                  // startIcon={<Icon icon={roundAddShoppingCart} />}
+                  // onClick={handleAddCart}
+                  sx={{ whiteSpace: 'nowrap' }}
+                >
+                  Get Started
+                </Button>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 }

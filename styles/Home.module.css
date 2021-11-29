@@ -1,13 +1,23 @@
+#demo-simple-select {
+  background-color: #fff;
+  margin-top: 1000px;
+  padding-top: 1000px;
+}
+.demoSimpleSelect {
+  background-color: #fff;
+  margin-bottom: 40px;
+  /* padding-top: 1000px; */
+}
 .mainContainer{
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
 .form{
-  width: 30vw;
+  /* width: 30vw; */
   display: flex;
   flex-direction: column;
 }

@@ -22,6 +22,7 @@ import Page from 'src/minimalComponents/Page';
 import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
 import DashboardLayout from 'src/layouts/dashboard';
 import ReactHookForm from 'src/__components-overview/extra/form-validation/ReactHookForm';
+import CarfaxForm from 'src/priceEstimator/CarfaxForm';
 
 const CarValueEstimator = () => {
   const { themeStretch } = useSettings();
@@ -47,41 +48,11 @@ const CarValueEstimator = () => {
             heading="Pre-Owned Price Estimator"
             links={[
               { name: 'Dashboard', href: PATH_DASHBOARD.root },
-              { name: 'Trade-In Value' },
+              { name: 'Trade-In Value', href: '/dashboard/price-estimator' },
+              { name: 'Vehicle Found' },
             ]}
           />
-
-          <Container
-            alignItems="center"
-            justifyContent="center"
-            sx={{ mt: 10 }}
-          >
-            <Grid container spacing={5}>
-              <Grid item xs={12} sm={6}>
-                <Card sx={{ position: 'relative' }}>
-                  <Box
-                    sx={{ mb: 5, display: 'flex', justifyContent: 'center' }}
-                  >
-                    <FormControlLabel
-                      control={
-                        <Switch checked={openDevTool} onChange={handleChange} />
-                      }
-                      label="Open Dev Tool"
-                    />
-                  </Box>
-                  <CardHeader title="Get Your CARFAX Trade-In Value" />
-
-                  <Typography sx={{ ml: 6, mt: 1 }} variant="h6">
-                    <h5>Enter your vehicle's information to get started!</h5>
-                  </Typography>
-                  <CardContent>
-                    <ReactHookForm openDevTool={openDevTool} />
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
-          </Container>
-          {/* </Stack> */}
+          {/* <CarfaxForm /> */}
         </Container>
       </Page>
     </DashboardLayout>
