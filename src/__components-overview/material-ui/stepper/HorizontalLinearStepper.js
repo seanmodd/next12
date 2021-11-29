@@ -1,10 +1,24 @@
 import { useState } from 'react';
 // material
-import { Box, Step, Paper, Button, Stepper, StepLabel, Typography } from '@mui/material';
+import {
+  Box,
+  Step,
+  Container,
+  Paper,
+  Button,
+  Stepper,
+  StepLabel,
+  Typography,
+} from '@mui/material';
+import CarfaxForm from 'src/priceEstimator/CarfaxForm';
 
 // ----------------------------------------------------------------------
 
-const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+const steps = [
+  'Select campaign settings',
+  'Create an ad group',
+  'Create an ad',
+];
 
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = useState(0);
@@ -55,7 +69,9 @@ export default function HorizontalLinearStepper() {
           const stepProps = {};
           const labelProps = {};
           if (isStepOptional(index)) {
-            labelProps.optional = <Typography variant="caption">Optional</Typography>;
+            labelProps.optional = (
+              <Typography variant="caption">Optional</Typography>
+            );
           }
           if (isStepSkipped(index)) {
             stepProps.completed = false;
@@ -70,7 +86,9 @@ export default function HorizontalLinearStepper() {
       {activeStep === steps.length ? (
         <>
           <Paper sx={{ p: 3, my: 3, minHeight: 120, bgcolor: 'grey.50012' }}>
-            <Typography sx={{ my: 1 }}>All steps completed - you&apos;re finished</Typography>
+            <Typography sx={{ my: 1 }}>
+              All steps completed - you&apos;re finished
+            </Typography>
           </Paper>
 
           <Box sx={{ display: 'flex' }}>
@@ -80,11 +98,17 @@ export default function HorizontalLinearStepper() {
         </>
       ) : (
         <>
-          <Paper sx={{ p: 3, my: 3, minHeight: 120, bgcolor: 'grey.50012' }}>
+          <Box>
             <Typography sx={{ my: 1 }}> Step {activeStep + 1}</Typography>
-          </Paper>
+            <CarfaxForm />
+          </Box>
           <Box sx={{ display: 'flex' }}>
-            <Button color="inherit" disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
+            <Button
+              color="inherit"
+              disabled={activeStep === 0}
+              onClick={handleBack}
+              sx={{ mr: 1 }}
+            >
               Back
             </Button>
             <Box sx={{ flexGrow: 1 }} />

@@ -1,6 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import * as Yup from 'yup';
-// material
 import {
   Container,
   Typography,
@@ -14,14 +12,12 @@ import {
   Grid,
 } from '@mui/material';
 import { PATH_DASHBOARD } from 'src/routes/paths';
-import { fData } from 'src/utils/formatNumber';
-// hooks
 import useSettings from 'src/hooks/useSettings';
-// components
 import Page from 'src/minimalComponents/Page';
 import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
 import DashboardLayout from 'src/layouts/dashboard';
 import ReactHookForm from 'src/__components-overview/extra/form-validation/ReactHookForm';
+import HorizontalLinearStepper from 'src/__components-overview/material-ui/stepper/HorizontalLinearStepper';
 
 const CarValueEstimator = () => {
   const { themeStretch } = useSettings();

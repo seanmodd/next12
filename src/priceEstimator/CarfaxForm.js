@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import {
   Container,
@@ -42,7 +41,6 @@ function CarfaxForm() {
 
   const selectModel = (e) => {
     setmodelValue(e.target.value);
-
     fetchYearsData(e.target.value);
   };
 
@@ -89,12 +87,12 @@ function CarfaxForm() {
 
   return (
     <div>
-      <Container alignItems="center" justifyContent="center" sx={{ mt: 10 }}>
-        <Grid container spacing={5}>
+      <Container alignItems="center" justifyContent="center" sx={{ mt: 4 }}>
+        <Grid alignItems="center" justifyContent="center" container spacing={5}>
           <Grid item xs={12} sm={6}>
             <Card>
               <Container
-                display="flex"
+                // display="flex"
                 align="center"
                 justify="center"
                 sx={{
@@ -110,7 +108,7 @@ function CarfaxForm() {
                 />
               </Container>
               <CardHeader title="Get Your CARFAX Trade-In Value" />
-              <Typography sx={{ ml: 6, mt: 1 }} variant="h6">
+              <Typography sx={{ mt: 1 }} variant="h6">
                 <h5>Enter your vehicle's information to get started!</h5>
               </Typography>
               <CardContent className={styles.form}>
