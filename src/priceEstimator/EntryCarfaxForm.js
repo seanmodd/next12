@@ -88,10 +88,10 @@ function CarfaxForm() {
     fetchMakesData();
   }, []);
 
-  useEffect(() => {
-    console.log('The useffect is put in here is makeValue : ', makeValue);
-    selectModel;
-  }, [makeValue]);
+  // useEffect(() => {
+  //   console.log('The useffect is put in here is makeValue : ', makeValue);
+  //   selectModel;
+  // }, [makeValue]);
 
   function handleSubmitClick(e) {
     e.preventDefault();
@@ -152,10 +152,10 @@ function CarfaxForm() {
                   ))}
                 </Select>
                 {/* year select */}
-                <span>Select Model</span>
+                <span>Select Year</span>
                 <Select
                   id="demo-simple-select"
-                  disabled={makesData}
+                  disabled={modelValue === ''}
                   className={styles.demoSimpleSelect}
                   value={yearValue}
                   onChange={selectYear}
@@ -167,22 +167,32 @@ function CarfaxForm() {
                   ))}
                 </Select>
 
-                <strong>
-                  {makeValue}
-                  {makeValue && modelValue && ','} {modelValue}
-                  {makeValue && modelValue && yearValue && '-'}
-                  {yearValue}
-                </strong>
+                <Box
+                  alignItems="center"
+                  justifyContent="center"
+                  sx={{
+                    flexDirection: 'horizontal',
+                    lineHeight: '1.25',
+                    mt: -1,
+                  }}
+                >
+                  <strong>
+                    {makeValue && <h1>Make: {makeValue}</h1>}
+                    {modelValue && <h2>Model: {modelValue}</h2>}
+                    {yearValue && <h2>Year: {yearValue}</h2>}
+                  </strong>
+                </Box>
+
                 <Button
                   fullWidth
                   size="large"
                   type="button"
-                  disabled="true"
+                  disabled={!makeValue || !modelValue || !yearValue}
                   variant="contained"
                   onClick={handleSubmitClick}
                   sx={{
                     whiteSpace: 'nowrap',
-                    marginTop: '40px',
+                    marginTop: '20px',
                     marginBottom: '20px',
                   }}
                 >
