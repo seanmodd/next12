@@ -88,11 +88,6 @@ function CarfaxForm() {
     fetchMakesData();
   }, []);
 
-  // useEffect(() => {
-  //   console.log('The useffect is put in here is makeValue : ', makeValue);
-  //   selectModel;
-  // }, [makeValue]);
-
   function handleSubmitClick(e) {
     e.preventDefault();
     router.push('/dashboard/carfax-value/vehicle-info/');

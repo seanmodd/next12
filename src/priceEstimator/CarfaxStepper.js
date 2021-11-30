@@ -37,7 +37,6 @@ const defaultComponentStep1Values = {
 export default function HorizontalLinearStepper() {
   //* Below is navigation of stepper
   const [isNextDisabled, setIsNextDisabled] = useState(true);
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const steps = ['Vehicle Found', 'Calculate Price', 'Success!'];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -78,11 +77,16 @@ export default function HorizontalLinearStepper() {
   const [formComponentStep1Values, setFormComponentStep1Values] = useState(
     defaultComponentStep1Values
   );
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleMilesChange = (e) => {
     setFormComponentStep1Values({
       ...formComponentStep1Values,
-      [name]: value,
+      mileage: e.target.value,
+    });
+  };
+  const handleColorChange = (e) => {
+    setFormComponentStep1Values({
+      ...formComponentStep1Values,
+      exteriorColor: e.target.value,
     });
   };
   const handleSliderChange = (name) => (e, value) => {
@@ -100,7 +104,6 @@ export default function HorizontalLinearStepper() {
       sliderVehicleCondition: 2,
     });
     setIsNextDisabled(false);
-    setIsSubmitDisabled(true);
     // form1Validation();
   };
   const StatusOfSlider = () => {
@@ -215,7 +218,7 @@ export default function HorizontalLinearStepper() {
                           label="Mileage"
                           type="number"
                           value={formComponentStep1Values.mileage}
-                          onChange={handleInputChange}
+                          onChange={handleMilesChange}
                         />
                       </Grid>
 
@@ -227,7 +230,7 @@ export default function HorizontalLinearStepper() {
                           <Select
                             name="exteriorColor"
                             value={formComponentStep1Values.exteriorColor}
-                            onChange={handleInputChange}
+                            onChange={handleColorChange}
                           >
                             {allColors?.map((item) => (
                               <MenuItem key={item} value={item}>
