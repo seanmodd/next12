@@ -7,6 +7,11 @@ import {
   Box,
   Step,
   Container,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  Radio,
   TextField,
   Paper,
   Grid,
@@ -23,9 +28,16 @@ import {
   Typography,
 } from '@mui/material';
 
+const defaultComponentStep1Values = {
+  exteriorColor: '',
+  mileage: '',
+  sliderVehicleCondition: 2,
+};
+
 export default function HorizontalLinearStepper() {
   //* Below is navigation of stepper
-  const router = useRouter();
+  const [isNextDisabled, setIsNextDisabled] = useState(true);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const steps = ['Vehicle Found', 'Calculate Price', 'Success!'];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -48,21 +60,8 @@ export default function HorizontalLinearStepper() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const isNextDisabled = () => {
-    if (activeStep === 0) {
-      return false;
-    }
-    if (activeStep === 1) {
-      return false;
-    }
-    if (activeStep === 2) {
-      return false;
-    }
-    return true;
-  };
   //* Above is navigation of stepper
-  //* Below is miles and colors state
-  const [vehicleMiles, setVehicleMiles] = useState('');
+
   const allColors = [
     'red',
     'orange',
@@ -74,37 +73,44 @@ export default function HorizontalLinearStepper() {
     'black',
     'white',
   ];
-  const [vehicleColor, setVehicleColor] = useState(allColors);
-  const selectColor = (e) => {
-    e.preventDefault();
-    setVehicleColor(e.target.value);
-  };
-  // const selectMiles = (e) => {
-  //   console.log('This is e: ', e);
-  //   e.preventDefault();
-  //   setVehicleMiles(e.target.value);
-  // };
-  useEffect(() => {
-    (vehicleMiles) => {
-      vehicleMiles.preventDefault();
-      setVehicleMiles(vehicleMiles);
-    };
-    console.log('This is vehicleMiles from useEffect: ', vehicleMiles);
-  }, [vehicleMiles]);
-  //* Above is miles and colors state
 
-  //* Below is all slider related
-  const [sliderValue, setSliderValue] = useState(0);
-  function valueLabelFormatPrice(value) {
-    return value > 65 ? `😃` : value > 35 ? `😊` : `🙂`;
-  }
+  //* Below is ComponentStep1 form related
+  const [formComponentStep1Values, setFormComponentStep1Values] = useState(
+    defaultComponentStep1Values
+  );
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormComponentStep1Values({
+      ...formComponentStep1Values,
+      [name]: value,
+    });
+  };
+  const handleSliderChange = (name) => (e, value) => {
+    setFormComponentStep1Values({
+      ...formComponentStep1Values,
+      [name]: value,
+    });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formComponentStep1Values);
+    setFormComponentStep1Values({
+      exteriorColor: '',
+      mileage: '',
+      sliderVehicleCondition: 2,
+    });
+    setIsNextDisabled(false);
+    setIsSubmitDisabled(true);
+    // form1Validation();
+  };
   const StatusOfSlider = () => {
-    if (sliderValue > 65) {
+    if (formComponentStep1Values.sliderVehicleCondition == 3) {
       return (
         <Box sx={{ mb: 5 }}>
           <Typography variant="h5" component="h2">
             Vehicle Condition: Excellent
           </Typography>
+          <Typography variant="h3">😃</Typography>
           <Box sx={{ mx: 5 }}>
             <Typography variant="body2" component="h2">
               Helpful tip: Only 3% of used cars are considered to be in
@@ -115,12 +121,13 @@ export default function HorizontalLinearStepper() {
         </Box>
       );
     }
-    if (sliderValue > 35) {
+    if (formComponentStep1Values.sliderVehicleCondition == 2) {
       return (
         <Box sx={{ mb: 5 }}>
           <Typography variant="h5" component="h2">
             Vehicle Condition: Good
           </Typography>
+          <Typography variant="h3">😊</Typography>
         </Box>
       );
     }
@@ -128,6 +135,7 @@ export default function HorizontalLinearStepper() {
       <Box sx={{ mb: 5 }}>
         <Typography variant="h5" component="h2">
           Vehicle Condition: Fair
+          <Typography variant="h3">🙂</Typography>
           <Box sx={{ mx: 5, mb: 5 }}>
             <Typography variant="body2" component="h2">
               Helpful tip: The majority of pre-owned vehicles fall under this
@@ -138,54 +146,16 @@ export default function HorizontalLinearStepper() {
       </Box>
     );
   };
+  const form1Validation = () => {
+    if (formComponentStep1Values.mileage == '') {
+      return true;
+    }
 
-  const handleChange = (event, newValue) => {
-    setSliderValue(newValue);
+    if (formComponentStep1Values.exteriorColor == '') {
+      return true;
+    }
+    return false;
   };
-  function valuetoColor(sliderValue) {
-    return !sliderValue
-      ? `#ffc109`
-      : sliderValue > 65
-      ? `#1c3cca`
-      : sliderValue > 35
-      ? `#52af77`
-      : `#ffc109`;
-  }
-
-  const PrettoSlider = styled(Slider)({
-    color: valuetoColor(sliderValue),
-    height: 8,
-    '& .MuiSlider-track': {
-      border: 'none',
-    },
-    '& .MuiSlider-thumb': {
-      height: 24,
-      width: 24,
-      backgroundColor: '#fff',
-      border: '2px solid currentColor',
-      '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-        boxShadow: 'inherit',
-      },
-      '&:before': {
-        display: 'none',
-      },
-    },
-    '& .MuiSlider-valueLabel': {
-      fontSize: 40,
-      background: 'unset',
-      padding: 0,
-      marginBottom: 500,
-      width: 20,
-      height: 30,
-      borderRadius: '50%',
-      backgroundColor: valuetoColor(sliderValue),
-      transformOrigin: 'bottom left',
-      '&:before': { display: 'none' },
-      '&.MuiSlider-valueLabelOpen': {},
-      '& > *': {},
-    },
-  });
-  //* Above is all slider related
 
   function ComponentStep1() {
     return (
@@ -197,128 +167,88 @@ export default function HorizontalLinearStepper() {
               <Grid item xs={12} sm={6}>
                 <Card>
                   {/* Below is the vehicle you found. */}
-                  <>
-                    <Container
-                      sx={{
-                        marginTop: '25px',
-                      }}
-                    >
-                      <Box
-                        component="img"
-                        src="/static/carfax.jpg"
-                        sx={{
-                          maxWidth: '40%',
-                        }}
-                      />
-                    </Container>
-                    <CardHeader title="We found your car!" />
-                    <Typography sx={{ mt: 1 }} variant="h6">
-                      <h5>Confirm details below to continue</h5>
-                    </Typography>
-                    <Paper
-                      sx={{
-                        borderRadius: '0px',
-                        my: 3,
-                        bgcolor: 'grey.50012',
-                      }}
-                    >
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        flexDirection="row"
-                      >
-                        <Box sx={{ p: 3.5, backgroundColor: 'grey.300' }}>
-                          <Box
-                            component="img"
-                            src="/static/car_logo.svg"
-                            sx={{
-                              maxWidth: '50px',
-                            }}
-                          />
-                        </Box>
-                        <Box display="flex" alignItems="center">
-                          <Box
-                            display="flex"
-                            alignItems="flex-start"
-                            flexDirection="column"
-                            sx={{ my: 0, ml: 2, mr: 10 }}
-                          >
-                            <Typography>
-                              <strong>Make:</strong> Toyota
-                            </Typography>
-                            <Typography>
-                              <strong>Model:</strong> Camry
-                            </Typography>
-                            <Typography>
-                              <strong>Year:</strong> 2019
-                            </Typography>
-                          </Box>
-                          <Button
-                            variant="contained"
-                            color="warning"
-                            size="small"
-                            startIcon={<ThreeSixtyIcon />}
-                            onClick={() => {
-                              router.push('/dashboard/carfax-value');
-                            }}
-                          >
-                            Reset
-                          </Button>
-                        </Box>
-                      </Box>
-                    </Paper>
-                  </>
+                  <VehicleFound />
                   <FormHeader formtopic="I. CONDITION" />
-                  <Typography sx={{ mt: 1 }} variant="h6">
-                    <StatusOfSlider />
-                  </Typography>
 
-                  <CardContent>
-                    <Grid item xs={12} md={4}>
-                      <PrettoSlider
-                        defaultValue={50}
-                        onChange={handleChange}
-                        valueLabelDisplay="on"
-                        valueLabelFormat={valueLabelFormatPrice}
-                        value={sliderValue}
-                        step={1}
-                      />
-                    </Grid>
-                  </CardContent>
-                  <FormHeader formtopic="II. TRIM & OPTION" />
-                  <CardContent>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        mx: 16, // transform: 'scale(0.8)',
-                      }}
-                    >
-                      <span>Enter Mileage</span>
-                      <TextField
-                        id="outlined-number"
-                        label="Mileage"
-                        type="number"
-                        value={vehicleMiles}
-                        onChange={(e) => {
-                          e.preventDefault();
-                          setVehicleMiles(e.target.value);
-                        }}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                      />
+                  <form onSubmit={handleSubmit}>
+                    <CardContent>
+                      <Grid item>
+                        <div style={{ width: '400px' }}>
+                          <StatusOfSlider />
+                          <Slider
+                            value={
+                              formComponentStep1Values.sliderVehicleCondition
+                            }
+                            onChange={handleSliderChange(
+                              'sliderVehicleCondition'
+                            )}
+                            defaultValue={1}
+                            step={1}
+                            min={1}
+                            max={3}
+                            marks={[
+                              {
+                                value: 1,
+                                label: 'Fair',
+                              },
+                              {
+                                value: 2,
+                                label: 'Good',
+                              },
+                              {
+                                value: 3,
+                                label: 'Excellent',
+                              },
+                            ]}
+                            valueLabelDisplay="off"
+                          />
+                        </div>
+                      </Grid>
+                    </CardContent>
 
-                      <span>Select Color</span>
-                      <Select value={vehicleColor} onChange={selectColor}>
-                        {allColors?.map((item) => (
-                          <MenuItem key={item} value={item}>
-                            {item}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </Box>
-                  </CardContent>
+                    <FormHeader formtopic="II. TRIM & OPTION" />
+                    <CardContent>
+                      <Grid item>
+                        <TextField
+                          id="mileage-input"
+                          name="mileage"
+                          label="Mileage"
+                          type="number"
+                          value={formComponentStep1Values.mileage}
+                          onChange={handleInputChange}
+                        />
+                      </Grid>
+
+                      <Grid item sx={{ my: 3 }}>
+                        <FormControl>
+                          <Typography variant="body2">
+                            Select Vehicle Color
+                          </Typography>
+                          <Select
+                            name="exteriorColor"
+                            value={formComponentStep1Values.exteriorColor}
+                            onChange={handleInputChange}
+                          >
+                            {allColors?.map((item) => (
+                              <MenuItem key={item} value={item}>
+                                {item}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </Grid>
+
+                      <Button
+                        variant="contained"
+                        disabled={form1Validation()}
+                        // onClick={() => setIsNextDisabled(false)}
+                        color="primary"
+                        type="submit"
+                      >
+                        Submit
+                      </Button>
+                    </CardContent>
+                  </form>
                 </Card>
               </Grid>
             </Grid>
@@ -335,7 +265,11 @@ export default function HorizontalLinearStepper() {
           </Button>
           <Box sx={{ flexGrow: 1 }} />
 
-          <Button variant="contained" onClick={handleNext}>
+          <Button
+            variant="contained"
+            disabled={isNextDisabled}
+            onClick={handleNext}
+          >
             {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
           </Button>
         </Box>
@@ -469,3 +403,76 @@ const FormHeader = ({ formtopic }) => (
     </Paper>
   </>
 );
+
+function VehicleFound() {
+  const router = useRouter();
+  return (
+    <>
+      <Container
+        sx={{
+          marginTop: '25px',
+        }}
+      >
+        <Box
+          component="img"
+          src="/static/carfax.jpg"
+          sx={{
+            maxWidth: '40%',
+          }}
+        />
+      </Container>
+      <CardHeader title="We found your car!" />
+      <Typography sx={{ mt: 1 }} variant="h6">
+        <h5>Confirm details below to continue</h5>
+      </Typography>
+      <Paper
+        sx={{
+          borderRadius: '0px',
+          my: 3,
+          bgcolor: 'grey.50012',
+        }}
+      >
+        <Box display="flex" alignItems="center" flexDirection="row">
+          <Box sx={{ p: 3.5, backgroundColor: 'grey.300' }}>
+            <Box
+              component="img"
+              src="/static/car_logo.svg"
+              sx={{
+                maxWidth: '50px',
+              }}
+            />
+          </Box>
+          <Box display="flex" alignItems="center">
+            <Box
+              display="flex"
+              alignItems="flex-start"
+              flexDirection="column"
+              sx={{ my: 0, ml: 2, mr: 10 }}
+            >
+              <Typography>
+                <strong>Make:</strong> Toyota
+              </Typography>
+              <Typography>
+                <strong>Model:</strong> Camry
+              </Typography>
+              <Typography>
+                <strong>Year:</strong> 2019
+              </Typography>
+            </Box>
+            <Button
+              variant="contained"
+              color="warning"
+              size="small"
+              startIcon={<ThreeSixtyIcon />}
+              onClick={() => {
+                router.push('/dashboard/carfax-value');
+              }}
+            >
+              Reset
+            </Button>
+          </Box>
+        </Box>
+      </Paper>
+    </>
+  );
+}
