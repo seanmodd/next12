@@ -33,7 +33,7 @@ const CarValueEstimator = () => {
                   name: 'Carfax Value Estimator',
                   href: '/dashboard/carfax-value/',
                 },
-                { name: 'Vehicle Found' },
+                { name: 'Finding Price' },
               ]}
             />
 
