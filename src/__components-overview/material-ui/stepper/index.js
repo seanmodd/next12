@@ -2,7 +2,7 @@
 import { styled } from '@mui/material/styles';
 import { Box, Paper, Container, Stack } from '@mui/material';
 // routes
-import CarfaxForm from 'src/priceEstimator/CarfaxForm';
+import CarfaxForm from 'src/priceEstimator/EntryCarfaxForm';
 import { PATH_PAGE } from '../../../../routes/paths';
 // components
 import Page from '../../../../minimalComponents/Page';
@@ -12,7 +12,7 @@ import { Block } from '../../Block';
 import CustomizedStepper from './CustomizedStepper';
 import VerticalLinearStepper from './VerticalLinearStepper';
 import LinearAlternativeLabel from './LinearAlternativeLabel';
-import HorizontalLinearStepper from './HorizontalLinearStepper';
+import HorizontalLinearStepper from '../../../priceEstimator/CarfaxStepper';
 
 // ----------------------------------------------------------------------
 

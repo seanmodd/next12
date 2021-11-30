@@ -9,8 +9,8 @@ import useSettings from 'src/hooks/useSettings';
 import Page from 'src/minimalComponents/Page';
 import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
 import DashboardLayout from 'src/layouts/dashboard';
-import CarfaxForm from 'src/priceEstimator/CarfaxForm';
-import HorizontalLinearStepper from 'src/__components-overview/material-ui/stepper/HorizontalLinearStepper';
+
+import EntryCarfaxForm from 'src/priceEstimator/EntryCarfaxForm';
 
 const CarValueEstimator = () => {
   const { themeStretch } = useSettings();
@@ -29,21 +29,12 @@ const CarValueEstimator = () => {
               heading="Pre-Owned Price Estimator"
               links={[
                 { name: 'Dashboard', href: PATH_DASHBOARD.root },
-                { name: 'Trade-In Value' },
+                { name: 'Carfax Value Estimator' },
               ]}
             />
-
             <Container align="center" justify="center" maxWidth="lg">
               <Stack spacing={5}>
-                <Paper
-                  sx={{
-                    p: 3,
-                    width: '100%',
-                    boxShadow: (theme) => theme.customShadows.z8,
-                  }}
-                >
-                  <HorizontalLinearStepper />
-                </Paper>
+                <EntryCarfaxForm />
               </Stack>
             </Container>
           </Container>

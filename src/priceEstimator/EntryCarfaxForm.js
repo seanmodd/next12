@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import {
   Container,
@@ -15,6 +17,7 @@ import { fetchMakes, fetchModels, fetchYears } from 'src/utils/Api';
 import styles from '../../styles/Home.module.css';
 
 function CarfaxForm() {
+  const router = useRouter();
   // state for make
   const [makeValue, setMakeValue] = useState('');
   const [makesData, setMakesData] = useState([
@@ -85,6 +88,16 @@ function CarfaxForm() {
     fetchMakesData();
   }, []);
 
+  useEffect(() => {
+    console.log('The useffect is put in here is makeValue : ', makeValue);
+    selectModel;
+  }, [makeValue]);
+
+  function handleSubmitClick(e) {
+    e.preventDefault();
+    router.push('/dashboard/carfax-value/vehicle-info/');
+  }
+
   return (
     <div>
       <Container alignItems="center" justifyContent="center" sx={{ mt: 4 }}>
@@ -124,10 +137,10 @@ function CarfaxForm() {
                     </MenuItem>
                   ))}
                 </Select>
-
                 {/* model select */}
                 <span>Select Model</span>
                 <Select
+                  disabled={makeValue === ''}
                   id="demo-simple-select"
                   value={modelValue}
                   onChange={selectModel}
@@ -138,11 +151,11 @@ function CarfaxForm() {
                     </MenuItem>
                   ))}
                 </Select>
-
                 {/* year select */}
                 <span>Select Model</span>
                 <Select
                   id="demo-simple-select"
+                  disabled={makesData}
                   className={styles.demoSimpleSelect}
                   value={yearValue}
                   onChange={selectYear}
@@ -153,16 +166,25 @@ function CarfaxForm() {
                     </MenuItem>
                   ))}
                 </Select>
+
+                <strong>
+                  {makeValue}
+                  {makeValue && modelValue && ','} {modelValue}
+                  {makeValue && modelValue && yearValue && '-'}
+                  {yearValue}
+                </strong>
                 <Button
                   fullWidth
-                  // disabled={isMaxQuantity}
                   size="large"
                   type="button"
-                  // color="primary"
+                  disabled="true"
                   variant="contained"
-                  // startIcon={<Icon icon={roundAddShoppingCart} />}
-                  // onClick={handleAddCart}
-                  sx={{ whiteSpace: 'nowrap' }}
+                  onClick={handleSubmitClick}
+                  sx={{
+                    whiteSpace: 'nowrap',
+                    marginTop: '40px',
+                    marginBottom: '20px',
+                  }}
                 >
                   Get Started
                 </Button>
