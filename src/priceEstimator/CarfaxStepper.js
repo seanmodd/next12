@@ -18,11 +18,7 @@ import Stepper1CarfaxForm from 'src/priceEstimator/StepperForms/Stepper1CarfaxFo
 
 // ----------------------------------------------------------------------
 export default function HorizontalLinearStepper() {
-  const steps = [
-    'Select campaign settings',
-    'Create an ad group',
-    'Create an ad',
-  ];
+  const steps = ['Your Vehicle Info', 'Calculate Price', 'Success!'];
 
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
@@ -84,6 +80,40 @@ export default function HorizontalLinearStepper() {
                     />
                   </Container>
                   <CardHeader title="Your Vehicle Info" />
+                  <Paper
+                    sx={{
+                      p: 1.5,
+                      my: 3,
+                      bgcolor: 'grey.50012',
+                    }}
+                  >
+                    <Box display="flex" alignItems="center" flexDirection="row">
+                      <Box
+                        component="img"
+                        src="/static/car_logo.svg"
+                        sx={{
+                          ml: 2,
+                          maxWidth: '75px',
+                        }}
+                      />
+                      <Box
+                        display="flex"
+                        alignItems="flex-start"
+                        flexDirection="column"
+                        sx={{ my: 1, ml: 7 }}
+                      >
+                        <Typography>
+                          <strong>Make:</strong> Toyota
+                        </Typography>
+                        <Typography>
+                          <strong>Model:</strong> Camry
+                        </Typography>
+                        <Typography>
+                          <strong>Year:</strong> 2019
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Paper>
                   <Typography sx={{ mt: 1 }} variant="h6">
                     <h5>Step 1</h5>
                   </Typography>
@@ -135,7 +165,7 @@ export default function HorizontalLinearStepper() {
                       }}
                     />
                   </Container>
-                  <CardHeader title="Your Vehicle Info" />
+                  <CardHeader title="Calculate Price" />
                   <Typography sx={{ mt: 1 }} variant="h6">
                     <h5>Step 2</h5>
                   </Typography>
@@ -166,6 +196,28 @@ export default function HorizontalLinearStepper() {
     );
   }
 
+  function ComponentStep3() {
+    <>
+      <Paper sx={{ p: 3, my: 3, minHeight: 120, bgcolor: 'grey.50012' }}>
+        <Typography sx={{ my: 1 }}>
+          All steps completed - you&apos;re finished
+        </Typography>
+      </Paper>
+
+      <Box sx={{ display: 'flex' }}>
+        <Box sx={{ flexGrow: 1 }} />
+        <Button
+          onClick={(e) => {
+            console.log('e clicked on view price', e);
+            return e.preventDefault();
+          }}
+        >
+          View Price
+        </Button>
+      </Box>
+    </>;
+  }
+
   return (
     <>
       <Stepper activeStep={activeStep}>
@@ -181,27 +233,7 @@ export default function HorizontalLinearStepper() {
       </Stepper>
       {activeStep === 0 && <ComponentStep1 />}
       {activeStep === 1 && <ComponentStep2 />}
-      {activeStep === 2 && (
-        <>
-          <Paper sx={{ p: 3, my: 3, minHeight: 120, bgcolor: 'grey.50012' }}>
-            <Typography sx={{ my: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-          </Paper>
-
-          <Box sx={{ display: 'flex' }}>
-            <Box sx={{ flexGrow: 1 }} />
-            <Button
-              onClick={(e) => {
-                console.log('e clicked on view price', e);
-                return e.preventDefault();
-              }}
-            >
-              View Price
-            </Button>
-          </Box>
-        </>
-      )}
+      {activeStep === 2 && <ComponentStep3 />}
     </>
   );
 }
