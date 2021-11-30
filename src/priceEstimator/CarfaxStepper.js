@@ -1,17 +1,12 @@
 import { useRouter } from 'next/router';
 import ThreeSixtyIcon from '@mui/icons-material/ThreeSixty';
-import { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
+import { useState, useEffect, useContext } from 'react';
 // material
 import {
   Box,
   Step,
   Container,
-  FormControlLabel,
   FormControl,
-  FormLabel,
-  RadioGroup,
-  Radio,
   TextField,
   Paper,
   Grid,
@@ -27,6 +22,7 @@ import {
   StepLabel,
   Typography,
 } from '@mui/material';
+import { ContextCarfax } from 'src/priceEstimator/GlobalContextCarfax';
 
 const defaultComponentStep1Values = {
   exteriorColor: '',

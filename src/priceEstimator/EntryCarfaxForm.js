@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   Container,
   Button,
@@ -14,9 +14,12 @@ import {
   MenuItem,
 } from '@mui/material';
 import { fetchMakes, fetchModels, fetchYears } from 'src/utils/Api';
+import { ContextCarfax } from 'src/priceEstimator/GlobalContextCarfax';
 import styles from '../../styles/Home.module.css';
 
 function CarfaxForm() {
+  const { chosenVehicle, setChosenVehicle } = useContext(ContextCarfax);
+
   const router = useRouter();
   // state for make
   const [makeValue, setMakeValue] = useState('');
