@@ -33,34 +33,20 @@ const defaultComponentStep1Values = {
   mileage: '',
   sliderVehicleCondition: 2,
 };
+const defaultComponentStep2Values = {
+  email: '',
+  phone: '',
+};
 
 export default function HorizontalLinearStepper() {
   //* Below is navigation of stepper
-  const [isNextDisabled, setIsNextDisabled] = useState(true);
   const steps = ['Vehicle Found', 'Calculate Price', 'Success!'];
-
   const [activeStep, setActiveStep] = useState(0);
-  const [skipped, setSkipped] = useState(new Set());
-
-  const isStepSkipped = (step) => skipped.has(step);
-
-  const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
-  };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
   //* Above is navigation of stepper
-
   const allColors = [
     'red',
     'orange',
@@ -103,9 +89,9 @@ export default function HorizontalLinearStepper() {
       mileage: '',
       sliderVehicleCondition: 2,
     });
-    setIsNextDisabled(false);
-    // form1Validation();
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
+
   const StatusOfSlider = () => {
     if (formComponentStep1Values.sliderVehicleCondition == 3) {
       return (
@@ -160,6 +146,45 @@ export default function HorizontalLinearStepper() {
     return false;
   };
 
+  // & BELOW IS EVERYTHING COMPONENT STEP 2 RELATED
+
+  const [formComponentStep2Values, setFormComponentStep2Values] = useState(
+    defaultComponentStep2Values
+  );
+  const handleEmailChange = (e) => {
+    setFormComponentStep2Values({
+      ...formComponentStep2Values,
+      email: e.target.value,
+    });
+  };
+  const handlePhoneChange = (e) => {
+    setFormComponentStep2Values({
+      ...formComponentStep2Values,
+      phone: e.target.value,
+    });
+  };
+
+  const handleSubmit2 = (event) => {
+    event.preventDefault();
+    console.log(formComponentStep1Values);
+    setFormComponentStep2Values({
+      email: '',
+      phone: '',
+    });
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const form2Validation = () => {
+    if (formComponentStep2Values.email == '') {
+      return true;
+    }
+
+    if (formComponentStep2Values.phone == '') {
+      return true;
+    }
+    return false;
+  };
+
   function ComponentStep1() {
     return (
       <>
@@ -170,7 +195,7 @@ export default function HorizontalLinearStepper() {
               <Grid item xs={12} sm={6}>
                 <Card>
                   {/* Below is the vehicle you found. */}
-                  <VehicleFound />
+                  <VehicleFoundComponent1 />
                   <FormHeader formtopic="I. CONDITION" />
 
                   <form onSubmit={handleSubmit}>
@@ -244,7 +269,6 @@ export default function HorizontalLinearStepper() {
                       <Button
                         variant="contained"
                         disabled={form1Validation()}
-                        // onClick={() => setIsNextDisabled(false)}
                         color="primary"
                         type="submit"
                       >
@@ -267,18 +291,11 @@ export default function HorizontalLinearStepper() {
             Back
           </Button>
           <Box sx={{ flexGrow: 1 }} />
-
-          <Button
-            variant="contained"
-            disabled={isNextDisabled}
-            onClick={handleNext}
-          >
-            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-          </Button>
         </Box>
       </>
     );
   }
+
   function ComponentStep2() {
     return (
       <>
@@ -288,26 +305,48 @@ export default function HorizontalLinearStepper() {
             <Grid justifyContent="center" container spacing={5}>
               <Grid item xs={12} sm={6}>
                 <Card>
-                  <Container
-                    sx={{
-                      marginTop: '25px',
-                    }}
-                  >
-                    <Box
-                      component="img"
-                      src="/static/carfax.jpg"
-                      sx={{
-                        maxWidth: '40%',
-                      }}
-                    />
-                  </Container>
-                  <CardHeader title="Calculate Price" />
-                  <Typography sx={{ mt: 1 }} variant="h6">
-                    <h5>Step 2</h5>
-                  </Typography>
-                  <CardContent>
-                    <h6>Sample content</h6>
-                  </CardContent>
+                  {/* Below is the vehicle you found. */}
+                  <VehicleFoundComponent2 />
+                  <FormHeader formtopic="III. LAST STEPS" />
+
+                  <form onSubmit={handleSubmit2}>
+                    <CardContent>
+                      <Grid item>
+                        <TextField
+                          id="email-input"
+                          name="email"
+                          label="email"
+                          type="email"
+                          value={formComponentStep2Values.email}
+                          onChange={handleEmailChange}
+                        />
+                      </Grid>
+
+                      <Grid item sx={{ my: 3 }}>
+                        <FormControl>
+                          <Grid item>
+                            <TextField
+                              id="phone-input"
+                              name="phone"
+                              label="mobile"
+                              type="phone"
+                              value={formComponentStep2Values.phone}
+                              onChange={handlePhoneChange}
+                            />
+                          </Grid>
+                        </FormControl>
+                      </Grid>
+
+                      <Button
+                        variant="contained"
+                        disabled={form2Validation()}
+                        color="primary"
+                        type="submit"
+                      >
+                        Submit
+                      </Button>
+                    </CardContent>
+                  </form>
                 </Card>
               </Grid>
             </Grid>
@@ -323,35 +362,47 @@ export default function HorizontalLinearStepper() {
             Back
           </Button>
           <Box sx={{ flexGrow: 1 }} />
-
-          <Button variant="contained" onClick={handleNext}>
-            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-          </Button>
         </Box>
       </>
     );
   }
 
   function ComponentStep3() {
-    <>
-      <Paper sx={{ p: 3, my: 3, minHeight: 120, bgcolor: 'grey.50012' }}>
-        <Typography sx={{ my: 1 }}>
-          All steps completed - you&apos;re finished
-        </Typography>
-      </Paper>
+    return (
+      <>
+        <Paper sx={{ p: 3, my: 3, minHeight: 120, bgcolor: 'grey.50012' }}>
+          <Box display="flex" alignItems="center" flexDirection="column">
+            <Typography sx={{ my: 3 }}>
+              Ready to find the price of your vehicle?
+            </Typography>
+            <Box display="flex">
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={(e) => {
+                  console.log('e clicked on view price', e);
+                  return e.preventDefault();
+                }}
+              >
+                View Price
+              </Button>
+            </Box>
+          </Box>
+        </Paper>
 
-      <Box sx={{ display: 'flex' }}>
-        <Box sx={{ flexGrow: 1 }} />
-        <Button
-          onClick={(e) => {
-            console.log('e clicked on view price', e);
-            return e.preventDefault();
-          }}
-        >
-          View Price
-        </Button>
-      </Box>
-    </>;
+        <Box sx={{ display: 'flex' }}>
+          <Button
+            color="inherit"
+            disabled={activeStep === 0}
+            onClick={handleBack}
+            sx={{ mr: 1 }}
+          >
+            Back
+          </Button>
+          <Box sx={{ flexGrow: 1 }} />
+        </Box>
+      </>
+    );
   }
 
   return (
@@ -407,7 +458,79 @@ const FormHeader = ({ formtopic }) => (
   </>
 );
 
-function VehicleFound() {
+function VehicleFoundComponent1() {
+  const router = useRouter();
+  return (
+    <>
+      <Container
+        sx={{
+          marginTop: '25px',
+        }}
+      >
+        <Box
+          component="img"
+          src="/static/carfax.jpg"
+          sx={{
+            maxWidth: '40%',
+          }}
+        />
+      </Container>
+      <CardHeader title="We found your car!" />
+      <Typography sx={{ mt: 1 }} variant="h6">
+        <h5>Confirm details below to continue</h5>
+      </Typography>
+      <Paper
+        sx={{
+          borderRadius: '0px',
+          my: 3,
+          bgcolor: 'grey.50012',
+        }}
+      >
+        <Box display="flex" alignItems="center" flexDirection="row">
+          <Box sx={{ p: 3.5, backgroundColor: 'grey.300' }}>
+            <Box
+              component="img"
+              src="/static/car_logo.svg"
+              sx={{
+                maxWidth: '50px',
+              }}
+            />
+          </Box>
+          <Box display="flex" alignItems="center">
+            <Box
+              display="flex"
+              alignItems="flex-start"
+              flexDirection="column"
+              sx={{ my: 0, ml: 2, mr: 10 }}
+            >
+              <Typography>
+                <strong>Make:</strong> Toyota
+              </Typography>
+              <Typography>
+                <strong>Model:</strong> Camry
+              </Typography>
+              <Typography>
+                <strong>Year:</strong> 2019
+              </Typography>
+            </Box>
+            <Button
+              variant="contained"
+              color="warning"
+              size="small"
+              startIcon={<ThreeSixtyIcon />}
+              onClick={() => {
+                router.push('/dashboard/carfax-value');
+              }}
+            >
+              Reset
+            </Button>
+          </Box>
+        </Box>
+      </Paper>
+    </>
+  );
+}
+function VehicleFoundComponent2() {
   const router = useRouter();
   return (
     <>
