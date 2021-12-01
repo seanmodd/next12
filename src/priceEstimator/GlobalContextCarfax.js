@@ -7,6 +7,14 @@ export function ContextCarfaxProvider({ children }) {
     make: '',
     model: '',
     year: '',
+    mileage: '',
+    exteriorColor: '',
+    sliderVehicleCondition: '',
+    email: '',
+    phone: '',
+    zip: '',
+    vin: '',
+    licensePlate: '',
   };
 
   const [chosenVehicle, setChosenVehicle] = useState(vehicleDropdown);
