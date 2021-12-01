@@ -49,7 +49,7 @@ import MainLayout from 'src/layouts/main';
 import { RecoilRoot } from 'recoil';
 import GlobalStateProvider from 'src/___global/store/GlobalStateProvider';
 // For carfax form
-import { ContextCarfaxProvider } from 'src/priceEstimator/GlobalContextCarfax';
+import { ContextCarfaxProvider } from 'src/carfax/GlobalContextCarfax';
 import theme from '../theme';
 
 require('dotenv').config();

@@ -17,7 +17,7 @@ import Page from 'src/minimalComponents/Page';
 import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
 import DashboardLayout from 'src/layouts/dashboard';
 import ReactHookForm from 'src/__components-overview/extra/form-validation/ReactHookForm';
-import HorizontalLinearStepper from 'src/priceEstimator/CarfaxStepper';
+import HorizontalLinearStepper from 'src/carfax/Make/MakeStepperForm';
 
 const CarValueEstimator = () => {
   const { themeStretch } = useSettings();

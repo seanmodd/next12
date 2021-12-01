@@ -9,8 +9,7 @@ import useSettings from 'src/hooks/useSettings';
 import Page from 'src/minimalComponents/Page';
 import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
 import DashboardLayout from 'src/layouts/dashboard';
-import CarfaxForm from 'src/priceEstimator/EntryCarfaxForm';
-import CarfaxStepper from 'src/priceEstimator/CarfaxStepper';
+import CarfaxStepper from 'src/carfax/Make/MakeStepperForm';
 
 const CarValueEstimator = () => {
   const { themeStretch } = useSettings();
@@ -39,15 +38,15 @@ const CarValueEstimator = () => {
 
             <Container align="center" justify="center" maxWidth="lg">
               <Stack spacing={5}>
-                <Paper
+                {/* <Paper
                   sx={{
                     p: 3,
                     width: '100%',
                     boxShadow: (theme) => theme.customShadows.z8,
                   }}
-                >
-                  <CarfaxStepper />
-                </Paper>
+                > */}
+                <CarfaxStepper />
+                {/* </Paper> */}
               </Stack>
             </Container>
           </Container>

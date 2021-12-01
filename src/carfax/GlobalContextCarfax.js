@@ -9,7 +9,7 @@ export function ContextCarfaxProvider({ children }) {
     year: '',
     mileage: '',
     exteriorColor: '',
-    sliderVehicleCondition: '',
+    sliderVehicleCondition: 2,
     email: '',
     phone: '',
     zip: '',

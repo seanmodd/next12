@@ -10,7 +10,8 @@ import Page from 'src/minimalComponents/Page';
 import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
 import DashboardLayout from 'src/layouts/dashboard';
 
-import EntryCarfaxForm from 'src/priceEstimator/EntryCarfaxForm';
+import ShellForm from 'src/carfax/ShellForm';
+import MakeForm from 'src/carfax/MakeForm';
 
 const CarValueEstimator = () => {
   const { themeStretch } = useSettings();
@@ -34,7 +35,7 @@ const CarValueEstimator = () => {
             />
             <Container align="center" justify="center" maxWidth="lg">
               <Stack spacing={5}>
-                <EntryCarfaxForm />
+                <ShellForm />
               </Stack>
             </Container>
           </Container>

@@ -22,7 +22,7 @@ import {
   StepLabel,
   Typography,
 } from '@mui/material';
-import { ContextCarfax } from 'src/priceEstimator/GlobalContextCarfax';
+import { ContextCarfax } from 'src/carfax/GlobalContextCarfax';
 
 const defaultComponentStep1Values = {
   exteriorColor: '',
@@ -201,16 +201,16 @@ export default function HorizontalLinearStepper() {
           <Typography sx={{ my: 1 }}> Step {activeStep + 1}</Typography>
           <Container sx={{ mt: 4 }}>
             <Grid justifyContent="center" container spacing={5}>
-              <Grid item xs={12} sm={6}>
-                <Card>
+              <Grid item>
+                <Card sx={{ minWidth: '400px' }}>
                   {/* Below is the vehicle you found. */}
                   <VehicleFoundComponent1 />
                   <FormHeader formtopic="I. CONDITION" />
 
                   <form onSubmit={handleSubmit}>
                     <CardContent>
-                      <Grid item>
-                        <div style={{ width: '400px' }}>
+                      <Grid item sx={{ maxWidth: '200px' }}>
+                        <div>
                           <StatusOfSlider />
                           <Slider
                             value={
@@ -274,32 +274,46 @@ export default function HorizontalLinearStepper() {
                           </Select>
                         </FormControl>
                       </Grid>
-
-                      <Button
-                        variant="contained"
-                        disabled={form1Validation()}
-                        color="primary"
-                        type="submit"
-                      >
-                        Submit
-                      </Button>
+                      <Box justifyContent="center" sx={{ display: 'flex' }}>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            width: '100%',
+                          }}
+                        >
+                          <Button
+                            color="inherit"
+                            disabled={activeStep === 0}
+                            onClick={handleBack}
+                            sx={{ mr: 1 }}
+                          >
+                            Back
+                          </Button>
+                        </Box>
+                        <Box
+                          justifyContent="flex-end"
+                          sx={{
+                            display: 'flex',
+                            width: '100%',
+                          }}
+                        >
+                          <Button
+                            variant="contained"
+                            disabled={form1Validation()}
+                            color="primary"
+                            type="submit"
+                          >
+                            Submit
+                          </Button>
+                        </Box>
+                      </Box>
+                      <Box sx={{ flexGrow: 1 }} />
                     </CardContent>
                   </form>
                 </Card>
               </Grid>
             </Grid>
           </Container>
-        </Box>
-        <Box sx={{ display: 'flex' }}>
-          <Button
-            color="inherit"
-            disabled={activeStep === 0}
-            onClick={handleBack}
-            sx={{ mr: 1 }}
-          >
-            Back
-          </Button>
-          <Box sx={{ flexGrow: 1 }} />
         </Box>
       </>
     );
@@ -312,8 +326,8 @@ export default function HorizontalLinearStepper() {
           <Typography sx={{ my: 1 }}> Step {activeStep + 1}</Typography>
           <Container sx={{ mt: 4 }}>
             <Grid justifyContent="center" container spacing={5}>
-              <Grid item xs={12} sm={6}>
-                <Card>
+              <Grid item>
+                <Card sx={{ minWidth: '400px' }}>
                   {/* Below is the vehicle you found. */}
                   <VehicleFoundComponent2 />
                   <FormHeader formtopic="III. LAST STEPS" />
@@ -345,15 +359,40 @@ export default function HorizontalLinearStepper() {
                           </Grid>
                         </FormControl>
                       </Grid>
-
-                      <Button
-                        variant="contained"
-                        disabled={form2Validation()}
-                        color="primary"
-                        type="submit"
-                      >
-                        Submit
-                      </Button>
+                      <Box justifyContent="center" sx={{ display: 'flex' }}>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            width: '100%',
+                          }}
+                        >
+                          <Button
+                            color="inherit"
+                            disabled={activeStep === 0}
+                            onClick={handleBack}
+                            sx={{ mr: 1 }}
+                          >
+                            Back
+                          </Button>
+                        </Box>
+                        <Box
+                          justifyContent="flex-end"
+                          sx={{
+                            display: 'flex',
+                            width: '100%',
+                          }}
+                        >
+                          <Button
+                            variant="contained"
+                            disabled={form1Validation()}
+                            color="primary"
+                            type="submit"
+                          >
+                            Submit
+                          </Button>
+                        </Box>
+                      </Box>
+                      <Box sx={{ flexGrow: 1 }} />
                     </CardContent>
                   </form>
                 </Card>
@@ -467,6 +506,82 @@ const FormHeader = ({ formtopic }) => (
   </>
 );
 
+function VehicleFoundComponent1() {
+  const { chosenVehicle, setChosenVehicle } = useContext(ContextCarfax);
+  const router = useRouter();
+  return (
+    <>
+      <Container
+        sx={{
+          marginTop: '25px',
+        }}
+      >
+        <Box
+          component="img"
+          src="/static/carfax.jpg"
+          sx={{
+            maxWidth: '200px',
+            minWidth: '200px',
+          }}
+        />
+      </Container>
+      <CardHeader title="We found your car!" />
+      <Typography sx={{ mt: 1 }} variant="h6">
+        <h5>Confirm details below to continue</h5>
+      </Typography>
+      <Button
+        variant="contained"
+        color="warning"
+        size="small"
+        sx={{ mt: 2 }}
+        startIcon={<ThreeSixtyIcon />}
+        onClick={() => {
+          router.push('/dashboard/carfax-value');
+        }}
+      >
+        Reset
+      </Button>
+      <Paper
+        sx={{
+          borderRadius: '0px',
+          my: 3,
+          bgcolor: 'grey.50012',
+        }}
+      >
+        <Box display="flex" alignItems="center" flexDirection="row">
+          <Box sx={{ p: 3.5, backgroundColor: 'grey.300' }}>
+            <Box
+              component="img"
+              src="/static/car_logo.svg"
+              sx={{
+                maxWidth: '50px',
+              }}
+            />
+          </Box>
+          <Box display="flex" alignItems="center">
+            <Box
+              display="flex"
+              alignItems="flex-start"
+              flexDirection="column"
+              sx={{ my: 0, ml: 2, mr: 10 }}
+            >
+              <Typography>
+                <strong>Make:</strong> {chosenVehicle.make}
+              </Typography>
+              <Typography>
+                <strong>Model:</strong> {chosenVehicle.model}
+              </Typography>
+              <Typography>
+                <strong>Year:</strong> {chosenVehicle.year}
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Paper>
+    </>
+  );
+}
+
 function VehicleFoundComponent2() {
   const { chosenVehicle, setChosenVehicle } = useContext(ContextCarfax);
   const router = useRouter();
@@ -481,7 +596,8 @@ function VehicleFoundComponent2() {
           component="img"
           src="/static/carfax.jpg"
           sx={{
-            maxWidth: '40%',
+            maxWidth: '200px',
+            minWidth: '200px',
           }}
         />
       </Container>
@@ -550,9 +666,9 @@ function VehicleFoundComponent2() {
           <Box sx={{ p: 3.5, backgroundColor: 'grey.300' }}>
             <Box
               component="img"
-              src="/static/car_logo.svg"
+              src="/static/options.png"
               sx={{
-                maxWidth: '50px',
+                maxHeight: '50px',
               }}
             />
           </Box>
@@ -571,80 +687,6 @@ function VehicleFoundComponent2() {
               </Typography>
               <Typography>
                 <strong>Slider:</strong> {chosenVehicle.sliderVehicleCondition}
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
-      </Paper>
-    </>
-  );
-}
-function VehicleFoundComponent1() {
-  const { chosenVehicle, setChosenVehicle } = useContext(ContextCarfax);
-  const router = useRouter();
-  return (
-    <>
-      <Container
-        sx={{
-          marginTop: '25px',
-        }}
-      >
-        <Box
-          component="img"
-          src="/static/carfax.jpg"
-          sx={{
-            maxWidth: '40%',
-          }}
-        />
-      </Container>
-      <CardHeader title="We found your car!" />
-      <Typography sx={{ mt: 1 }} variant="h6">
-        <h5>Confirm details below to continue</h5>
-      </Typography>
-      <Button
-        variant="contained"
-        color="warning"
-        size="small"
-        sx={{ mt: 2 }}
-        startIcon={<ThreeSixtyIcon />}
-        onClick={() => {
-          router.push('/dashboard/carfax-value');
-        }}
-      >
-        Reset
-      </Button>
-      <Paper
-        sx={{
-          borderRadius: '0px',
-          my: 3,
-          bgcolor: 'grey.50012',
-        }}
-      >
-        <Box display="flex" alignItems="center" flexDirection="row">
-          <Box sx={{ p: 3.5, backgroundColor: 'grey.300' }}>
-            <Box
-              component="img"
-              src="/static/car_logo.svg"
-              sx={{
-                maxWidth: '50px',
-              }}
-            />
-          </Box>
-          <Box display="flex" alignItems="center">
-            <Box
-              display="flex"
-              alignItems="flex-start"
-              flexDirection="column"
-              sx={{ my: 0, ml: 2, mr: 10 }}
-            >
-              <Typography>
-                <strong>Make:</strong> {chosenVehicle.make}
-              </Typography>
-              <Typography>
-                <strong>Model:</strong> {chosenVehicle.model}
-              </Typography>
-              <Typography>
-                <strong>Year:</strong> {chosenVehicle.year}
               </Typography>
             </Box>
           </Box>

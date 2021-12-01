@@ -13,8 +13,12 @@ import {
   Select,
   MenuItem,
 } from '@mui/material';
-import { fetchMakes, fetchModels, fetchYears } from 'src/utils/Api';
-import { ContextCarfax } from 'src/priceEstimator/GlobalContextCarfax';
+import {
+  fetchMakes,
+  fetchModels,
+  fetchYears,
+} from 'src/carfax/Make/MakeFormApi';
+import { ContextCarfax } from 'src/carfax/GlobalContextCarfax';
 import styles from '../../styles/Home.module.css';
 
 function CarfaxForm() {
@@ -99,8 +103,8 @@ function CarfaxForm() {
   }
 
   return (
-    <div>
-      <Container alignItems="center" justifyContent="center" sx={{ mt: 4 }}>
+    <>
+      {/* <Container alignItems="center" justifyContent="center" sx={{ mt: 4 }}>
         <Grid alignItems="center" justifyContent="center" container spacing={5}>
           <Grid item xs={12} sm={6}>
             <Card>
@@ -120,37 +124,11 @@ function CarfaxForm() {
                   }}
                 />
               </Container>
-              <CardHeader title="Get Your CARFAX Trade-In Value" />
+              <CardHeader title="Get Your CARFAX Trade-In Value" /> */}
               <Typography sx={{ mt: 1, mb: 5 }} variant="h6">
                 <h5>Enter your vehicle's information to get started!</h5>
               </Typography>
-              {/* <Box
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-              >
-                <Typography variant="body">
-                  {chosenVehicle.make && (
-                    <p>
-                      <b>Make:</b> {chosenVehicle.make}
-                    </p>
-                  )}
-                </Typography>
-                <Typography variant="body">
-                  {chosenVehicle.model && ( 
-                    <p>
-                      <b>Model:</b> {chosenVehicle.model}
-                    </p>
-                  )}
-                </Typography>
-                <Typography variant="body">
-                  {chosenVehicle.year && (
-                    <p>
-                      <b>Year:</b> {chosenVehicle.year}
-                    </p>
-                  )}
-                </Typography>
-              </Box> */}
+
               <CardContent className={styles.form}>
                 <span>Select Maker</span>
                 <Select
@@ -210,11 +188,11 @@ function CarfaxForm() {
                   Get Started
                 </Button>
               </CardContent>
-            </Card>
+            {/* </Card>
           </Grid>
         </Grid>
-      </Container>
-    </div>
+      </Container> */}
+    </>
   );
 }
 
