@@ -490,6 +490,18 @@ function VehicleFoundComponent2() {
       <Typography sx={{ mt: 1 }} variant="h6">
         <h5>Confirm details below to continue</h5>
       </Typography>
+      <Button
+        variant="contained"
+        color="warning"
+        size="small"
+        sx={{ mt: 2 }}
+        startIcon={<ThreeSixtyIcon />}
+        onClick={() => {
+          router.push('/dashboard/carfax-value');
+        }}
+      >
+        Reset
+      </Button>
       <Paper
         sx={{
           borderRadius: '0px',
@@ -523,6 +535,34 @@ function VehicleFoundComponent2() {
               <Typography>
                 <strong>Year:</strong> {chosenVehicle.year}
               </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Paper>
+      <Paper
+        sx={{
+          borderRadius: '0px',
+          my: 3,
+          bgcolor: 'grey.50012',
+        }}
+      >
+        <Box display="flex" alignItems="center" flexDirection="row">
+          <Box sx={{ p: 3.5, backgroundColor: 'grey.300' }}>
+            <Box
+              component="img"
+              src="/static/car_logo.svg"
+              sx={{
+                maxWidth: '50px',
+              }}
+            />
+          </Box>
+          <Box display="flex" alignItems="center">
+            <Box
+              display="flex"
+              alignItems="flex-start"
+              flexDirection="column"
+              sx={{ my: 0, ml: 2, mr: 10 }}
+            >
               <Typography>
                 <strong>Mileage:</strong> {chosenVehicle.mileage}
               </Typography>
@@ -533,17 +573,6 @@ function VehicleFoundComponent2() {
                 <strong>Slider:</strong> {chosenVehicle.sliderVehicleCondition}
               </Typography>
             </Box>
-            <Button
-              variant="contained"
-              color="warning"
-              size="small"
-              startIcon={<ThreeSixtyIcon />}
-              onClick={() => {
-                router.push('/dashboard/carfax-value');
-              }}
-            >
-              Reset
-            </Button>
           </Box>
         </Box>
       </Paper>
@@ -572,6 +601,18 @@ function VehicleFoundComponent1() {
       <Typography sx={{ mt: 1 }} variant="h6">
         <h5>Confirm details below to continue</h5>
       </Typography>
+      <Button
+        variant="contained"
+        color="warning"
+        size="small"
+        sx={{ mt: 2 }}
+        startIcon={<ThreeSixtyIcon />}
+        onClick={() => {
+          router.push('/dashboard/carfax-value');
+        }}
+      >
+        Reset
+      </Button>
       <Paper
         sx={{
           borderRadius: '0px',
@@ -606,17 +647,6 @@ function VehicleFoundComponent1() {
                 <strong>Year:</strong> {chosenVehicle.year}
               </Typography>
             </Box>
-            <Button
-              variant="contained"
-              color="warning"
-              size="small"
-              startIcon={<ThreeSixtyIcon />}
-              onClick={() => {
-                router.push('/dashboard/carfax-value');
-              }}
-            >
-              Reset
-            </Button>
           </Box>
         </Box>
       </Paper>

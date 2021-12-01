@@ -137,7 +137,7 @@ function CarfaxForm() {
                   )}
                 </Typography>
                 <Typography variant="body">
-                  {chosenVehicle.model && (
+                  {chosenVehicle.model && ( 
                     <p>
                       <b>Model:</b> {chosenVehicle.model}
                     </p>
