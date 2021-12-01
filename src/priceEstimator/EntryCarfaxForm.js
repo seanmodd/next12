@@ -41,17 +41,19 @@ function CarfaxForm() {
     setMakeValue(e.target.value);
     setmodelValue('');
     setyearValue('');
-
+    setChosenVehicle({ ...chosenVehicle, make: e.target.value });
     fetchModelsData(e.target.value);
   };
 
   const selectModel = (e) => {
     setmodelValue(e.target.value);
+    setChosenVehicle({ ...chosenVehicle, model: e.target.value });
     fetchYearsData(e.target.value);
   };
 
   const selectYear = (e) => {
     setyearValue(e.target.value);
+    setChosenVehicle({ ...chosenVehicle, year: e.target.value });
   };
 
   const fetchMakesData = () => {
@@ -119,9 +121,27 @@ function CarfaxForm() {
                 />
               </Container>
               <CardHeader title="Get Your CARFAX Trade-In Value" />
-              <Typography sx={{ mt: 1 }} variant="h6">
+              <Typography sx={{ mt: 1, mb: 5 }} variant="h6">
                 <h5>Enter your vehicle's information to get started!</h5>
               </Typography>
+              <Box
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+              >
+                <Typography variant="body">
+                  <b>Make: </b>
+                  {chosenVehicle.make}
+                </Typography>
+                <Typography variant="body">
+                  <b>Model: </b>
+                  {chosenVehicle.model}
+                </Typography>
+                <Typography variant="body">
+                  <b>Model: </b>
+                  {chosenVehicle.year}
+                </Typography>
+              </Box>
               <CardContent className={styles.form}>
                 <span>Select Maker</span>
                 <Select

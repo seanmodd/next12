@@ -455,6 +455,7 @@ const FormHeader = ({ formtopic }) => (
 );
 
 function VehicleFoundComponent1() {
+  const { chosenVehicle, setChosenVehicle } = useContext(ContextCarfax);
   const router = useRouter();
   return (
     <>
@@ -472,6 +473,7 @@ function VehicleFoundComponent1() {
         />
       </Container>
       <CardHeader title="We found your car!" />
+
       <Typography sx={{ mt: 1 }} variant="h6">
         <h5>Confirm details below to continue</h5>
       </Typography>
@@ -500,13 +502,13 @@ function VehicleFoundComponent1() {
               sx={{ my: 0, ml: 2, mr: 10 }}
             >
               <Typography>
-                <strong>Make:</strong> Toyota
+                <strong>Make:</strong> {chosenVehicle.make}
               </Typography>
               <Typography>
-                <strong>Model:</strong> Camry
+                <strong>Model:</strong> {chosenVehicle.model}
               </Typography>
               <Typography>
-                <strong>Year:</strong> 2019
+                <strong>Year:</strong> {chosenVehicle.year}
               </Typography>
             </Box>
             <Button
