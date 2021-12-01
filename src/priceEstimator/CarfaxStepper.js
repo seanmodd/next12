@@ -35,6 +35,7 @@ const defaultComponentStep2Values = {
 };
 
 export default function HorizontalLinearStepper() {
+  const { chosenVehicle, setChosenVehicle } = useContext(ContextCarfax);
   //* Below is navigation of stepper
   const steps = ['Vehicle Found', 'Calculate Price', 'Success!'];
   const [activeStep, setActiveStep] = useState(0);
@@ -64,10 +65,18 @@ export default function HorizontalLinearStepper() {
       ...formComponentStep1Values,
       mileage: e.target.value,
     });
+    setChosenVehicle({
+      ...chosenVehicle,
+      mileage: e.target.value,
+    });
   };
   const handleColorChange = (e) => {
     setFormComponentStep1Values({
       ...formComponentStep1Values,
+      exteriorColor: e.target.value,
+    });
+    setChosenVehicle({
+      ...chosenVehicle,
       exteriorColor: e.target.value,
     });
   };
@@ -75,6 +84,10 @@ export default function HorizontalLinearStepper() {
     setFormComponentStep1Values({
       ...formComponentStep1Values,
       [name]: value,
+    });
+    setChosenVehicle({
+      ...chosenVehicle,
+      sliderVehicleCondition: value,
     });
   };
   const handleSubmit = (event) => {
@@ -454,7 +467,7 @@ const FormHeader = ({ formtopic }) => (
   </>
 );
 
-function VehicleFoundComponent1() {
+function VehicleFoundComponent2() {
   const { chosenVehicle, setChosenVehicle } = useContext(ContextCarfax);
   const router = useRouter();
   return (
@@ -510,6 +523,15 @@ function VehicleFoundComponent1() {
               <Typography>
                 <strong>Year:</strong> {chosenVehicle.year}
               </Typography>
+              <Typography>
+                <strong>Mileage:</strong> {chosenVehicle.mileage}
+              </Typography>
+              <Typography>
+                <strong>Color:</strong> {chosenVehicle.exteriorColor}
+              </Typography>
+              <Typography>
+                <strong>Slider:</strong> {chosenVehicle.sliderVehicleCondition}
+              </Typography>
             </Box>
             <Button
               variant="contained"
@@ -528,7 +550,8 @@ function VehicleFoundComponent1() {
     </>
   );
 }
-function VehicleFoundComponent2() {
+function VehicleFoundComponent1() {
+  const { chosenVehicle, setChosenVehicle } = useContext(ContextCarfax);
   const router = useRouter();
   return (
     <>
@@ -574,13 +597,13 @@ function VehicleFoundComponent2() {
               sx={{ my: 0, ml: 2, mr: 10 }}
             >
               <Typography>
-                <strong>Make:</strong> Toyota
+                <strong>Make:</strong> {chosenVehicle.make}
               </Typography>
               <Typography>
-                <strong>Model:</strong> Camry
+                <strong>Model:</strong> {chosenVehicle.model}
               </Typography>
               <Typography>
-                <strong>Year:</strong> 2019
+                <strong>Year:</strong> {chosenVehicle.year}
               </Typography>
             </Box>
             <Button

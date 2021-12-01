@@ -124,24 +124,33 @@ function CarfaxForm() {
               <Typography sx={{ mt: 1, mb: 5 }} variant="h6">
                 <h5>Enter your vehicle's information to get started!</h5>
               </Typography>
-              <Box
+              {/* <Box
                 display="flex"
                 flexDirection="column"
                 justifyContent="center"
               >
                 <Typography variant="body">
-                  <b>Make: </b>
-                  {chosenVehicle.make}
+                  {chosenVehicle.make && (
+                    <p>
+                      <b>Make:</b> {chosenVehicle.make}
+                    </p>
+                  )}
                 </Typography>
                 <Typography variant="body">
-                  <b>Model: </b>
-                  {chosenVehicle.model}
+                  {chosenVehicle.model && (
+                    <p>
+                      <b>Model:</b> {chosenVehicle.model}
+                    </p>
+                  )}
                 </Typography>
                 <Typography variant="body">
-                  <b>Model: </b>
-                  {chosenVehicle.year}
+                  {chosenVehicle.year && (
+                    <p>
+                      <b>Year:</b> {chosenVehicle.year}
+                    </p>
+                  )}
                 </Typography>
-              </Box>
+              </Box> */}
               <CardContent className={styles.form}>
                 <span>Select Maker</span>
                 <Select
@@ -184,22 +193,6 @@ function CarfaxForm() {
                     </MenuItem>
                   ))}
                 </Select>
-
-                <Box
-                  alignItems="center"
-                  justifyContent="center"
-                  sx={{
-                    flexDirection: 'horizontal',
-                    lineHeight: '1.25',
-                    mt: -1,
-                  }}
-                >
-                  <strong>
-                    {makeValue && <h1>Make: {makeValue}</h1>}
-                    {modelValue && <h2>Model: {modelValue}</h2>}
-                    {yearValue && <h2>Year: {yearValue}</h2>}
-                  </strong>
-                </Box>
 
                 <Button
                   fullWidth
