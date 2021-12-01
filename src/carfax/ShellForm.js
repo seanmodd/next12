@@ -62,11 +62,21 @@ function CarfaxForm() {
         <Grid alignItems="center" justifyContent="center" container spacing={5}>
           <Grid item>
             <Card>
-              <Block title="3 Fast Estimates on Your Car!" sx={style}>
+              <Box
+                component="img"
+                src="/static/carfax.jpg"
+                sx={{
+                  maxWidth: '200px',
+                  mt: '40px',
+                }}
+              />
+              <CardHeader title="Get Your CARFAX Trade-In Value" />
+              <Block title="3 Easy Ways" sx={style}>
                 <TabContext value={value}>
                   <TabList onChange={handleChange}>
                     {SIMPLE_TAB.map((tab, index) => (
                       <Tab
+                        sx={{ marginLeft: 2, marginRight: 2, marginBottom: 0 }}
                         key={tab.value}
                         label={tab.label}
                         value={String(index + 1)}
@@ -76,7 +86,7 @@ function CarfaxForm() {
                   <Box
                     sx={{
                       p: 2,
-                      mt: 2,
+                      mt: 1,
 
                       width: '100%',
                       borderRadius: 1,
@@ -85,15 +95,6 @@ function CarfaxForm() {
                   >
                     {SIMPLE_TAB.map((panel, index) => (
                       <TabPanel key={panel.value} value={String(index + 1)}>
-                        <Box
-                          component="img"
-                          src="/static/carfax.jpg"
-                          sx={{
-                            maxWidth: '200px',
-                          }}
-                        />
-                        <CardHeader title="Get Your CARFAX Trade-In Value" />
-                        <Button>Here</Button>
                         {panel.form}
                       </TabPanel>
                     ))}

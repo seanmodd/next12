@@ -29,7 +29,7 @@ Block.propTypes = {
 
 export function Block({ title, sx, children }) {
   return (
-    <Card>
+    <>
       {title && <CardHeader title={title} />}
       <Box
         sx={{
@@ -40,6 +40,6 @@ export function Block({ title, sx, children }) {
       >
         {children}
       </Box>
-    </Card>
+    </>
   );
 }

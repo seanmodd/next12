@@ -104,34 +104,19 @@ function CarfaxForm() {
 
   return (
     <>
-      {/* <Container alignItems="center" justifyContent="center" sx={{ mt: 4 }}>
-        <Grid alignItems="center" justifyContent="center" container spacing={5}>
-          <Grid item xs={12} sm={6}>
-            <Card>
-              <Container
-                // display="flex"
-                align="center"
-                justify="center"
-                sx={{
-                  marginTop: '25px',
-                }}
-              >
-                <Box
-                  component="img"
-                  src="/static/carfax.jpg"
-                  sx={{
-                    maxWidth: '40%',
-                  }}
-                />
-              </Container>
-              <CardHeader title="Get Your CARFAX Trade-In Value" /> */}
-      <Typography sx={{ mt: 1, mb: 5 }} variant="h6">
-        <h5>Enter your vehicle's information to get started!</h5>
+      <Typography sx={{ mt: '15px' }} variant="h6">
+        Enter your vehicle's information to get started!
       </Typography>
 
       <CardContent className={styles.form}>
         <span>Select Maker</span>
-        <Select id="demo-simple-select" value={makeValue} onChange={selectMake}>
+
+        <Select
+          sx={{ maxWidth: '400px' }}
+          id="demo-simple-select"
+          value={makeValue}
+          onChange={selectMake}
+        >
           {makesData?.map((item, i) => (
             <MenuItem key={i?.toString()} value={item.make}>
               {item.make}
@@ -144,6 +129,7 @@ function CarfaxForm() {
           disabled={makeValue === ''}
           id="demo-simple-select"
           value={modelValue}
+          sx={{ maxWidth: '400px' }}
           onChange={selectModel}
         >
           {modelsData?.map((item, i) => (
@@ -157,6 +143,7 @@ function CarfaxForm() {
         <Select
           id="demo-simple-select"
           disabled={modelValue === ''}
+          sx={{ maxWidth: '400px' }}
           className={styles.demoSimpleSelect}
           value={yearValue}
           onChange={selectYear}
@@ -184,10 +171,6 @@ function CarfaxForm() {
           Get Started
         </Button>
       </CardContent>
-      {/* </Card>
-          </Grid>
-        </Grid>
-      </Container> */}
     </>
   );
 }
