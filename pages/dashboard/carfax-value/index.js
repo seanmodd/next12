@@ -11,7 +11,7 @@ import HeaderBreadcrumbs from 'src/minimalComponents/HeaderBreadcrumbs';
 import DashboardLayout from 'src/layouts/dashboard';
 
 import ShellForm from 'src/carfax/ShellForm';
-import MakeForm from 'src/carfax/MakeForm';
+import MakeForm from 'src/carfax/Make/MakeForm';
 
 const CarValueEstimator = () => {
   const { themeStretch } = useSettings();

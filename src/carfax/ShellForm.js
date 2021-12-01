@@ -21,10 +21,11 @@ import {
   fetchMakes,
   fetchModels,
   fetchYears,
-} from 'src/carfax/Make/MakeFormApi';
+} from 'src/carfax/carfaxAPIs/MakeAPI';
 import { ContextCarfax } from 'src/carfax/GlobalContextCarfax';
 import styles from '../../styles/Home.module.css';
-import MakeForm from './MakeForm';
+import MakeForm from './Make/MakeForm';
+import { Block } from './Block';
 
 function CarfaxForm() {
   const [value, setValue] = useState('1');
@@ -41,11 +42,16 @@ function CarfaxForm() {
   };
 
   const SIMPLE_TAB = [
-    { value: '1', label: 'Item One', disabled: false, form: <MakeForm /> },
-    { value: '2', label: 'Item Two', disabled: false, form: <h1>No form</h1> },
+    { value: '1', label: 'Make & Model', disabled: false, form: <MakeForm /> },
+    {
+      value: '2',
+      label: 'Vehicle VIN',
+      disabled: false,
+      form: <h1>No form</h1>,
+    },
     {
       value: '3',
-      label: 'Item Three',
+      label: 'License Plate',
       disabled: true,
       form: <h1>No form</h1>,
     },
@@ -54,16 +60,9 @@ function CarfaxForm() {
     <>
       <Container alignItems="center" justifyContent="center" sx={{ mt: 4 }}>
         <Grid alignItems="center" justifyContent="center" container spacing={5}>
-          <Grid item xs={12} sm={6}>
+          <Grid item>
             <Card>
-              <Container
-                // display="flex"
-                align="center"
-                justify="center"
-                sx={{
-                  marginTop: '25px',
-                }}
-              >
+              <Block title="3 Fast Estimates on Your Car!" sx={style}>
                 <TabContext value={value}>
                   <TabList onChange={handleChange}>
                     {SIMPLE_TAB.map((tab, index) => (
@@ -78,7 +77,7 @@ function CarfaxForm() {
                     sx={{
                       p: 2,
                       mt: 2,
-                      height: 80,
+
                       width: '100%',
                       borderRadius: 1,
                       bgcolor: 'grey.50012',
@@ -86,23 +85,24 @@ function CarfaxForm() {
                   >
                     {SIMPLE_TAB.map((panel, index) => (
                       <TabPanel key={panel.value} value={String(index + 1)}>
+                        <Box
+                          component="img"
+                          src="/static/carfax.jpg"
+                          sx={{
+                            maxWidth: '200px',
+                          }}
+                        />
+                        <CardHeader title="Get Your CARFAX Trade-In Value" />
+                        <Button>Here</Button>
                         {panel.form}
                       </TabPanel>
                     ))}
                   </Box>
                 </TabContext>
 
-                <Box
-                  component="img"
-                  src="/static/carfax.jpg"
-                  sx={{
-                    maxWidth: '40%',
-                  }}
-                />
-              </Container>
-              <CardHeader title="Get Your CARFAX Trade-In Value" />
-              <Button>Here</Button>
-              {/* <MakeForm /> */}
+                {/* <MakeForm /> */}
+                {/* </Container> */}
+              </Block>
             </Card>
           </Grid>
         </Grid>

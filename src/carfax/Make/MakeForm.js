@@ -17,9 +17,9 @@ import {
   fetchMakes,
   fetchModels,
   fetchYears,
-} from 'src/carfax/Make/MakeFormApi';
+} from 'src/carfax/carfaxAPIs/MakeAPI';
 import { ContextCarfax } from 'src/carfax/GlobalContextCarfax';
-import styles from '../../styles/Home.module.css';
+import styles from '../../../styles/Home.module.css';
 
 function CarfaxForm() {
   const { chosenVehicle, setChosenVehicle } = useContext(ContextCarfax);
@@ -125,70 +125,66 @@ function CarfaxForm() {
                 />
               </Container>
               <CardHeader title="Get Your CARFAX Trade-In Value" /> */}
-              <Typography sx={{ mt: 1, mb: 5 }} variant="h6">
-                <h5>Enter your vehicle's information to get started!</h5>
-              </Typography>
+      <Typography sx={{ mt: 1, mb: 5 }} variant="h6">
+        <h5>Enter your vehicle's information to get started!</h5>
+      </Typography>
 
-              <CardContent className={styles.form}>
-                <span>Select Maker</span>
-                <Select
-                  id="demo-simple-select"
-                  value={makeValue}
-                  onChange={selectMake}
-                >
-                  {makesData?.map((item, i) => (
-                    <MenuItem key={i?.toString()} value={item.make}>
-                      {item.make}
-                    </MenuItem>
-                  ))}
-                </Select>
-                {/* model select */}
-                <span>Select Model</span>
-                <Select
-                  disabled={makeValue === ''}
-                  id="demo-simple-select"
-                  value={modelValue}
-                  onChange={selectModel}
-                >
-                  {modelsData?.map((item, i) => (
-                    <MenuItem key={i?.toString()} value={item.model}>
-                      {item.model}
-                    </MenuItem>
-                  ))}
-                </Select>
-                {/* year select */}
-                <span>Select Year</span>
-                <Select
-                  id="demo-simple-select"
-                  disabled={modelValue === ''}
-                  className={styles.demoSimpleSelect}
-                  value={yearValue}
-                  onChange={selectYear}
-                >
-                  {yearsData?.map((item, i) => (
-                    <MenuItem key={i?.toString()} value={item.year}>
-                      {item.year}
-                    </MenuItem>
-                  ))}
-                </Select>
+      <CardContent className={styles.form}>
+        <span>Select Maker</span>
+        <Select id="demo-simple-select" value={makeValue} onChange={selectMake}>
+          {makesData?.map((item, i) => (
+            <MenuItem key={i?.toString()} value={item.make}>
+              {item.make}
+            </MenuItem>
+          ))}
+        </Select>
+        {/* model select */}
+        <span>Select Model</span>
+        <Select
+          disabled={makeValue === ''}
+          id="demo-simple-select"
+          value={modelValue}
+          onChange={selectModel}
+        >
+          {modelsData?.map((item, i) => (
+            <MenuItem key={i?.toString()} value={item.model}>
+              {item.model}
+            </MenuItem>
+          ))}
+        </Select>
+        {/* year select */}
+        <span>Select Year</span>
+        <Select
+          id="demo-simple-select"
+          disabled={modelValue === ''}
+          className={styles.demoSimpleSelect}
+          value={yearValue}
+          onChange={selectYear}
+        >
+          {yearsData?.map((item, i) => (
+            <MenuItem key={i?.toString()} value={item.year}>
+              {item.year}
+            </MenuItem>
+          ))}
+        </Select>
 
-                <Button
-                  fullWidth
-                  size="large"
-                  type="button"
-                  disabled={!makeValue || !modelValue || !yearValue}
-                  variant="contained"
-                  onClick={handleSubmitClick}
-                  sx={{
-                    whiteSpace: 'nowrap',
-                    marginTop: '20px',
-                    marginBottom: '20px',
-                  }}
-                >
-                  Get Started
-                </Button>
-              </CardContent>
-            {/* </Card>
+        <Button
+          fullWidth
+          size="large"
+          type="button"
+          disabled={!makeValue || !modelValue || !yearValue}
+          variant="contained"
+          onClick={handleSubmitClick}
+          sx={{
+            whiteSpace: 'nowrap',
+            marginTop: '20px',
+            marginBottom: '20px',
+          }}
+        >
+          Get Started
+        </Button>
+      </CardContent>
+      {/* </Card>
           </Grid>
         </Grid>
       </Container> */}
