@@ -99,7 +99,7 @@ function CarfaxForm() {
 
   function handleSubmitClick(e) {
     e.preventDefault();
-    router.push('/dashboard/carfax-value/vehicle-info/');
+    router.push('/dashboard/carfax-value/make/');
   }
 
   return (

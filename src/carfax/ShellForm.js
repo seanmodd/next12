@@ -25,6 +25,7 @@ import {
 import { ContextCarfax } from 'src/carfax/GlobalContextCarfax';
 import styles from '../../styles/Home.module.css';
 import MakeForm from './Make/MakeForm';
+import VINForm from './VIN/VINForm';
 import { Block } from './Block';
 
 function CarfaxForm() {
@@ -47,7 +48,7 @@ function CarfaxForm() {
       value: '2',
       label: 'Vehicle VIN',
       disabled: false,
-      form: <h1>No form</h1>,
+      form: <VINForm />,
     },
     {
       value: '3',
