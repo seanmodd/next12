@@ -31,38 +31,69 @@ function CarfaxForm() {
   const [vinData, setVinData] = useState([]);
 
   // updating field selction
-
-  const handleVin = (e) => {
+  const handleVinInput = (e) => {
+    e.preventDefault();
     setVinValue(e.target.value);
-    setChosenVehicle({ ...chosenVehicle, vin: e.target.value });
-    fetchVehicleFromVinDataTEST(e.target.value);
+    fetchVehicleFromVinData(e.target.value);
+  };
+  const handleVin = (e) => {
+    e.preventDefault();
+    setVinValue(e.target.value);
+
+    fetchVehicleFromVinData(e.target.value);
+    console.log(
+      'THIS IS THE FETCH VEHICLE FROM DATA: ',
+      fetchVehicleFromVinData(e.target.value)
+    );
     // fetchVehicleFromVinData(e.target.value);
     console.log('This is e.target.value : ', e.target.value);
     console.log('This is vinValue : ', vinValue);
     console.log('This is vinData : ', vinData);
+    console.log(
+      'This is vinData.data.vehiclePriceData.make : ',
+      vinData.data.vehiclePriceData.make
+    );
+    console.log(
+      'This is vinData.data.vehiclePriceData.model : ',
+      vinData.data.vehiclePriceData.model
+    );
+    console.log(
+      'This is vinData.data.vehiclePriceData.price : ',
+      vinData.data.vehiclePriceData.price
+    );
+    console.log(
+      'This is vinData.data.vehiclePriceData.condition : ',
+      vinData.data.vehiclePriceData.condition
+    );
+    console.log(
+      'This is vinData.data.vehiclePriceData.odometer : ',
+      vinData.data.vehiclePriceData.odometer
+    );
+    console.log(
+      'This is vinData.data.vehiclePriceData.year : ',
+      vinData.data.vehiclePriceData.year
+    );
+    setChosenVehicle({
+      ...chosenVehicle,
+      make: vinData.data.vehiclePriceData.make,
+      model: vinData.data.vehiclePriceData.model,
+      price: vinData.data.vehiclePriceData.price,
+      mileage: vinData.data.vehiclePriceData.odometer,
+      year: vinData.data.vehiclePriceData.year,
+      vin: e.target.value,
+    });
     console.log('This is chosenVehicle : ', chosenVehicle);
+    router.push('/dashboard/carfax-value/vin/');
   };
 
-  const fetchVehicleFromVinDataTEST = () => {
-    fetchVehicleFromVinTEST()
+  const fetchVehicleFromVinData = (vin) => {
+    fetchVehicleFromVin(vin)
       .then((res) => {
         console.log('This is res : ', res);
         setVinData(res);
       })
       .catch((err) => {
         console.log('This is err : ', err);
-      });
-  };
-
-  const fetchVehicleFromVinData = (vin) => {
-    console.log('This is the vin param from fetchVehicleFromVinData : ', vin);
-    fetchVehicleFromVin(vin)
-      .then((res) => {
-        // setVinData(res.data.data.getMakeModels);
-        setVinData(res.data.data.getMakeModels);
-      })
-      .catch((err) => {
-        alert(err?.toString());
       });
   };
 
@@ -87,15 +118,15 @@ function CarfaxForm() {
         <TextField
           value={vinValue}
           sx={{ maxWidth: '400px' }}
-          onChange={handleVin}
+          onChange={handleVinInput}
         >
           {vinData}
           {vinValue}
-          {vinData?.map((car, i) => (
+          {/* {vinData?.map((car, i) => (
             <MenuItem key={i?.toString()} value={car.model}>
               {car.model}
             </MenuItem>
-          ))}
+          ))} */}
         </TextField>
 
         <Button
@@ -104,7 +135,8 @@ function CarfaxForm() {
           type="button"
           disabled={!vinValue}
           variant="contained"
-          onClick={handleSubmitClick}
+          // onClick={handleSubmitClick}
+          onClick={handleVin}
           sx={{
             whiteSpace: 'nowrap',
             marginTop: '20px',
