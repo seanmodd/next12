@@ -4,6 +4,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import {
   Container,
   Button,
+  TextField,
   Typography,
   CardHeader,
   CardContent,
@@ -14,10 +15,9 @@ import {
   MenuItem,
 } from '@mui/material';
 import {
-  fetchMakes,
-  fetchModels,
-  fetchYears,
-} from 'src/carfax/carfaxAPIs/MakeAPI';
+  fetchVehicleFromVin,
+  fetchVehicleFromVinTEST,
+} from 'src/carfax/carfaxAPIs/VinAPI';
 import { ContextCarfax } from 'src/carfax/GlobalContextCarfax';
 import styles from '../../../styles/Home.module.css';
 
@@ -25,68 +25,41 @@ function CarfaxForm() {
   const { chosenVehicle, setChosenVehicle } = useContext(ContextCarfax);
 
   const router = useRouter();
-  // state for make
-  const [makeValue, setMakeValue] = useState('');
-  const [makesData, setMakesData] = useState([
-    { make: 'one' },
-    { make: 'two' },
-  ]);
 
   // state for model
-  const [modelValue, setmodelValue] = useState('');
-  const [modelsData, setmodelsData] = useState([]);
-
-  // state for year
-  const [yearValue, setyearValue] = useState('');
-  const [yearsData, setyearsData] = useState([]);
+  const [vinValue, setVinValue] = useState('');
+  const [vinData, setVinData] = useState([]);
 
   // updating field selction
-  const selectMake = (e) => {
-    setMakeValue(e.target.value);
-    setmodelValue('');
-    setyearValue('');
-    setChosenVehicle({ ...chosenVehicle, make: e.target.value });
-    fetchModelsData(e.target.value);
+
+  const handleVin = (e) => {
+    setVinValue(e.target.value);
+    setChosenVehicle({ ...chosenVehicle, vin: e.target.value });
+    fetchVehicleFromVinDataTEST(e.target.value);
+    // fetchVehicleFromVinData(e.target.value);
+    console.log('This is e.target.value : ', e.target.value);
+    console.log('This is vinValue : ', vinValue);
+    console.log('This is vinData : ', vinData);
+    console.log('This is chosenVehicle : ', chosenVehicle);
   };
 
-  const selectModel = (e) => {
-    setmodelValue(e.target.value);
-    setChosenVehicle({ ...chosenVehicle, model: e.target.value });
-    fetchYearsData(e.target.value);
-  };
-
-  const selectYear = (e) => {
-    setyearValue(e.target.value);
-    setChosenVehicle({ ...chosenVehicle, year: e.target.value });
-  };
-
-  const fetchMakesData = () => {
-    fetchMakes()
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          setMakesData(response.data.data.getMakes);
-        }
+  const fetchVehicleFromVinDataTEST = () => {
+    fetchVehicleFromVinTEST()
+      .then((res) => {
+        console.log('This is res : ', res);
+        setVinData(res);
       })
       .catch((err) => {
-        alert(err?.toString());
+        console.log('This is err : ', err);
       });
   };
 
-  const fetchModelsData = (make) => {
-    fetchModels(make)
+  const fetchVehicleFromVinData = (vin) => {
+    console.log('This is the vin param from fetchVehicleFromVinData : ', vin);
+    fetchVehicleFromVin(vin)
       .then((res) => {
-        setmodelsData(res.data.data.getMakeModels);
-      })
-      .catch((err) => {
-        alert(err?.toString());
-      });
-  };
-
-  const fetchYearsData = (model) => {
-    fetchYears(makeValue, model)
-      .then((res) => {
-        setyearsData(res.data.data.getYMMs);
+        // setVinData(res.data.data.getMakeModels);
+        setVinData(res.data.data.getMakeModels);
       })
       .catch((err) => {
         alert(err?.toString());
@@ -94,7 +67,8 @@ function CarfaxForm() {
   };
 
   useEffect(() => {
-    fetchMakesData();
+    // fetchMakesData();
+    // fetchVehicleFromVinData(vin);
   }, []);
 
   function handleSubmitClick(e) {
@@ -109,57 +83,26 @@ function CarfaxForm() {
       </Typography>
 
       <CardContent className={styles.form}>
-        <span>Select Maker</span>
-
-        <Select
+        <span>Enter VIN</span>
+        <TextField
+          value={vinValue}
           sx={{ maxWidth: '400px' }}
-          id="demo-simple-select"
-          value={makeValue}
-          onChange={selectMake}
+          onChange={handleVin}
         >
-          {makesData?.map((item, i) => (
-            <MenuItem key={i?.toString()} value={item.make}>
-              {item.make}
+          {vinData}
+          {vinValue}
+          {vinData?.map((car, i) => (
+            <MenuItem key={i?.toString()} value={car.model}>
+              {car.model}
             </MenuItem>
           ))}
-        </Select>
-        {/* model select */}
-        <span>Select Model</span>
-        <Select
-          disabled={makeValue === ''}
-          id="demo-simple-select"
-          value={modelValue}
-          sx={{ maxWidth: '400px' }}
-          onChange={selectModel}
-        >
-          {modelsData?.map((item, i) => (
-            <MenuItem key={i?.toString()} value={item.model}>
-              {item.model}
-            </MenuItem>
-          ))}
-        </Select>
-        {/* year select */}
-        <span>Select Year</span>
-        <Select
-          id="demo-simple-select"
-          disabled={modelValue === ''}
-          sx={{ maxWidth: '400px' }}
-          className={styles.demoSimpleSelect}
-          value={yearValue}
-          onChange={selectYear}
-        >
-          {yearsData?.map((item, i) => (
-            <MenuItem key={i?.toString()} value={item.year}>
-              {item.year}
-            </MenuItem>
-          ))}
-        </Select>
+        </TextField>
 
         <Button
           fullWidth
           size="large"
           type="button"
-          disabled={!makeValue || !modelValue || !yearValue}
+          disabled={!vinValue}
           variant="contained"
           onClick={handleSubmitClick}
           sx={{
