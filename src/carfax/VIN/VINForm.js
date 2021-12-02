@@ -1,30 +1,13 @@
 import { useRouter } from 'next/router';
-import Link from 'next/link';
-import yup from 'yup';
 import React, { useState, useContext, useEffect } from 'react';
-import {
-  Container,
-  Button,
-  TextField,
-  Typography,
-  CardHeader,
-  CardContent,
-  Card,
-  Grid,
-  Box,
-  Select,
-  MenuItem,
-} from '@mui/material';
-import {
-  fetchVehicleFromVin,
-  fetchVehicleFromVinTEST,
-} from 'src/carfax/carfaxAPIs/VinAPI';
+import * as Yup from 'yup';
+import { Button, TextField, Typography, CardContent } from '@mui/material';
+import { fetchVehicleFromVin } from 'src/carfax/carfaxAPIs/VinAPI';
 import { ContextCarfax } from 'src/carfax/GlobalContextCarfax';
 import styles from '../../../styles/Home.module.css';
 
 function CarfaxForm() {
   const { chosenVehicle, setChosenVehicle } = useContext(ContextCarfax);
-
   const router = useRouter();
 
   // state for model
@@ -32,15 +15,18 @@ function CarfaxForm() {
   const [vinData, setVinData] = useState([]);
 
   // updating field selction
-  const handleVinInput = (e) => {
+  const handleVinInput = async (e) => {
     e.preventDefault();
     setVinValue(e.target.value);
     fetchVehicleFromVinData(e.target.value);
+
+    //* Ask Jayen: why isn't validation working?
+    const isValid = await validationSchema.isValid(e.target.value);
+    console.log('This is isValid : ', isValid);
   };
   const handleVin = (e) => {
     e.preventDefault();
     setVinValue(e.target.value);
-
     setChosenVehicle({
       ...chosenVehicle,
       make: vinData.data.vehiclePriceData.make,
@@ -92,15 +78,12 @@ function CarfaxForm() {
       });
   };
 
-  useEffect(() => {
-    // fetchMakesData();
-    // fetchVehicleFromVinData(vin);
-  }, []);
-
-  function handleSubmitClick(e) {
-    e.preventDefault();
-    router.push('/dashboard/carfax-value/vin/');
-  }
+  //* Below is Yup and react-hook-form validation
+  const validationSchema = Yup.object().shape({
+    vin: Yup.string()
+      .required('Vin is required')
+      .matches('[A-HJ-NPR-Z0-9]{17}', 'Vin is not in correct format'),
+  });
 
   return (
     <>
@@ -122,7 +105,6 @@ function CarfaxForm() {
           type="button"
           disabled={!vinValue}
           variant="contained"
-          // onClick={handleSubmitClick}
           onClick={handleVin}
           sx={{
             whiteSpace: 'nowrap',
