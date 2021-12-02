@@ -26,6 +26,7 @@ import { ContextCarfax } from 'src/carfax/GlobalContextCarfax';
 import styles from '../../styles/Home.module.css';
 import MakeForm from './Make/MakeForm';
 import VINForm from './VIN/VINForm';
+import LicensePlateForm from './LicensePlate/LicensePlateForm';
 import { Block } from './Block';
 
 function CarfaxForm() {
@@ -54,13 +55,13 @@ function CarfaxForm() {
       value: '3',
       label: 'License Plate',
       disabled: true,
-      form: <h1>No form</h1>,
+      form: <LicensePlateForm />,
     },
   ];
   return (
     <>
-      <Container alignItems="center" justifyContent="center" sx={{ mt: 4 }}>
-        <Grid alignItems="center" justifyContent="center" container spacing={5}>
+      <Container sx={{ mt: 4 }}>
+        <Grid container spacing={5}>
           <Grid item>
             <Card>
               <Box
