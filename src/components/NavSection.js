@@ -119,8 +119,8 @@ function NavItem({ item, isShow }) {
         </ListItemStyle>
 
         {isShow && (
-          <Collapse in={open} timeout='auto' unmountOnExit>
-            <List component='div' disablePadding>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
               {children.map((item) => {
                 const { title, path } = item;
                 const isActiveSub = pathname.includes(path);
@@ -134,7 +134,7 @@ function NavItem({ item, isShow }) {
                     >
                       <ListItemIconStyle>
                         <Box
-                          component='span'
+                          component="span"
                           sx={{
                             width: 4,
                             height: 4,
@@ -183,10 +183,10 @@ function NavItem({ item, isShow }) {
   );
 }
 
-NavSection.propTypes = {
-  isShow: PropTypes.bool,
-  navConfig: PropTypes.array,
-};
+// NavSection.propTypes = {
+//   isShow: PropTypes.bool,
+//   navConfig: PropTypes.array,
+// };
 
 export default function NavSection({ navConfig, isShow = true, ...other }) {
   return (
@@ -197,7 +197,9 @@ export default function NavSection({ navConfig, isShow = true, ...other }) {
           <List key={subheader} disablePadding>
             {isShow && <ListSubheaderStyle>{subheader}</ListSubheaderStyle>}
             {items.map((item) => (
-              <NavItem key={item.title} item={item} isShow={isShow} />
+              <>
+                <NavItem key={item.title} item={item} isShow={isShow} />
+              </>
             ))}
           </List>
         );

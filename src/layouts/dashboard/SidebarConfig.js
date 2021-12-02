@@ -1,7 +1,14 @@
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
 // components
-import SvgIconStyle from '../../components/SvgIconStyle';
+import { Icon } from '@iconify/react';
+import homeFill from '@iconify/icons-eva/home-fill';
+import fileFill from '@iconify/icons-eva/file-fill';
+import SvgIconStyle from 'src/components/SvgIconStyle';
+import { PATH_DASHBOARD } from '../../routes/paths';
+
+//* For mobile nav go to src/layouts/main/MenuConfig.js
+
+//* Below is desktop sidebar menu config!!!!!
 
 // ----------------------------------------------------------------------
 
@@ -111,7 +118,7 @@ const sidebarConfig = [
       },
       {
         title: 'Inbox',
-        path: PATH_DASHBOARD.mail.all,
+        path: '/dashboard/mail/all',
         icon: ICONS.chat,
       },
       // {

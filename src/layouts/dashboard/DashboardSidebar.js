@@ -1,4 +1,4 @@
-//* Account important!
+//* This is connected to src/layouts/dashboard/SidebarConfig.js
 import useAuth from 'src/hooks/useAuth';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';

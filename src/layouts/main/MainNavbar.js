@@ -14,6 +14,7 @@ import {
 import React, { useState, useEffect } from 'react';
 // hooks
 import { useTheme } from '@mui/material/styles';
+import sideBarConfig from 'src/layouts/dashboard/SidebarConfig';
 import useOffSetTop from '../../hooks/useOffSetTop';
 // components
 import Logo from '../../components/Logo';
@@ -22,7 +23,9 @@ import { MHidden } from '../../components/@material-extend';
 //
 import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile';
+//* Replace navConfig with src/layouts/dashboard/SidebarConfig.js
 import navConfig from './MenuConfig';
+import { sidebarConfig } from './MenuConfig';
 
 // ----------------------------------------------------------------------
 

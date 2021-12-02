@@ -64,7 +64,7 @@ function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
           />
         </ListItemStyle>
 
-        <Collapse in={isOpen} timeout='auto' unmountOnExit>
+        <Collapse in={isOpen} timeout="auto" unmountOnExit>
           <Box sx={{ display: 'flex', flexDirection: 'column-reverse' }}>
             <NavSection
               navConfig={children}
@@ -190,20 +190,22 @@ export default function MenuMobile({ isOffset, isHome, navConfig }) {
       >
         <Scrollbar>
           <Box sx={{ display: 'inline-flex' }}>
-            <NextLink href='/'>
+            <NextLink href="/">
               <Logo sx={{ mx: PADDING, my: 3 }} />
             </NextLink>
           </Box>
 
           <List disablePadding>
             {navConfig.map((link) => (
-              <MenuMobileItem
-                key={link.title}
-                item={link}
-                isOpen={open}
-                onOpen={handleOpen}
-                isActive={pathname === link.path}
-              />
+              <>
+                <MenuMobileItem
+                  key={link.title}
+                  item={link}
+                  isOpen={open}
+                  onOpen={handleOpen}
+                  isActive={pathname === link.path}
+                />
+              </>
             ))}
           </List>
         </Scrollbar>
