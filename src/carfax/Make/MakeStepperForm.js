@@ -527,7 +527,7 @@ function VehicleFoundComponent1() {
       </Container>
       <CardHeader title="We found your car!" />
       <Typography sx={{ mt: 1 }} variant="h6">
-        <h5>Confirm details below to continue</h5>
+        Confirm details below to continue
       </Typography>
       <Button
         variant="contained"
@@ -604,7 +604,7 @@ function VehicleFoundComponent2() {
       <CardHeader title="We found your car!" />
 
       <Typography sx={{ mt: 1 }} variant="h6">
-        <h5>Confirm details below to continue</h5>
+        Confirm details below to continue
       </Typography>
       <Button
         variant="contained"

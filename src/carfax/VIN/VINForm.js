@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import yup from 'yup';
 import React, { useState, useContext, useEffect } from 'react';
 import {
   Container,
@@ -40,6 +41,17 @@ function CarfaxForm() {
     e.preventDefault();
     setVinValue(e.target.value);
 
+    setChosenVehicle({
+      ...chosenVehicle,
+      make: vinData.data.vehiclePriceData.make,
+      model: vinData.data.vehiclePriceData.model,
+      price: vinData.data.vehiclePriceData.price,
+      mileage: vinData.data.vehiclePriceData.odometer,
+      year: vinData.data.vehiclePriceData.year,
+      vin: e.target.value,
+    });
+    router.push('/dashboard/carfax-value/vin/');
+    console.log('This is chosenVehicle : ', chosenVehicle);
     console.log('This is e.target.value : ', e.target.value);
     console.log('This is vinValue : ', vinValue);
     console.log('This is vinData : ', vinData);
@@ -67,17 +79,6 @@ function CarfaxForm() {
       'This is vinData.data.vehiclePriceData.year : ',
       vinData.data.vehiclePriceData.year
     );
-    setChosenVehicle({
-      ...chosenVehicle,
-      make: vinData.data.vehiclePriceData.make,
-      model: vinData.data.vehiclePriceData.model,
-      price: vinData.data.vehiclePriceData.price,
-      mileage: vinData.data.vehiclePriceData.odometer,
-      year: vinData.data.vehiclePriceData.year,
-      vin: e.target.value,
-    });
-    console.log('This is chosenVehicle : ', chosenVehicle);
-    router.push('/dashboard/carfax-value/vin/');
   };
 
   const fetchVehicleFromVinData = (vin) => {
@@ -113,15 +114,7 @@ function CarfaxForm() {
           value={vinValue}
           sx={{ maxWidth: '400px' }}
           onChange={handleVinInput}
-        >
-          {vinData}
-          {vinValue}
-          {/* {vinData?.map((car, i) => (
-            <MenuItem key={i?.toString()} value={car.model}>
-              {car.model}
-            </MenuItem>
-          ))} */}
-        </TextField>
+        />
 
         <Button
           fullWidth

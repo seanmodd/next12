@@ -68,7 +68,7 @@ const CarValueEstimator = () => {
                   <CardHeader title="Get Your CARFAX Trade-In Value" />
 
                   <Typography sx={{ ml: 6, mt: 1 }} variant="h6">
-                    <h5>Enter your vehicle's information to get started!</h5>
+                    Enter your vehicle's information to get started!
                   </Typography>
                   <CardContent>
                     <ReactHookForm openDevTool={openDevTool} />
