@@ -552,7 +552,7 @@ function VehicleFoundComponent1() {
           <Box sx={{ p: 3.5, backgroundColor: 'grey.300' }}>
             <Box
               component="img"
-              src="/static/car_logo.svg"
+              src="/static/car_logo.png"
               sx={{
                 maxWidth: '50px',
               }}
@@ -629,7 +629,7 @@ function VehicleFoundComponent2() {
           <Box sx={{ p: 3.5, backgroundColor: 'grey.300' }}>
             <Box
               component="img"
-              src="/static/car_logo.svg"
+              src="/static/car_logo.png"
               sx={{
                 maxWidth: '50px',
               }}
