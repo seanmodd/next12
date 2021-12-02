@@ -520,9 +520,9 @@ function VehicleFoundComponent1() {
           }}
         />
       </Container>
-      <CardHeader title="We found your car!" />
+      <CardHeader title="We found your car with your vin!" />
       <Typography sx={{ mt: 1 }} variant="h6">
-        Confirm details below to continue
+        Complete the details below to continue
       </Typography>
       <Button
         variant="contained"
@@ -558,7 +558,8 @@ function VehicleFoundComponent1() {
               display="flex"
               alignItems="flex-start"
               flexDirection="column"
-              sx={{ my: 0, ml: 2, mr: 10 }}
+              width="100%"
+              sx={{ my: 0, ml: 2, mr: 2 }}
             >
               <Typography>
                 <strong>Make:</strong> {chosenVehicle.make}
