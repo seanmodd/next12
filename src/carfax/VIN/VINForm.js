@@ -40,12 +40,6 @@ function CarfaxForm() {
     e.preventDefault();
     setVinValue(e.target.value);
 
-    fetchVehicleFromVinData(e.target.value);
-    console.log(
-      'THIS IS THE FETCH VEHICLE FROM DATA: ',
-      fetchVehicleFromVinData(e.target.value)
-    );
-    // fetchVehicleFromVinData(e.target.value);
     console.log('This is e.target.value : ', e.target.value);
     console.log('This is vinValue : ', vinValue);
     console.log('This is vinData : ', vinData);
