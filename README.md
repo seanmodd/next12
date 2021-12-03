@@ -76,9 +76,10 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <table>
 <tr>
 <td>
-<div align="center">
- <h1>Page for all car inventory</h1>
- - <img src="https://i.imgur.com/1tErCwQ.jpeg" alt="Car" width="350px">
+<div align="left">
+ <h5>Page for all car inventory: </h5>
+ <img src="https://i.imgur.com/1tErCwQ.jpeg" alt="Car" width="350px">
+</div>
 </td>
 </tr>
 <tr>
