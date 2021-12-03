@@ -110,9 +110,9 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <td>
 <div align="left">
  <h3>Entry Page for Carfax Price Estimate via Vehicle VIN: </h3>
- <body>The path is <code>/dashboard/carfax-value</code>:</body>
+ <body> - The path is <code>/dashboard/carfax-value</code></body>
  <br/>
- <body>Then you must click on the Vehicle VIN button!</body>
+ <body> - Then you must click on the Vehicle VIN button!</body>
 </div>
 <br/>
  <img src="https://i.imgur.com/0iyblCG.jpeg" alt="CarFax" width="350px">
@@ -123,9 +123,9 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <td>
 <div align="left">
  <h3>Entry Page for Carfax Price Estimate via License Plate: </h3>
- <body>The path is <code>/dashboard/carfax-value</code>:</body>
+ <body> - The path is <code>/dashboard/carfax-value</code></body>
  <br/>
- <body>Then you must click on the License Plate button!</body>
+ <body> - Then you must click on the License Plate button!</body>
 </div>
 <br/>
  <img src="https://i.imgur.com/IHKZj5K.jpeg" alt="CarFax" width="350px">
