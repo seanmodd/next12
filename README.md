@@ -45,7 +45,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
- <img src="https://i.imgur.com/3rKyotM.jpeg" alt="Logo" width="400px">
+ <img src="https://i.imgur.com/3rKyotM.jpeg" alt="Logo" width="350px">
+ <img src="https://i.imgur.com/3rKyotM.jpeg" alt="Logo" width="350px">
 
 <table>
 <tr>
