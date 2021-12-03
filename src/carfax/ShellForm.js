@@ -23,6 +23,8 @@ import {
   fetchYears,
 } from 'src/carfax/carfaxAPIs/MakeAPI';
 import { ContextCarfax } from 'src/carfax/GlobalContextCarfax';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import styles from '../../styles/Home.module.css';
 import MakeForm from './Make/MakeForm';
 import VINForm from './VIN/VINForm';
@@ -30,8 +32,25 @@ import LicensePlateForm from './LicensePlate/LicensePlateForm';
 import { Block } from './Block';
 
 function CarfaxForm() {
-  const [value, setValue] = useState('1');
+  //* Below is media query
+  const theme = useTheme();
+  const MyPhone = useMediaQuery(theme.breakpoints.down('sm'));
+  const MyDesktop = useMediaQuery(theme.breakpoints.up('sm'));
+  const MediaComponent = () => (
+    <Container width="100%" display="flex" sx={{ mb: 4 }}>
+      <Container width="100%" display="flex">
+        <span>{`MyDesktop: ${MyDesktop}`}</span>
+      </Container>
+      <br />
+      <Container width="100%" display="flex">
+        <span>{`MyPhone : ${MyPhone}`}</span>
+      </Container>
+      <br />
+    </Container>
+  );
+  //* Above is media query
 
+  const [value, setValue] = useState('1');
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -60,6 +79,7 @@ function CarfaxForm() {
   ];
   return (
     <>
+      <MediaComponent />
       <Container sx={{ mt: 4 }}>
         <Grid container spacing={5}>
           <Grid item>
