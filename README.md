@@ -167,7 +167,11 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 
 <b>2. Start the **ShopCarX** frontend:</b>
 - Clone this github repo to your local machine.
-- Once you have cloned it locally, run <code>yarn install</code> to install all the dependencies.
+```sh
+   git clone https://github.com/seanmodd/next12.git
+   ```
+- Once you have cloned it locally, ***you first must access branch vSean!*** 
+- Only when you are on branch vSean, ***then*** you run <code>yarn install</code> to install all the dependencies.
 - Now run <code>yarn run start</code> and you can visit the web app now live on localhost:3000!
 
 </details>
