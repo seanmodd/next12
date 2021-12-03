@@ -72,39 +72,6 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 - [Sunnyvale Chrysler Dodge Jeep Ram](https://www.sunnyvalecdjr.com/)
 </details>
 
-<details close>
-<summary><b>Starting the Project</b></summary>
-<br />
-
-<b>1. Start the **ShopCarX** server:</b>
-- Clone [server from the repo here](https://github.com/seanmodd/jamstack-final-backend/).
-- Once you have cloned it locally, run <code>npm install</code> to install all the dependencies.
-- Now run <code>npm run develop</code> to start the server, now the server should be live on localhost:1337!
-
-<b>2. Start the **ShopCarX** frontend:</b>
-- Clone this github repo to your local machine.
-- Once you have cloned it locally, run <code>yarn install</code> to install all the dependencies.
-- Now run <code>yarn run start</code> and you can visit the web app now live on localhost:3000!
-
-</details>
-
-
-
-
-
-
-### Built With
-
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 </td>
 </tr>
@@ -186,9 +153,24 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 
 <!-- GETTING STARTED -->
 ## Getting Started
+<details close>
+<summary><b>Installation Details</b></summary>
+<br />
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+<b>1. Start the **ShopCarX** server:</b>
+- Clone [server from the repo here](https://github.com/seanmodd/jamstack-final-backend/).
+   ```sh
+   git clone https://github.com/seanmodd/jamstack-final-backend.git
+   ```
+- Once you have cloned it locally, run <code>npm install</code> to install all the dependencies.
+- Now run <code>npm run develop</code> to start the server, now the server should be live on localhost:1337!
+
+<b>2. Start the **ShopCarX** frontend:</b>
+- Clone this github repo to your local machine.
+- Once you have cloned it locally, run <code>yarn install</code> to install all the dependencies.
+- Now run <code>yarn run start</code> and you can visit the web app now live on localhost:3000!
+
+</details>
 
 ### Prerequisites
 
