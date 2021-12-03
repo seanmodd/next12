@@ -72,6 +72,22 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 - [Sunnyvale Chrysler Dodge Jeep Ram](https://www.sunnyvalecdjr.com/)
 </details>
 
+<details close>
+<summary><b>Starting the Project</b></summary>
+<br />
+
+<b>1. Start the **ShopCarX** server:</b>
+- Clone [server from the repo here](https://github.com/seanmodd/jamstack-final-backend/).
+- Once you have cloned it locally, run <code>npm install</code> to install all the dependencies.
+- Now run <code>npm run develop</code> to start the server, now the server should be live on localhost:1337!
+
+<b>2. Start the **ShopCarX** frontend:</b>
+- Clone this github repo to your local machine.
+- Once you have cloned it locally, run <code>yarn install</code> to install all the dependencies.
+- Now run <code>yarn run start</code> and you can visit the web app now live on localhost:3000!
+
+</details>
+
 
 
 
@@ -94,8 +110,8 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 </tr>
 </table>
 
-<details open>
-<summary><b>Some Important Pages</b></summary>
+<details close>
+<summary><b>Key Pages</b></summary>
 <br>
 
 <table>
