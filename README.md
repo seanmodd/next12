@@ -96,20 +96,25 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 </td>
 </tr>
 
+<tr>
+<td>
+<div align="left">
+ <h3>Entry Page Carfax Price Estimate: </h3>
+ <body>The path is <code>/dashboard/carfax-value</code>:</body>
+</div>
+<br/>
+ <img src="https://i.imgur.com/PT8Be5L.jpeg" alt="CarFax" width="350px">
+</td>
+</tr>
 
 <tr>
 <td>
- - The page showing a single car: <img src="https://i.imgur.com/8KH1D6c.jpeg" alt="SingleCar" width="350px">
-</td>
-</tr>
-<tr>
-<td>
- - The opening / entry page where you put in your vehicle info to retrieve Carfax price estimate: <img src="https://i.imgur.com/PT8Be5L.jpeg" alt="CarFax" width="350px">
-</td>
-</tr>
-<tr>
-<td>
- - The Carfax page where you can put in your License Plate for details on a price estimate: <img src="https://i.imgur.com/IHKZj5K.jpeg" alt="CarFaxLicensePlate" width="350px">
+<div align="left">
+ <h3>Page to retrieve initial Carfax Price Estimate via License Plate entry : </h3>
+ <body>The path is <code>/dashboard/carfax-value</code>:</body>
+</div>
+<br/>
+ <img src="https://i.imgur.com/IHKZj5K.jpeg" alt="CarFax" width="350px">
 </td>
 </tr>
 
