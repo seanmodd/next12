@@ -55,6 +55,10 @@
 ShopCarX.com is a web application that allows users to search for and purchase used AND new cars. 
 The organization of the directory sucks and needs to constantly be updated. Sorry for that, I suck - Sean Modd.
 
+<details open>
+<summary><b>Inventory of Vehicles</b></summary>
+<br />
+
 The **ShopCarX** inventory is being scraped on a daily basis from the following dealerships:
 
 - [Stevens Creek Chrysler Jeep Dodge](https://www.stevenscreekchryslerjeepdodge.net/)
@@ -66,7 +70,7 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 - [Hayward Nissan](http://www.haywardnissan.com/)
 - [Stoneridge Chrysler Dodge Jeep Ram](https://www.stoneridgechryslerjeepdodgeofdublin.com/)
 - [Sunnyvale Chrysler Dodge Jeep Ram](https://www.sunnyvalecdjr.com/)
-
+</details>
 
 
 
