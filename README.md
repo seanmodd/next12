@@ -55,7 +55,7 @@
 ShopCarX.com is a web application that allows users to search for and purchase used AND new cars. 
 The organization of the directory sucks and needs to constantly be updated. Sorry for that, I suck - Sean Modd.
 
-<details open>
+<details close>
 <summary><b>Inventory of Vehicles</b></summary>
 <br />
 
