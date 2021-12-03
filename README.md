@@ -57,7 +57,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![ShopCarX Screen Shot][product-screenshot]](https://i.imgur.com/3rKyotM.jpeg)
 
 <table>
 <tr>
@@ -67,21 +67,11 @@ Open Source Software is not about the code in the first place but the communicat
 
 There are many great README or issues templates available on GitHub, however, you have to find them yourself and combine different templates yourself. In addition, if you want extensive docs like CODE_OF_CONDUCT.md, CONTRIBUTING.md, SECURITY.md or even advanced GitHub features like a pull request template, additional labels, code scanning, and automatic issue/PR closing and locking you have to do much more work. Your time should be focused on creating something **amazing**. You shouldn't be doing the same tasks over and over like creating your GitHub project template from scratch. Follow the **don’t repeat yourself** principle. Use a template **and go create something amazing**!
 
-Key features of **Amazing GitHub Template**:
+Key features of **ShopCarX**:
 
 - Configurable README.md template
 - Configurable LICENSE template
-- Configurable CODE_OF_CONDUCT.md template
-- Configurable CONTRIBUTING.md template
-- Configurable SECURITY.md template
-- Configurable issues template
-- Pull request template
-- CODEOWNERS template
-- Additional labels template
-- Automatic locking for closed issues and PRs workflow
-- Automatic cleaning for stale issues and PRs workflow
-- Automatic label verification for PRs workflow
-- Automatic security code scanning workflow via CodeQL
+
 
 <details open>
 <summary>Additional info</summary>
