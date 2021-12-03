@@ -45,9 +45,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![ShopCarX Screen Shot](https://i.imgur.com/3rKyotM.jpeg)
-![ShopCarX Screen Shot](https://i.imgur.com/3rKyotM.jpeg)
- <img src="https://i.imgur.com/3rKyotM.jpeg" alt="Logo" width="80px">
+ <img src="https://i.imgur.com/3rKyotM.jpeg" alt="Logo" width="400px">
 
 <table>
 <tr>
