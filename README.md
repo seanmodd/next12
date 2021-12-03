@@ -69,8 +69,29 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 
 
 
+
+
+
+
+### Built With
+
+* [Next.js](https://nextjs.org/)
+* [React.js](https://reactjs.org/)
+* [Vue.js](https://vuejs.org/)
+* [Angular](https://angular.io/)
+* [Svelte](https://svelte.dev/)
+* [Laravel](https://laravel.com)
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+</td>
+</tr>
+</table>
+
 <details open>
-<summary>Additional info</summary>
+<summary>Some Important Pages</summary>
 <br>
 
 <table>
@@ -139,24 +160,8 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 </td>
 </tr>
 </table>
+<p align="right">(<a href="#top">back to top</a>)</p>
 </details>
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-### Built With
-
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
