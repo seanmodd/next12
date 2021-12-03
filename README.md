@@ -72,7 +72,7 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <details open>
 <summary>Additional info</summary>
 <br>
-
+</details>
 <table>
 <tr>
 <td>
@@ -134,7 +134,7 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 
 
 
-</details>
+
 
 </td>
 </tr>
