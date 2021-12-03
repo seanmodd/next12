@@ -91,7 +91,7 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 </table>
 
 <details open>
-<summary><h3>Some Important Pages</h3></summary>
+<summary><b>Some Important Pages</b></summary>
 <br>
 
 <table>
