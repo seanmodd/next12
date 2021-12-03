@@ -31,6 +31,13 @@ const MainStyle = styled('div')(({ theme }) => ({
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
   },
+  [theme.breakpoints.down('sm')]: {
+    paddingTop: APP_BAR_MOBILE + 24,
+    paddingLeft: theme.spacing(0),
+    paddingRight: theme.spacing(0),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 }));
 
 // ----------------------------------------------------------------------

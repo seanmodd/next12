@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 // material
-import { Card, CardHeader, Box, Typography } from '@mui/material';
+import { Card, Container, CardHeader, Box, Typography } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -30,6 +30,7 @@ Block.propTypes = {
 export function Block({ title, sx, children }) {
   return (
     <>
+      {/* <Container align="center"> */}
       {title && <CardHeader title={title} />}
       <Box
         sx={{
@@ -40,6 +41,7 @@ export function Block({ title, sx, children }) {
       >
         {children}
       </Box>
+      {/* </Container> */}
     </>
   );
 }

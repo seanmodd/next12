@@ -36,6 +36,7 @@ function CarfaxForm() {
   const theme = useTheme();
   const MyPhone = useMediaQuery(theme.breakpoints.down('sm'));
   const MyDesktop = useMediaQuery(theme.breakpoints.up('sm'));
+
   const MediaComponent = () => (
     <Container width="100%" display="flex" sx={{ mb: 4 }}>
       <Container width="100%" display="flex">
@@ -48,7 +49,6 @@ function CarfaxForm() {
       <br />
     </Container>
   );
-  //* Above is media query
 
   const [value, setValue] = useState('1');
   const handleChange = (event, newValue) => {
@@ -59,7 +59,7 @@ function CarfaxForm() {
     alignItems: 'center',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    '& > *': { mx: '8px !important' },
+    // '& > *': { mx: '8px !important' },
   };
 
   const SIMPLE_TAB = [
@@ -77,28 +77,39 @@ function CarfaxForm() {
       form: <LicensePlateForm />,
     },
   ];
+  //* Above is media query
+
   return (
     <>
-      <MediaComponent />
-      <Container sx={{ mt: 4 }}>
-        <Grid container spacing={5}>
+      <>
+        <MediaComponent />
+        {/* <Container sx={{ mt: 4 }}> */}
+        <Grid container spacing={1}>
           <Grid item>
             <Card>
-              <Box
-                component="img"
-                src="/static/carfax.jpg"
-                sx={{
-                  maxWidth: '200px',
-                  mt: '40px',
-                }}
-              />
-              <CardHeader title="Get Your CARFAX Trade-In Value" />
+              <Container align="center">
+                <Box
+                  component="img"
+                  src="/static/carfax.jpg"
+                  sx={{
+                    maxWidth: '200px',
+                    mt: '40px',
+                  }}
+                />
+              </Container>
+              <Container align="center">
+                <CardHeader title="Get Your CARFAX Trade-In Value" />
+              </Container>
               <Block title="3 Easy Ways" sx={style}>
                 <TabContext value={value}>
                   <TabList onChange={handleChange}>
                     {SIMPLE_TAB.map((tab, index) => (
                       <Tab
-                        sx={{ marginLeft: 2, marginRight: 2, marginBottom: 0 }}
+                        sx={{
+                          marginLeft: 0,
+                          marginRight: 0,
+                          marginBottom: 0,
+                        }}
                         key={tab.value}
                         label={tab.label}
                         value={String(index + 1)}
@@ -129,9 +140,9 @@ function CarfaxForm() {
             </Card>
           </Grid>
         </Grid>
-      </Container>
+        {/* </Container> */}
+      </>
     </>
   );
 }
-
 export default CarfaxForm;
