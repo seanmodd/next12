@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/seanmodd/next12/tree/vSean">
     <img src="public/static/x_logo.svg" alt="Logo" width="80px">
   </a>
 
@@ -47,6 +47,7 @@
 
 ![ShopCarX Screen Shot](https://i.imgur.com/3rKyotM.jpeg)
 ![ShopCarX Screen Shot](https://i.imgur.com/3rKyotM.jpeg)
+ <img src="https://i.imgur.com/3rKyotM.jpeg" alt="Logo" width="80px">
 
 <table>
 <tr>
