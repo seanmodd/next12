@@ -78,9 +78,9 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <td>
 <div align="left">
  <h3>Page for all car inventory: </h3>
- <body>The path is: ```/dashboard/shop``` </body>
- <img src="https://i.imgur.com/1tErCwQ.jpeg" alt="Car" width="350px">
+ <body>The path is: </body> <code>/dashboard/shop</code>
 </div>
+ <img src="https://i.imgur.com/1tErCwQ.jpeg" alt="Car" width="350px">
 </td>
 </tr>
 <tr>
