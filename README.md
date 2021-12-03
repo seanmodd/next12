@@ -78,7 +78,7 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <td>
 <div align="left">
  <h3>Page for all car inventory: </h3>
- <body>The path is <code>/dashboard/shop</code>:</body>
+ <body> - The path is <code>/dashboard/shop</code></body>
 </div>
 <br/>
  <img src="https://i.imgur.com/1tErCwQ.jpeg" alt="Car" width="350px">
@@ -89,7 +89,7 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <td>
 <div align="left">
  <h3>Page for single car: </h3>
- <body>The path is <code>/dashboard/shop/[makeName]/[id]</code>:</body>
+ <body> - The path is <code>/dashboard/shop/[makeName]/[id]</code></body>
 </div>
 <br/>
  <img src="https://i.imgur.com/8KH1D6c.jpeg" alt="Car" width="350px">
@@ -100,7 +100,7 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <td>
 <div align="left">
  <h3>Entry Page for Carfax Price Estimate via Make & Model: </h3>
- <body>The path is <code>/dashboard/carfax-value</code>:</body>
+ <body> - The path is <code>/dashboard/carfax-value</code></body>
 </div>
 <br/>
  <img src="https://i.imgur.com/PT8Be5L.jpeg" alt="CarFax" width="350px">
