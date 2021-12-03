@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="https://i.imgur.com/CzuXlOr.jpeg" alt="Logo" width="80px">
+    <img src="https://logosandtypes.com/wp-content/uploads/2020/12/technomex.svg" alt="Logo" width="80px">
   </a>
 
 <h3 align="center">Project Shop CarX</h3>
