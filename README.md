@@ -57,7 +57,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![ShopCarX Screen Shot]](https://i.imgur.com/3rKyotM.jpeg)
+![ShopCarX Screen Shot](https://i.imgur.com/3rKyotM.jpeg)
 
 <table>
 <tr>
