@@ -181,17 +181,18 @@ function NavItem({ item, isShow }) {
           ...(isActiveRoot && activeRootStyle),
         }}
       >
-        <div>
-          {isShow && (
-            <>
-              {/* <ListItemIconStyle> */}
-              {/* {icon && icon} */}
-              <ListItemText primary={title} />
-              {/* {info && info} */}
-              {/* </ListItemIconStyle> */}
-            </>
-          )}
-        </div>
+        {/* <div> */}
+        <ListItemIconStyle>{icon && icon}</ListItemIconStyle>
+        {isShow && (
+          <>
+            {/* <ListItemIconStyle> */}
+            {/* {icon && icon} */}
+            <ListItemText primary={title} />
+            {/* {info && info} */}
+            {/* </ListItemIconStyle> */}
+          </>
+        )}
+        {/* </div> */}
       </ListItemStyle>
     </NextLink>
   );
