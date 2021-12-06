@@ -25,36 +25,36 @@ const RootStyle = styled(Page)(({ theme }) => ({
 
 export default function PageNotFound() {
   return (
-    <LogoOnlyLayout>
-      <RootStyle title="404 Page Not Found | Minimal-UI">
-        <Container>
-          <MotionContainer initial="initial" open>
-            <Box sx={{ maxWidth: 480, margin: 'auto', textAlign: 'center' }}>
-              <motion.div variants={varBounceIn}>
-                <Typography variant="h3" paragraph>
-                  Sorry, page not found!
-                </Typography>
-              </motion.div>
-              <Typography sx={{ color: 'text.secondary' }}>
-                Sorry, we couldn’t find the page you’re looking for. Perhaps
-                you’ve mistyped the URL? Be sure to check your spelling.
+    // <LogoOnlyLayout>
+    <RootStyle title="404 Page Not Found | Minimal-UI">
+      <Container>
+        <MotionContainer initial="initial" open>
+          <Box sx={{ maxWidth: 480, margin: 'auto', textAlign: 'center' }}>
+            <motion.div variants={varBounceIn}>
+              <Typography variant="h3" paragraph>
+                Sorry, page not found!
               </Typography>
+            </motion.div>
+            <Typography sx={{ color: 'text.secondary' }}>
+              Sorry, we couldn’t find the page you’re looking for. Perhaps
+              you’ve mistyped the URL? Be sure to check your spelling.
+            </Typography>
 
-              <motion.div variants={varBounceIn}>
-                <PageNotFoundIllustration
-                  sx={{ height: 260, my: { xs: 5, sm: 10 } }}
-                />
-              </motion.div>
+            <motion.div variants={varBounceIn}>
+              <PageNotFoundIllustration
+                sx={{ height: 260, my: { xs: 5, sm: 10 } }}
+              />
+            </motion.div>
 
-              <NextLink href="/">
-                <Button size="large" variant="contained">
-                  Go to Home
-                </Button>
-              </NextLink>
-            </Box>
-          </MotionContainer>
-        </Container>
-      </RootStyle>
-    </LogoOnlyLayout>
+            <NextLink href="/">
+              <Button size="large" variant="contained">
+                Go to Home
+              </Button>
+            </NextLink>
+          </Box>
+        </MotionContainer>
+      </Container>
+    </RootStyle>
+    // </LogoOnlyLayout>
   );
 }

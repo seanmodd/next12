@@ -24,7 +24,8 @@ import { MHidden } from '../../components/@material-extend';
 import TopMenuDesktop from './TopMenuDesktop';
 import SideMenuMobile from './SideMenuMobile';
 //* Replace navConfig with src/layouts/dashboard/SidebarConfig.js
-import navConfig from './TopMenuConfig';
+import TopMenuConfig from './TopMenuConfig';
+import SideMenuConfig from './SideMenuConfig';
 
 // ----------------------------------------------------------------------
 
@@ -137,7 +138,7 @@ export default function MainNavbar() {
             <TopMenuDesktop
               isOffset={isOffset}
               isHome={isHome}
-              navConfig={navConfig}
+              navConfig={TopMenuConfig}
             />
           </MHidden>
           <Button
@@ -166,11 +167,11 @@ export default function MainNavbar() {
             </Link>
           </Button>
 
-          <MHidden width="mdUp">
+          <MHidden width="lgUp">
             <SideMenuMobile
               isOffset={isOffset}
               isHome={isHome}
-              navConfig={navConfig}
+              navConfig={SideMenuConfig}
             />
           </MHidden>
         </Container>

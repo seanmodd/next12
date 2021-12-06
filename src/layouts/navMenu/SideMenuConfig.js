@@ -57,16 +57,16 @@ const menuConfig = [
     path: PATH_DASHBOARD.root,
     icon: ICONS.noun_cleancar,
   },
-  // {
-  //   title: 'Account',
-  //   path: 'dashboard/account',
-  //   icon: ICONS.user8,
-  // },
-  // {
-  //   title: 'Cars',
-  //   path: '/dashboard/shop',
-  //   icon: ICONS.car4,
-  // },
+  {
+    title: 'Account',
+    path: 'dashboard/account',
+    icon: ICONS.user8,
+  },
+  {
+    title: 'Cars',
+    path: '/dashboard/shop',
+    icon: ICONS.car4,
+  },
   {
     title: `Price Estimator`,
     path: '/dashboard/carfax-value',
