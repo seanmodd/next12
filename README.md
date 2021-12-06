@@ -173,8 +173,11 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 ## Todo
 
 ~~~
- Markup : - [ ] An uncompleted task
-          - [x] A completed task
+          - [x] Create registration flow
+          - [x] Create login flow
+          - [x] Create logout flow
+          - [x] Create a [makeName] subcategory through which every [id] is dynamically generated
+          - [x] Get SSR (best is ISR, Incremental Site Rendering or ISG, Incremental Site Generation!!!) rendering from Redux onto /dashboard/shop so it picks it up on ‘page inspect’
 ~~~
 
 - [ ] An uncompleted task
