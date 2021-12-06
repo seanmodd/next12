@@ -177,7 +177,7 @@ The scraper is still under development, right now the vehicles are just showing 
 ## Todo
 
 #### MOST IMPORTANT ACTION ITEM:
-<summary><b>MOST IMPORTANT: Likes Dashboard</b></summary>
+<summary><b>Showing All Likes On User Dashboard</b></summary>
 
 - [ ] Create personal likes dashboard
   - [ ] Create an option to like a car from the dashboard/shop page 
