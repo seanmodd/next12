@@ -173,12 +173,17 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 ## Todo
 
 <summary><b>Likes Dashboard</b></summary>
+
 - [ ] Create registration
   - [x] Verification required via email after registration with sendgrid or nodemailer...
+
 <summary><b>Carfax Price Estimator</b></summary>
+
 - [ ] Create registration
   - [x] Verification required via email after registration with sendgrid or nodemailer...
+
 <summary><b>Fully Featured Authentication Flow</b></summary>
+
 - [ ] Create registration
   - [x] Verification required via email after registration with sendgrid or nodemailer...
 - [ ] Create login
