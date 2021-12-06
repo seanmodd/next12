@@ -172,11 +172,14 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <!-- Todo -->
 ## Todo
 
-<summary><b>Likes Dashboard</b></summary>
+<summary><b>IMPORTANT: Likes Dashboard</b></summary>
 
 - [ ] Create personal likes dashboard
   - [ ] Create an option to like a car from the dashboard/shop page 
-  - [ ] Add a like button to the [makeName] page
+  - [ ] Also create an option to like a car to each individual car's page within the [makeName] page
+  - [ ] If user has liked a car, then show a "liked" button or "heart" that is already filled in
+  - [ ] Create a dashboard from user's home profile page with all the cars they have liked
+  - [ ] If user is not logged in, then show a "login" button to login to their account
   
 
 <summary><b>Carfax Price Estimator</b></summary>
@@ -185,6 +188,7 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
   - [x] Make and model carfax esitmator...
   - [x] VIN carfax estimator...
   - [ ] License Plate and state estimator...
+  - [ ] Before we show the price of the vehicle, request for mobile number or email address and we must store that data internally and get notified of it internally!
 
 <summary><b>Fully Featured Authentication Flow</b></summary>
 
@@ -213,6 +217,7 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 - [x] Create logout flow
 - [x] Create a [makeName] subcategory through which every [id] is dynamically generated
 - [x] Fetch all data using SSR rendering from Redux onto /dashboard/shop so it picks it up on ‘page inspect’ for SEO purposes...
+- [x] Sort by price
 
 
 
