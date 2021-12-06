@@ -37,7 +37,7 @@ const CarValueEstimator = () => {
             heading="Pre-Owned Price Estimator"
             links={[
               { name: 'Dashboard', href: PATH_DASHBOARD.root },
-              { name: 'Carfax Value Estimator' },
+              { name: 'Trade-In Value' },
             ]}
             sx={{ paddingLeft: '3px' }}
           />
@@ -62,7 +62,7 @@ const CarValueEstimator = () => {
                 heading="Pre-Owned Price Estimator"
                 links={[
                   { name: 'Dashboard', href: PATH_DASHBOARD.root },
-                  { name: 'Carfax Value Estimator' },
+                  { name: 'Trade-In Value' },
                 ]}
               />
               <Container align="center" justify="center" maxWidth="lg">

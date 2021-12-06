@@ -29,7 +29,7 @@ const CarValueEstimator = () => {
               links={[
                 { name: 'Dashboard', href: PATH_DASHBOARD.root },
                 {
-                  name: 'Carfax Value Estimator',
+                  name: 'Trade-In Value',
                   href: '/dashboard/carfax-value/',
                 },
                 { name: 'Finding Price' },

@@ -54,7 +54,7 @@ const sidebarConfig = [
     items: [
       {
         title: 'Dashboard',
-        path: PATH_DASHBOARD.general.pageOne,
+        path: '/dashboard/app/account',
         icon: ICONS.dashboard,
       },
     ],
@@ -63,16 +63,16 @@ const sidebarConfig = [
   // MANAGEMENT
   // ----------------------------------------------------------------------
   {
-    subheader: 'management',
+    subheader: 'Profile',
     items: [
       {
         title: 'user',
         path: PATH_DASHBOARD.app.root,
         icon: ICONS.user,
         children: [
-          { title: 'Account', path: PATH_DASHBOARD.app.pageAccount },
-          { title: 'Cart', path: PATH_DASHBOARD.app.pageFive },
-          { title: 'Contact', path: PATH_DASHBOARD.app.pageSix },
+          { title: 'Account', path: '/dashboard/app/account' },
+          // { title: 'Cart', path: PATH_DASHBOARD.app.pageFive },
+          { title: 'Likes', path: '/dashboard/app/likes' },
         ],
       },
     ],
@@ -103,7 +103,7 @@ const sidebarConfig = [
       // },
       {
         title: 'Sell',
-        path: PATH_DASHBOARD.general.pageSell,
+        path: '/dashboard/carfax-value',
         icon: ICONS.noun_checkout,
       },
       // {
@@ -111,11 +111,11 @@ const sidebarConfig = [
       //   path: PATH_DASHBOARD.general.pageThree,
       //   icon: ICONS.noun_cleancar,
       // },
-      {
-        title: 'Checkout',
-        path: '/dashboard/shop/checkout',
-        icon: ICONS.noun_checkout2,
-      },
+      // {
+      //   title: 'Checkout',
+      //   path: '/dashboard/shop/checkout',
+      //   icon: ICONS.noun_checkout2,
+      // },
       {
         title: 'Inbox',
         path: '/dashboard/mail/all',
