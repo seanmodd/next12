@@ -62,6 +62,7 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 - [Sunnyvale Chrysler Dodge Jeep Ram](https://www.sunnyvalecdjr.com/)
 
 The **ShopCarX** scraper is not linked here as Sean is actively working on it himself at the moment, contact him for more information.
+The scraper is still under development, right now the vehicles are just showing dummy inventory data.
 
 </details>
 
