@@ -13,25 +13,13 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import ShellForm from 'src/carfax/ShellForm';
 import MakeForm from 'src/carfax/Make/MakeForm';
+import { MHidden } from 'src/components/@material-extend';
 
 const CarValueEstimator = () => {
   //* Below is media query
   const theme = useTheme();
   const MyPhone = useMediaQuery(theme.breakpoints.down('sm'));
   const MyDesktop = useMediaQuery(theme.breakpoints.up('sm'));
-
-  const MediaComponent = () => (
-    <Container width="100%" display="flex" sx={{ mb: 4 }}>
-      <Container width="100%" display="flex">
-        <span>{`MyDesktop: ${MyDesktop}`}</span>
-      </Container>
-      <br />
-      <Container width="100%" display="flex">
-        <span>{`MyPhone : ${MyPhone}`}</span>
-      </Container>
-      <br />
-    </Container>
-  );
   //* Above is media query
   const { themeStretch } = useSettings();
   const [openDevTool, setOpenDevTool] = useState(false);

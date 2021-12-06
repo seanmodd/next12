@@ -25,6 +25,7 @@ import {
 import { ContextCarfax } from 'src/carfax/GlobalContextCarfax';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { MHidden } from 'src/components/@material-extend';
 import styles from '../../styles/Home.module.css';
 import MakeForm from './Make/MakeForm';
 import VINForm from './VIN/VINForm';
@@ -39,13 +40,17 @@ function CarfaxForm() {
 
   const MediaComponent = () => (
     <Container width="100%" display="flex" sx={{ mb: 4 }}>
-      <Container width="100%" display="flex">
-        <span>{`MyDesktop: ${MyDesktop}`}</span>
-      </Container>
+      <MHidden width="smDown">
+        <Container width="100%" display="flex">
+          <span>{`MyDesktop: ${MyDesktop}`}</span>
+        </Container>
+      </MHidden>
       <br />
-      <Container width="100%" display="flex">
-        <span>{`MyPhone : ${MyPhone}`}</span>
-      </Container>
+      <MHidden width="smUp">
+        <Container width="100%" display="flex">
+          <span>{`MyPhone : ${MyPhone}`}</span>
+        </Container>
+      </MHidden>
       <br />
     </Container>
   );

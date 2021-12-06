@@ -155,7 +155,7 @@ export default function MainNavbar() {
                 fontColor: '#fff',
                 color: '#fff',
               }}
-              href="/dashboard/home"
+              href="/dashboard/shop"
             >
               <Typography
                 sx={{ fontFamily: 'barlow', color: '#FFF', fontWeight: 600 }}

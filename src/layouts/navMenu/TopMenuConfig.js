@@ -57,26 +57,26 @@ const menuConfig = [
     path: PATH_DASHBOARD.root,
     icon: ICONS.noun_cleancar,
   },
+  // {
+  //   title: 'Account',
+  //   path: 'dashboard/account',
+  //   icon: ICONS.user8,
+  // },
+  // {
+  //   title: 'Cars',
+  //   path: '/dashboard/shop',
+  //   icon: ICONS.car4,
+  // },
   {
-    title: 'Account',
-    path: 'dashboard/account',
-    icon: ICONS.user8,
-  },
-  {
-    title: 'Cars',
-    path: '/dashboard/shop',
-    icon: ICONS.car4,
-  },
-  {
-    title: 'View Your Car Price',
+    title: `View Your Car's Price`,
     path: '/dashboard/carfax-value',
     icon: ICONS.noun_checkout,
   },
-  {
-    title: 'Inbox',
-    path: '/dashboard/mail/all',
-    icon: ICONS.user28,
-  },
+  // {
+  //   title: 'Inbox',
+  //   path: '/dashboard/mail/all',
+  //   icon: ICONS.user28,
+  // },
 ];
 
 export default menuConfig;
