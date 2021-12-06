@@ -180,15 +180,18 @@ The scraper is still under development, right now the vehicles are just showing 
 #### MOST IMPORTANT ACTION ITEM:
 <summary><b>Showing All Likes On User Dashboard</b></summary>
 
-- [ ] Create personal likes dashboard
+- [ ] Create an option to like a vehicle
   - [ ] Create an option to like a car from the dashboard/shop page 
   - [ ] Also create an option to like a car to each individual car's page within the [makeName] page
-  - [ ] If user has liked a car, then show a "liked" button or "heart" that is already filled in
+  - [ ] If user is not logged in when they click heart, then show a "login" button to login to their account
+
+- [ ] Create a user dashboard reflecting all vehicles that a user likes <img src="https://i.imgur.com/SeCJfs6.jpeg" alt="Logo" width="80px">
   - [ ] Create a dashboard from user's home profile page with all the cars they have liked
-  - [ ] If user is not logged in, then show a "login" button to login to their account
+  - [ ] If user has liked a car, then show a "liked" button or "heart" that is already filled in
+ 
   
 #### SECOND MOST IMPORTANT ACTION ITEM:
-<summary><b>Create Popup</b></summary>
+<summary><b>Create Visitor Popup to Retrieve Emails</b></summary>
 
 - [ ] For visitors who have been on website for over 5 seconds as guest, create a dialog popup to retrieve email for new announcements and more
 
