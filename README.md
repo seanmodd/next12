@@ -234,7 +234,7 @@ The scraper is still under development, right now the vehicles are just showing 
 ## Contact
 
 My Twitter and Email - [@persiansean](https://twitter.com/@persiansean) - sean@senpex.com <br/>
-<b>Pavan Kumar is helping me and is a great guy!</b>
+<b>Pavan Kumar is helping on the ShopCarX project as well and is a great guy!</b>
 
 Project Link: [https://github.com/seanmodd/next12/tree/vSean](https://github.com/seanmodd/next12/tree/vSean)
 
