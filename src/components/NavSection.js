@@ -39,7 +39,11 @@ const ListItemStyle = styled(ListSubheader)(({ theme }) => ({
   width: 'auto',
   display: 'flex',
   // backgroundColor: '#ff0000',
+  alignItems: 'center',
   paddingLeft: theme.spacing(5),
+  // paddingTop: theme.spacing(1.5),
+
+  paddingBottom: '0',
   marginLeft: theme.spacing(2),
   paddingRight: theme.spacing(2.5),
   color: theme.palette.text.secondary,
@@ -108,16 +112,16 @@ function NavItem({ item, isShow }) {
             ...(isActiveRoot && activeRootStyle),
           }}
         >
-          {/* <ListItemIconStyle>{icon && icon}</ListItemIconStyle> */}
+          <ListItemIconStyle>{icon && icon}</ListItemIconStyle>
 
           {isShow && (
             <>
               <ListItemText primary={title} />
-              {/* {info && info} */}
+              {info && info}
               <Box
                 component={Icon}
                 icon={open ? arrowIosDownwardFill : arrowIosForwardFill}
-                // sx={{ width: 16, height: 16, ml: 1 }}
+                sx={{ width: 16, height: 16, ml: 1 }}
               />
             </>
           )}
@@ -137,7 +141,7 @@ function NavItem({ item, isShow }) {
                         ...(isActiveSub && activeSubStyle),
                       }}
                     >
-                      {/* <ListItemIconStyle>
+                      <ListItemIconStyle>
                         <Box
                           component="span"
                           sx={{
@@ -156,7 +160,7 @@ function NavItem({ item, isShow }) {
                             }),
                           }}
                         />
-                      </ListItemIconStyle> */}
+                      </ListItemIconStyle>
                       <ListItemText primary={title} />
                     </ListItemStyle>
                   </NextLink>
@@ -171,7 +175,12 @@ function NavItem({ item, isShow }) {
 
   return (
     <NextLink href={path}>
-      <ListItemStyle>
+      {/* <ListItemStyle */}
+      <ListItemStyle
+        sx={{
+          ...(isActiveRoot && activeRootStyle),
+        }}
+      >
         <div>
           {isShow && (
             <>
