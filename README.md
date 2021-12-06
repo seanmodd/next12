@@ -233,7 +233,8 @@ The scraper is still under development, right now the vehicles are just showing 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@persiansean](https://twitter.com/@persiansean) - sean@senpex.com
+My Twitter and Email - [@persiansean](https://twitter.com/@persiansean) - sean@senpex.com
+Pavan Kumar is helping me and is a great guy!
 
 Project Link: [https://github.com/seanmodd/next12/tree/vSean](https://github.com/seanmodd/next12/tree/vSean)
 
