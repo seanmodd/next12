@@ -185,7 +185,8 @@ The scraper is still under development, right now the vehicles are just showing 
   - [ ] Also create an option to like a car to each individual car's page within the [makeName] page
   - [ ] If user is not logged in when they click heart, then show a "login" button to login to their account
 
-- [ ] Create a user dashboard reflecting all vehicles that a user likes <img src="https://i.imgur.com/SeCJfs6.jpeg" alt="Logo" width="80px">
+- [ ] Change the current existing user dashboard template to reflect all vehicles that a user likes 
+  - [ ] Here is the UI of /dashboard/app/account aka the current template: <img src="https://i.imgur.com/SeCJfs6.jpeg" alt="Logo" width="200px">
   - [ ] Create a dashboard from user's home profile page with all the cars they have liked
   - [ ] If user has liked a car, then show a "liked" button or "heart" that is already filled in
  
