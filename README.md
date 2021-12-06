@@ -174,13 +174,17 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 
 <summary><b>Likes Dashboard</b></summary>
 
-- [ ] Create registration
-  - [x] Verification required via email after registration with sendgrid or nodemailer...
+- [ ] Create personal likes dashboard
+  - [x] Create an option to like a car from the dashboard/shop page 
+  - [x] Add a like button to the [makeName] page
+  
 
 <summary><b>Carfax Price Estimator</b></summary>
 
-- [ ] Create registration
-  - [x] Verification required via email after registration with sendgrid or nodemailer...
+- [ ] Complete the carfax price estimator page on /dashboard/carfax-value with the 3 approaches to find out your car's value immediately
+  - [x] Make and model carfax esitmator...
+  - [x] VIN carfax estimator...
+  - [ ] License Plate and state estimator...
 
 <summary><b>Fully Featured Authentication Flow</b></summary>
 
@@ -190,9 +194,19 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
   - [x] If email already exists, notify the user of this...
 - [ ] Create a reset password and trigger emails with sendgrid or nodemailer
 
+<summary><b>Search Capability</b></summary>
 
-<summary><b>Completed Items</b></summary>
+- [ ] Create a search capability utilizing the search bar component which is already created
 
+<summary><b>Automatically Request for Zip Code Access</b></summary>
+
+- [ ] Ask for location access in the app in order to get the zip code
+
+<summary><b>Completed Tasks</b></summary>
+
+- [x] Integrate with minimals.cc template and update to utilize Next12
+- [x] Fetch Data from Scraper that's connected to Strapi backend...
+- [x] Extract VIN number from Scraper and fetch car features from calling CarXE API by searching up that VIN number the Scraper had retrieved...
 - [x] Initialize firebase v8 for authentication
 - [x] Establish valid registration
 - [x] Establish a valid login capability
