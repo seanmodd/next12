@@ -23,8 +23,8 @@
     <li>
       <a href="#getting-started">Getting Up and Running Locally</a>
     </li>
-    <li><a href="#Todo">TODO LIST ACTION ITEMS</a></li>
-    <li><a href="#Completed">COMPLETED LIST ACTION ITEMS</a></li>
+    <li><a href="#Todo">TODO LIST TASKS</a></li>
+    <li><a href="#Completed">Completed Tasks</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -227,7 +227,7 @@ The scraper is still under development, right now the vehicles are just showing 
 
 
 <!-- COMPLETED -->
-## COMPLETED
+## Completed
 
 <summary><b>Completed Tasks</b></summary>
 
