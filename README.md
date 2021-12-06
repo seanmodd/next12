@@ -7,7 +7,7 @@
     <img src="public/static/x_logo.svg" alt="Logo" width="80px">
   </a>
 
-<u><h3 align="center">Project Shop CarX</h3></u>
+<h1 align="center">Project Shop CarX</h1>
 
 </div>
 
