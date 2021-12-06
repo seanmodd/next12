@@ -181,12 +181,12 @@ The scraper is still under development, right now the vehicles are just showing 
 <summary><b>Showing All Likes On User Dashboard</b></summary>
 
 - [ ] Create an option to like a vehicle
-  - [ ] Create an option to like a car from the dashboard/shop page 
-  - [ ] Also create an option to like a car to each individual car's page within the [makeName] page
+  - [ ] Create an option to like a car from the shop page at <code>/dashboard/shop/</code>
+  - [ ] Create an option to like a car from each car's page within the dynamically generated single car page at <code>/dashboard/shop/[makeName]/[id]</code>
   - [ ] If user is not logged in when they click heart, then show a "login" button to login to their account
 
-- [ ] Change the current existing user dashboard template to reflect all vehicles that a user likes 
-  - [ ] Here is the UI of /dashboard/app/account aka the current template: <img src="https://i.imgur.com/SeCJfs6.jpeg" alt="Logo" width="200px">
+- [ ] Reflect all liked vehicles from the user dashboard which already exists
+  - [ ] Here is the UI of <code>/dashboard/app/account</code> aka the current template: <img src="https://i.imgur.com/SeCJfs6.jpeg" alt="Logo" width="200px">
   - [ ] Create a dashboard from user's home profile page with all the cars they have liked
   - [ ] If user has liked a car, then show a "liked" button or "heart" that is already filled in
  
@@ -200,18 +200,18 @@ The scraper is still under development, right now the vehicles are just showing 
 #### THIRD MOST IMPORTANT ACTION ITEM:
 <summary><b>Carfax Price Estimator</b></summary>
 
-- [ ] Complete the carfax price estimator page on /dashboard/carfax-value with the 3 approaches to find out your car's value immediately
-  - [x] Make and model carfax esitmator...
-  - [x] VIN carfax estimator...
-  - [ ] License Plate and state estimator...
+- [ ] Complete the carfax price estimator page on <code>/dashboard/carfax-value</code> with the 3 approaches to find out your car's value immediately
   - [ ] Before we show the price of the vehicle, request for mobile number or email address and we must store that data internally and get notified of it internally!
+  - [x] Make and model carfax esitmator must be created on <code>/dashboard/carfax-value</code> and after submitting valid data, redirects to <code>/dashboard/carfax-value/make</code>...
+  - [x] VIN carfax estimator must be created on <code>/dashboard/carfax-value</code> and after submitting valid data, redirects to <code>/dashboard/carfax-value/vin</code>...
+  - [ ] License Plate and state estimator must be created on <code>/dashboard/carfax-value</code> and after submitting valid data, redirects to <code>/dashboard/carfax-value/vin</code>... <b>this is because the license plate and state data points retrieve the VIN and then the VIN is used to retrieve the vehicle so we're back to the same approach utilized in the VIN estimator</b>
 
 
 
 #### ALL OTHER ACTION ITEMS:
 <summary><b>Create the Inbox Page for Users Who Have Signed In</b></summary>
 
-- [ ] On "/dashboard/mail/all" complete the look and functionality to allow users to send messages back and forth with Admin (us)
+- [ ] On <code>/dashboard/mail/all</code> complete the look and functionality to allow users to send messages back and forth with Admin (us)
 
 <summary><b>Fully Featured Authentication Flow</b></summary>
 
