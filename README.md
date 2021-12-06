@@ -175,8 +175,8 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <summary><b>Likes Dashboard</b></summary>
 
 - [ ] Create personal likes dashboard
-  - [x] Create an option to like a car from the dashboard/shop page 
-  - [x] Add a like button to the [makeName] page
+  - [ ] Create an option to like a car from the dashboard/shop page 
+  - [ ] Add a like button to the [makeName] page
   
 
 <summary><b>Carfax Price Estimator</b></summary>
