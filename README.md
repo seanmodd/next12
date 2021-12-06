@@ -176,6 +176,7 @@ The scraper is still under development, right now the vehicles are just showing 
 <!-- Todo -->
 ## Todo
 
+#### MOST IMPORTANT ACTION ITEM:
 <summary><b>MOST IMPORTANT: Likes Dashboard</b></summary>
 
 - [ ] Create personal likes dashboard
@@ -185,7 +186,13 @@ The scraper is still under development, right now the vehicles are just showing 
   - [ ] Create a dashboard from user's home profile page with all the cars they have liked
   - [ ] If user is not logged in, then show a "login" button to login to their account
   
+#### SECOND MOST IMPORTANT ACTION ITEM:
+<summary><b>Create Popup</b></summary>
 
+- [ ] For visitors who have been on website for over 5 seconds as guest, create a dialog popup to retrieve email for new announcements and more
+
+
+#### THIRD MOST IMPORTANT ACTION ITEM:
 <summary><b>Carfax Price Estimator</b></summary>
 
 - [ ] Complete the carfax price estimator page on /dashboard/carfax-value with the 3 approaches to find out your car's value immediately
@@ -194,11 +201,9 @@ The scraper is still under development, right now the vehicles are just showing 
   - [ ] License Plate and state estimator...
   - [ ] Before we show the price of the vehicle, request for mobile number or email address and we must store that data internally and get notified of it internally!
 
-<summary><b>Create Popup</b></summary>
-
-- [ ] For visitors who have been on website for over 5 seconds as guest, create a dialog popup to retrieve email for new announcements and more
 
 
+#### ALL OTHER ACTION ITEMS:
 <summary><b>Create the Inbox Page for Users Who Have Signed In</b></summary>
 
 - [ ] On "/dashboard/mail/all" complete the look and functionality to allow users to send messages back and forth with Admin (us)
