@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-<h2 align="center">Project Shop CarX</h2>
+<h3 align="center">Project Shop CarX</h3>
   <a href="https://github.com/seanmodd/next12/tree/vSean">
     <img src="public/static/x_logo.svg" alt="Logo" width="80px">
   </a>
