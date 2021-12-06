@@ -21,10 +21,9 @@
       <a href="#about-the-project">About The Project</a>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#getting-started">Getting Up and Running Locally</a>
     </li>
-    <li><a href="#Todo">Need to do still</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#Todo">TODO LIST ACTION ITEMS</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
