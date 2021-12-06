@@ -180,8 +180,17 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 - [x] Get SSR (best is ISR, Incremental Site Rendering or ISG, Incremental Site Generation!!!) rendering from Redux onto /dashboard/shop so it picks it up on ‘page inspect’
 
 
-- [ ] An uncompleted task
+- [ ] Complete full authentication flow with password reset and email verification...
+    - [x] Initialize firebase v8 for authentication
+    - [x] Create registration
+      - [ ] Verification required via email after registration with sendgrid or nodemailer...
+    - [x] Create login
+      - [ ] If email already exists, notify the user of this...    
+    - [x] Create logout
+    - [ ] Create a reset password and trigger emails with sendgrid or nodemailer
+    
     - [ ] A subtask
+
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
