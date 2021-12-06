@@ -24,6 +24,7 @@
       <a href="#getting-started">Getting Up and Running Locally</a>
     </li>
     <li><a href="#Todo">TODO LIST ACTION ITEMS</a></li>
+    <li><a href="#Completed">COMPLETED LIST ACTION ITEMS</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -223,6 +224,10 @@ The scraper is still under development, right now the vehicles are just showing 
 <summary><b>Automatically Request for Zip Code Access</b></summary>
 
 - [ ] Ask for location access in the app in order to get the zip code
+
+
+<!-- COMPLETED -->
+## COMPLETED
 
 <summary><b>Completed Tasks</b></summary>
 
