@@ -176,7 +176,7 @@ The scraper is still under development, right now the vehicles are just showing 
 <!-- Todo -->
 ## Todo
 
-<summary><b>IMPORTANT: Likes Dashboard</b></summary>
+<summary><b>MOST IMPORTANT: Likes Dashboard</b></summary>
 
 - [ ] Create personal likes dashboard
   - [ ] Create an option to like a car from the dashboard/shop page 
@@ -194,6 +194,15 @@ The scraper is still under development, right now the vehicles are just showing 
   - [ ] License Plate and state estimator...
   - [ ] Before we show the price of the vehicle, request for mobile number or email address and we must store that data internally and get notified of it internally!
 
+<summary><b>Create Popup</b></summary>
+
+- [ ] For visitors who have been on website for over 5 seconds as guest, create a dialog popup to retrieve email for new announcements and more
+
+
+<summary><b>Create the Inbox Page for Users Who Have Signed In</b></summary>
+
+- [ ] On "/dashboard/mail/all" complete the look and functionality to allow users to send messages back and forth with Admin (us)
+
 <summary><b>Fully Featured Authentication Flow</b></summary>
 
 - [ ] Create registration
@@ -202,7 +211,7 @@ The scraper is still under development, right now the vehicles are just showing 
   - [x] If email already exists, notify the user of this...
 - [ ] Create a reset password and trigger emails with sendgrid or nodemailer
 
-<summary><b>Search Capability</b></summary>
+<summary><b>Finish the Vehicle Search Capability</b></summary>
 
 - [ ] Create a search capability utilizing the search bar component which is already created
 
