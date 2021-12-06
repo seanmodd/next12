@@ -48,6 +48,7 @@ The organization of the directory sucks and needs to constantly be updated. Sorr
 <summary><b>Inventory of Vehicles</b></summary>
 <br />
 
+
 The **ShopCarX** inventory is being scraped on a daily basis from the following dealerships:
 
 - [Stevens Creek Chrysler Jeep Dodge](https://www.stevenscreekchryslerjeepdodge.net/)
@@ -59,6 +60,9 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 - [Hayward Nissan](http://www.haywardnissan.com/)
 - [Stoneridge Chrysler Dodge Jeep Ram](https://www.stoneridgechryslerjeepdodgeofdublin.com/)
 - [Sunnyvale Chrysler Dodge Jeep Ram](https://www.sunnyvalecdjr.com/)
+
+The **ShopCarX** scraper is not linked here as Sean is actively working on it himself at the moment, contact him for more information.
+
 </details>
 
 
