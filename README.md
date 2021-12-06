@@ -3,11 +3,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+<h2 align="center">Project Shop CarX</h2>
   <a href="https://github.com/seanmodd/next12/tree/vSean">
     <img src="public/static/x_logo.svg" alt="Logo" width="80px">
   </a>
 
-<h1 align="center">Project Shop CarX</h1>
 
 </div>
 
