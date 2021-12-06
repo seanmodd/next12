@@ -54,14 +54,34 @@ const menuConfig = [
   },
   {
     title: 'Dashboard',
-    path: PATH_DASHBOARD.root,
+    path: '/dashboard/shop',
     icon: ICONS.noun_cleancar,
   },
+
   {
-    title: 'Account',
-    path: 'dashboard/account',
-    icon: ICONS.user8,
+    title: 'Profile',
+    path: '/dashboard/account',
+    icon: ICONS.user28,
+    children: [
+      {
+        subheader: 'Authentication',
+        items: [
+          {
+            title: 'Login',
+            path: '/dashboard/user/login',
+            // icon: ICONS.noun_checkout,
+          },
+
+          { title: 'Register', path: '/dashboard/user/register' },
+          { title: 'Reset password', path: '/dashboard/user/reset' },
+          { title: 'Verify code', path: '/dashboard/user/verify' },
+          { title: 'User Dashboard', path: '/dashboard/user/verify' },
+          { title: 'Likes', path: '/dashboard/user/verify' },
+        ],
+      },
+    ],
   },
+
   {
     title: 'Cars',
     path: '/dashboard/shop',
@@ -72,6 +92,7 @@ const menuConfig = [
     path: '/dashboard/carfax-value',
     icon: ICONS.noun_checkout,
   },
+
   // {
   //   title: 'Inbox',
   //   path: '/dashboard/mail/all',

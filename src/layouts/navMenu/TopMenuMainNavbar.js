@@ -14,7 +14,7 @@ import {
 import React, { useState, useEffect } from 'react';
 // hooks
 import { useTheme } from '@mui/material/styles';
-import sideBarConfig from 'src/layouts/dashboard/SidebarConfig';
+import sideBarConfig from 'src/layouts/dashboard/DesktopSidebarConfig';
 import useOffSetTop from '../../hooks/useOffSetTop';
 // components
 import Logo from '../../components/Logo';

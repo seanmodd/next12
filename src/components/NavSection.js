@@ -13,6 +13,7 @@ import {
   List,
   Collapse,
   ListItemText,
+  Button,
   ListItemIcon,
   ListSubheader,
   ListItemButton,
@@ -30,12 +31,16 @@ const ListSubheaderStyle = styled((props) => (
   color: theme.palette.text.primary,
 }));
 
-const ListItemStyle = styled(ListItemButton)(({ theme }) => ({
+const ListItemStyle = styled(ListSubheader)(({ theme }) => ({
   ...theme.typography.body2,
   height: 48,
   position: 'relative',
   textTransform: 'capitalize',
+  width: 'auto',
+  display: 'flex',
+  // backgroundColor: '#ff0000',
   paddingLeft: theme.spacing(5),
+  marginLeft: theme.spacing(2),
   paddingRight: theme.spacing(2.5),
   color: theme.palette.text.secondary,
   '&:before': {
@@ -103,16 +108,16 @@ function NavItem({ item, isShow }) {
             ...(isActiveRoot && activeRootStyle),
           }}
         >
-          <ListItemIconStyle>{icon && icon}</ListItemIconStyle>
+          {/* <ListItemIconStyle>{icon && icon}</ListItemIconStyle> */}
 
           {isShow && (
             <>
-              <ListItemText disableTypography primary={title} />
-              {info && info}
+              <ListItemText primary={title} />
+              {/* {info && info} */}
               <Box
                 component={Icon}
                 icon={open ? arrowIosDownwardFill : arrowIosForwardFill}
-                sx={{ width: 16, height: 16, ml: 1 }}
+                // sx={{ width: 16, height: 16, ml: 1 }}
               />
             </>
           )}
@@ -132,7 +137,7 @@ function NavItem({ item, isShow }) {
                         ...(isActiveSub && activeSubStyle),
                       }}
                     >
-                      <ListItemIconStyle>
+                      {/* <ListItemIconStyle>
                         <Box
                           component="span"
                           sx={{
@@ -142,7 +147,7 @@ function NavItem({ item, isShow }) {
                             borderRadius: '50%',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            bgcolor: 'text.disabled',
+                            // bgcolor: 'text.disabled',
                             transition: (theme) =>
                               theme.transitions.create('transform'),
                             ...(isActiveSub && {
@@ -151,8 +156,8 @@ function NavItem({ item, isShow }) {
                             }),
                           }}
                         />
-                      </ListItemIconStyle>
-                      <ListItemText disableTypography primary={title} />
+                      </ListItemIconStyle> */}
+                      <ListItemText primary={title} />
                     </ListItemStyle>
                   </NextLink>
                 );
@@ -166,18 +171,18 @@ function NavItem({ item, isShow }) {
 
   return (
     <NextLink href={path}>
-      <ListItemStyle
-        sx={{
-          ...(isActiveRoot && activeRootStyle),
-        }}
-      >
-        <ListItemIconStyle>{icon && icon}</ListItemIconStyle>
-        {isShow && (
-          <>
-            <ListItemText disableTypography primary={title} />
-            {info && info}
-          </>
-        )}
+      <ListItemStyle>
+        <div>
+          {isShow && (
+            <>
+              {/* <ListItemIconStyle> */}
+              {/* {icon && icon} */}
+              <ListItemText primary={title} />
+              {/* {info && info} */}
+              {/* </ListItemIconStyle> */}
+            </>
+          )}
+        </div>
       </ListItemStyle>
     </NextLink>
   );
@@ -201,6 +206,11 @@ export default function NavSection({ navConfig, isShow = true, ...other }) {
                 <NavItem key={item.title} item={item} isShow={isShow} />
               </>
             ))}
+            {/* {items[0] && (
+              <>
+                <NavItem key={items[0].title} item={items[0]} isShow={isShow} />
+              </>
+            )} */}
           </List>
         );
       })}
