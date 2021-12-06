@@ -40,12 +40,12 @@ const MENU_OPTIONS = [
   {
     label: 'Profile',
     icon: personFill,
-    theHref: PATH_DASHBOARD.user.profile,
+    theHref: '/dashboard/app/account',
   },
   {
-    label: 'Settings',
+    label: 'Likes',
     icon: settings2Fill,
-    theHref: PATH_DASHBOARD.user.account,
+    theHref: '/dashboard/app/likes',
   },
 ];
 const LOCK_MENU_OPTIONS = [

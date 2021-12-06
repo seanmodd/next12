@@ -58,7 +58,7 @@ export default function LoginForm({ children }) {
     onSubmit: async (values, { setErrors, setSubmitting, resetForm }) => {
       try {
         await login(values.email, values.password);
-        enqueueSnackbar('Login success', {
+        enqueueSnackbar('Login successssss', {
           variant: 'success',
           action: (key) => (
             <MIconButton size="small" onClick={() => closeSnackbar(key)}>
@@ -95,7 +95,7 @@ export default function LoginForm({ children }) {
         <Container
           style={{
             // backgroundColor: '#ff0000',
-            minWidth: '400px',
+            // minWidth: '400px',
             paddingLeft: '0.5px',
             paddingRight: '0px',
             paddingBottom: '2px',
@@ -103,7 +103,7 @@ export default function LoginForm({ children }) {
           }}
           // minWidth="xl"
         >
-          <h1>You're successfully logged in!</h1>
+          <h1>You're logged in!</h1>
           <Button
             variant="contained"
             // style={{ backgroundColor: '#ff0000' }}

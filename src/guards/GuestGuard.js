@@ -1,3 +1,4 @@
+//* Logout message is here
 import { Button, Stack as MuiStack, Container } from '@mui/material';
 import PropTypes from 'prop-types';
 // import { Navigate } from 'react-router-dom';
@@ -33,7 +34,7 @@ export default function GuestGuard({ children }) {
   const handleLogout = async () => {
     try {
       await logout();
-      enqueueSnackbar('Successful logout!', { variant: 'success' });
+      enqueueSnackbar(`You've logged out`, { variant: 'warning' });
       // router.push('/');
       if (isMountedRef.current) {
       }

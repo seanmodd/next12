@@ -21,6 +21,7 @@ import { MHidden } from 'src/minimalComponents/@material-extend';
 import { LoginForm } from 'src/minimalComponents/authentication/login';
 import AuthFirebaseSocials from 'src/minimalComponents/authentication/AuthFirebaseSocial';
 import jwtIcon from '../../../public/static/auth/ic_jwt.png';
+
 // import loginIcon from '../../../public/static/illustrations/illustration_login.png';
 
 const RootStyle = styled(Page)(({ theme }) => ({
@@ -31,7 +32,7 @@ const RootStyle = styled(Page)(({ theme }) => ({
 
 const SectionStyle = styled(Card)(({ theme }) => ({
   width: '100%',
-  maxWidth: 464,
+  // maxWidth: 464,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -39,7 +40,7 @@ const SectionStyle = styled(Card)(({ theme }) => ({
 }));
 
 const ContentStyle = styled('div')(({ theme }) => ({
-  maxWidth: 480,
+  // maxWidth: 480,
   margin: 'auto',
   display: 'flex',
   minHeight: '100vh',
@@ -72,17 +73,17 @@ export default function Login() {
   return (
     <DashboardLayout>
       <RootStyle title="Login | CarX">
-        <AuthLayout>
-          Don’t have an account? &nbsp;
-          <MuiLink
-            underline="none"
-            variant="subtitle2"
-            component={RouterLink}
-            href="/dashboard/user/register"
-          >
-            Get started
-          </MuiLink>
-        </AuthLayout>
+        {/* <AuthLayout> */}
+        {/* Don’t have an account? &nbsp;
+        <MuiLink
+          underline="none"
+          variant="subtitle2"
+          component={RouterLink}
+          href="/dashboard/user/register"
+        >
+          Get started
+        </MuiLink> */}
+        {/* </AuthLayout> */}
         <MHidden width="mdDown">
           <SectionStyle>
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
@@ -139,7 +140,7 @@ export default function Login() {
               </Button>
             )}
 
-            <MHidden width="smUp">
+            {/* <MHidden width="xsUp">
               <Typography variant="body2" align="center" sx={{ mt: 3 }}>
                 Don’t have an account?&nbsp;
                 <MuiLink
@@ -150,7 +151,7 @@ export default function Login() {
                   Get started
                 </MuiLink>
               </Typography>
-            </MHidden>
+            </MHidden> */}
           </ContentStyle>
         </Container>
       </RootStyle>

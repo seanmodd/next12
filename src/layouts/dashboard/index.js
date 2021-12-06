@@ -21,14 +21,14 @@ const RootStyle = styled('div')({
 });
 
 const MainStyle = styled('div')(({ theme }) => ({
-  flexGrow: 1,
+  // flexGrow: 1,
   overflow: 'auto',
   minHeight: '100%',
   paddingTop: APP_BAR_MOBILE + 24,
   paddingBottom: theme.spacing(10),
   [theme.breakpoints.up('lg')]: {
     paddingTop: APP_BAR_DESKTOP + 24,
-    paddingLeft: theme.spacing(2),
+    // paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
   },
   [theme.breakpoints.down('sm')]: {
@@ -63,9 +63,10 @@ export default function DashboardLayout({ children }) {
           transition: theme.transitions.create('margin', {
             duration: theme.transitions.duration.complex,
           }),
-          ...(collapseClick && {
-            ml: '102px',
-          }),
+          ...(collapseClick &&
+            {
+              // ml: '102px',
+            }),
         }}
       >
         {children}
