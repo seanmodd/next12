@@ -46,7 +46,7 @@ export default function PageNotFound() {
               />
             </motion.div>
 
-            <NextLink href="/">
+            <NextLink href="/dashboard/shop">
               <Button size="large" variant="contained">
                 Go to Home
               </Button>
