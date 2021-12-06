@@ -172,24 +172,28 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <!-- Todo -->
 ## Todo
 
-
-
-- [x] Initialize firebase v8 for authentication
-- [x] Create registration flow
-- [x] Create login flow
-- [x] Create logout flow
-- [x] Create a [makeName] subcategory through which every [id] is dynamically generated
-- [x] Get SSR (best is ISR, Incremental Site Rendering or ISG, Incremental Site Generation!!!) rendering from Redux onto /dashboard/shop so it picks it up on ‘page inspect’
-
-
-- [x] Create registration
-  - [ ] Verification required via email after registration with sendgrid or nodemailer...
-- [x] Create login
-  - [ ] If email already exists, notify the user of this...
-- [x] Create logout
+<summary><b>Likes Dashboard</b></summary>
+- [ ] Create registration
+  - [x] Verification required via email after registration with sendgrid or nodemailer...
+<summary><b>Carfax Price Estimator</b></summary>
+- [ ] Create registration
+  - [x] Verification required via email after registration with sendgrid or nodemailer...
+<summary><b>Fully Featured Authentication Flow</b></summary>
+- [ ] Create registration
+  - [x] Verification required via email after registration with sendgrid or nodemailer...
+- [ ] Create login
+  - [x] If email already exists, notify the user of this...
 - [ ] Create a reset password and trigger emails with sendgrid or nodemailer
 
-- [ ] A subtask
+
+<summary><b>Completed Items</b></summary>
+
+- [x] Initialize firebase v8 for authentication
+- [x] Establish valid registration
+- [x] Establish a valid login capability
+- [x] Create logout flow
+- [x] Create a [makeName] subcategory through which every [id] is dynamically generated
+- [x] Fetch all data using SSR rendering from Redux onto /dashboard/shop so it picks it up on ‘page inspect’ for SEO purposes...
 
 
 
