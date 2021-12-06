@@ -24,7 +24,6 @@
       <a href="#getting-started">Getting Started</a>
     </li>
     <li><a href="#Todo">Need to do still</a></li>
-    <li><a href="#directorystructure">Directory Structure</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -173,27 +172,18 @@ The **ShopCarX** inventory is being scraped on a daily basis from the following 
 <!-- Todo -->
 ## Todo
 
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
+~~~
+ Markup : - [ ] An uncompleted task
+          - [x] A completed task
+~~~
+
+- [ ] An uncompleted task
+    - [ ] A subtask
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- DIRECTORY STRUCTURE -->
-## Directory Structure
-
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
-
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- CONTACT -->
