@@ -21,11 +21,10 @@ import Logo from '../../components/Logo';
 import Label from '../../components/Label';
 import { MHidden } from '../../components/@material-extend';
 //
-import MenuDesktop from './MenuDesktop';
-import MenuMobile from './MenuMobile';
+import TopMenuDesktop from './TopMenuDesktop';
+import SideMenuMobile from './SideMenuMobile';
 //* Replace navConfig with src/layouts/dashboard/SidebarConfig.js
-import navConfig from './MenuConfig';
-import { sidebarConfig } from './MenuConfig';
+import navConfig from './TopMenuConfig';
 
 // ----------------------------------------------------------------------
 
@@ -135,7 +134,7 @@ export default function MainNavbar() {
           <Box sx={{ flexGrow: 1 }} />
 
           <MHidden width="mdDown">
-            <MenuDesktop
+            <TopMenuDesktop
               isOffset={isOffset}
               isHome={isHome}
               navConfig={navConfig}
@@ -168,7 +167,7 @@ export default function MainNavbar() {
           </Button>
 
           <MHidden width="mdUp">
-            <MenuMobile
+            <SideMenuMobile
               isOffset={isOffset}
               isHome={isHome}
               navConfig={navConfig}

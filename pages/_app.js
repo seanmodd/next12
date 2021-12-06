@@ -44,7 +44,7 @@ import {
 import { ApolloWrapper } from 'src/__graphql/ApolloWrapper';
 
 import { ThemeProvider } from '@material-ui/core/styles';
-import MainLayout from 'src/layouts/main';
+import MainLayout from 'src/layouts/navMenu';
 
 import { RecoilRoot } from 'recoil';
 import GlobalStateProvider from 'src/___global/store/GlobalStateProvider';

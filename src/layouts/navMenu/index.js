@@ -7,7 +7,7 @@ import { Box, Link, Container, Typography } from '@mui/material';
 // components
 import Logo from '../../components/Logo';
 //
-import MainNavbar from './MainNavbar';
+import TopMenuMainNavbar from './TopMenuMainNavbar';
 import MainFooter from './MainFooter';
 
 // ----------------------------------------------------------------------
@@ -22,7 +22,7 @@ export default function MainLayout({ children }) {
 
   return (
     <>
-      <MainNavbar />
+      <TopMenuMainNavbar />
       <div>{children}</div>
 
       {!isHome ? (
