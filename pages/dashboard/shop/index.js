@@ -103,9 +103,6 @@ const EcommerceShop = (props) => {
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
 
-  const state = useSelector((state) => state);
-  const reduxStore = useStore();
-
   const state_products = useSelector((state) => state.product);
   console.log(
     'This 🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️🧘‍♂️ is state_products = useSelecotr ((state) => state.product) from pages/dashboard/shop/index.js, view https://bit.ly/next12_10 : ',
