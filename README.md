@@ -45,7 +45,7 @@
 ShopCarX.com is a web application that allows users to search for and purchase used AND new cars. 
 The organization of the directory sucks and needs to constantly be updated. Sorry for that, I suck - Sean Modd.
 
-<details close>
+<details open>
 <summary><b>Inventory of Vehicles</b></summary>
 <br />
 
@@ -72,7 +72,7 @@ The scraper is still under development, right now the vehicles are just showing 
 </tr>
 </table>
 
-<details close>
+<details open>
 <summary><b>Key Pages</b></summary>
 <br>
 
@@ -148,7 +148,7 @@ The scraper is still under development, right now the vehicles are just showing 
 
 <!-- GETTING STARTED -->
 ## Getting Started
-<details close>
+<details open>
 <summary><b>Installation Details</b></summary>
 <br />
 
@@ -182,7 +182,7 @@ The scraper is still under development, right now the vehicles are just showing 
 <br />
 
 
-<details close>
+<details open>
 <summary><b>How the GraphQl Queries Are Being Called?</b></summary>
 <br />
 
@@ -199,7 +199,7 @@ The GraphQl Queries are being both **server-side rendered** while being dispatch
 
 </details>
 
-<details close>
+<details open>
 <summary><b>How to Test the GraphQl Queries?</b></summary>
 <br />
 
