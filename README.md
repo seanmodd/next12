@@ -23,6 +23,7 @@
     <li>
       <a href="#getting-started">Getting Up and Running Locally</a>
     </li>
+    <li><a href="#GraphQl">How GraphQl and Redux Toolkit Queries Are Being Made</a></li>
     <li><a href="#Todo">TODO LIST TASKS</a></li>
     <li><a href="#Completed">Completed Tasks</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -167,6 +168,48 @@ The scraper is still under development, right now the vehicles are just showing 
 - Once you have cloned it locally, ***you first must access branch vSean!*** 
 - Only when you are on branch vSean, ***then*** you run <code>yarn install</code> to install all the dependencies.
 - Now run <code>yarn run start</code> and you can visit the web app now live on localhost:3000!
+
+</details>
+
+
+
+
+<!-- GraphQl -->
+## GraphQl
+
+#### View GraphQl Queries:
+<summary><b>Overview of the GraphQl Queries occuring on page <code>/dashboard/shop</code>, <code>/dashboard/shop/[makeName]</code> and <code>/dashboard/[makeName]/[id]</code> which <b>server-side render</b> all cars from the Strapi GraphQl API</b></summary>
+
+
+<details close>
+<summary><b>How the GraphQl Queries Are Being Called?</b></summary>
+<br />
+
+
+The GraphQl Queries are being both **server-side rendered** while being dispatched via **redux toolkit** in the following approach:
+
+- To see a sample of it occurring, please visit the page <code>/dashboard/shop/index</code>
+- You will notice two critical redux-related imports: <code>import { getProducts, filterProducts } from 'src/___redux/slices/product';</code> and <code>import { wrapperStore } from 'src/___redux/store.js';</code>
+  - The redux is being server-side rendered due to the wrapperstore which is imported from <code>import { wrapperStore } from 'src/___redux/store.js';</code> and is not as relevant in this instance
+  - More relevant: the getProducts and filterProducts being imported from <code>import { getProducts, filterProducts } from 'src/___redux/slices/product';</code> 
+- Open the file from <code>import { getProducts, filterProducts } from 'src/___redux/slices/product';</code>
+- In order to see the GraphQl query, go to the getProducts dispatch and you will see how the GraphQl queries are being made!
+  - You'll notice a lot of them are just junk queries and not currently being utilized, we should clean this up definitely but for now it's just there for reference I guess... sorry I suck
+
+</details>
+
+<details close>
+<summary><b>How to Test the GraphQl Queries?</b></summary>
+<br />
+
+
+The GraphQl Queries can be made through a playground I have created on **Apollo Studio**, follow the steps below to test it:
+
+ <img src="https://i.imgur.com/VmonacB.jpeg" width="350px">
+
+- Go to the shared playground I have created [here in Apollo Studio](https://studio.apollographql.com/graph/ShopCarX-Pavan/explorer?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAGoCGeAlmagM4CyZA1ggBQAkA7gBb4LpEAUgGUA8gDkAlEWAAdJESIA3CtTqsefAV154E0uQsVEAxMtU0UtGfONFKYW8awoCTxWagQANhDzvTIlpKAC8EANpXb3CjRQAHKigYuygKAH0kMkQA1Lw0uGYEDKzk4wSIMBgoFBtY4wcAxUzsusVUlAQAcz9iQzs7BtbjZtL%2BojAEWigqOJRKCCRGogBfeVWjdfWQABoQFSoyACNo2gwQPqJZEE09K4ELxSvyyuq72rGrkbSvVDJKJFobyuUG4hFo0X8IAC60UmxAyyAA&variant=current)
+  - You may have to create your own free Apollo Studio account to test the GraphQl queries, please go ahead and do so!
+- Now you may run sample GraphQl queries, or even the very same ones I have made and dispatched from within <code>'src/___redux/slices/product'</code> 
 
 </details>
 
