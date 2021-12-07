@@ -249,7 +249,7 @@ const ALLCARSQUERY = gql`
       id
       qty
       # color
-      size
+      # size
       style
       price
       car_name
@@ -364,7 +364,7 @@ const CARSMAKEQUERY = gql`
       id
       qty
       # color
-      size
+      # size
       style
       price
       car_name
@@ -480,7 +480,7 @@ const MYCARQUERY = gql`
       id
       qty
       # color
-      size
+      # size
       style
       price
       car_name
