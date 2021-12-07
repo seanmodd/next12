@@ -215,7 +215,7 @@ The GraphQl Queries can be made through a playground I have created on **Apollo 
 </details>
 
 
-
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- Todo -->
@@ -273,7 +273,7 @@ The GraphQl Queries can be made through a playground I have created on **Apollo 
 
 - [ ] Ask for location access in the app in order to get the zip code
 
-
+<p align="right">(<a href="#top">back to top</a>)</p>
 <!-- COMPLETED -->
 ## Completed
 
