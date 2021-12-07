@@ -178,7 +178,7 @@ The scraper is still under development, right now the vehicles are just showing 
 ## GraphQl
 
 #### View GraphQl Queries:
-<summary><b>Overview of the GraphQl Queries occuring on page <code>/dashboard/shop</code>, <code>/dashboard/shop/[makeName]</code> and <code>/dashboard/[makeName]/[id]</code> which <b>server-side render</b> all cars from the Strapi GraphQl API</b></summary>
+<summary>Overview of the GraphQl Queries occuring on page <code>/dashboard/shop</code>, <code>/dashboard/shop/[makeName]</code> and <code>/dashboard/[makeName]/[id]</code> which <b>server-side render</b> all cars from the Strapi GraphQl API</summary>
 <br />
 
 
