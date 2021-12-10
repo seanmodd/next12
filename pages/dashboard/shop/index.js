@@ -44,9 +44,6 @@ import axios from 'axios';
 // ----------------------------------------------------------------------
 
 function applyFilter(products, sortBy, filters) {
-
-  
-
   // SORT BY
   if (sortBy === 'featured') {
     products = orderBy(products, ['sold'], ['desc']);
@@ -100,10 +97,8 @@ function applyFilter(products, sortBy, filters) {
     });
   }
 
-  let newData = products.map((item) => 
-    Object.assign({}, item, {isFavourite: false})
-  )
-  
+  const newData = products.map((item) => ({ ...item, isFavourite: false }));
+
   return newData;
 }
 
@@ -112,7 +107,7 @@ const EcommerceShop = (props) => {
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
 
-  const [favouriteData, setFavouriteData] = useState([])
+  const [favouriteData, setFavouriteData] = useState([]);
 
   const state_products = useSelector((state) => state.product);
   console.log(
@@ -172,28 +167,29 @@ const EcommerceShop = (props) => {
   }, [dispatch, values]);
 
   const getFavouritesData = () => {
-    axios.get("http://localhost:1337/users-favourites")
-      .then(response => {
-        console.log('INDEX.JS ==>',response, filteredProducts)
+    axios
+      .get('http://localhost:1337/users-favourites')
+      .then((response) => {
+        console.log('INDEX.JS ==>', response, filteredProducts);
         filteredProducts.forEach((fItem, fIndex) => {
           response.data[0].variants.forEach((vItem, vIndex) => {
-            if(fItem.id === vItem.id){
-              return fItem.isFavourite = true;
+            if (fItem.id === vItem.id) {
+              return (fItem.isFavourite = true);
             }
-          })
-        })
+          });
+        });
 
-        console.log('INDEX.JS ==>', filteredProducts)
-        setFavouriteData(filteredProducts)        
+        console.log('INDEX.JS ==>', filteredProducts);
+        setFavouriteData(filteredProducts);
       })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
-    getFavouritesData()
-  }, [])
+    getFavouritesData();
+  }, []);
 
   const handleOpenFilter = () => {
     setOpenFilter(true);
@@ -221,68 +217,65 @@ const EcommerceShop = (props) => {
         {/* <CartWidget /> */}
       </Stack>
       {/* {!filteredProducts && SkeletonLoad} */}
-        <Page title="Shop: All Vehicles | CarX">
-          {values && (
-            <Backdrop open={isSubmitting} sx={{ zIndex: 9999 }}>
-              <CircularProgress />
-            </Backdrop>
+      <Page title="Shop: All Vehicles | CarX">
+        {values && (
+          <Backdrop open={isSubmitting} sx={{ zIndex: 9999 }}>
+            <CircularProgress />
+          </Backdrop>
+        )}
+
+        <Container maxWidth={themeStretch ? false : 'lg'}>
+          <HeaderBreadcrumbs
+            heading="Shop: All Vehicles"
+            links={[
+              { name: 'Dashboard', href: PATH_DASHBOARD.root },
+              // {
+              //   name: 'E-Commerce',
+              //   href: PATH_DASHBOARD.shop.root,
+              // },
+              { name: 'All Vehciles' },
+            ]}
+          />
+
+          {!isDefault && (
+            <Typography gutterBottom>
+              <Typography component="span" variant="subtitle1">
+                {filteredProducts.length}
+              </Typography>
+              &nbsp;Products found
+            </Typography>
           )}
 
-          <Container maxWidth={themeStretch ? false : 'lg'}>
-            <HeaderBreadcrumbs
-              heading="Shop: All Vehicles"
-              links={[
-                { name: 'Dashboard', href: PATH_DASHBOARD.root },
-                // {
-                //   name: 'E-Commerce',
-                //   href: PATH_DASHBOARD.shop.root,
-                // },
-                { name: 'All Vehciles' },
-              ]}
+          <Stack
+            direction="row"
+            flexWrap="wrap-reverse"
+            alignItems="center"
+            justifyContent="flex-end"
+            sx={{ mb: 5 }}
+          >
+            <ShopTagFiltered
+              filters={filters}
+              formik={formik}
+              isShowReset={openFilter}
+              onResetFilter={handleResetFilter}
+              isDefault={isDefault}
             />
 
-            {!isDefault && (
-              <Typography gutterBottom>
-                <Typography component="span" variant="subtitle1">
-                  {filteredProducts.length}
-                </Typography>
-                &nbsp;Products found
-              </Typography>
-            )}
-
-            <Stack
-              direction="row"
-              flexWrap="wrap-reverse"
-              alignItems="center"
-              justifyContent="flex-end"
-              sx={{ mb: 5 }}
-            >
-              <ShopTagFiltered
-                filters={filters}
+            <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
+              <ShopFilterSidebar
                 formik={formik}
-                isShowReset={openFilter}
+                isOpenFilter={openFilter}
                 onResetFilter={handleResetFilter}
-                isDefault={isDefault}
+                onOpenFilter={handleOpenFilter}
+                onCloseFilter={handleCloseFilter}
               />
-
-              <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-                <ShopFilterSidebar
-                  formik={formik}
-                  isOpenFilter={openFilter}
-                  onResetFilter={handleResetFilter}
-                  onOpenFilter={handleOpenFilter}
-                  onCloseFilter={handleCloseFilter}
-                />
-                <ShopProductSort />
-              </Stack>
+              <ShopProductSort />
             </Stack>
+          </Stack>
 
-            <ShopProductList
-              products={favouriteData}
-              from={"dashboard_page"}
-            />
-          </Container>
-        </Page>
+          <ShopProductList products={favouriteData} from="dashboard_page" />
+        </Container>
+      </Page>
     </DashboardLayout>
     // </AuthGuard>
   );
