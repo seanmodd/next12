@@ -6,7 +6,7 @@
 <h3 align="center">Project Shop CarX</h3>
     <img src="public/static/x_logo.svg" alt="Logo" width="80px">
 
-
+sean edits pavan-development
 
 </div>
 
