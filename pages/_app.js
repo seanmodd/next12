@@ -36,11 +36,11 @@ import { AuthProvider } from 'src/contexts/FirebaseContext';
 import GoogleAnalytics from 'src/minimalComponents/GoogleAnalytics';
 import NotistackProvider from 'src/minimalComponents/NotistackProvider';
 import { BaseOptionChartStyle } from 'src/minimalComponents/charts/BaseOptionChart';
-import {
-  UserWrapper,
-  FeedbackWrapper,
-  CartWrapper,
-} from 'src/__gatsby/contexts';
+// import {
+//   UserWrapper,
+//   FeedbackWrapper,
+//   CartWrapper,
+// } from 'src/__gatsby/contexts';
 import { ApolloWrapper } from 'src/__graphql/ApolloWrapper';
 
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -93,17 +93,17 @@ const MyApp = (props) => {
                               {/* <LoadingScreen /> */}
                               <BaseOptionChartStyle />
                               <GoogleAnalytics />
-                              <UserWrapper>
-                                <FeedbackWrapper>
-                                  <CartWrapper>
-                                    <AuthProvider>
-                                      <MainLayout>
-                                        <Component {...pageProps} />
-                                      </MainLayout>
-                                    </AuthProvider>
-                                  </CartWrapper>
-                                </FeedbackWrapper>
-                              </UserWrapper>
+                              {/* <UserWrapper> */}
+                              {/* <FeedbackWrapper> */}
+                              {/* <CartWrapper> */}
+                              <AuthProvider>
+                                <MainLayout>
+                                  <Component {...pageProps} />
+                                </MainLayout>
+                              </AuthProvider>
+                              {/* </CartWrapper> */}
+                              {/* </FeedbackWrapper> */}
+                              {/* </UserWrapper> */}
                             </NotistackProvider>
                           </ApolloWrapper>
                         </ThemeProvider>
